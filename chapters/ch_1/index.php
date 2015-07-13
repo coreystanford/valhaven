@@ -43,10 +43,10 @@
 
         case 'default':
 
-            $poster = ; // default video background for this chapter
-            $mp4 = ; // mp4 video file for this chapter
-            $webm = ; // webm video file for this chapter
-            $ogv = ; // mp4 video file for this chapter
+            $poster = "valhaven.jpg"; // default video background for this chapter
+            $webm = "sample.webm"; // webm video file for this chapter
+            $mp4 = "sample.mp4"; // mp4 video file for this chapter
+            $ogv = "sample.ogv"; // ogv video file for this chapter
 
             include 'ch1.php';
 

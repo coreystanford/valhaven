@@ -85,6 +85,7 @@ body {
     height: 100%;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
 }
 h1 { font-size: 30px; font-size: 1.8em; line-height: 1.5; }
 h2 { font-size: 26px; font-size: 1.6em; line-height: 1; }
@@ -98,6 +99,81 @@ main {
   height: 100%;
 }
 
+/*  ----- NAVIGATION -----  */
+
+nav {
+  position: absolute;
+  top: 5%;
+  left: 3%;
+  z-index: 5;
+}
+
+  nav ul {
+    
+  }
+
+    nav ul li {
+      display: inline-block;
+    }
+
+      nav ul li a {
+        font-size: 18px;
+        font-size: 1.1em;
+        width: auto;
+        padding: 10px 5px 5px;
+        margin: 0 5px;
+        color: #ffffff;
+      }
+
+        nav ul li a:hover {
+          color: #f9eC23;
+          border-bottom: 1px solid #f9eC23;
+        }
+
+/*  ----- MAP -----  */
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  left: -190px;
+  background: #fff;
+  border-right: 10px solid #eb1c3c;
+  z-index: 6;
+  opacity: 0.8;
+}
+
+  #map-btn {
+
+  }
+
+/*  ----- NOTEBOOK -----  */
+
+#notebook {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  right: -190px;
+  background: #fff;
+  border-left: 10px solid #eb1c3c;
+  z-index: 6;
+  opacity: 0.8;
+}
+
+  #notebook-btn {
+
+  }
+
+/*  ----- HOMEPAGE -----  */
+
+#home-btn {
+
+}
+
+/*  ----- VIDEO -----  */
+
 #video-container {
   position: relative;
   width: 100%;
@@ -105,21 +181,22 @@ main {
   overflow: hidden;
 }
 
-#video-container video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -1;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  background: url('../images/valhaven.jpg') no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
+  #video-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url('../images/valhaven.jpg') no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+/*  ----- MODAL -----  */
 
 
 
