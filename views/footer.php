@@ -1,15 +1,16 @@
 		</main><!-- /main -->
 
-		<footer class="clearfix">
+		<div id="modal" role="complementary"></div><!-- /modal -->
 
-			<p>&copy;<?php echo date('Y'); ?> JIBE | All Rights Reserved</p>
-				
-		</footer><!-- /footer -->
+		<?php if (count($customScripts)): ?>
 
-		<div id="modal"></div><!-- /modal -->
+			<?php foreach ($customScripts as $script): ?>
 
-		<script src="js/page-loader.js" type="text/javascript"></script>
-		<script src="js/playback-navigator.js" type="text/javascript"></script>
+				<script src="js/<?php echo $script; ?>" type="text/javascript" charset="utf-8"></script>
+
+			<?php endforeach ?>
+
+		<?php endif ?>
 
 	</body><!-- /body -->
 	

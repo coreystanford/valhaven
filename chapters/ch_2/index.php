@@ -32,7 +32,7 @@
 
         case 'default':
 
-            include 'home.php';
+            include 'ch2.php';
 
         break;
 
