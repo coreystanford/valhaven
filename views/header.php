@@ -11,8 +11,8 @@
 	<meta property="og:description" content="<?php echo $description; ?>">
 	<!-- <link rel="icon" type="image/png" href="favicon.ico"> -->
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<script src="js/jquery-1.11.3.min.js" type="text/javascript" async></script>
+	<link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>main.css">
+	<script src="<?php echo JS_PATH; ?>jquery-1.11.3.min.js" type="text/javascript" async></script>
 	<!-- <script src="js/app.js" type="text/javascript" charset="utf-8" async></script> -->
 </head><!-- /head -->
 <body>
@@ -22,8 +22,8 @@
 		<nav role="navigation">
 			
 			<ul>
-				<li><a href="/">HOME</a></li>
-				<li><a href="/credit">CREDIT</a></li>
+				<li><a href="<?php echo ROOT_HREF; ?>">HOME</a></li>
+				<li><a href="<?php echo ROOT_HREF; ?>credit">CREDIT</a></li>
 			</ul>
 			
 		</nav><!-- /navigation -->

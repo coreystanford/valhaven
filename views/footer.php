@@ -6,7 +6,7 @@
 
 			<?php foreach ($customScripts as $script): ?>
 
-				<script src="js/<?php echo $script; ?>" type="text/javascript" charset="utf-8"></script>
+				<script src="<?php echo JS_PATH . $script; ?>" type="text/javascript" charset="utf-8"></script>
 
 			<?php endforeach ?>
 

@@ -1,6 +1,6 @@
 <?php
 
-    require '../../config.php';
+    require '../config.php';
 
     // -------------------------------------- //
     // ------ Determine Current Action ------ //
@@ -28,8 +28,8 @@
     // ------ Chapter Globals ------ //
     // ----------------------------- //
 
-    $title = "Chapter 1";
-    $description = "This is a description of chapter one.";
+    $title = "Credit";
+    $description = "This is a description of credit.";
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
     
     // javascript files for this chapter:
@@ -45,12 +45,7 @@
 
         case 'default':
 
-            $poster = "valhaven.jpg"; // default video background for this chapter
-            $webm = "sample.webm"; // webm video file for this chapter
-            $mp4 = "sample.mp4"; // mp4 video file for this chapter
-            $ogv = "sample.ogv"; // ogv video file for this chapter
-
-            include 'ch1.php';
+            include 'credit.php';
 
         break;
 

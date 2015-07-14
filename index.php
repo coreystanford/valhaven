@@ -1,5 +1,7 @@
 <?php
 
+    require './config.php';
+
     // -------------------------------------- //
     // ------ Determine Current Action ------ //
     // -------------------------------------- //
@@ -31,7 +33,7 @@
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
 
     // javascript files for just the homepage:
-    $customScripts = []; // add the file name in quotations, seperated by commas
+    $customScripts = ["home.js"]; // add the file name in quotations, seperated by commas
 
 	// ---------------------------- //
     // ------ Perform Switch ------ //
