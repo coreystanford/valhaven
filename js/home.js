@@ -1,4 +1,4 @@
-window.onload = function(){
+(function(){
 
 	var bg = document.getElementById('home-bg');
 	bg.style.height = window.innerHeight + "px";
@@ -7,4 +7,4 @@ window.onload = function(){
 		bg.style.height = window.innerHeight + "px";
 	});
 
-}
+})();

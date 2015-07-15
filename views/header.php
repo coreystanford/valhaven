@@ -13,7 +13,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>main.css">
 	<script src="<?php echo JS_PATH; ?>jquery-1.11.3.min.js" type="text/javascript" async></script>
-	<!-- <script src="js/app.js" type="text/javascript" charset="utf-8" async></script> -->
+	<script src="<?php echo JS_PATH; ?>app.js" type="text/javascript" charset="utf-8" async></script>
 </head><!-- /head -->
 <body>
 
@@ -30,7 +30,7 @@
 
 		<div id="map" role="complementary">
 			
-			<span role="button" id="map-btn"></span>
+			<span role="button" id="map-btn"><img src="<?php echo IMAGE_PATH; ?>icons/compass-icon.png"></span>
 
 			
 
@@ -38,17 +38,17 @@
 
 		<div id="notebook" role="complementary">
 			
-			<span role="button" id="notebook-btn"></span>
+			<span role="button" id="notebook-btn"><img src="<?php echo IMAGE_PATH; ?>icons/notepad-icon.png"></span>
 
-
+			
 
 		</div><!-- /notebook -->
 
 		<div id="social">
 
 			<ul>
-				<li><a id="facebook" href="#"></a></li>
-				<li><a id="twitter" href="#"></a></li>
+				<li><a id="facebook" href="#"><img src="<?php echo IMAGE_PATH; ?>icons/fb-icon.png"></a></li>
+				<li><a id="twitter" href="#"><img src="<?php echo IMAGE_PATH; ?>icons/twitter-icon.png"></a></li>
 			</ul>
 
 		</div><!-- /social -->

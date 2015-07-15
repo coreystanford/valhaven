@@ -11,8 +11,8 @@ $root_href = "//localhost/valhaven/";
 define('ROOT_PATH', $root);
 define('ROOT_HREF', $root_href);
 
-define('HEADER', $root . DIRECTORY_SEPARATOR. 'views' . DIRECTORY_SEPARATOR . 'header.php');
-define('FOOTER', $root . DIRECTORY_SEPARATOR. 'views' . DIRECTORY_SEPARATOR . 'footer.php');
+define('HEADER', $root . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'header.php');
+define('FOOTER', $root . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'footer.php');
 
 define('CH_PATH', $root_href . 'chapters/');
 
