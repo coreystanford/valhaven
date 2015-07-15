@@ -72,6 +72,13 @@ em { font-style: italic; }
   height: 0;
 }
 
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
 /*  ---------------------------  */
 /*  ----- GENERAL STYLING -----  */
 /*  ---------------------------  */
@@ -86,6 +93,7 @@ body {
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
+    background: #000;
 }
 h1 { font-size: 30px; font-size: 1.8em; line-height: 1.5; }
 h2 { font-size: 26px; font-size: 1.6em; line-height: 1; }
@@ -254,7 +262,18 @@ nav {
   color: #58595b;
 }
 
-/*  ----- VIDEO -----  */
+/*  ----- CREDIT -----  */
+
+#inner-container {
+  color: #ffffff;
+  padding-top: 8%;
+  margin: 0 auto;
+  width: 60%;
+  max-width: 800px;
+  min-width: 100px;
+}
+
+/*  ----- VIDEO CONTROLS -----  */
 
 #video-container {
   position: relative;
@@ -269,13 +288,77 @@ nav {
     left: 50%;
     min-width: 100%;
     min-height: 100%;
-    width: auto;
+    width: 100%;
     height: auto;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url('../images/valhaven.jpg') no-repeat;
+    /*background: url('../images/valhaven.jpg') no-repeat;*/
     background-size: cover;
     background-attachment: fixed;
+  }
+
+  #play-pause-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;*/
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+    #play-pause {
+      font-size: 2em;
+      font-weight: 700;
+      color: #fff;
+    }
+
+  #controls {
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
+  }
+
+    #volume {
+      
+    }
+
+    #volume-bar {
+
+    }
+
+    #full-screen {
+
+    }
+
+    #info {
+
+    }
+
+  #progress-container {
+    position: absolute;
+    right: 10px;
+    left: 10px;
+    bottom: 0;
+  }
+
+    #progress-bar {
+      width: 100%;
+      /*background: #f9eC23;*/
+    }
+
+  #next {
+    position: absolute;
+    right: 3%;
+    top: 20%;
+  }
+
+  #prev {
+    position: absolute;
+    left: 3%;
+    top: 20%;
   }
 
 /*  ----- MODAL -----  */

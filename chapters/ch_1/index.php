@@ -31,9 +31,11 @@
     $title = "Chapter 1";
     $description = "This is a description of chapter one.";
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
+
+    $next = "ch_2";
     
     // javascript files for this chapter:
-    $customScripts = array(); // add the file name in quotations, seperated by commas
+    $customScripts = array("video.js"); // add the file name in quotations, seperated by commas
 
 	// ---------------------------- //
     // ------ Perform Switch ------ //
@@ -50,7 +52,7 @@
             $mp4 = "sample.mp4"; // mp4 video file for this chapter
             $ogv = "sample.ogv"; // ogv video file for this chapter
 
-            include 'ch1.php';
+            include 'ch_1.php';
 
         break;
 

@@ -33,7 +33,7 @@
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
     
     // javascript files for this chapter:
-    $customScripts = []; // add the file name in quotations, seperated by commas
+    $customScripts = array('credit.js'); // add the file name in quotations, seperated by commas
 
 	// ---------------------------- //
     // ------ Perform Switch ------ //

@@ -1,5 +1,13 @@
 <?php require HEADER; ?>
 
-	<h1>Credit</h1>
+	<div id="inner-container">
+		
+		<h1>CREDIT</h1>
+
+		<p>List of credits</p>
+
+	</div>
+
+	
 
 <?php require FOOTER; ?>
