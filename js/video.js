@@ -2,16 +2,29 @@
 
 	// Video
 	var video = document.getElementById("ch_video");
+	var timeout;
+	var offScreen = false;
 
 	// Buttons
+	var playContainer = document.getElementById("play-pause-container");
 	var playButton = document.getElementById("play-pause");
+	var controls = document.getElementById("controls");
 	var volumeButton = document.getElementById("volume-icon");
 	var fullScreenButton = document.getElementById("full-screen");
 	var information = document.getElementById("information");
 
 	// Sliders
+	var progressContainer = document.getElementById("progress-container");
 	var progressBar = document.getElementById("progress-bar");
  	var volumeBar = document.getElementById("volume-bar");
+
+ 	// Navigation
+ 	var nav = document.getElementById("navigation");
+ 	var social = document.getElementById("social");
+ 	var map = document.getElementById("map");
+ 	var notebook = document.getElementById("notebook");
+ 	var next = document.getElementById("next");
+ 	var prev = document.getElementById("prev");
 
  	volumeBar.style.display = "none";
 
@@ -21,11 +34,21 @@
 			// Play the video
 			video.play();
 
+			next.style.right = "-3%";
+			if(prev) {prev.style.left = "-3%";}
+
+			slideOffscreen();
+
 			// Update the button text to 'Pause'
 			playButton.innerHTML = "Pause";
 		} else {
 			// Pause the video
 			video.pause();
+
+			slideOnscreen();
+
+			next.style.right = "3%";
+			if(prev) {prev.style.left = "3%";}
 
 			// Update the button text to 'Play'
 			playButton.innerHTML = "Play";
@@ -101,12 +124,14 @@
 	// Pause the video when the slider handle is being dragged
 	progressBar.addEventListener("mousedown", function() {
 		video.pause();
+		slideOnscreen();
 		playButton.innerHTML = "Play";
 	});
 
 	// Play the video when the slider handle is dropped
 	progressBar.addEventListener("mouseup", function() {
 		video.play();
+		slideOffscreen();
 		playButton.innerHTML = "Pause";
 	});
 
@@ -123,10 +148,71 @@
 
 	});
 
+	console.log(video);
+
+	window.addEventListener('mousemove', function(){
+
+		if(video.paused === false && video.ended === false && offScreen === false ){
+			slideOffscreen();
+
+		}
+		if(video.paused === false && offScreen){
+			slideOnscreen();
+		} 
+		if(video.paused === true){
+			slideOnscreen();
+		}
+
+	});
+
 	video.addEventListener('ended', function(){
+
+		slideOnscreen();
 
 		playButton.innerHTML = "Replay";
 
-	})
+		next.style.right = "3%";
+		if(prev) {prev.style.left = "3%";}
+
+	});
+
+	function slideOffscreen(){
+
+		clearTimeout(timeout);
+		timeout = setTimeout(function(){
+
+			nav.style.top = "-8%";
+			map.style.left = "-240px";
+			notebook.style.right = "-240px";
+			controls.style.bottom = "-8%";
+			social.style.bottom = "-8%";
+			playContainer.style.visibility = "hidden";
+			playContainer.style.opacity = 0;
+			progressContainer.style.bottom = "-8%";
+			video.style.cursor = "none";
+			offScreen = true;
+
+		}, 2000);
+
+	}
+
+	function slideOnscreen(){
+
+		clearTimeout(timeout);
+
+		nav.style.top = "5%";
+		map.style.left = "-190px";
+		notebook.style.right = "-190px";
+		controls.style.bottom = "3%";
+		social.style.bottom = "5%";
+		playContainer.style.visibility = "visible";
+		playContainer.style.opacity = 1;
+		progressContainer.style.bottom = 0;
+		video.style.cursor = "default";
+		offScreen = false;
+
+		console.log("off:" + timeout);
+
+	}
 
 })();

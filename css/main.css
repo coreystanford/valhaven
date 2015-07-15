@@ -93,7 +93,6 @@ body {
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
-    background: #000;
 }
 h1 { font-size: 30px; font-size: 1.8em; line-height: 1.5; }
 h2 { font-size: 26px; font-size: 1.6em; line-height: 1; }
@@ -132,6 +131,7 @@ nav {
   top: 5%;
   left: 3%;
   z-index: 5;
+  transition-duration: 0.5s;
 }
 
   nav ul {
@@ -293,6 +293,7 @@ nav {
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     /*background: url('../images/valhaven.jpg') no-repeat;*/
+    background: #000;
     background-size: cover;
     background-attachment: fixed;
   }
@@ -317,8 +318,9 @@ nav {
 
   #controls {
     position: absolute;
-    bottom: 5%;
+    bottom: 3%;
     right: 3%;
+    transition-duration: 0.3s;
   }
 
     #volume {
@@ -342,6 +344,7 @@ nav {
     right: 10px;
     left: 10px;
     bottom: 0;
+    transition-duration: 0.3s;
   }
 
     #progress-bar {
@@ -353,17 +356,42 @@ nav {
     position: absolute;
     right: 3%;
     top: 20%;
+    z-index:11;
+    transition-duration: 0.3s;
   }
 
   #prev {
     position: absolute;
     left: 3%;
     top: 20%;
+    z-index:11;
+    transition-duration: 0.3s;
   }
+
 
 /*  ----- MODAL -----  */
 
+#modal {
+  background: rgba(55,55,55,0.6);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  color: #ffffff;
+}
 
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.off {
+  display: none;
+}
 
 /* ---- Animations ---- */
 

@@ -15,6 +15,7 @@ define('HEADER', $root . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . '
 define('FOOTER', $root . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'footer.php');
 
 define('CH_PATH', $root_href . 'chapters/');
+define('MODAL_PATH', $root_href . 'modals/');
 
 define('VIDEO_PATH', $root_href . 'videos/' );
 define('IMAGE_PATH', $root_href . 'images/');

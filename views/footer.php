@@ -1,6 +1,6 @@
 		</main><!-- /main -->
 
-		<div id="modal" role="complementary"></div><!-- /modal -->
+		<div id="modal" class="off" role="complementary"></div><!-- /modal -->
 
 		<?php if (count($customScripts)): ?>
 

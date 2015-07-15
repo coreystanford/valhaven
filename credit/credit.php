@@ -8,6 +8,4 @@
 
 	</div>
 
-	
-
 <?php require FOOTER; ?>

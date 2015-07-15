@@ -32,10 +32,12 @@
     $description = "This is a description of chapter one.";
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
 
+    $modal = "modal_1.php"; // name of the modal window file located in ./modals/
+
     $next = "ch_2";
     
     // javascript files for this chapter:
-    $customScripts = array("video.js"); // add the file name in quotations, seperated by commas
+    $customScripts = array("video.js", "modal-init.js", "modal.js"); // add the file name in quotations, seperated by commas
 
 	// ---------------------------- //
     // ------ Perform Switch ------ //
