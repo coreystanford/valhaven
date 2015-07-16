@@ -28,12 +28,12 @@
     // ------ Chapter Globals ------ //
     // ----------------------------- //
 
-    $title = "Credit";
-    $description = "This is a description of credit.";
+    $title = "About";
+    $description = "This is a description of about.";
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
     
     // javascript files for this chapter:
-    $customScripts = array('credit.js'); // add the file name in quotations, seperated by commas
+    $customScripts = array('about.js'); // add the file name in quotations, seperated by commas
 
 	// ---------------------------- //
     // ------ Perform Switch ------ //
@@ -45,7 +45,7 @@
 
         case 'default':
 
-            include 'credit.php';
+            include 'about.php';
 
         break;
 

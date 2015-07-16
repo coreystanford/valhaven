@@ -2,9 +2,9 @@
 
 	<div id="inner-container">
 		
-		<h1>CREDIT</h1>
+		<h1>ABOUT</h1>
 
-		<p>List of credits</p>
+		<p>About the project.</p>
 
 	</div>
 

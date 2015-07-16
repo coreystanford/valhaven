@@ -23,7 +23,7 @@
 			
 			<ul>
 				<li><a href="<?php echo ROOT_HREF; ?>">HOME</a></li>
-				<li><a href="<?php echo ROOT_HREF; ?>credit">CREDIT</a></li>
+				<li><a href="<?php echo ROOT_HREF; ?>about">ABOUT</a></li>
 			</ul>
 			
 		</nav><!-- /navigation -->

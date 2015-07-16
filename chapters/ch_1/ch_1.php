@@ -3,7 +3,7 @@
 	<div id="video-container" class="clearfix">
 	
 		<!-- Video Source/Data -->
-		<video poster="<?php echo IMAGE_PATH . $poster; ?>" id="ch_video" preload="metadata" ref="<?php echo MODAL_PATH . $modal; ?>">
+		<video autoplay poster="<?php echo IMAGE_PATH . $poster; ?>" id="ch_video" preload="metadata" ref="<?php echo MODAL_PATH . $modal; ?>">
 			<source  src="<?php echo VIDEO_PATH . $webm; ?>" type='video/webm; codecs="vp8, vorbis"'><!--LIST WEBM FIRST - Chrome bug-->	
 			<source  src="<?php echo VIDEO_PATH . $mp4; ?>" type="video/mp4" >
 			<source src="<?php echo VIDEO_PATH . $ogv; ?>">
@@ -27,7 +27,8 @@
 
 		<!-- Progress Bar -->
 		<div id="progress-container">
-			<input type="range" id="progress-bar" value="0">
+			<span id="indicator"></span>
+			<progress id="progress-bar" value="0" max="100"></progress>
 		</div>
 
 		<a href="<?php echo CH_PATH . $next; ?>" id="next"><img src="<?php echo IMAGE_PATH; ?>icons/right-arrow.png"></a>

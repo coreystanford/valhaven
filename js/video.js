@@ -4,6 +4,9 @@
 	var video = document.getElementById("ch_video");
 	var timeout;
 	var offScreen = false;
+	var width = window.innerWidth;
+	var down = false;
+	var posX, prec; 
 
 	// Buttons
 	var playContainer = document.getElementById("play-pause-container");
@@ -16,6 +19,7 @@
 	// Sliders
 	var progressContainer = document.getElementById("progress-container");
 	var progressBar = document.getElementById("progress-bar");
+	var indicator = document.getElementById("indicator");
  	var volumeBar = document.getElementById("volume-bar");
 
  	// Navigation
@@ -28,14 +32,15 @@
 
  	volumeBar.style.display = "none";
 
+ 	// ---------------------- //
+ 	// ---- PLAY + PAUSE ---- //
+ 	// ---------------------- //
+
  	// Event listener for the play/pause button
 	playButton.addEventListener("click", function() {
 		if (video.paused == true) {
 			// Play the video
 			video.play();
-
-			next.style.right = "-3%";
-			if(prev) {prev.style.left = "-3%";}
 
 			slideOffscreen();
 
@@ -47,13 +52,36 @@
 
 			slideOnscreen();
 
-			next.style.right = "3%";
-			if(prev) {prev.style.left = "3%";}
-
 			// Update the button text to 'Play'
 			playButton.innerHTML = "Play";
 		}
 	});
+
+	video.onplay = (function(){
+		slideOffscreen();
+		playButton.innerHTML = "Pause";
+	});
+
+	document.addEventListener('keydown', function(evt) {
+	    if (evt.keyCode == 32) {
+	    	if(video.paused === true && video.ended === false) {
+	    		video.play();
+				slideOffscreen();
+				playButton.innerHTML = "Pause";
+	    	} 
+	    	else if(video.paused === true && video.ended === true){
+	    		playButton.innerHTML = "";
+	    	} else {
+	    		video.pause();
+				slideOnscreen();
+				playButton.innerHTML = "Play";
+	    	}
+	    }
+	  });
+
+	// ----------------------- //
+ 	// ---- MUTE + VOLUME ---- //
+ 	// ----------------------- //
 
 	// Event listener for the mute button
 	volumeButton.addEventListener("click", function() {
@@ -70,6 +98,19 @@
 			// Update the button text
 			// volumeButton.innerHTML = "";
 		}
+	});
+
+	// Event listener for the volume bar
+	volumeBar.addEventListener("change", function() {
+		// Update the video volume
+		video.volume = volumeBar.value;
+
+		// if(video.volume === 0){
+		// 	video.muted = true;
+		// } else {
+		// 	video.muted = false;
+		// }
+
 	});
 
 	// Event listener for the mute button
@@ -92,6 +133,10 @@
 		volumeBar.style.display = "none";
 	});
 
+	// -------------------- //
+ 	// ---- FULLSCREEN ---- //
+ 	// -------------------- //
+
 	// Event listener for the full-screen button
 	fullScreenButton.addEventListener("click", function() {
 		if (video.requestFullscreen) {
@@ -103,6 +148,10 @@
 		}
 	});
 
+	// ---------------------- //
+ 	// ---- PROGRESS BAR ---- //
+ 	// ---------------------- //
+
 	// Event listener for the seek bar
 	progressBar.addEventListener("change", function() {
 		// Calculate the new time
@@ -112,45 +161,68 @@
 		video.currentTime = time;
 	});
 
-	// Update the seek bar as the video plays
+	// Update the progress bar as the video plays
 	video.addEventListener("timeupdate", function() {
 		// Calculate the slider value
 		var value = (100 / video.duration) * video.currentTime;
+		var curPos = (video.currentTime / video.duration) * width - 15;
 
 		// Update the slider value
 		progressBar.value = value;
+		indicator.style.left = curPos + "px";
 	});
 
-	// Pause the video when the slider handle is being dragged
-	progressBar.addEventListener("mousedown", function() {
+	progressBar.addEventListener("mousedown", function( evt ) {
+		evt.preventDefault();
 		video.pause();
 		slideOnscreen();
+
+		down = true;
+
+		posX = evt.offsetX;
+		perc = posX / width;
+
 		playButton.innerHTML = "Play";
+
+	});
+
+	progressBar.addEventListener("mousemove", function( evt ){
+		evt.preventDefault();
+		if(down){
+			console.log("moving");
+			posX = evt.offsetX;
+			perc = posX / width;
+			progressBar.value = (100 / video.duration) * (video.duration * perc);
+			curPos = perc * width - 15;
+			indicator.style.left = curPos + "px";
+		}
 	});
 
 	// Play the video when the slider handle is dropped
-	progressBar.addEventListener("mouseup", function() {
+	progressBar.addEventListener("mouseup", function( evt ) {
+
 		video.play();
 		slideOffscreen();
+
+		down = false;
+
+		posX = evt.offsetX;
+		perc = posX / width;
+
+		video.currentTime = video.duration * perc;
+		progressBar.value = (100 / video.duration) * video.currentTime;
+		curPos = perc * width - 15;
+		indicator.style.left = curPos + "px";		
+
 		playButton.innerHTML = "Pause";
-	});
-
-	// Event listener for the volume bar
-	volumeBar.addEventListener("change", function() {
-		// Update the video volume
-		video.volume = volumeBar.value;
-
-		// if(video.volume === 0){
-		// 	video.muted = true;
-		// } else {
-		// 	video.muted = false;
-		// }
 
 	});
 
-	console.log(video);
+	// ---------------------------------- //
+ 	// ---- SHOW/HIDE NAV + CONTROLS ---- //
+ 	// ---------------------------------- //
 
-	window.addEventListener('mousemove', function(){
+	video.addEventListener('mousemove', function(){
 
 		if(video.paused === false && video.ended === false && offScreen === false ){
 			slideOffscreen();
@@ -165,11 +237,19 @@
 
 	});
 
+	map.addEventListener('mouseenter', function(){
+		slideOnscreen();
+	});
+
+	notebook.addEventListener('mouseenter', function(){
+		slideOnscreen();
+	});
+
 	video.addEventListener('ended', function(){
 
 		slideOnscreen();
 
-		playButton.innerHTML = "Replay";
+		playButton.innerHTML = "";
 
 		next.style.right = "3%";
 		if(prev) {prev.style.left = "3%";}
@@ -182,14 +262,19 @@
 		timeout = setTimeout(function(){
 
 			nav.style.top = "-8%";
-			map.style.left = "-240px";
-			notebook.style.right = "-240px";
+			map.style.left = "-34%";
+			notebook.style.right = "-34%";
 			controls.style.bottom = "-8%";
 			social.style.bottom = "-8%";
+
+			next.style.right = "-3%";
+			if(prev) {prev.style.left = "-3%";}
+
 			playContainer.style.visibility = "hidden";
 			playContainer.style.opacity = 0;
 			progressContainer.style.bottom = "-8%";
 			video.style.cursor = "none";
+
 			offScreen = true;
 
 		}, 2000);
@@ -201,17 +286,20 @@
 		clearTimeout(timeout);
 
 		nav.style.top = "5%";
-		map.style.left = "-190px";
-		notebook.style.right = "-190px";
+		map.style.left = "calc(-30% + 10px)";
+		notebook.style.right = "calc(-30% + 10px)";
 		controls.style.bottom = "3%";
 		social.style.bottom = "5%";
+
+		next.style.right = "3%";
+		if(prev) {prev.style.left = "3%";}
+
 		playContainer.style.visibility = "visible";
 		playContainer.style.opacity = 1;
-		progressContainer.style.bottom = 0;
+		progressContainer.style.bottom = "-2px";
 		video.style.cursor = "default";
-		offScreen = false;
 
-		console.log("off:" + timeout);
+		offScreen = false;
 
 	}
 
