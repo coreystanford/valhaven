@@ -2,10 +2,18 @@
 
 	<div id="video-container" class="clearfix">
 	
+		<div id='preloader' class="preloader">
+			<div id="inner-preload">
+				<span class="preloader-icon">Loading...</span>
+				<h4 id="percent-loaded">0%</h4>
+				<progress id="preloader-bar" value="0" max="10"></progress>
+			</div>
+		</div>
+
 		<!-- Video Source/Data -->
 		<video autoplay poster="<?php echo IMAGE_PATH . $poster; ?>" id="ch_video" preload="metadata" ref="<?php echo MODAL_PATH . $modal; ?>">
-			<source  src="<?php echo VIDEO_PATH . $webm; ?>" type='video/webm; codecs="vp8, vorbis"'><!--LIST WEBM FIRST - Chrome bug-->	
-			<source  src="<?php echo VIDEO_PATH . $mp4; ?>" type="video/mp4" >
+			<source  src="<?php echo VIDEO_PATH . $mp4; ?>" type="video/mp4" ><!--LIST MP4 FIRST - Server issue-->	
+			<source  src="<?php echo VIDEO_PATH . $webm; ?>" type='video/webm; codecs="vp8, vorbis"'>
 			<source src="<?php echo VIDEO_PATH . $ogv; ?>">
 			<!-- <track id="nav" src="videos/vtt/navigation.vtt" kind="chapters" srclang="en"></track> -->
 			<!-- <track id="cc" src="videos/vtt/captions.vtt" kind="captions" label="captions" srclang="en" default></track> -->
@@ -27,6 +35,7 @@
 
 		<!-- Progress Bar -->
 		<div id="progress-container">
+			<span id="time"></span>
 			<span id="indicator"></span>
 			<progress id="progress-bar" value="0" max="100"></progress>
 			<span id="buffered-amount"></span>

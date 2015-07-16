@@ -1,60 +1,53 @@
 (function(){
 
-	// Video
-	var video = document.getElementById("ch_video");
-	var timeout;
-	var offScreen = false;
-	var width = window.innerWidth;
-	var down = false, moving = false;
-	var posX, perc, curPos, value; 
+	var width = window.innerWidth,
+		loading = true, offScreen = false, down = false, moving = false,
+		timeout, posX, perc, curPos, value,
+		timeFullSec, timeMin, timeSec; 
 
-	// Buttons
-	var playContainer = document.getElementById("play-pause-container");
-	var playButton = document.getElementById("play-pause");
-	var controls = document.getElementById("controls");
-	var volumeButton = document.getElementById("volume-icon");
-	var fullScreenButton = document.getElementById("full-screen");
-	var information = document.getElementById("information");
+	// Container, Preloader + Video
+	var container = document.getElementById('video-container'),
+		preloader = document.getElementById("preloader"), 
+		preloadBar = document.getElementById('preloader-bar'),
+		percentLoaded = document.getElementById('percent-loaded');
+		video = document.getElementById("ch_video");	
 
-	// Sliders
-	var progressContainer = document.getElementById("progress-container");
-	var progressBar = document.getElementById("progress-bar");
-	var indicator = document.getElementById("indicator");
-	var buffer = document.getElementById('buffered-amount');
- 	var volumeBar = document.getElementById("volume-bar");
+	// Play/Pause + Controls
+	var playContainer = document.getElementById("play-pause-container"),
+		playButton = document.getElementById("play-pause"),
+		controls = document.getElementById("controls"),
+		fullScreenButton = document.getElementById("full-screen"),
+		information = document.getElementById("information");
+
+	// Progress Bar
+	var progressContainer = document.getElementById("progress-container"),
+		progressBar = document.getElementById("progress-bar"),
+		indicator = document.getElementById("indicator"),
+		time = document.getElementById('time'),
+		buffer = document.getElementById('buffered-amount');
+
+	// Volume
+	var volumeButton = document.getElementById("volume-icon"),
+ 		volumeBar = document.getElementById("volume-bar");
+ 		volumeBar.style.display = "none";
 
  	// Navigation
- 	var nav = document.getElementById("navigation");
- 	var social = document.getElementById("social");
- 	var map = document.getElementById("map");
- 	var notebook = document.getElementById("notebook");
- 	var next = document.getElementById("next");
- 	var prev = document.getElementById("prev");
-
- 	volumeBar.style.display = "none";
+ 	var nav = document.getElementById("navigation"),
+ 		social = document.getElementById("social"),
+ 		map = document.getElementById("map"),
+ 		notebook = document.getElementById("notebook"),
+ 		next = document.getElementById("next"),
+ 		prev = document.getElementById("prev");
 
  	// ---------------------- //
  	// ---- PLAY + PAUSE ---- //
  	// ---------------------- //
 
- 	// Event listener for the play/pause button
 	playButton.addEventListener("click", function() {
 		if (video.paused == true) {
-			// Play the video
 			video.play();
-
-			slideOffscreen();
-
-			// Update the button text to 'Pause'
-			playButton.innerHTML = "Pause";
 		} else {
-			// Pause the video
 			video.pause();
-
-			slideOnscreen();
-
-			// Update the button text to 'Play'
-			playButton.innerHTML = "Play";
 		}
 	});
 
@@ -63,6 +56,12 @@
 		playButton.innerHTML = "Pause";
 	});
 
+	video.onpause = (function(){
+		slideOnscreen();
+		playButton.innerHTML = "Play";
+	});
+
+	// Spacebar control for play/pause
 	// video.addEventListener('keydown', function(evt) {
 	//     if (evt.keyCode == 32) {
 	//     	if(video.paused === true && video.ended === false) {
@@ -87,49 +86,37 @@
 	// Event listener for the mute button
 	volumeButton.addEventListener("click", function() {
 		if (video.muted == false) {
-			// Mute the video
 			video.muted = true;
 			volumeBar.value = 0;
-			// Update the button text
 			//volumeButton.innerHTML = "Muted";
 		} else {
-			// Unmute the video
 			video.muted = false;
 			video.volume = volumeBar.value;
-			// Update the button text
 			// volumeButton.innerHTML = "";
 		}
 	});
 
-	// Event listener for the volume bar
 	volumeBar.addEventListener("change", function() {
-		// Update the video volume
 		video.volume = volumeBar.value;
-
 		// if(video.volume === 0){
 		// 	video.muted = true;
 		// } else {
 		// 	video.muted = false;
 		// }
-
 	});
 
-	// Event listener for the mute button
 	volumeButton.addEventListener("mouseenter", function() {
 		volumeBar.style.display = "block";
 	});
 
-	// Event listener for the mute button
 	volumeButton.addEventListener("mouseleave", function() {
 		volumeBar.style.display = "none";
 	});
 
-	// Event listener for the volume bar
 	volumeBar.addEventListener("mouseenter", function() {
 		volumeBar.style.display = "block";
 	});
 
-	// Event listener for the volume bar
 	volumeBar.addEventListener("mouseleave", function() {
 		volumeBar.style.display = "none";
 	});
@@ -156,9 +143,23 @@
  	video.addEventListener('progress', function() {
 		var bufferedEnd = video.buffered.end(video.buffered.length - 1);
 		var duration =  video.duration;
-		if (duration > 0) {
-		  	buffer.style.width = ((bufferedEnd / duration)*100) + "%";
-		}
+		var bufferPerc = ((bufferedEnd / duration)*100);
+		var preloadPerc = Math.round( bufferPerc * 10);
+
+	  	if(bufferPerc <= 10) {
+	  		video.pause();
+	  		// preloader.className = "preloader";
+	  		playButton.style.display = "none";
+	  	} else if(loading){
+	  		video.play();
+	  		preloader.className = "preloaded";
+	  		playButton.style.display = "block";
+	  		loading = false;
+	  	}
+
+	  	percentLoaded.innerHTML = preloadPerc + "%";
+	  	preloadBar.style.width = preloadPerc + "%";
+	  	buffer.style.width = bufferPerc + "%";
 	});
 
 	// Update the progress bar as the video plays
@@ -168,13 +169,12 @@
 		curPos = (video.currentTime / video.duration) * 100;
 		// Update the slider value
 		progressBar.value = value;
-		indicator.style.left = "calc(" + curPos + "% - 15px)";
+		indicator.style.left = "calc(" + curPos + "% - 10px)";
 	});
 
 	progressContainer.addEventListener("mousedown", function( evt ) {
 		width = window.innerWidth;
 		video.pause();
-		slideOnscreen();
 
 		down = true;
 
@@ -183,20 +183,32 @@
 
 		video.currentTime = video.duration * perc;
 		progressBar.value = (100 / video.duration) * video.currentTime;
-		curPos = perc * width - 15;
+		curPos = perc * width - 10;
 		indicator.style.left = curPos + "px";
-
-		playButton.innerHTML = "Play";
 
 	});
 
-	progressBar.addEventListener("mousemove", function( evt ){
+	progressContainer.addEventListener("mousemove", function( evt ){
+
+		posX = evt.clientX;
+		perc = posX / width;
+
+		timeFullSec = video.duration * perc;
+		timeMin = Math.floor(timeFullSec / 60);
+		timeSec = Math.round(timeFullSec % 60);
+
+		if(timeSec < 10){ timeSec = "0" + timeSec; }
+
+		time.innerHTML = timeMin + ":" + timeSec;
+		time.style.left = posX + "px";
+		time.style.opacity = 1;
+
 		if(down){
 			moving = true;
 			posX = evt.clientX;
 			perc = posX / width;
 			progressBar.value = (100 / video.duration) * (video.duration * perc);
-			curPos = perc * width - 15;
+			curPos = perc * width - 10;
 			indicator.style.left = curPos + "px";
 		}
 	});
@@ -210,9 +222,13 @@
 
 		down = false;
 		video.play();
-		slideOffscreen();
-		playButton.innerHTML = "Pause";
 		
+	});
+
+	progressContainer.addEventListener("mouseleave", function( evt ){
+
+		time.style.opacity = 0;
+
 	});
 
 	// ---------------------------------- //
