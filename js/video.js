@@ -5,8 +5,8 @@
 	var timeout;
 	var offScreen = false;
 	var width = window.innerWidth;
-	var down = false;
-	var posX, prec; 
+	var down = false, moving = false;
+	var posX, perc, curPos, value; 
 
 	// Buttons
 	var playContainer = document.getElementById("play-pause-container");
@@ -20,6 +20,7 @@
 	var progressContainer = document.getElementById("progress-container");
 	var progressBar = document.getElementById("progress-bar");
 	var indicator = document.getElementById("indicator");
+	var buffer = document.getElementById('buffered-amount');
  	var volumeBar = document.getElementById("volume-bar");
 
  	// Navigation
@@ -62,22 +63,22 @@
 		playButton.innerHTML = "Pause";
 	});
 
-	document.addEventListener('keydown', function(evt) {
-	    if (evt.keyCode == 32) {
-	    	if(video.paused === true && video.ended === false) {
-	    		video.play();
-				slideOffscreen();
-				playButton.innerHTML = "Pause";
-	    	} 
-	    	else if(video.paused === true && video.ended === true){
-	    		playButton.innerHTML = "";
-	    	} else {
-	    		video.pause();
-				slideOnscreen();
-				playButton.innerHTML = "Play";
-	    	}
-	    }
-	  });
+	// video.addEventListener('keydown', function(evt) {
+	//     if (evt.keyCode == 32) {
+	//     	if(video.paused === true && video.ended === false) {
+	//     		video.play();
+	// 			slideOffscreen();
+	// 			playButton.innerHTML = "Pause";
+	//     	} 
+	//     	else if(video.paused === true && video.ended === true){
+	//     		playButton.innerHTML = "";
+	//     	} else {
+	//     		video.pause();
+	// 			slideOnscreen();
+	// 			playButton.innerHTML = "Play";
+	//     	}
+	//     }
+	//   });
 
 	// ----------------------- //
  	// ---- MUTE + VOLUME ---- //
@@ -152,45 +153,47 @@
  	// ---- PROGRESS BAR ---- //
  	// ---------------------- //
 
-	// Event listener for the seek bar
-	progressBar.addEventListener("change", function() {
-		// Calculate the new time
-		var time = video.duration * (progressBar.value / 100);
-
-		// Update the video time
-		video.currentTime = time;
+ 	video.addEventListener('progress', function() {
+		var bufferedEnd = video.buffered.end(video.buffered.length - 1);
+		var duration =  video.duration;
+		if (duration > 0) {
+		  	buffer.style.width = ((bufferedEnd / duration)*100) + "%";
+		}
 	});
 
 	// Update the progress bar as the video plays
 	video.addEventListener("timeupdate", function() {
 		// Calculate the slider value
-		var value = (100 / video.duration) * video.currentTime;
-		var curPos = (video.currentTime / video.duration) * width - 15;
-
+		value = (100 / video.duration) * video.currentTime;
+		curPos = (video.currentTime / video.duration) * 100;
 		// Update the slider value
 		progressBar.value = value;
-		indicator.style.left = curPos + "px";
+		indicator.style.left = "calc(" + curPos + "% - 15px)";
 	});
 
-	progressBar.addEventListener("mousedown", function( evt ) {
-		evt.preventDefault();
+	progressContainer.addEventListener("mousedown", function( evt ) {
+		width = window.innerWidth;
 		video.pause();
 		slideOnscreen();
 
 		down = true;
 
-		posX = evt.offsetX;
+		posX = evt.clientX;
 		perc = posX / width;
+
+		video.currentTime = video.duration * perc;
+		progressBar.value = (100 / video.duration) * video.currentTime;
+		curPos = perc * width - 15;
+		indicator.style.left = curPos + "px";
 
 		playButton.innerHTML = "Play";
 
 	});
 
 	progressBar.addEventListener("mousemove", function( evt ){
-		evt.preventDefault();
 		if(down){
-			console.log("moving");
-			posX = evt.offsetX;
+			moving = true;
+			posX = evt.clientX;
 			perc = posX / width;
 			progressBar.value = (100 / video.duration) * (video.duration * perc);
 			curPos = perc * width - 15;
@@ -199,23 +202,17 @@
 	});
 
 	// Play the video when the slider handle is dropped
-	progressBar.addEventListener("mouseup", function( evt ) {
-
-		video.play();
-		slideOffscreen();
+	progressContainer.addEventListener("mouseup", function( evt ) {
+		if(moving){		
+			moving = false;
+			video.currentTime = video.duration * perc;	
+		}
 
 		down = false;
-
-		posX = evt.offsetX;
-		perc = posX / width;
-
-		video.currentTime = video.duration * perc;
-		progressBar.value = (100 / video.duration) * video.currentTime;
-		curPos = perc * width - 15;
-		indicator.style.left = curPos + "px";		
-
+		video.play();
+		slideOffscreen();
 		playButton.innerHTML = "Pause";
-
+		
 	});
 
 	// ---------------------------------- //

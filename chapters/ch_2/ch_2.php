@@ -20,18 +20,20 @@
 		<!-- Video Controls -->
 		<div id="controls">
 			<input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1" title="Volume Range">
-			<button type="button" id="volume-icon" title="Volume Control"><img src="<?php echo IMAGE_PATH; ?>icons/speaker-icon.png"></button>
-			<button type="button" id="full-screen" title="Full Screen"><img src="<?php echo IMAGE_PATH; ?>icons/full-screen-icon.png"></button>
-			<button type="button" id="info" title="Information"><img src="<?php echo IMAGE_PATH; ?>icons/info-icon.png"></button>
+			<button type="button" id="volume-icon" title="Volume Control"><img src="<?php echo IMAGE_PATH; ?>icons/volume.png"></button>
+			<button type="button" id="full-screen" title="Full Screen"><img src="<?php echo IMAGE_PATH; ?>icons/fullscreen.png"></button>
+			<button type="button" id="info" title="Information"><img src="<?php echo IMAGE_PATH; ?>icons/info.png"></button>
 		</div>
 
 		<!-- Progress Bar -->
 		<div id="progress-container">
-			<input type="range" id="progress-bar" value="0">
+			<span id="indicator"></span>
+			<progress id="progress-bar" value="0" max="100"></progress>
+			<span id="buffered-amount"></span>
 		</div>
 
-		<a href="<?php echo CH_PATH . $next; ?>" id="next"><img src="<?php echo IMAGE_PATH; ?>icons/right-arrow.png"></a>
-		<a href="<?php echo CH_PATH . $prev; ?>" id="prev"><img src="<?php echo IMAGE_PATH; ?>icons/left-arrow.png"></a>
+		<a href="<?php echo CH_PATH . $next; ?>" id="next"><img src="<?php echo IMAGE_PATH; ?>icons/next.png"></a>
+		<a href="<?php echo CH_PATH . $prev; ?>" id="prev"><img src="<?php echo IMAGE_PATH; ?>icons/prev.png"></a>
 
 	</div>
 

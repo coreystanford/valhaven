@@ -30,7 +30,7 @@
 
 		<div id="map" role="complementary">
 			
-			<span role="button" id="map-btn"><img src="<?php echo IMAGE_PATH; ?>icons/compass-icon.png"></span>
+			<span role="button" id="map-btn"><img src="<?php echo IMAGE_PATH; ?>icons/map.png"></span>
 
 			
 
@@ -38,7 +38,7 @@
 
 		<div id="notebook" role="complementary">
 			
-			<span role="button" id="notebook-btn"><img src="<?php echo IMAGE_PATH; ?>icons/notepad-icon.png"></span>
+			<span role="button" id="notebook-btn"><img src="<?php echo IMAGE_PATH; ?>icons/notebook.png"></span>
 
 			
 
@@ -47,8 +47,8 @@
 		<div id="social">
 
 			<ul>
-				<li><a id="facebook" href="#"><img src="<?php echo IMAGE_PATH; ?>icons/fb-icon.png"></a></li>
-				<li><a id="twitter" href="#"><img src="<?php echo IMAGE_PATH; ?>icons/twitter-icon.png"></a></li>
+				<li><a id="facebook" href="#"><img src="<?php echo IMAGE_PATH; ?>icons/facebook.png"></a></li>
+				<li><a id="twitter" href="#"><img src="<?php echo IMAGE_PATH; ?>icons/twitter.png"></a></li>
 			</ul>
 
 		</div><!-- /social -->
