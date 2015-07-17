@@ -82,7 +82,6 @@
 	    		playButton.innerHTML = "";
 	    	} else {
 	    		video.pause();
-
 	    	}
 	    }
 	  }, false);
@@ -170,7 +169,6 @@
 			video.play();
 			preloader.className = "preloaded";
 		}, 100);
-		
 	}
 
  	initVideo();
@@ -267,7 +265,6 @@
 
 		down = false;
 		video.play();
-		
 	});
 
 	progressContainer.addEventListener("mouseleave", function(evt){
@@ -302,18 +299,15 @@
 	});
 
 	video.addEventListener('ended', function(){
-
 		slideOnscreen();
 
 		playButton.innerHTML = "";
 
 		next.style.right = "3%";
 		if(prev) {prev.style.left = "3%";}
-
 	});
 
 	function slideOffscreen(){
-
 		clearTimeout(timeout);
 		timeout = setTimeout(function(){
 
@@ -334,11 +328,9 @@
 			offScreen = true;
 
 		}, 2000);
-
 	}
 
 	function slideOnscreen(){
-
 		clearTimeout(timeout);
 
 		nav.style.top = "5%";
@@ -356,7 +348,6 @@
 		video.style.cursor = "default";
 
 		offScreen = false;
-
 	}
 
 })();

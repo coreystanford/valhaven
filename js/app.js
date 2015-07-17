@@ -1,41 +1,78 @@
 (function(){
 
-	var map = document.getElementById('map');
-	var mapBtn = document.getElementById('map-btn');
-	var mapStatus = "";
-	var notebook = document.getElementById('notebook');
-	var notebookBtn = document.getElementById('notebook-btn');
-	var noteStatus = "";
-	var main = document.getElementById('main');
-	var social = document.getElementById('social');
-	var nav = document.getElementById('navigation');
+	var map = document.getElementById('map'),
+		mapBtn = document.getElementById('map-btn'),
+		mapStatus = false,
+		notebook = document.getElementById('notebook'),
+		notebookBtn = document.getElementById('notebook-btn'),
+		noteStatus = false,
+		main = document.getElementById('main'),
+		social = document.getElementById('social'),
+		nav = document.getElementById('navigation');
 
-	mapBtn.addEventListener('mouseenter', function(){
+	// ---- Desktop ---- //
+
+	mapBtn.addEventListener('mouseenter', showMap, false);
+	map.addEventListener('mouseleave', hideMap, false);
+
+	notebookBtn.addEventListener('mouseenter', showNotebook, false);
+	notebook.addEventListener('mouseleave', hideNotebook, false);
+
+	// ---- Mobile ---- //
+
+	mapBtn.addEventListener('touchstart', function(){
+		if(mapStatus){
+			hideMap();
+		} else {
+			showMap();
+		}
+	}, false);
+
+	notebookBtn.addEventListener('touchstart', function(){
+		if(mapStatus){
+			hideNotebook();
+		} else {
+			showNotebook();
+		}
+	}, false);
+
+	main.addEventListener('touchstart', function(){
+		if(mapStatus){ hideMap(); }
+		if(noteStatus){ hideNotebook(); }
+	}, false);
+
+	// ---- Helpers ---- //
+
+	function showMap(){
 		map.style.opacity = 1;
 		map.style.left = 0;
 		main.style.marginLeft = "30%";
 		social.style.left = "33%";
 		nav.style.left = "33%";
-	});
+		mapStatus = true;
+	}
 
-	map.addEventListener('mouseleave', function(){
+	function hideMap(){
 		map.style.opacity = .8;
 		map.style.left = "calc(-30% + 10px)";
 		main.style.marginLeft = 0;
 		social.style.left = "3%";
 		nav.style.left = "3%";
-	});
+		mapStatus = false;
+	}
 
-	notebookBtn.addEventListener('mouseenter', function(){
+	function showNotebook(){
 		notebook.style.opacity = 1;
 		notebook.style.right = 0;
 		main.style.marginRight = "30%";
-	});
+		noteStatus = true;
+	}
 
-	notebook.addEventListener('mouseleave', function(){
+	function hideNotebook(){
 		notebook.style.opacity = .8;
 		notebook.style.right = "calc(-30% + 10px)";
 		main.style.marginRight = 0;
-	});
+		noteStatus = false;
+	}
 
 })();
