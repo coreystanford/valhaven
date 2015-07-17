@@ -1,17 +1,20 @@
 <?php require HEADER; ?>
 
-	<div id="video-container" class="clearfix">
-	
-		<div id='preloader' class="preloader">
-			<div id="inner-preload">
-				<span class="preloader-icon">Loading...</span>
-				<h4 id="percent-loaded">0%</h4>
-				<progress id="preloader-bar" value="0" max="10"></progress>
-			</div>
+	<!-- Preloader -->
+	<div id='preloader' class="preloader">
+		<div id="inner-preload-icon">
+			<h1 id="preloader-icon"></h1>
 		</div>
+		<div id="inner-preload">
+			<h4 id="percent-loaded">0%</h4>
+			<progress id="preloader-bar" value="0" max="100"></progress>
+		</div>
+	</div>
+
+	<div id="video-container" class="clearfix">
 
 		<!-- Video Source/Data -->
-		<video autoplay poster="<?php echo IMAGE_PATH . $poster; ?>" id="ch_video" preload="metadata" ref="<?php echo MODAL_PATH . $modal; ?>">
+		<video muted poster="<?php echo IMAGE_PATH . $poster; ?>" id="ch_video" preload="auto" ref="<?php echo MODAL_PATH . $modal; ?>">
 			<source  src="<?php echo VIDEO_PATH . $mp4; ?>" type="video/mp4" ><!--LIST MP4 FIRST - Server issue-->	
 			<source  src="<?php echo VIDEO_PATH . $webm; ?>" type='video/webm; codecs="vp8, vorbis"'>
 			<source src="<?php echo VIDEO_PATH . $ogv; ?>">
@@ -41,6 +44,7 @@
 			<span id="buffered-amount"></span>
 		</div>
 
+		<!-- Navigation Arrows -->
 		<a href="<?php echo CH_PATH . $next; ?>" id="next"><img src="<?php echo IMAGE_PATH; ?>icons/next.png"></a>
 		<a href="<?php echo CH_PATH . $prev; ?>" id="prev"><img src="<?php echo IMAGE_PATH; ?>icons/prev.png"></a>
 

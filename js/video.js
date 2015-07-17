@@ -140,20 +140,24 @@
  	// ---- PROGRESS BAR ---- //
  	// ---------------------- //
 
+ 	var first = true;
  	video.addEventListener('progress', function() {
 		var bufferedEnd = video.buffered.end(video.buffered.length - 1);
 		var duration =  video.duration;
-		var bufferPerc = ((bufferedEnd / duration)*100);
-		var preloadPerc = Math.round( bufferPerc * 10);
+		var bufferPerc = ((bufferedEnd / duration) * 100);
+		var preloadPerc = Math.round(bufferPerc * 10);
 
 	  	if(bufferPerc <= 10) {
 	  		video.pause();
-	  		// preloader.className = "preloader";
-	  		playButton.style.display = "none";
+	  		if(first){
+	  			console.log("once");
+	  			percentLoaded.style.display = "block";
+	  			preloadBar.style.display = "block";
+	  			first = false;
+	  		}
 	  	} else if(loading){
 	  		video.play();
 	  		preloader.className = "preloaded";
-	  		playButton.style.display = "block";
 	  		loading = false;
 	  	}
 

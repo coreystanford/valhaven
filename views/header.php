@@ -13,6 +13,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>main.css">
 	<script src="<?php echo JS_PATH; ?>jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script src="<?php echo JS_PATH; ?>modernizr.js" type="text/javascript"></script>
 	<script src="<?php echo JS_PATH; ?>app.js" type="text/javascript" charset="utf-8" async></script>
 </head><!-- /head -->
 <body>
