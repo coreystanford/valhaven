@@ -8,13 +8,14 @@
 	var main = document.getElementById('main');
 		container = document.getElementById('video-container'),
 		preloader = document.getElementById("preloader"),
-		target = "#target";
+		target = "#target"
+		classes = "red-bg";
 
-	initModal(target);
+	initModal(target, classes);
 
 	setTimeout(function(){
 		main.removeChild(preloader);
-	}, 1500);
+	}, 1000);
 
 	// ----------------------------- //
 	// ---- Homepage Background ---- //

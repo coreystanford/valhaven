@@ -5,10 +5,6 @@
 		<div id="inner-preload-icon">
 			<h1 id="preloader-icon"></h1>
 		</div>
-		<div id="inner-preload">
-			<h4 id="percent-loaded">0%</h4>
-			<progress id="preloader-bar" value="0" max="100"></progress>
-		</div>
 	</div>
 
 	<div id="video-container" class="clearfix">

@@ -35,10 +35,12 @@
     $description = "This is a description of the welcome page";
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
 
-    $modal = "disclaimer.php"; // name of the modal window file located in ./modals/
+    $modal = "modal_1.php"; // name of the modal window file located in ./modals/
+
+    $next = "ch_1";
 
     // javascript files for just the homepage:
-    $customScripts = array("modal-init.js", "modal.js", "home.js"); // add the file name in quotations, seperated by commas
+    $customScripts = array("video.js", "home-video-init.js", "modal.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
 
 	// ---------------------------- //
     // ------ Perform Switch ------ //

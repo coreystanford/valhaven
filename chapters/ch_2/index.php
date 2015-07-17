@@ -38,7 +38,7 @@
     $prev = "ch_1";
     
     // javascript files for this chapter:
-    $customScripts = array("video.js", "modal-init.js", "modal.js"); // add the file name in quotations, seperated by commas
+    $customScripts = array("video.js", "video-modal-init.js", "modal.js"); // add the file name in quotations, seperated by commas
 
     // ---------------------------- //
     // ------ Perform Switch ------ //

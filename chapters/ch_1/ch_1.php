@@ -5,10 +5,6 @@
 		<div id="inner-preload-icon">
 			<h1 id="preloader-icon"></h1>
 		</div>
-		<div id="inner-preload">
-			<h4 id="percent-loaded">0%</h4>
-			<progress id="preloader-bar" value="0" max="100"></progress>
-		</div>
 	</div>
 
 	<div id="video-container" class="clearfix">
@@ -44,8 +40,9 @@
 			<span id="buffered-amount"></span>
 		</div>
 
-		<!-- Navigation Arrow -->
+		<!-- Navigation Arrows -->
 		<a href="<?php echo CH_PATH . $next; ?>" id="next"><img src="<?php echo IMAGE_PATH; ?>icons/next.png"></a>
+		<a href="<?php echo ROOT_HREF; ?>" id="prev"><img src="<?php echo IMAGE_PATH; ?>icons/prev.png"></a>
 
 	</div>
 
