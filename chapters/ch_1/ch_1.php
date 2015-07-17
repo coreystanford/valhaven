@@ -15,9 +15,9 @@
 
 		<!-- Video Source/Data -->
 		<video muted poster="<?php echo IMAGE_PATH . $poster; ?>" id="ch_video" preload="auto" ref="<?php echo MODAL_PATH . $modal; ?>">
-			<source  src="<?php echo VIDEO_PATH . $mp4; ?>" type="video/mp4" ><!--LIST MP4 FIRST - Server issue-->	
+			<source  src="<?php echo VIDEO_PATH . $mp4; ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ><!-- List MP4 First - Server issue -->	
 			<source  src="<?php echo VIDEO_PATH . $webm; ?>" type='video/webm; codecs="vp8, vorbis"'>
-			<source src="<?php echo VIDEO_PATH . $ogv; ?>">
+			<source src="<?php echo VIDEO_PATH . $ogv; ?>" type='video/ogg; codecs="theora, vorbis"'>
 			<!-- <track id="nav" src="videos/vtt/navigation.vtt" kind="chapters" srclang="en"></track> -->
 			<!-- <track id="cc" src="videos/vtt/captions.vtt" kind="captions" label="captions" srclang="en" default></track> -->
 			<p class="update_browser">Your browser is too old to support the features of this website.  Please update your browser.</p>

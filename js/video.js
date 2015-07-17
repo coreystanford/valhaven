@@ -1,7 +1,7 @@
 (function(){
 
 	var width = window.innerWidth,
-		loading = true, offScreen = false, down = false, moving = false,
+		loading = true, offScreen = false, down = false, moving = false, first = true,
 		timeout, posX, perc, curPos, value,
 		timeFullSec, timeMin, timeSec; 
 
@@ -43,7 +43,17 @@
  	// ---- PLAY + PAUSE ---- //
  	// ---------------------- //
 
-	playButton.addEventListener("click", function() {
+	video.addEventListener("click", function(evt) {
+		evt.preventDefault();
+		if (video.paused == true) {
+			video.play();
+		} else {
+			video.pause();
+		}
+	});
+
+	playButton.addEventListener("click", function(evt) {
+		evt.preventDefault();
 		if (video.paused == true) {
 			video.play();
 		} else {
@@ -62,22 +72,20 @@
 	});
 
 	// Spacebar control for play/pause
-	// video.addEventListener('keydown', function(evt) {
-	//     if (evt.keyCode == 32) {
-	//     	if(video.paused === true && video.ended === false) {
-	//     		video.play();
-	// 			slideOffscreen();
-	// 			playButton.innerHTML = "Pause";
-	//     	} 
-	//     	else if(video.paused === true && video.ended === true){
-	//     		playButton.innerHTML = "";
-	//     	} else {
-	//     		video.pause();
-	// 			slideOnscreen();
-	// 			playButton.innerHTML = "Play";
-	//     	}
-	//     }
-	//   });
+	document.addEventListener('keydown', function(evt) {
+	    if (evt.keyCode == 32) {
+	    	evt.preventDefault();
+	    	if(video.paused == true && video.ended == false) {
+	    		video.play();
+	    	} 
+	    	else if(video.paused == true && video.ended == true){
+	    		playButton.innerHTML = "";
+	    	} else {
+	    		video.pause();
+
+	    	}
+	    }
+	  }, false);
 
 	// ----------------------- //
  	// ---- MUTE + VOLUME ---- //
@@ -126,7 +134,7 @@
  	// -------------------- //
 
 	// Event listener for the full-screen button
-	fullScreenButton.addEventListener("click", function() {
+	fullScreenButton.addEventListener("click", function(evt) {
 		if (video.requestFullscreen) {
 			video.requestFullscreen();
 		} else if (video.mozRequestFullScreen) {
@@ -140,34 +148,68 @@
  	// ---- PROGRESS BAR ---- //
  	// ---------------------- //
 
- 	var first = true;
- 	video.addEventListener('progress', function() {
+ 	// "canplaythrough" works perfectly on all browsers when combibned with preload='auto'
+ 	// (and it has the added benefit of being a very small amount of code),
+ 	// but we cannot track the amount of video loaded using this method
+ 	// it does, however, get around the issue within Safari where the browser 
+ 	// will wait for the entire video to load before firing the 'progress' event
+
+ 	// https://gist.github.com/millermedeiros/891886
+
+ 	function initVideo(){
+		if(video.readyState !== 4){ // HAVE_ENOUGH_DATA
+			video.addEventListener('canplaythrough', onCanPlay, false);
+			video.addEventListener('load', onCanPlay, false); // add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
+		}
+	}
+
+ 	function onCanPlay(){
+		video.removeEventListener('canplaythrough', onCanPlay, false);
+		video.removeEventListener('load', onCanPlay, false);
+		setTimeout(function() {
+			video.play();
+			preloader.className = "preloaded";
+		}, 100);
+		
+	}
+
+ 	initVideo();
+
+ 	// using 'progress' would be optimal, as we can track the amount loaded.
+ 	// However, Safari does not play nice, and only fires this event after 
+ 	// the whole video has loaded when using preload='auto', and doesn't load 
+ 	// enough of the video otherwise!
+ 	
+ 	// preload attribute tests:
+ 	// http://www.stevesouders.com/blog/2013/04/12/html5-video-preload/
+
+ 	video.addEventListener('progress', function(evt) {
 		var bufferedEnd = video.buffered.end(video.buffered.length - 1);
 		var duration =  video.duration;
 		var bufferPerc = ((bufferedEnd / duration) * 100);
-		var preloadPerc = Math.round(bufferPerc * 10);
+	// 	var preloadPerc = Math.round(bufferPerc * 10);
 
-	  	if(bufferPerc <= 10) {
-	  		video.pause();
-	  		if(first){
-	  			console.log("once");
-	  			percentLoaded.style.display = "block";
-	  			preloadBar.style.display = "block";
-	  			first = false;
-	  		}
-	  	} else if(loading){
-	  		video.play();
-	  		preloader.className = "preloaded";
-	  		loading = false;
-	  	}
+	//   	if(bufferPerc <= 10) {
+	//   		video.pause();
+	//   		if(first){
+	  			
+	//   			percentLoaded.style.display = "block";
+	//   			preloadBar.style.display = "block";
+	//   			first = false;
+	//   		}
+	//   	} else if(loading){
+	//   		video.play();
+	//   		preloader.className = "preloaded";
+	//   		loading = false;
+	//   	}
 
-	  	percentLoaded.innerHTML = preloadPerc + "%";
-	  	preloadBar.style.width = preloadPerc + "%";
+	//   	percentLoaded.innerHTML = preloadPerc + "%";
+	//   	preloadBar.style.width = preloadPerc + "%";
 	  	buffer.style.width = bufferPerc + "%";
 	});
 
 	// Update the progress bar as the video plays
-	video.addEventListener("timeupdate", function() {
+	video.addEventListener("timeupdate", function(evt) {
 		// Calculate the slider value
 		value = (100 / video.duration) * video.currentTime;
 		curPos = (video.currentTime / video.duration) * 100;
@@ -176,7 +218,7 @@
 		indicator.style.left = "calc(" + curPos + "% - 10px)";
 	});
 
-	progressContainer.addEventListener("mousedown", function( evt ) {
+	progressContainer.addEventListener("mousedown", function(evt) {
 		width = window.innerWidth;
 		video.pause();
 
@@ -192,8 +234,7 @@
 
 	});
 
-	progressContainer.addEventListener("mousemove", function( evt ){
-
+	progressContainer.addEventListener("mousemove", function(evt){
 		posX = evt.clientX;
 		perc = posX / width;
 
@@ -205,7 +246,7 @@
 
 		time.innerHTML = timeMin + ":" + timeSec;
 		time.style.left = posX + "px";
-		time.style.opacity = 1;
+		time.style.display = "block";
 
 		if(down){
 			moving = true;
@@ -218,7 +259,7 @@
 	});
 
 	// Play the video when the slider handle is dropped
-	progressContainer.addEventListener("mouseup", function( evt ) {
+	progressContainer.addEventListener("mouseup", function(evt) {
 		if(moving){		
 			moving = false;
 			video.currentTime = video.duration * perc;	
@@ -229,9 +270,9 @@
 		
 	});
 
-	progressContainer.addEventListener("mouseleave", function( evt ){
+	progressContainer.addEventListener("mouseleave", function(evt){
 
-		time.style.opacity = 0;
+		time.style.display = "none";
 
 	});
 
@@ -239,11 +280,10 @@
  	// ---- SHOW/HIDE NAV + CONTROLS ---- //
  	// ---------------------------------- //
 
-	video.addEventListener('mousemove', function(){
-
+	video.addEventListener('mousemove', function(evt){
+		evt.preventDefault();
 		if(video.paused === false && video.ended === false && offScreen === false ){
 			slideOffscreen();
-
 		}
 		if(video.paused === false && offScreen){
 			slideOnscreen();
@@ -251,7 +291,6 @@
 		if(video.paused === true){
 			slideOnscreen();
 		}
-
 	});
 
 	map.addEventListener('mouseenter', function(){
@@ -278,18 +317,18 @@
 		clearTimeout(timeout);
 		timeout = setTimeout(function(){
 
-			nav.style.top = "-8%";
-			map.style.left = "-34%";
-			notebook.style.right = "-34%";
-			controls.style.bottom = "-8%";
-			social.style.bottom = "-8%";
+			nav.style.top = "calc(-5% - 50px)";
+			map.style.left = "calc(-30% - 50px)";
+			notebook.style.right = "calc(-30% - 50px)";
+			controls.style.bottom = "calc(-3% - 50px)";
+			social.style.bottom = "calc(-5% - 50px)";
 
-			next.style.right = "-3%";
-			if(prev) {prev.style.left = "-3%";}
+			next.style.right = "calc(-3% - 50px)";
+			if(prev) {prev.style.left = "calc(-3% - 50px)";}
 
 			playContainer.style.visibility = "hidden";
 			playContainer.style.opacity = 0;
-			progressContainer.style.bottom = "-8%";
+			progressContainer.style.bottom = "calc(-1% - 50px)";
 			video.style.cursor = "none";
 
 			offScreen = true;
