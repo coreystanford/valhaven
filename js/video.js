@@ -6,7 +6,8 @@
 		timeFullSec, timeMin, timeSec; 
 
 	// Container, Preloader + Video
-	var container = document.getElementById('video-container'),
+	var main = document.getElementById('main');
+		container = document.getElementById('video-container'),
 		preloader = document.getElementById("preloader"), 
 		preloadBar = document.getElementById('preloader-bar'),
 		percentLoaded = document.getElementById('percent-loaded');
@@ -156,9 +157,11 @@
  	// https://gist.github.com/millermedeiros/891886
 
  	function initVideo(){
+ 		video.play();
 		if(video.readyState !== 4){ // HAVE_ENOUGH_DATA
 			video.addEventListener('canplaythrough', onCanPlay, false);
 			video.addEventListener('load', onCanPlay, false); // add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
+			video.pause();
 		}
 	}
 
@@ -167,7 +170,8 @@
 		video.removeEventListener('load', onCanPlay, false);
 		setTimeout(function() {
 			video.play();
-			preloader.className = "preloaded";
+			main.removeChild(preloader);
+			// preloader.className = "preloaded";
 		}, 100);
 	}
 

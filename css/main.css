@@ -174,7 +174,7 @@ nav {
   bottom: 0;
   width: 30%;
   left: calc(-30% + 10px);
-  background: #fff;
+  background: #eb1c3c;
   border-right: 10px solid #eb1c3c;
   z-index: 9;
   opacity: 0.8;
@@ -185,16 +185,29 @@ nav {
   transition-duration: 0.5s;
 }
 
+  #map > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 90%;
+  }
+
   #map-btn {
     position: absolute;
     top: 30%;
-    right: -50px;
+    right: -45px;
     width: 40px;
     height: auto;
+    background: #eb1c3c;
   }
 
     #map-btn img {
-      background: #eb1c3c;
+      /*background: #eb1c3c;*/
     }
 
 /*  ----- NOTEBOOK -----  */
@@ -205,7 +218,7 @@ nav {
   bottom: 0;
   width: 30%;
   right: calc(-30% + 10px);
-  background: #fff;
+  background: #eb1c3c;
   border-left: 10px solid #eb1c3c;
   z-index: 9;
   opacity: 0.8;
@@ -216,16 +229,29 @@ nav {
   transition-duration: 0.5s;
 }
 
+  #notebook > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 90%;
+  }
+
   #notebook-btn {
     position: absolute;
     top: 30%;
-    left: -50px;
+    left: -45px;
     width: 40px;
     height: auto;
+    background: #eb1c3c;
   }
 
     #notebook-btn img {
-      background: #eb1c3c;
+      /*background: #eb1c3c;*/
     }
 
 /*  ----- SOCIAL -----  */
@@ -373,8 +399,8 @@ nav {
     right: 0;
     bottom: 0;
     left: 0;
-    background: #58595b;
-    z-index: 15;
+    background: #eb1c3c;
+    z-index: 20;
   }
 
     #percent-loaded {
@@ -498,7 +524,6 @@ nav {
       z-index: 10;
       border: 0;
       height: 12px;
-      border-radius: 10px;
     }
 
     #progress-bar:-webkit-full-screen {
@@ -561,16 +586,30 @@ nav {
   z-index: 15;
 }
 
-  #modal:-webkit-full-screen {
-    z-index: 2147483649!important;
-  }
-
   .modal-content {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    width: 50%;
+    max-width: 630px;
+    min-width: 320px;
+    height: auto;
+    -webkit-transform: translateX(-50%) translateY(-30%);
+    -moz-transform: translateX(-50%) translateY(-30%);
+    -ms-transform: translateX(-50%) translateY(-30%);
+    transform: translateX(-50%) translateY(-30%);
+    background: #eb1c3c;
+    color: #fff;
   }
+
+    .modal-close {
+      border: none;
+      outline: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: #fff;
+    }
 
 .off {
   display: none;

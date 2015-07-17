@@ -33,7 +33,7 @@
 			
 			<span role="button" id="map-btn"><img src="<?php echo IMAGE_PATH; ?>icons/map.png"></span>
 
-			
+			<img src="<?php echo IMAGE_PATH; ?>map.png">
 
 		</div><!-- /map -->
 
@@ -41,7 +41,7 @@
 			
 			<span role="button" id="notebook-btn"><img src="<?php echo IMAGE_PATH; ?>icons/notebook.png"></span>
 
-			
+			<img src="<?php echo IMAGE_PATH; ?>notes.jpg">
 
 		</div><!-- /notebook -->
 

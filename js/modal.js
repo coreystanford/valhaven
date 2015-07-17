@@ -8,7 +8,7 @@ var modal = (function () {
 
         },
 
-        close: function ($modal) {
+        close: function ($modal, $content) {
 
             $content.detach();
             $modal.addClass('off');

@@ -1,26 +1,26 @@
-var initModal = function (target) {
+(function () {
 
-	var $target = $(target);
-    var $ref = $target.attr('ref');
+	var $video = $('#ch_video');
+    var $ref = $video.attr('ref');
     var $modal = $('#modal');
 
     var $content = $('<div class="modal-content"/>');
-    var $close = $('<button role="button" class="modal-close">Close</button>');
-
-    console.log($target);
+    var $close = $('<button role="button" class="modal-close"><i class="fa fa-times"></i></button>');
 
     $.get($ref, function(data) {
 
         $content.empty().append(data, $close);
 
-        $modal.append($content);
-		modal.open($modal);
-
         $close.on('click', function (e) {
             e.preventDefault();
-            console.log("click");
-            modal.close($modal, $content);
+            modal.close($modal);
         });
+
+        $modal.append($content);
+
+        $video.on('ended', function (e) {
+		    modal.open($modal);
+		});
 
     }).fail(function() {
 
@@ -29,4 +29,4 @@ var initModal = function (target) {
 
     });
 
-};
+})();

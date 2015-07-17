@@ -25,14 +25,16 @@
 			hideMap();
 		} else {
 			showMap();
+			if(noteStatus){ hideNotebook(); }
 		}
 	}, false);
 
 	notebookBtn.addEventListener('touchstart', function(){
-		if(mapStatus){
+		if(noteStatus){
 			hideNotebook();
 		} else {
 			showNotebook();
+			if(mapStatus){ hideMap(); }
 		}
 	}, false);
 
