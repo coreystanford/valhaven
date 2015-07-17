@@ -12,10 +12,10 @@
 
 	// ---- Desktop ---- //
 
-	mapBtn.addEventListener('mouseenter', showMap, false);
+	map.addEventListener('mouseenter', showMap, false);
 	map.addEventListener('mouseleave', hideMap, false);
 
-	notebookBtn.addEventListener('mouseenter', showNotebook, false);
+	notebook.addEventListener('mouseenter', showNotebook, false);
 	notebook.addEventListener('mouseleave', hideNotebook, false);
 
 	// ---- Mobile ---- //
@@ -47,7 +47,7 @@
 
 	function showMap(){
 		map.style.opacity = 1;
-		map.style.left = 0;
+		map.style.left = 0 + "px";
 		main.style.marginLeft = "30%";
 		social.style.left = "33%";
 		nav.style.left = "33%";
@@ -57,7 +57,7 @@
 	function hideMap(){
 		map.style.opacity = .8;
 		map.style.left = "calc(-30% + 10px)";
-		main.style.marginLeft = 0;
+		main.style.marginLeft = 0 + "px";
 		social.style.left = "3%";
 		nav.style.left = "3%";
 		mapStatus = false;
@@ -65,7 +65,7 @@
 
 	function showNotebook(){
 		notebook.style.opacity = 1;
-		notebook.style.right = 0;
+		notebook.style.right = 0 + "px";
 		main.style.marginRight = "30%";
 		noteStatus = true;
 	}
@@ -73,7 +73,7 @@
 	function hideNotebook(){
 		notebook.style.opacity = .8;
 		notebook.style.right = "calc(-30% + 10px)";
-		main.style.marginRight = 0;
+		main.style.marginRight = 0 + "px";
 		noteStatus = false;
 	}
 

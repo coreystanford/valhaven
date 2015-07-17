@@ -39,7 +39,6 @@
 	initVideo();
 
 	homeBtn.addEventListener("click", function(evt) {
-		homeBtn.removeEventListener("click");
 		main.removeChild(homeBtn);
 		main.removeChild(homeBg);
 		video.play();
