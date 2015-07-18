@@ -12,15 +12,28 @@
 
 	// ---- Desktop ---- //
 
-	map.addEventListener('mouseenter', showMap, false);
-	map.addEventListener('mouseleave', hideMap, false);
+	map.addEventListener('mouseenter', function(e){
+		e.preventDefault();
+		showMap();
+	}, false);
+	map.addEventListener('mouseleave', function(e){
+		e.preventDefault();
+		hideMap();
+	}, false);
 
-	notebook.addEventListener('mouseenter', showNotebook, false);
-	notebook.addEventListener('mouseleave', hideNotebook, false);
+	notebook.addEventListener('mouseenter', function(e){
+		e.preventDefault();
+		showNotebook();
+	}, false);
+	notebook.addEventListener('mouseleave', function(e){
+		e.preventDefault();
+		hideNotebook();
+	}, false);
 
 	// ---- Mobile ---- //
 
-	mapBtn.addEventListener('touchstart', function(){
+	mapBtn.addEventListener('touchstart', function(e){
+		e.preventDefault();
 		if(mapStatus){
 			hideMap();
 		} else {
@@ -29,7 +42,8 @@
 		}
 	}, false);
 
-	notebookBtn.addEventListener('touchstart', function(){
+	notebookBtn.addEventListener('touchstart', function(e){
+		e.preventDefault();
 		if(noteStatus){
 			hideNotebook();
 		} else {
@@ -38,7 +52,8 @@
 		}
 	}, false);
 
-	main.addEventListener('touchstart', function(){
+	main.addEventListener('touchstart', function(e){
+		e.preventDefault();
 		if(mapStatus){ hideMap(); }
 		if(noteStatus){ hideNotebook(); }
 	}, false);
@@ -47,7 +62,7 @@
 
 	function showMap(){
 		map.style.opacity = 1;
-		map.style.left = 0 + "px";
+		map.style.left = 0;
 		main.style.marginLeft = "30%";
 		social.style.left = "33%";
 		nav.style.left = "33%";
@@ -57,7 +72,7 @@
 	function hideMap(){
 		map.style.opacity = .8;
 		map.style.left = "calc(-30% + 10px)";
-		main.style.marginLeft = 0 + "px";
+		main.style.marginLeft = 0;
 		social.style.left = "3%";
 		nav.style.left = "3%";
 		mapStatus = false;
@@ -65,7 +80,7 @@
 
 	function showNotebook(){
 		notebook.style.opacity = 1;
-		notebook.style.right = 0 + "px";
+		notebook.style.right = 0;
 		main.style.marginRight = "30%";
 		noteStatus = true;
 	}
@@ -73,7 +88,7 @@
 	function hideNotebook(){
 		notebook.style.opacity = .8;
 		notebook.style.right = "calc(-30% + 10px)";
-		main.style.marginRight = 0 + "px";
+		main.style.marginRight = 0;
 		noteStatus = false;
 	}
 

@@ -30,7 +30,6 @@
 	// Volume
 	var volumeButton = document.getElementById("volume-icon"),
  		volumeBar = document.getElementById("volume-bar");
- 		volumeBar.style.display = "none";
 
  	// Navigation
  	var nav = document.getElementById("navigation"),
@@ -40,11 +39,111 @@
  		next = document.getElementById("next"),
  		prev = document.getElementById("prev");
 
- 	// ---------------------- //
+ 	// ------------------- //
+ 	// ---- FUNCTIONS ---- //
+ 	// ------------------- //
+	
+	function trackProgress(){
+		var bufferedEnd = video.buffered.end(video.buffered.length - 1);
+		var duration =  video.duration;
+		var bufferPerc = ((bufferedEnd / duration) * 100);
+	  	buffer.style.width = bufferPerc + "%";
+	}
+
+	function updateTime() {
+		// Calculate the slider value
+		value = (100 / video.duration) * video.currentTime;
+		curPos = (video.currentTime / video.duration) * 100;
+		// Update the slider value
+		progressBar.value = value;
+		indicator.style.left = "calc(" + curPos + "% - 10px)";
+	}
+
+	function progressMouseDown(posX){
+		width = window.innerWidth;
+		video.pause();
+		down = true;
+		perc = posX / width;
+		video.currentTime = video.duration * perc;
+		progressBar.value = (100 / video.duration) * video.currentTime;
+		curPos = perc * width - 10;
+		indicator.style.left = curPos + "px";
+	}
+
+	function progressMouseMove(pos){
+		posX = pos;
+		perc = posX / width;
+
+		timeFullSec = video.duration * perc;
+		timeMin = Math.floor(timeFullSec / 60);
+		timeSec = Math.round(timeFullSec % 60);
+
+		if(timeSec < 10){ timeSec = "0" + timeSec; }
+
+		time.innerHTML = timeMin + ":" + timeSec;
+		time.style.left = posX + "px";
+		time.style.display = "block";
+
+		if(down){
+			moving = true;
+			posX = pos;
+			perc = posX / width;
+			progressBar.value = (100 / video.duration) * (video.duration * perc);
+			curPos = perc * width - 10;
+			indicator.style.left = curPos + "px";
+		}
+	}
+
+	function progressMouseUp(){
+		if(moving){		
+			moving = false;
+			video.currentTime = video.duration * perc;	
+		}
+
+		down = false;
+		video.play();
+	}
+
+	function slideOffscreen(){
+		clearTimeout(timeout);
+		timeout = setTimeout(function(){
+			nav.style.top = "calc(-5% - 50px)";
+			map.style.left = "calc(-30% - 50px)";
+			notebook.style.right = "calc(-30% - 50px)";
+			controls.style.bottom = "calc(-3% - 50px)";
+			social.style.bottom = "calc(-5% - 50px)";
+			next.style.right = "calc(-3% - 50px)";
+			if(prev) {prev.style.left = "calc(-3% - 50px)";}
+			playContainer.style.visibility = "hidden";
+			playContainer.style.opacity = 0;
+			progressContainer.style.bottom = "calc(-1% - 50px)";
+			video.style.cursor = "none";
+			offScreen = true;
+		}, 2000);
+	}
+
+	function slideOnscreen(){
+		clearTimeout(timeout);
+		nav.style.top = "5%";
+		map.style.left = "calc(-30% + 10px)";
+		notebook.style.right = "calc(-30% + 10px)";
+		controls.style.bottom = "3%";
+		social.style.bottom = "5%";
+		next.style.right = "3%";
+		if(prev) {prev.style.left = "3%";}
+		playContainer.style.visibility = "visible";
+		playContainer.style.opacity = 1;
+		progressContainer.style.bottom = "-2px";
+		video.style.cursor = "default";
+		offScreen = false;
+	}
+	
+
+	// ---------------------- //
  	// ---- PLAY + PAUSE ---- //
  	// ---------------------- //
 
-	video.addEventListener("click", function(evt) {
+ 	video.addEventListener("click", function(evt) {
 		evt.preventDefault();
 		if (video.paused == true) {
 			video.play();
@@ -54,6 +153,24 @@
 	});
 
 	playButton.addEventListener("click", function(evt) {
+		evt.preventDefault();
+		if (video.paused == true) {
+			video.play();
+		} else {
+			video.pause();
+		}
+	});
+
+	video.addEventListener("touchstart", function(evt) {
+		evt.preventDefault();
+		if (video.paused == true) {
+			video.play();
+		} else {
+			video.pause();
+		}
+	});
+
+	playButton.addEventListener("touchstart", function(evt) {
 		evt.preventDefault();
 		if (video.paused == true) {
 			video.play();
@@ -91,8 +208,23 @@
  	// ---- MUTE + VOLUME ---- //
  	// ----------------------- //
 
+	volumeBar.style.display = "none";
+
 	// Event listener for the mute button
 	volumeButton.addEventListener("click", function() {
+		if (video.muted == false) {
+			video.muted = true;
+			volumeBar.value = 0;
+			//volumeButton.innerHTML = "Muted";
+		} else {
+			video.muted = false;
+			video.volume = volumeBar.value;
+			// volumeButton.innerHTML = "";
+		}
+	});
+
+	// Event listener for the mute button
+	volumeButton.addEventListener("touchstart", function() {
 		if (video.muted == false) {
 			video.muted = true;
 			volumeBar.value = 0;
@@ -144,6 +276,17 @@
 		}
 	});
 
+	// Event listener for the full-screen button
+	fullScreenButton.addEventListener("touchstart", function(evt) {
+		if (video.requestFullscreen) {
+			video.requestFullscreen();
+		} else if (video.mozRequestFullScreen) {
+			video.mozRequestFullScreen(); // Firefox
+		} else if (video.webkitRequestFullscreen) {
+			video.webkitRequestFullscreen(); // Chrome and Safari
+		}
+	});
+
 	// ---------------------- //
  	// ---- PROGRESS BAR ---- //
  	// ---------------------- //
@@ -156,98 +299,55 @@
  	// preload attribute tests:
  	// http://www.stevesouders.com/blog/2013/04/12/html5-video-preload/
 
- 	video.addEventListener('progress', function(evt) {
-		var bufferedEnd = video.buffered.end(video.buffered.length - 1);
-		var duration =  video.duration;
-		var bufferPerc = ((bufferedEnd / duration) * 100);
-	// 	var preloadPerc = Math.round(bufferPerc * 10);
-
-	//   	if(bufferPerc <= 10) {
-	//   		video.pause();
-	//   		if(first){
-	  			
-	//   			percentLoaded.style.display = "block";
-	//   			preloadBar.style.display = "block";
-	//   			first = false;
-	//   		}
-	//   	} else if(loading){
-	//   		video.play();
-	//   		preloader.className = "preloaded";
-	//   		loading = false;
-	//   	}
-
-	//   	percentLoaded.innerHTML = preloadPerc + "%";
-	//   	preloadBar.style.width = preloadPerc + "%";
-	  	buffer.style.width = bufferPerc + "%";
-	});
+ 	// track the progress of the video + buffer
+ 	video.addEventListener('progress', trackProgress);
 
 	// Update the progress bar as the video plays
-	video.addEventListener("timeupdate", function(evt) {
-		// Calculate the slider value
-		value = (100 / video.duration) * video.currentTime;
-		curPos = (video.currentTime / video.duration) * 100;
-		// Update the slider value
-		progressBar.value = value;
-		indicator.style.left = "calc(" + curPos + "% - 10px)";
-	});
+	video.addEventListener("timeupdate", updateTime);
 
+	// ---- CLICK EVENTS ---- //
+
+	// Change progress bar position on mouse down + pause video
 	progressContainer.addEventListener("mousedown", function(evt) {
-		width = window.innerWidth;
-		video.pause();
-
-		down = true;
-
 		posX = evt.clientX;
-		perc = posX / width;
-
-		video.currentTime = video.duration * perc;
-		progressBar.value = (100 / video.duration) * video.currentTime;
-		curPos = perc * width - 10;
-		indicator.style.left = curPos + "px";
-
+		progressMouseDown(posX);
 	});
 
+	// Change progress bar position as mouse moves
 	progressContainer.addEventListener("mousemove", function(evt){
 		posX = evt.clientX;
-		perc = posX / width;
-
-		timeFullSec = video.duration * perc;
-		timeMin = Math.floor(timeFullSec / 60);
-		timeSec = Math.round(timeFullSec % 60);
-
-		if(timeSec < 10){ timeSec = "0" + timeSec; }
-
-		time.innerHTML = timeMin + ":" + timeSec;
-		time.style.left = posX + "px";
-		time.style.display = "block";
-
-		if(down){
-			moving = true;
-			posX = evt.clientX;
-			perc = posX / width;
-			progressBar.value = (100 / video.duration) * (video.duration * perc);
-			curPos = perc * width - 10;
-			indicator.style.left = curPos + "px";
-		}
+		progressMouseMove(posX);
 	});
 
 	// Play the video when the slider handle is dropped
-	progressContainer.addEventListener("mouseup", function(evt) {
-		if(moving){		
-			moving = false;
-			video.currentTime = video.duration * perc;	
-		}
+	progressContainer.addEventListener("mouseup", progressMouseUp);
 
-		down = false;
-		video.play();
-	});
-
-	progressContainer.addEventListener("mouseleave", function(evt){
-
+	// Hide the time tooltip when mouse leave container
+	progressContainer.addEventListener("mouseleave", function(){
 		time.style.display = "none";
-
 	});
 
+	// ---- TOUCH EVENTS ---- //
+
+	// Change progress bar position on mouse down + pause video
+	progressContainer.addEventListener("touchstart", function(evt) {
+		posX = evt.touches[0].clientX;
+		progressMouseDown(posX);
+	});
+
+	// Change progress bar position as mouse moves
+	progressContainer.addEventListener("touchmove", function(evt){
+		console.log(evt);
+		posX = evt.touches[0].clientX;
+		progressMouseMove(posX);
+	});
+
+	// Play the video when the slider handle is dropped
+	progressContainer.addEventListener("touchend", function(){
+		progressMouseUp();
+		time.style.display = "none";
+	});
+	
 	// ---------------------------------- //
  	// ---- SHOW/HIDE NAV + CONTROLS ---- //
  	// ---------------------------------- //
@@ -265,12 +365,17 @@
 		}
 	});
 
-	map.addEventListener('mouseenter', function(){
-		slideOnscreen();
-	});
-
-	notebook.addEventListener('mouseenter', function(){
-		slideOnscreen();
+	video.addEventListener('touchstart', function(evt){
+		evt.preventDefault();
+		if(video.paused === false && video.ended === false && offScreen === false ){
+			slideOffscreen();
+		}
+		if(video.paused === false && offScreen){
+			slideOnscreen();
+		} 
+		if(video.paused === true){
+			slideOnscreen();
+		}
 	});
 
 	video.addEventListener('ended', function(){
@@ -281,48 +386,5 @@
 		next.style.right = "3%";
 		if(prev) {prev.style.left = "3%";}
 	});
-
-	function slideOffscreen(){
-		clearTimeout(timeout);
-		timeout = setTimeout(function(){
-
-			nav.style.top = "calc(-5% - 50px)";
-			map.style.left = "calc(-30% - 50px)";
-			notebook.style.right = "calc(-30% - 50px)";
-			controls.style.bottom = "calc(-3% - 50px)";
-			social.style.bottom = "calc(-5% - 50px)";
-
-			next.style.right = "calc(-3% - 50px)";
-			if(prev) {prev.style.left = "calc(-3% - 50px)";}
-
-			playContainer.style.visibility = "hidden";
-			playContainer.style.opacity = 0;
-			progressContainer.style.bottom = "calc(-1% - 50px)";
-			video.style.cursor = "none";
-
-			offScreen = true;
-
-		}, 2000);
-	}
-
-	function slideOnscreen(){
-		clearTimeout(timeout);
-
-		nav.style.top = "5%";
-		map.style.left = "calc(-30% + 10px)";
-		notebook.style.right = "calc(-30% + 10px)";
-		controls.style.bottom = "3%";
-		social.style.bottom = "5%";
-
-		next.style.right = "3%";
-		if(prev) {prev.style.left = "3%";}
-
-		playContainer.style.visibility = "visible";
-		playContainer.style.opacity = 1;
-		progressContainer.style.bottom = "-2px";
-		video.style.cursor = "default";
-
-		offScreen = false;
-	}
 
 })();
