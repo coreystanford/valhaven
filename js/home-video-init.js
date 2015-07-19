@@ -22,14 +22,14 @@
 	function initVideo(){
 		video.play();
 		if(video.readyState !== 4){ // HAVE_ENOUGH_DATA
-			video.addEventListener('canplaythrough', onCanPlay, false);
+			video.addEventListener('canplay', onCanPlay, false);
 			video.addEventListener('load', onCanPlay, false); // add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
 			video.pause();
 		}
 	}
 
 	function onCanPlay(){
-		video.removeEventListener('canplaythrough', onCanPlay, false);
+		video.removeEventListener('canplay', onCanPlay, false);
 		video.removeEventListener('load', onCanPlay, false);
 
 		main.removeChild(preloader);

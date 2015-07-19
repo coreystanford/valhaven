@@ -32,7 +32,7 @@
     $description = "This is a description of chapter one.";
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
 
-    $modal = "modal_2.php"; // name of the modal window file located in ./modals/
+    $modal = "1-office.php"; // name of the modal window file located in ./modals/
 
     $next = "ch_2";
     

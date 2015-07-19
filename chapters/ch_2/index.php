@@ -29,16 +29,16 @@
     // ----------------------------- //
 
     $title = "Chapter 2";
-    $description = "This is a description of chapter two.";
+    $description = "This is a description of the chapter.";
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
 
-    $modal = "modal_2.php"; // name of the modal window file located in ./modals/
+    $modal = "2-notebook_map.php"; // name of the modal window file located in ./modals/
 
-    $next = "ch_3";
     $prev = "ch_1";
+    $next = "ch_3";
     
     // javascript files for this chapter:
-    $customScripts = array("video.js", "video-modal-init.js", "modal.js"); // add the file name in quotations, seperated by commas
+    $customScripts = array("video.js", "video-init.js", "modal.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
 
     // ---------------------------- //
     // ------ Perform Switch ------ //

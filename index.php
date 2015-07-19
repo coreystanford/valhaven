@@ -35,7 +35,7 @@
     $description = "This is a description of the welcome page";
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
 
-    $modal = "modal_1.php"; // name of the modal window file located in ./modals/
+    $modal = "0-tablet.php"; // name of the modal window file located in ./modals/
 
     $next = "ch_1";
 
@@ -53,10 +53,9 @@
         case 'default':
 
             $poster = "valhaven.jpg"; // default video background for this chapter
-            $webm = "sample.webm"; // webm video file for this chapter
-            $mp4 = "sample.mp4"; // mp4 video file for this chapter
-            $ogv = "sample.ogv"; // ogv video file for this chapter
-            $mp4iPad = "sample.ipad.mp4";
+            $webm = "_DSC0007_1.webm"; // webm video file for this chapter
+            $mp4 = "_DSC0007_1.mp4"; // mp4 video file for this chapter
+            $ogv = "_DSC0007_1.ogv"; // ogv video file for this chapter
 
             include 'home.php';
 
