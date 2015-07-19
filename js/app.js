@@ -10,6 +10,40 @@
 		social = document.getElementById('social'),
 		nav = document.getElementById('navigation');
 
+	// ---- FUNCTIONS ---- //
+
+	function showMap(){
+		map.style.opacity = 1;
+		map.style.left = 0;
+		main.style.marginLeft = "30%";
+		social.style.left = "33%";
+		nav.style.left = "33%";
+		mapStatus = true;
+	}
+
+	function hideMap(){
+		map.style.opacity = .8;
+		map.style.left = "calc(-30% + 10px)";
+		main.style.marginLeft = 0;
+		social.style.left = "3%";
+		nav.style.left = "3%";
+		mapStatus = false;
+	}
+
+	function showNotebook(){
+		notebook.style.opacity = 1;
+		notebook.style.right = 0;
+		main.style.marginRight = "30%";
+		noteStatus = true;
+	}
+
+	function hideNotebook(){
+		notebook.style.opacity = .8;
+		notebook.style.right = "calc(-30% + 10px)";
+		main.style.marginRight = 0;
+		noteStatus = false;
+	}
+
 	// ---- Desktop ---- //
 
 	map.addEventListener('mouseenter', function(e){
@@ -57,39 +91,5 @@
 		if(mapStatus){ hideMap(); }
 		if(noteStatus){ hideNotebook(); }
 	}, false);
-
-	// ---- Helpers ---- //
-
-	function showMap(){
-		map.style.opacity = 1;
-		map.style.left = 0;
-		main.style.marginLeft = "30%";
-		social.style.left = "33%";
-		nav.style.left = "33%";
-		mapStatus = true;
-	}
-
-	function hideMap(){
-		map.style.opacity = .8;
-		map.style.left = "calc(-30% + 10px)";
-		main.style.marginLeft = 0;
-		social.style.left = "3%";
-		nav.style.left = "3%";
-		mapStatus = false;
-	}
-
-	function showNotebook(){
-		notebook.style.opacity = 1;
-		notebook.style.right = 0;
-		main.style.marginRight = "30%";
-		noteStatus = true;
-	}
-
-	function hideNotebook(){
-		notebook.style.opacity = .8;
-		notebook.style.right = "calc(-30% + 10px)";
-		main.style.marginRight = 0;
-		noteStatus = false;
-	}
 
 })();

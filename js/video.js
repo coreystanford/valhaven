@@ -59,7 +59,7 @@
 		indicator.style.left = "calc(" + curPos + "% - 10px)";
 	}
 
-	function progressMouseDown(posX){
+	function progressDown(posX){
 		width = window.innerWidth;
 		video.pause();
 		down = true;
@@ -70,7 +70,7 @@
 		indicator.style.left = curPos + "px";
 	}
 
-	function progressMouseMove(pos){
+	function progressMove(pos){
 		posX = pos;
 		perc = posX / width;
 
@@ -94,7 +94,7 @@
 		}
 	}
 
-	function progressMouseUp(){
+	function progressUp(){
 		if(moving){		
 			moving = false;
 			video.currentTime = video.duration * perc;	
@@ -310,17 +310,17 @@
 	// Change progress bar position on mouse down + pause video
 	progressContainer.addEventListener("mousedown", function(evt) {
 		posX = evt.clientX;
-		progressMouseDown(posX);
+		progressDown(posX);
 	});
 
 	// Change progress bar position as mouse moves
 	progressContainer.addEventListener("mousemove", function(evt){
 		posX = evt.clientX;
-		progressMouseMove(posX);
+		progressMove(posX);
 	});
 
 	// Play the video when the slider handle is dropped
-	progressContainer.addEventListener("mouseup", progressMouseUp);
+	progressContainer.addEventListener("mouseup", progressUp);
 
 	// Hide the time tooltip when mouse leave container
 	progressContainer.addEventListener("mouseleave", function(){
@@ -332,19 +332,19 @@
 	// Change progress bar position on mouse down + pause video
 	progressContainer.addEventListener("touchstart", function(evt) {
 		posX = evt.touches[0].clientX;
-		progressMouseDown(posX);
+		progressDown(posX);
 	});
 
 	// Change progress bar position as mouse moves
 	progressContainer.addEventListener("touchmove", function(evt){
 		console.log(evt);
 		posX = evt.touches[0].clientX;
-		progressMouseMove(posX);
+		progressMove(posX);
 	});
 
 	// Play the video when the slider handle is dropped
 	progressContainer.addEventListener("touchend", function(){
-		progressMouseUp();
+		progressUp();
 		time.style.display = "none";
 	});
 	
