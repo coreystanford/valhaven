@@ -14,12 +14,13 @@ var initModal = function (target, classes) {
         $content.empty().append(data, $close);
 
         $modal.append($content);
-		modal.open($modal);
+		$modal.removeClass('off');
 
         $close.on('click', function (e) {
             e.preventDefault();
             console.log("click");
-            modal.close($modal, $content);
+            $content.detach();
+            $modal.addClass('off');
         });
 
     }).fail(function() {

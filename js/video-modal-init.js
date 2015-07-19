@@ -9,7 +9,7 @@
         $modal.empty().append(data);
 
         $video.on('ended', function (e) {
-		    modal.open($modal);
+		    $modal.removeClass('off');
 		});
 
     }).fail(function() {

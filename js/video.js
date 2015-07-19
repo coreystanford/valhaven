@@ -43,6 +43,14 @@
  	// ---- FUNCTIONS ---- //
  	// ------------------- //
 	
+ 	function playPause(){
+ 		if (video.paused == true) {
+			video.play();
+		} else {
+			video.pause();
+		}
+ 	}
+
 	function trackProgress(){
 		var bufferedEnd = video.buffered.end(video.buffered.length - 1);
 		var duration =  video.duration;
@@ -138,45 +146,28 @@
 		offScreen = false;
 	}
 	
-
 	// ---------------------- //
  	// ---- PLAY + PAUSE ---- //
  	// ---------------------- //
 
  	video.addEventListener("click", function(evt) {
 		evt.preventDefault();
-		if (video.paused == true) {
-			video.play();
-		} else {
-			video.pause();
-		}
+		playPause();
 	});
 
 	playButton.addEventListener("click", function(evt) {
 		evt.preventDefault();
-		if (video.paused == true) {
-			video.play();
-		} else {
-			video.pause();
-		}
+		playPause();
 	});
 
 	video.addEventListener("touchstart", function(evt) {
 		evt.preventDefault();
-		if (video.paused == true) {
-			video.play();
-		} else {
-			video.pause();
-		}
+		playPause();
 	});
 
 	playButton.addEventListener("touchstart", function(evt) {
 		evt.preventDefault();
-		if (video.paused == true) {
-			video.play();
-		} else {
-			video.pause();
-		}
+		playPause();
 	});
 
 	video.onplay = (function(){

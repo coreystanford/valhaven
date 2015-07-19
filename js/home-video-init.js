@@ -31,9 +31,7 @@
 	function onCanPlay(){
 		video.removeEventListener('canplay', onCanPlay, false);
 		video.removeEventListener('load', onCanPlay, false);
-
 		main.removeChild(preloader);
-
 	}
 
 	function playVideo(){
@@ -57,6 +55,10 @@
 	window.addEventListener('resize', function(){
 		bg.style.height = window.innerHeight + "px";
 	});
+
+	// -------------------------------- //
+	// ---- Custom Button for iPad ---- //
+	// -------------------------------- //
 
 	// check is userAgent is an iPad
 	if(navigator.userAgent.match(/iPad/i) != null){
