@@ -612,7 +612,7 @@ nav {
 /*  ----- MODAL -----  */
 
 #modal {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -627,7 +627,7 @@ nav {
   }
 
   .modal-content {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     width: 100%;
@@ -662,7 +662,7 @@ nav {
 
 #ipad {
   width: 80%;
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   height: auto;
@@ -672,16 +672,18 @@ nav {
   transform: translateX(-50%) translateY(-50%);
 }
 
+  #ipad > img {
+    width: 100%;
+  }
+
   #newsapp {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
-    width: 79%;
-    height: 30%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50.8%) translateY(-50.5%);
+    -moz-transform: translateX(-50.8%) translateY(-50.5%);
+    -ms-transform: translateX(-50.8%) translateY(-50.5%);
+    transform: translateX(-50.8%) translateY(-50.5%);
     background: #252525;
   }
 

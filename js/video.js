@@ -42,7 +42,7 @@
  	// ------------------- //
  	// ---- FUNCTIONS ---- //
  	// ------------------- //
-	
+
  	function playPause(){
  		if (video.paused == true) {
 			video.play();
@@ -59,12 +59,15 @@
 	}
 
 	function updateTime() {
-		// Calculate the slider value
-		value = (100 / video.duration) * video.currentTime;
-		curPos = (video.currentTime / video.duration) * 100;
-		// Update the slider value
-		progressBar.value = value;
-		indicator.style.left = "calc(" + curPos + "% - 10px)";
+		if(video.duration > 0) { 
+			// Calculate the slider value
+			value = (100 / video.duration) * video.currentTime;
+			curPos = (video.currentTime / video.duration) * 100;
+			// Update the slider value
+			progressBar.value = value;
+
+			indicator.style.left = "calc(" + curPos + "% - 10px)";
+		}
 	}
 
 	function progressDown(posX){
@@ -76,6 +79,8 @@
 		progressBar.value = (100 / video.duration) * video.currentTime;
 		curPos = perc * width - 10;
 		indicator.style.left = curPos + "px";
+		time.style.left = posX + "px";
+		time.style.display = "block";
 	}
 
 	function progressMove(pos){
@@ -286,6 +291,7 @@
  	// However, Safari does not play nice, and only fires this event after 
  	// the whole video has loaded when using preload='auto', and doesn't load 
  	// enough of the video otherwise!
+ 	// Thus, we cannot use this in the preloader, only for the in-video buffered-indicator
  	
  	// preload attribute tests:
  	// http://www.stevesouders.com/blog/2013/04/12/html5-video-preload/
@@ -328,7 +334,6 @@
 
 	// Change progress bar position as mouse moves
 	progressContainer.addEventListener("touchmove", function(evt){
-		console.log(evt);
 		posX = evt.touches[0].clientX;
 		progressMove(posX);
 	});
