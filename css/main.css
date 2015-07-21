@@ -687,6 +687,57 @@ nav {
     background: #252525;
   }
 
+  #tablet-bar {
+    height: 5%;
+    width: 100%;
+    background: #000;
+    position: relative;
+  }
+
+    #tablet-bar img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+
+  #news-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    align-content: stretch;
+    position: relative;
+  }
+
+  .article {
+    width: 33%;
+  }
+
+  #articles {
+    width: 100%;
+  }
+
+    .article-content {
+      position: absolute;
+      top: 5%;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 30;
+      color: #000;
+      background: #fff;
+    }
+
+      .close-article {
+        background: none;
+        outline: none;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+
 /* ---- Animations ---- */
 
 #preloader-icon,
