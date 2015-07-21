@@ -108,11 +108,19 @@
 
 			});
 
-			// articles.children[i].addEventListener('touchstart', function(){
+			articles.children[i].addEventListener('touchstart', function(){
 
+				e.preventDefault();
+				var ref = this.getAttribute('ref');
+				contents.children[ref].setAttribute('class', 'article-content');
+
+				var close = document.getElementsByClassName('close-article');
+				close[ref].addEventListener("touchstart", function(e){
+					e.preventDefault();
+					this.parentNode.setAttribute('class', 'off article-content');
+				})
 				
-				
-			// });
+			});
 
 		};
 
