@@ -128,7 +128,6 @@ main {
     outline: none;
     position: relative;
     border-radius: 8px;
-    float: left;
 }
 
 /*  ----- NAVIGATION -----  */
@@ -295,7 +294,7 @@ nav {
   z-index: 13;
 }
 
-#home-btn {
+#main-btn {
   position: absolute;
   z-index: 16;
   bottom: 30%;
@@ -306,6 +305,17 @@ nav {
   -ms-transform: translate(-50%, 50%);
   -o-transform: translate(-50%, 50%);
   transform: translate(-50%, 50%);
+  background: #f9eC23;
+  color: #58595b;
+}
+
+#next-btn {
+  text-align: center;
+  display: block;
+  background: yellow;
+  margin: 20px auto 10px auto;
+  width: 200px;
+  min-width: 200px;
   background: #f9eC23;
   color: #58595b;
 }
@@ -643,6 +653,7 @@ nav {
 
     .red-bg {
       background: #eb1c3c;
+      padding: 5%;
     }
 
     .modal-close {
@@ -658,7 +669,7 @@ nav {
   display: none;
 }
 
-/* ---- MODAL TWO - IPAD APP ---- */
+/* ---- MODAL ONE - IPAD APP ---- */
 
 #ipad {
   width: 80%;
@@ -715,16 +726,24 @@ nav {
 
   #news-container {
     padding: 3% 3% 0 3%;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
+    -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     height: 85%;
+    -webkit-align-content: stretch;
     align-content: stretch;
     position: relative;
+    -webkit-justify-content: space-between;
     justify-content: space-between;
   }
 
   .article {
     width: 31%;
+    cursor: pointer;
   }
 
     .article img {
@@ -755,21 +774,59 @@ nav {
       .inner-article {
         position: absolute;
         top: 5%;
-        right: 5%;
-        bottom: 5%;
-        left: 5%;
+        right: 3%;
+        bottom: 20%;
+        left: 3%;
         color: #000;
         background: #fff;
         overflow-y: auto;
+        display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+        display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+        display: -ms-flexbox;      /* TWEENER - IE 10 */
+        display: -webkit-flex;     /* NEW - Chrome */
+        display: flex;
+        -webkit-align-content: column;
+        align-content: column;
+        padding-bottom: 2%;
       }
+
+        .left-art {
+          width: 30%;
+          padding: 2%;
+        }
+
+          .left-art img {
+            width: 100%;
+          }
+
+        .right-art {
+          width: 70%;
+          padding: 2%;
+        }
+
+          .right-art h1 {
+            padding: 3px 0 10px 0;
+          }
+
+          .right-art p {
+            padding: 1% 2% 2% 0;
+          }
 
       .close-article {
         background: none;
         outline: none;
         border: none;
         position: absolute;
-        top: 0;
-        right: 0;
+        left: 50%;
+        bottom: 2%;
+        height: 10%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        font-size: 20px;
+        background: #fff;
+        padding: 0 45px;
       }
 
 #bg-ch_0 {
@@ -784,6 +841,19 @@ nav {
   transform: translateX(-50%) translateY(-50%);
   z-index: -1;
 }
+
+/* ---- MODAL TWO - ACCEPT STORY ---- */
+
+#instructions-1 {
+  width: auto;
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+  #instructions-1 p {
+    padding: 10px;
+  }
+
 
 /* ---- Animations ---- */
 

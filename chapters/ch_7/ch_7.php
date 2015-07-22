@@ -41,7 +41,6 @@
 		</div>
 
 		<!-- Navigation Arrows -->
-		<!-- <a href="<?php // echo CH_PATH . $next; ?>" id="next"><img src="<?php // echo IMAGE_PATH; ?>icons/next.png"></a> -->
 		<a href="<?php echo CH_PATH . $prev; ?>" id="prev"><img src="<?php echo IMAGE_PATH; ?>icons/prev.png"></a>
 
 	</div>

@@ -38,7 +38,7 @@
     $next = "ch_4";
     
     // javascript files for this chapter:
-    $customScripts = array("video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
+    $customScripts = array("app.js", "video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
 
     // ---------------------------- //
     // ------ Perform Switch ------ //

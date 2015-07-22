@@ -11,7 +11,7 @@
 		</div> -->
 	</div>
 
-	<button type="button" id="home-btn" class="btn">VISIT VALHAVEN</button>
+	<button type="button" id="main-btn" class="btn">VISIT VALHAVEN</button>
 
 	<div id="home-bg"></div>
 
@@ -47,9 +47,6 @@
 			<progress id="progress-bar" value="0" max="100"></progress>
 			<span id="buffered-amount"></span>
 		</div>
-
-		<!-- Navigation Arrow -->
-		<a href="<?php echo CH_PATH . $next; ?>" id="next"><img src="<?php echo IMAGE_PATH; ?>icons/next.png"></a>
 
 	</div>
 

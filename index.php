@@ -40,7 +40,7 @@
     $next = "ch_1";
 
     // javascript files for just the homepage:
-    $customScripts = array("video.js", "home-video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
+    $customScripts = array("app.js", "video.js", "home-video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
 
 	// ---------------------------- //
     // ------ Perform Switch ------ //

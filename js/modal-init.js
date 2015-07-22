@@ -5,9 +5,6 @@ var initModal = function (target, classes) {
     var $modal = $('#modal');
 
     var $content = $('<div class="modal-content ' + classes + '"/>');
-    var $close = $('<button role="button" class="modal-close">Close</button>');
-
-    console.log($target);
 
     $.get($ref, function(data) {
 
