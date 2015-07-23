@@ -347,23 +347,23 @@ var vidControl = (function(){
 
 	// Event listener for the full-screen button
 	fullScreenButton.addEventListener("click", function(evt) {
-		if (video.requestFullscreen) {
-			video.requestFullscreen();
-		} else if (video.mozRequestFullScreen) {
-			video.mozRequestFullScreen(); // Firefox
-		} else if (video.webkitRequestFullscreen) {
-			video.webkitRequestFullscreen(); // Chrome and Safari
+		if (container.requestFullscreen) {
+			container.requestFullscreen();
+		} else if (container.mozRequestFullScreen) {
+			container.mozRequestFullScreen(); // Firefox
+		} else if (container.webkitRequestFullscreen) {
+			container.webkitRequestFullscreen(); // Chrome and Safari
 		}
 	});
 
 	// Event listener for the full-screen button
 	fullScreenButton.addEventListener("touchstart", function(evt) {
-		if (video.requestFullscreen) {
-			video.requestFullscreen();
-		} else if (video.mozRequestFullScreen) {
-			video.mozRequestFullScreen(); // Firefox
-		} else if (video.webkitRequestFullscreen) {
-			video.webkitRequestFullscreen(); // Chrome and Safari
+		if (container.requestFullscreen) {
+			container.requestFullscreen();
+		} else if (container.mozRequestFullScreen) {
+			container.mozRequestFullScreen(); // Firefox
+		} else if (container.webkitRequestFullscreen) {
+			container.webkitRequestFullscreen(); // Chrome and Safari
 		}
 	});
 

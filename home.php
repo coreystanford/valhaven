@@ -18,7 +18,7 @@
 	<div id="video-container" class="clearfix">
 
 		<!-- Video Source/Data -->
-		<video muted poster="<?php echo IMAGE_PATH . $poster; ?>" id="ch_video" preload="auto" controls="true" ref="<?php echo MODAL_PATH . $modal; ?>">
+		<video poster="<?php echo IMAGE_PATH . $poster; ?>" id="ch_video" preload="auto" ref="<?php echo MODAL_PATH . $modal; ?>">
 			<source  src="<?php echo VIDEO_PATH . $mp4; ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ><!-- List MP4 First - Server issue -->	
 			<source  src="<?php echo VIDEO_PATH . $webm; ?>" type='video/webm; codecs="vp8, vorbis"'>
 			<source src="<?php echo VIDEO_PATH . $ogv; ?>" type='video/ogg; codecs="theora, vorbis"'>

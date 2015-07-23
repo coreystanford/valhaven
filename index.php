@@ -53,9 +53,9 @@
         case 'default':
 
             $poster = "valhaven.jpg"; // default video background for this chapter
-            $webm = "_DSC0007_1.webm"; // webm video file for this chapter
-            $mp4 = "_DSC0007_1.mp4"; // mp4 video file for this chapter
-            $ogv = "_DSC0007_1.ogv"; // ogv video file for this chapter
+            $webm = "ch_0.webm"; // webm video file for this chapter
+            $mp4 = "ch_0.mp4"; // mp4 video file for this chapter
+            $ogv = "ch_0.ogv"; // ogv video file for this chapter
 
             include 'home.php';
 

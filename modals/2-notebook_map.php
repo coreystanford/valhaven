@@ -14,7 +14,7 @@
 
 		modal.setAttribute("class", "off");
 		sliders.showMap();
-		// sliders.showNotebook();
+		
 
 	});
 
