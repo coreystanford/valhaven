@@ -5,10 +5,6 @@
 		<div id="inner-preload-icon">
 			<h1 id="preloader-icon"></h1>
 		</div>
-		<!-- <div id="disclaimer">
-			<h1>Disclaimer</h1>
-			<p>Disclaimer content.</p>
-		</div> -->
 	</div>
 
 	<button type="button" id="main-btn" class="btn">VISIT VALHAVEN</button>

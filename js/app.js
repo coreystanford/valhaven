@@ -1,4 +1,8 @@
-var sliders = (function(){
+// --------------------------- //
+// ---- REGISTER CONTROLS ---- //
+// --------------------------- //
+
+var Sliders = (function(){
 
 	var map = document.getElementById('map'),
 		notebook = document.getElementById('notebook'),
@@ -16,9 +20,9 @@ var sliders = (function(){
 			main.style.marginLeft = "30%";
 			social.style.left = "33%";
 			nav.style.left = "33%";
-			clearTimeout(vidControl.timeout);
-			video.pause();
-			playButton.innerHTML = "Play";
+			clearTimeout(VidControl.timeout);
+			// video.pause();
+			// playButton.innerHTML = "Play";
 		},
 
 		hideMap: function(){
@@ -27,26 +31,36 @@ var sliders = (function(){
 			main.style.marginLeft = 0;
 			social.style.left = "3%";
 			nav.style.left = "3%";
+			// video.play();
+			// playButton.innerHTML = "Pause";
+			if(video.paused === false){VidControl.slideOffscreen();}
 		},
 
 		showNotebook: function(){
 			notebook.style.opacity = 1;
 			notebook.style.right = 0;
 			main.style.marginRight = "30%";
-			clearTimeout(vidControl.timeout);
-			video.pause();
-			playButton.innerHTML = "Play";
+			clearTimeout(VidControl.timeout);
+			// video.pause();
+			// playButton.innerHTML = "Play";
 		},
 
 		hideNotebook: function(){
 			notebook.style.opacity = .8;
 			notebook.style.right = "calc(-30% + 10px)";
 			main.style.marginRight = 0;
+			// video.play();
+			// playButton.innerHTML = "Pause";
+			if(video.paused === false){VidControl.slideOffscreen();}
 		}
 
 	};
 
 })();
+
+// ------------------------- //
+// ---- REGISTER EVENTS ---- //
+// ------------------------- //
 
 (function(){
 
@@ -61,26 +75,26 @@ var sliders = (function(){
 	// ---- Desktop ---- //
 
 	map.addEventListener('mouseenter',
-		sliders.showMap, false);
+		Sliders.showMap, false);
 	map.addEventListener('mouseleave',
-		sliders.hideMap, false);
+		Sliders.hideMap, false);
 	notebook.addEventListener('mouseenter',
-		sliders.showNotebook, false);
+		Sliders.showNotebook, false);
 	notebook.addEventListener('mouseleave',
-		sliders.hideNotebook, false);
+		Sliders.hideNotebook, false);
 
 	// ---- Mobile ---- //
 
 	mapBtn.addEventListener('touchstart', function(e){
 		e.preventDefault();
 		if(mapStatus){
-			sliders.hideMap();
+			Sliders.hideMap();
 			mapStatus = false;
 		} else {
-			sliders.showMap();
+			Sliders.showMap();
 			mapStatus = true;
 			if(noteStatus){ 
-				sliders.hideNotebook(); 
+				Sliders.hideNotebook(); 
 				noteStatus = false;
 			}
 		}
@@ -89,13 +103,13 @@ var sliders = (function(){
 	notebookBtn.addEventListener('touchstart', function(e){
 		e.preventDefault();
 		if(noteStatus){
-			sliders.hideNotebook();
+			Sliders.hideNotebook();
 			noteStatus = false;
 		} else {
-			sliders.showNotebook();
+			Sliders.showNotebook();
 			noteStatus = true;
 			if(mapStatus){ 
-				sliders.hideMap(); 
+				Sliders.hideMap(); 
 				mapStatus = false;
 			}
 		}
@@ -103,8 +117,8 @@ var sliders = (function(){
 
 	main.addEventListener('touchstart', function(e){
 		e.preventDefault();
-		if(mapStatus){ sliders.hideMap(); mapStatus = false; }
-		if(noteStatus){ sliders.hideNotebook(); noteStatus = false; }
+		if(mapStatus){ Sliders.hideMap(); mapStatus = false; }
+		if(noteStatus){ Sliders.hideNotebook(); noteStatus = false; }
 	}, false);
 
 })();

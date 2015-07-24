@@ -35,6 +35,6 @@
 	// ---- Initialize Video ---- //
 	// -------------------------- //
 
-	vidControl.initVideoThrough();
+	VidControl.initVideoThrough();
 
 })();

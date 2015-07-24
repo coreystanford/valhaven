@@ -1,11 +1,17 @@
-var vidControl = (function(){
+// --------------------------- //
+// ---- REGISTER CONTROLS ---- //
+// --------------------------- //
+
+var VidControl = (function(){
+
+	// ------------------- //
+ 	// ---- VARIABLES ---- //
+ 	// ------------------- //
 
 	var width = window.innerWidth,
 		offScreen = false, down = false, moving = false,
 		posX, perc, curPos, value,
 		timeFullSec, timeMin, timeSec;
-
-	this.timeout;
 
 	// Container, Preloader + Video
 	var main = document.getElementById('main');
@@ -44,22 +50,58 @@ var vidControl = (function(){
 
  	return { 
 
- 		playPause: function(){
+ 		// ---- PLAY + PAUSE ---- //
+
+ 		playPause: function(evt){
+ 			evt.preventDefault();
 	 		if (video.paused == true) {
-	 			vidControl.slideOffscreen();
-	 			playButton.innerHTML = "Pause";
 				video.play();
+				playButton.innerHTML = "Pause";
+				VidControl.slideOffscreen();
 			} else {
-				vidControl.slideOnscreen();
-				playButton.innerHTML = "Play";
 				video.pause();
+				playButton.innerHTML = "Play";
+				VidControl.slideOnscreen();
 			}
 	 	},
+
+	 	spaceDown: function(evt) {
+		    if (evt.keyCode == 32) {
+		    	evt.preventDefault();
+		    	if(video.paused == true && video.ended == false) {
+		    		video.play();
+		    		playButton.innerHTML = "Pause";
+		    		VidControl.slideOffscreen();
+		    	} 
+		    	else if(video.paused == true && video.ended == true){
+		    		playButton.innerHTML = "";
+		    	} else {
+		    		video.pause();
+		    		playButton.innerHTML = "Play";
+		    		VidControl.slideOnscreen();
+		    	}
+		    }
+		},
+
+		// ---- FULLSCREEN ---- //
+
+		enterFullscreen: function(){
+			if (container.requestFullscreen) {
+				container.requestFullscreen();
+			} else if (container.mozRequestFullScreen) {
+				container.mozRequestFullScreen(); // Firefox
+			} else if (container.webkitRequestFullscreen) {
+				container.webkitRequestFullscreen(); // Chrome and Safari
+			}
+		},
+
+		// ---- PROGRESS BAR ---- //
 
 		trackProgress: function(){
 			var bufferedEnd = video.buffered.end(video.buffered.length - 1);
 			var duration =  video.duration;
 			var bufferPerc = ((bufferedEnd / duration) * 100);
+		  	
 		  	buffer.style.width = bufferPerc + "%";
 		},
 
@@ -68,31 +110,59 @@ var vidControl = (function(){
 				// Calculate the slider value
 				value = (100 / video.duration) * video.currentTime;
 				curPos = (video.currentTime / video.duration) * 100;
+				
 				// Update the slider value
 				progressBar.value = value;
-
 				indicator.style.left = "calc(" + curPos + "% - 10px)";
 			}
 		},
 
+		handleProgressMouseDown: function(evt){
+			posX = evt.clientX;
+			VidControl.progressDown(posX);
+		},
+
+		handleProgressMouseMove: function(evt){
+			posX = evt.clientX;
+			VidControl.progressMove(posX);
+		},
+
+		handleProgressTouchDown: function(evt){
+			posX = evt.touches[0].clientX;
+			VidControl.progressDown(posX);
+		},
+
+		handleProgressTouchMove: function(evt){
+			posX = evt.touches[0].clientX;
+			VidControl.progressMove(posX);
+		},
+
+		handleProgressTouchUp: function(){
+			VidControl.progressUp();
+			time.style.display = "none";
+		},
+
 		progressDown: function(posX){
 			width = window.innerWidth;
+
 			video.pause();
 			playButton.innerHTML = "Play";
+			VidControl.slideOnscreen();
+
 			down = true;
+
 			perc = posX / width;
 			video.currentTime = video.duration * perc;
 			progressBar.value = (100 / video.duration) * video.currentTime;
+
 			curPos = perc * width - 10;
 			indicator.style.left = curPos + "px";
 			time.style.left = posX + "px";
 			time.style.display = "block";
-			vidControl.slideOnscreen();
 		},
 
 		progressMove: function(pos){
-			posX = pos;
-			perc = posX / width;
+			perc = pos / width;
 
 			timeFullSec = video.duration * perc;
 			timeMin = Math.floor(timeFullSec / 60);
@@ -106,10 +176,11 @@ var vidControl = (function(){
 
 			if(down){
 				moving = true;
-				posX = pos;
-				perc = posX / width;
+				
+				perc = pos / width;
 				progressBar.value = (100 / video.duration) * (video.duration * perc);
 				curPos = perc * width - 10;
+
 				indicator.style.left = curPos + "px";
 			}
 		},
@@ -117,42 +188,55 @@ var vidControl = (function(){
 		progressUp: function(){
 			if(moving){		
 				moving = false;
+
 				video.currentTime = video.duration * perc;	
 			}
+			
 			down = false;
+
 			video.play();
 			playButton.innerHTML = "Pause";
-			vidControl.slideOffscreen();
+			VidControl.slideOffscreen();
 		},
 
+		// ---- SIDEBARS, CONTROLS + NAV TIMEOUT ---- //
+
+		timeout: null,
+
 		slideOffscreen: function(){
-			clearTimeout(this.timeout);
-			this.timeout = setTimeout(function(){
+			clearTimeout(VidControl.timeout);
+			VidControl.timeout = setTimeout(function(){
 				nav.style.top = "calc(-5% - 50px)";
+				if(prev) {prev.style.left = "calc(-3% - 50px)";}
+				social.style.bottom = "calc(-5% - 50px)";
+
 				map.style.left = "calc(-30% - 50px)";
 				notebook.style.right = "calc(-30% - 50px)";
-				controls.style.bottom = "calc(-3% - 50px)";
-				social.style.bottom = "calc(-5% - 50px)";
-				if(prev) {prev.style.left = "calc(-3% - 50px)";}
+
 				playContainer.style.visibility = "hidden";
 				playContainer.style.opacity = 0;
+				controls.style.bottom = "calc(-3% - 50px)";
 				progressContainer.style.bottom = "calc(-1% - 50px)";
+
 				video.style.cursor = "none";
 				offScreen = true;
 			}, 2000);
 		},
 
 		slideOnscreen: function(){
-			clearTimeout(this.timeout);
+			clearTimeout(VidControl.timeout);
 			nav.style.top = "5%";
+			if(prev) {prev.style.left = "3%";}
+			social.style.bottom = "5%";
+
 			map.style.left = "calc(-30% + 10px)";
 			notebook.style.right = "calc(-30% + 10px)";
-			controls.style.bottom = "3%";
-			social.style.bottom = "5%";
-			if(prev) {prev.style.left = "3%";}
+
 			playContainer.style.visibility = "visible";
 			playContainer.style.opacity = 1;
+			controls.style.bottom = "3%";
 			progressContainer.style.bottom = "-2px";
+
 			video.style.cursor = "default";
 			offScreen = false;
 		},
@@ -160,17 +244,19 @@ var vidControl = (function(){
 		handleMouseMove: function(evt){
 			evt.preventDefault();
 			if(video.paused === false && video.ended === false && offScreen === false ){
-				vidControl.slideOffscreen();
+				VidControl.slideOffscreen();
 			}
 			if(video.paused === false && offScreen){
-				vidControl.slideOnscreen();
+				VidControl.slideOnscreen();
 			} 
 			if(video.paused === true){
-				vidControl.slideOnscreen();
+				VidControl.slideOnscreen();
 			}
 		},
 
-		// "canplaythrough" works perfectly on all browsers when combibned with preload='auto'
+		// ---- VIDEO INITIALIZERS ---- //
+
+		// "canplaythrough" works perfectly on all browsers when combined with preload='auto'
 		// (and it has the added benefit of being a very small amount of code),
 		// but we cannot track the amount of video loaded using this method
 		// it does, however, get around the issue within Safari where the browser 
@@ -181,32 +267,32 @@ var vidControl = (function(){
 		initVideo: function(){
 			video.play();
 			if(video.readyState !== 4){ // HAVE_ENOUGH_DATA
-				video.addEventListener('canplay', vidControl.onCanPlay, false);
-				video.addEventListener('load', vidControl.onCanPlay, false); // add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
+				video.addEventListener('canplay', VidControl.onCanPlay, false);
+				video.addEventListener('load', VidControl.onCanPlay, false); // add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
 				video.pause();
 			}
 		},
 
 		onCanPlay: function(){
-			video.removeEventListener('canplay', vidControl.onCanPlay, false);
-			video.removeEventListener('load', vidControl.onCanPlay, false);
+			video.removeEventListener('canplay', VidControl.onCanPlay, false);
+			video.removeEventListener('load', VidControl.onCanPlay, false);
 			main.removeChild(preloader);
 		},
 
 		initVideoThrough: function(){
 			video.play();
-			if(video.readyState !== 4){ // HAVE_ENOUGH_DATA
-				video.addEventListener('canplaythrough', vidControl.onCanPlayThrough, false);
-				video.addEventListener('load', vidControl.onCanPlayThrough, false); // add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
+			// if(video.readyState !== 4){ // HAVE_ENOUGH_DATA
+				video.addEventListener('canplaythrough', VidControl.onCanPlayThrough, false);
+				video.addEventListener('load', VidControl.onCanPlayThrough, false); // add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
 				video.pause();
-			}
+			// }
 		},
 
 		onCanPlayThrough: function(){
-			video.removeEventListener('canplaythrough', vidControl.onCanPlayThrough, false);
-			video.removeEventListener('load', vidControl.onCanPlayThrough, false);
+			video.removeEventListener('canplaythrough', VidControl.onCanPlayThrough, false);
+			video.removeEventListener('load', VidControl.onCanPlayThrough, false);
 			main.removeChild(preloader);
-			vidControl.slideOffscreen();
+			VidControl.slideOffscreen();
 			video.play();
 			playButton.innerHTML = "Pause";
 		}
@@ -216,12 +302,13 @@ var vidControl = (function(){
 })();
 
 
-
-
+// ------------------------- //
+// ---- REGISTER EVENTS ---- //
+// ------------------------- //
 
 (function(){
 
-	// Container, Preloader + Video
+	// Video
 	var video = document.getElementById("ch_video");	
 
 	// Play/Pause + Controls
@@ -239,54 +326,34 @@ var vidControl = (function(){
 	var volumeButton = document.getElementById("volume-icon"),
  		volumeBar = document.getElementById("volume-bar");
 
+ 	// Nav
  	var prev = document.getElementById("prev");
 	
 	// ---------------------- //
  	// ---- PLAY + PAUSE ---- //
  	// ---------------------- //
 
- 	video.addEventListener("click", function(evt) {
-		evt.preventDefault();
-		vidControl.playPause();
-	});
+ 	// ---- MOUSE EVENTS ---- //
 
-	playButton.addEventListener("click", function(evt) {
-		evt.preventDefault();
-		vidControl.playPause();
-	});
+ 	video.addEventListener("click", VidControl.playPause);
 
-	video.addEventListener("touchstart", function(evt) {
-		evt.preventDefault();
-		vidControl.playPause();
-	});
+	playButton.addEventListener("click", VidControl.playPause);
 
-	playButton.addEventListener("touchstart", function(evt) {
-		evt.preventDefault();
-		vidControl.playPause();
-	});
+	// ---- TOUCH EVENTS ---- //
 
-	// Spacebar control for play/pause
-	document.addEventListener('keydown', function(evt) {
-	    if (evt.keyCode == 32) {
-	    	evt.preventDefault();
-	    	if(video.paused == true && video.ended == false) {
-	    		vidControl.slideOffscreen();
-	    		video.play();
-	    		playButton.innerHTML = "Pause";
-	    	} 
-	    	else if(video.paused == true && video.ended == true){
-	    		playButton.innerHTML = "";
-	    	} else {
-	    		vidControl.slideOnscreen();
-	    		video.pause();
-	    		playButton.innerHTML = "Play";
-	    	}
-	    }
-	  }, false);
+	video.addEventListener("touchstart", VidControl.playPause);
+
+	playButton.addEventListener("touchstart", VidControl.playPause);
+
+	// ---- KEYBOARD EVENTS ---- //
+
+	document.addEventListener('keydown', VidControl.spaceDown, false);
 
 	// ----------------------- //
  	// ---- MUTE + VOLUME ---- //
  	// ----------------------- //
+
+ 	// ---- MOUSE EVENTS ---- //
 
 	volumeBar.style.display = "none";
 
@@ -301,28 +368,6 @@ var vidControl = (function(){
 			video.volume = volumeBar.value;
 			// volumeButton.innerHTML = "";
 		}
-	});
-
-	// Event listener for the mute button
-	volumeButton.addEventListener("touchstart", function() {
-		if (video.muted == false) {
-			video.muted = true;
-			volumeBar.value = 0;
-			//volumeButton.innerHTML = "Muted";
-		} else {
-			video.muted = false;
-			video.volume = volumeBar.value;
-			// volumeButton.innerHTML = "";
-		}
-	});
-
-	volumeBar.addEventListener("change", function() {
-		video.volume = volumeBar.value;
-		// if(video.volume === 0){
-		// 	video.muted = true;
-		// } else {
-		// 	video.muted = false;
-		// }
 	});
 
 	volumeButton.addEventListener("mouseenter", function() {
@@ -341,31 +386,43 @@ var vidControl = (function(){
 		volumeBar.style.display = "none";
 	});
 
+	// ---- TOUCH EVENTS ---- //
+
+	// Event listener for the mute button
+	volumeButton.addEventListener("touchstart", function() {
+		if (video.muted == false) {
+			video.muted = true;
+			volumeBar.value = 0;
+			//volumeButton.innerHTML = "Muted";
+		} else {
+			video.muted = false;
+			video.volume = volumeBar.value;
+			// volumeButton.innerHTML = "";
+		}
+	});
+
+	// ---- AUDIO EVENTS ---- //
+
+	volumeBar.addEventListener("change", function() {
+		video.volume = volumeBar.value;
+		// if(video.volume === 0){
+		// 	video.muted = true;
+		// } else {
+		// 	video.muted = false;
+		// }
+	});
+
 	// -------------------- //
  	// ---- FULLSCREEN ---- //
  	// -------------------- //
 
-	// Event listener for the full-screen button
-	fullScreenButton.addEventListener("click", function(evt) {
-		if (container.requestFullscreen) {
-			container.requestFullscreen();
-		} else if (container.mozRequestFullScreen) {
-			container.mozRequestFullScreen(); // Firefox
-		} else if (container.webkitRequestFullscreen) {
-			container.webkitRequestFullscreen(); // Chrome and Safari
-		}
-	});
+ 	// ---- MOUSE EVENTS ---- //
 
-	// Event listener for the full-screen button
-	fullScreenButton.addEventListener("touchstart", function(evt) {
-		if (container.requestFullscreen) {
-			container.requestFullscreen();
-		} else if (container.mozRequestFullScreen) {
-			container.mozRequestFullScreen(); // Firefox
-		} else if (container.webkitRequestFullscreen) {
-			container.webkitRequestFullscreen(); // Chrome and Safari
-		}
-	});
+	fullScreenButton.addEventListener("click", VidControl.enterFullscreen);
+
+	// ---- TOUCH EVENTS ---- //
+
+	fullScreenButton.addEventListener("touchstart", VidControl.enterFullscreen);
 
 	// ---------------------- //
  	// ---- PROGRESS BAR ---- //
@@ -380,28 +437,24 @@ var vidControl = (function(){
  	// preload attribute tests:
  	// http://www.stevesouders.com/blog/2013/04/12/html5-video-preload/
 
+ 	// ---- VIDEO EVENTS ---- //
+
  	// track the progress of the video + buffer
- 	video.addEventListener('progress', vidControl.trackProgress);
+ 	video.addEventListener('progress', VidControl.trackProgress);
 
 	// Update the progress bar as the video plays
-	video.addEventListener("timeupdate", vidControl.updateTime);
+	video.addEventListener("timeupdate", VidControl.updateTime);
 
-	// ---- CLICK EVENTS ---- //
+	// ---- MOUSE EVENTS ---- //
 
 	// Change progress bar position on mouse down + pause video
-	progressContainer.addEventListener("mousedown", function(evt) {
-		posX = evt.clientX;
-		vidControl.progressDown(posX);
-	});
+	progressContainer.addEventListener("mousedown", VidControl.handleProgressMouseDown);
 
 	// Change progress bar position as mouse moves
-	progressContainer.addEventListener("mousemove", function(evt){
-		posX = evt.clientX;
-		vidControl.progressMove(posX);
-	});
+	progressContainer.addEventListener("mousemove", VidControl.handleProgressMouseMove);
 
 	// Play the video when the slider handle is dropped
-	progressContainer.addEventListener("mouseup", vidControl.progressUp);
+	progressContainer.addEventListener("mouseup", VidControl.progressUp);
 
 	// Hide the time tooltip when mouse leave container
 	progressContainer.addEventListener("mouseleave", function(){
@@ -411,33 +464,30 @@ var vidControl = (function(){
 	// ---- TOUCH EVENTS ---- //
 
 	// Change progress bar position on mouse down + pause video
-	progressContainer.addEventListener("touchstart", function(evt) {
-		posX = evt.touches[0].clientX;
-		vidControl.progressDown(posX);
-	});
+	progressContainer.addEventListener("touchstart", VidControl.handleProgressTouchDown);
 
 	// Change progress bar position as mouse moves
-	progressContainer.addEventListener("touchmove", function(evt){
-		posX = evt.touches[0].clientX;
-		vidControl.progressMove(posX);
-	});
+	progressContainer.addEventListener("touchmove", VidControl.handleProgressTouchMove);
 
 	// Play the video when the slider handle is dropped
-	progressContainer.addEventListener("touchend", function(){
-		vidControl.progressUp();
-		time.style.display = "none";
-	});
+	progressContainer.addEventListener("touchend", VidControl.handleProgressTouchUp);
 	
 	// ---------------------------------- //
  	// ---- SHOW/HIDE NAV + CONTROLS ---- //
  	// ---------------------------------- //
 
-	video.addEventListener('mousemove', vidControl.handleMouseMove);
+ 	// ---- MOUSE EVENTS ---- //
 
-	video.addEventListener('touchstart', vidControl.handleMouseMove);
+	video.addEventListener('mousemove', VidControl.handleMouseMove);
+
+	// ---- TOUCH EVENTS ---- //
+
+	video.addEventListener('touchstart', VidControl.handleMouseMove);
+
+	// ---- VIDEO EVENTS ---- //
 
 	video.addEventListener('ended', function(){
-		vidControl.slideOnscreen();
+		VidControl.slideOnscreen();
 		playButton.innerHTML = "";
 		if(prev) {prev.style.left = "3%";}
 	});

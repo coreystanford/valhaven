@@ -788,14 +788,21 @@ nav {
         -webkit-align-content: column;
         align-content: column;
         padding-bottom: 2%;
+        overflow: auto;
       }
+
+        .inner-article > img {
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
 
         .left-art {
           width: 30%;
           padding: 2%;
         }
 
-          .left-art img {
+          .left-art > img {
             width: 100%;
           }
 
