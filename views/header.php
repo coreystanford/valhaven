@@ -32,7 +32,7 @@
 			
 			<span role="button" id="map-btn"><img src="<?php echo IMAGE_PATH; ?>icons/map.png"></span>
 
-			<img src="<?php echo IMAGE_PATH; ?>map.png">
+			<img src="<?php echo IMAGE_PATH; ?>map/map.png">
 
 		</div><!-- /map -->
 
