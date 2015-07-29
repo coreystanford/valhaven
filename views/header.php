@@ -43,10 +43,21 @@
 			<div id="notes">
 				
 				<ul id="note">
-					<li></li>
+					<li>Test text that is long enough to wrap around the edge of the sidebar slider.</li>
+					<li>Test for second list item.</li>
+					<li>Test for second list item.</li>
+					<li>Test for second list item.</li>
+					<li>Test for second list item.</li>
+					<li>Test for second list item.</li>
 				</ul>
 
 				<div id="lines">
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
 					<span class="line"></span>
 					<span class="line"></span>
 					<span class="line"></span>

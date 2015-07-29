@@ -242,6 +242,49 @@ nav {
     width: 90%;
   }
 
+  #notes {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    bottom: 10%;
+    left: 10%;
+    background: #fff;
+    overflow: auto;
+  }
+
+    #lines {
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      bottom: 10%;
+      left: 5%;
+    }
+
+      .line {
+        display: block;
+        width: 100%;
+        margin: 20px auto 0 auto;
+        border-bottom: 2px solid #7cb971;
+      }
+
+      .line:first-of-type {
+        width: 60%;
+        margin: 20px 0 27px 0;
+      }
+
+    #note {
+      position: absolute;
+      top: calc(10% + 27px);
+      right: 5%;
+      bottom: 10%;
+      left: 5%;
+    }
+
+      #note li {
+        line-height: 22px;
+        text-indent: 15px;
+      }
+
   #notebook-btn {
     position: absolute;
     top: 30%;
