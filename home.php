@@ -7,9 +7,12 @@
 		</div>
 	</div>
 
-	<button type="button" id="main-btn" class="btn">VISIT VALHAVEN</button>
-
-	<div id="home-bg"></div>
+	<div id="home-bg">
+		<div id="title-btn">
+			<img src="<?php echo IMAGE_PATH; ?>title.png">
+			<button type="button" id="main-btn" class="btn">VISIT VALHAVEN</button>
+		</div>
+	</div>
 
 	<div id="video-container" class="clearfix">
 

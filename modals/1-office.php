@@ -1,6 +1,6 @@
 <div class="modal-content clearfix" id="container-1">
 	
-	<button type="button" id="main-btn" class="btn">ACCEPT THE STORY</button>
+	<button type="button" id="next-btn" class="btn">ACCEPT STORY</button>
 
 </div>
 
@@ -9,7 +9,7 @@
 	(function(){
 
 		var container = document.getElementById('container-1');
-		var accept = document.getElementById('main-btn');
+		var accept = document.getElementById('next-btn');
 		var instructText = "<p>These are the instructions that tell the viewer that they are to be Layna from this point onward.</p>"
 
 		accept.addEventListener('click', function(){

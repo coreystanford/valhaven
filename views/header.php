@@ -40,7 +40,28 @@
 			
 			<span role="button" id="notebook-btn"><img src="<?php echo IMAGE_PATH; ?>icons/notebook.png"></span>
 
-			<img src="<?php echo IMAGE_PATH; ?>notes.jpg">
+			<div id="notes">
+				
+				<ul id="note">
+					<li></li>
+				</ul>
+
+				<div id="lines">
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+				</div>
+
+			</div>
 
 		</div><!-- /notebook -->
 

@@ -14,20 +14,20 @@
 	<div id="news-container">
 		
 		<div class="article" ref="0">
-			<img src="<?php echo IMAGE_PATH; ?>item1-thumb.jpg">
-			<h1>Look Out Kim and John, Sand's the Main Attraction</h1>
+			<img src="<?php echo IMAGE_PATH; ?>item1_thumb.jpg">
+			<!-- <h1>Look Out Kim and John, Sand's the Main Attraction</h1> -->
 		</div>
 		<div class="article" ref="1">
-			<img src="<?php echo IMAGE_PATH; ?>item2-thumb.jpg">
-			<h1>Fans Fine with Waiting in Line</h1>
+			<img src="<?php echo IMAGE_PATH; ?>item2_thumb.jpg">
+			<!-- <h1>Fans Fine with Waiting in Line</h1> -->
 		</div>
 		<div class="article" ref="2">
-			<img src="<?php echo IMAGE_PATH; ?>default-black.jpg">
-			<h1>Item Three</h1>
+			<img src="<?php echo IMAGE_PATH; ?>item3_thumb.jpg">
+			<!-- <h1>Item Three</h1> -->
 		</div>
 		<div class="article" ref="3">
-			<img src="<?php echo IMAGE_PATH; ?>default-black.jpg">
-			<h1>Item Four</h1>
+			<img src="<?php echo IMAGE_PATH; ?>item4_thumb.jpg">
+			<!-- <h1>Item Four</h1> -->
 		</div>
 		<div class="article" ref="4">
 			<img src="<?php echo IMAGE_PATH; ?>default-black.jpg">
@@ -141,7 +141,7 @@
 
 		<div id="next-ch" class="off article-bg"> 
 
-			<a id="main-btn" class="btn" href="<?php echo CH_PATH; ?>ch_1" type="button">NEXT CHAPTER</a>
+			<a id="next-btn" class="btn" href="<?php echo CH_PATH; ?>ch_1" type="button">NEXT CHAPTER</a>
 
 		</div>
 

@@ -291,23 +291,34 @@ nav {
   background-size: cover;
   background-position: 50%;
   position: fixed;
-  z-index: 13;
+  z-index: 23;
 }
 
-#main-btn {
-  position: absolute;
-  z-index: 16;
-  bottom: 30%;
-  left: 50%;
-  font-weight: 700;
-  -webkit-transform: translate(-50%, 50%);
-  -moz-transform: translate(-50%, 50%);
-  -ms-transform: translate(-50%, 50%);
-  -o-transform: translate(-50%, 50%);
-  transform: translate(-50%, 50%);
-  background: #f9eC23;
-  color: #58595b;
-}
+  #title-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+    #title-btn img {
+      width: 60%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    #title-btn button { /* AKA #main-btn */
+      margin: 0 auto;
+      background: #f9eC23;
+      color: #58595b;
+      letter-spacing: 2px;
+    }
 
 #next-btn {
   text-align: center;

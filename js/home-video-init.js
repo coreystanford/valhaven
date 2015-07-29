@@ -15,7 +15,6 @@
 	// notebook.style.display = 'none';
 
 	function playVideo(){
-		main.removeChild(homeBtn);
 		main.removeChild(homeBg);
 		video.play();
 		playButton.innerHTML = "Pause";
