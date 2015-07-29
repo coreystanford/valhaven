@@ -32,7 +32,19 @@
 			
 			<span role="button" id="map-btn"><img src="<?php echo IMAGE_PATH; ?>icons/map.png"></span>
 
-			<img src="<?php echo IMAGE_PATH; ?>map/map.png">
+			<div id="map-container">
+				
+				<img id="press" src="<?php echo IMAGE_PATH; ?>map/press.png">
+				<img id="hospital" src="<?php echo IMAGE_PATH; ?>map/hospital.png">
+				<img id="cdc" src="<?php echo IMAGE_PATH; ?>map/cdc.png">
+				<img id="apartment" src="<?php echo IMAGE_PATH; ?>map/apartment.png">
+				<img id="botanical" src="<?php echo IMAGE_PATH; ?>map/botanical.png">
+				<!-- <img id="office" src="<?php echo IMAGE_PATH; ?>map/office.png"> -->
+				<img id="home" src="<?php echo IMAGE_PATH; ?>map/home.png">
+
+				<img id="mapBackground" src="<?php echo IMAGE_PATH; ?>map/map-bg.png">
+
+			</div>
 
 		</div><!-- /map -->
 
