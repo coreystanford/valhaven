@@ -174,6 +174,8 @@ var VidControl = (function(){
 			time.style.left = posX + "px";
 			time.style.display = "block";
 
+			VidControl.slideOnscreen();
+
 			if(down){
 				moving = true;
 				
@@ -458,6 +460,7 @@ var VidControl = (function(){
 
 	// Hide the time tooltip when mouse leave container
 	progressContainer.addEventListener("mouseleave", function(){
+		VidControl.slideOffscreen();
 		time.style.display = "none";
 	});
 

@@ -111,6 +111,7 @@ main {
   -ms-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
+  overflow-y: hidden;
 }
 
 .btn {
@@ -558,6 +559,7 @@ nav {
       -moz-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
       transform: translateX(-50%);
+      cursor: default;
     }
 
       #time:after {
