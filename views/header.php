@@ -34,8 +34,8 @@
 
 			<div id="map-container">
 				
-				<img id="press" src="<?php echo IMAGE_PATH; ?>map/press.png">
-				<img id="hospital" src="<?php echo IMAGE_PATH; ?>map/hospital.png">
+				<img id="press" class="inactive" src="<?php echo IMAGE_PATH; ?>map/press.png">
+				<img id="hospital" class="visited" src="<?php echo IMAGE_PATH; ?>map/hospital.png">
 				<img id="cdc" src="<?php echo IMAGE_PATH; ?>map/cdc.png">
 				<img id="apartment" src="<?php echo IMAGE_PATH; ?>map/apartment.png">
 				<img id="botanical" src="<?php echo IMAGE_PATH; ?>map/botanical.png">
