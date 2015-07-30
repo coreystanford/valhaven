@@ -314,6 +314,7 @@ nav {
     left: 10%;
     background: #fff;
     overflow: auto;
+    font-family: 'Loved by the King', cursive;
   }
 
     #lines {
@@ -338,7 +339,7 @@ nav {
 
     #note {
       position: absolute;
-      top: calc(10% + 27px);
+      top: calc(10% + 30px);
       right: 5%;
       bottom: 10%;
       left: 5%;
@@ -898,6 +899,23 @@ nav {
   width: 31%;
   cursor: pointer;
   position: relative;
+}
+
+.article-next {
+  width: 31%;
+  position: relative;
+}
+
+.article-next a {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 100%;
+  height: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }
 
   .article img {

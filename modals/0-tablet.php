@@ -64,9 +64,8 @@
 				<img src="<?php echo IMAGE_PATH; ?>item5_thumb.png">
 				<!-- <h1>Item Five</h1> -->
 			</div>
-			<div class="article" ref="11">
-				<img src="<?php echo IMAGE_PATH; ?>default-black.jpg">
-				<h1>Item Six</h1>
+			<div class="article-next" ref="11" id="next-ch">
+				<a id="next-btn" class="btn" href="<?php echo CH_PATH; ?>ch_1" type="button">NEXT CHAPTER</a>
 			</div>
 
 		</div>
@@ -146,20 +145,8 @@
 			</div>
 			<button type="button" class="close-article">GO BACK</button>
 		</div>
-		<div class="off article-bg">
-			<div class="inner-article">
-				<img src="<?php echo IMAGE_PATH; ?>item5.png">
-			</div>
-			<button type="button" class="close-article">GO BACK</button>
-		</div>
 
 	</div>
-
-	<!-- <div id="next-ch" class="off article-bg"> 
-
-		<a id="next-btn" class="btn" href="<?php echo CH_PATH; ?>ch_1" type="button">NEXT CHAPTER</a>
-
-	</div> -->
 
 	<div id="tabNext" class="nextPrev tabNext">
 		<img type="button" src="<?php echo IMAGE_PATH; ?>tabRight.png">
@@ -193,33 +180,37 @@
 
 			for (var i = 0; i < articles.children[v].children.length; i++) {
 
-				articles.children[v].children[i].addEventListener('click', function(e){
-					
-					e.preventDefault();
-					var ref = this.getAttribute('ref');
-					contents.children[ref].setAttribute('class', 'article-bg');
+				if(articles.children[v].children[i] != articles.children[1].children[5]){
 
-					var close = document.getElementsByClassName('close-article');
-					close[ref].addEventListener("click", function(e){
+					articles.children[v].children[i].addEventListener('click', function(e){
+						
 						e.preventDefault();
-						this.parentNode.setAttribute('class', 'off article-bg');
+						var ref = this.getAttribute('ref');
+						contents.children[ref].setAttribute('class', 'article-bg');
+
+						var close = document.getElementsByClassName('close-article');
+						close[ref].addEventListener("click", function(e){
+							e.preventDefault();
+							this.parentNode.setAttribute('class', 'off article-bg');
+						});
+
 					});
 
-				});
+					articles.children[v].children[i].addEventListener('touchstart', function(){
 
-				articles.children[v].children[i].addEventListener('touchstart', function(){
-
-					e.preventDefault();
-					var ref = this.getAttribute('ref');
-					contents.children[ref].setAttribute('class', 'article-bg');
-
-					var close = document.getElementsByClassName('close-article');
-					close[ref].addEventListener("touchstart", function(e){
 						e.preventDefault();
-						this.parentNode.setAttribute('class', 'off article-bg');
+						var ref = this.getAttribute('ref');
+						contents.children[ref].setAttribute('class', 'article-bg');
+
+						var close = document.getElementsByClassName('close-article');
+						close[ref].addEventListener("touchstart", function(e){
+							e.preventDefault();
+							this.parentNode.setAttribute('class', 'off article-bg');
+						});
+						
 					});
-					
-				});
+
+				}
 
 			}
 

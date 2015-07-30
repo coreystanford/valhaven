@@ -11,6 +11,7 @@
 	<meta property="og:description" content="<?php echo $description; ?>">
 	<!-- <link rel="icon" type="image/png" href="favicon.ico"> -->
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Loved+by+the+King' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>main.css">
 	<script src="<?php echo JS_PATH; ?>jquery-1.11.3.min.js" type="text/javascript"></script>
 	<script src="<?php echo JS_PATH; ?>modernizr.js" type="text/javascript"></script>
