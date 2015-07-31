@@ -163,6 +163,24 @@
 	
 	(function(){
 
+		var mapContainer = document.getElementById('map-container');
+		var press = document.getElementById('press');
+		var hospital = document.getElementById('hospital');
+		var cdc = document.getElementById('cdc');
+		var botanical = document.getElementById('botanical');
+		var apartment = document.getElementById('apartment');
+		var home = document.getElementById('home');
+
+		for(var i = 0; i < mapContainer.children.length - 1; i++){
+
+			if( !Map.hasClass(mapContainer.children[i], "visited") ){
+
+				mapContainer.children[i].setAttribute('class', 'inactive');
+
+			}
+
+		}
+
 		var app = document.getElementById("newsapp");
 		var articles = document.getElementById('news-container');
 		var contents = document.getElementById('articles');

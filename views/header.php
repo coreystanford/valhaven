@@ -35,8 +35,8 @@
 
 			<div id="map-container">
 				
-				<img id="press" class="inactive" src="<?php echo IMAGE_PATH; ?>map/press.png">
-				<img id="hospital" class="visited" src="<?php echo IMAGE_PATH; ?>map/hospital.png">
+				<img id="press" src="<?php echo IMAGE_PATH; ?>map/press.png">
+				<img id="hospital" src="<?php echo IMAGE_PATH; ?>map/hospital.png">
 				<img id="cdc" src="<?php echo IMAGE_PATH; ?>map/cdc.png">
 				<img id="apartment" src="<?php echo IMAGE_PATH; ?>map/apartment.png">
 				<img id="botanical" src="<?php echo IMAGE_PATH; ?>map/botanical.png">
@@ -56,12 +56,7 @@
 			<div id="notes">
 				
 				<ul id="note">
-					<li>Test text that is long enough to wrap around the edge of the sidebar slider.</li>
-					<li>Test for second list item.</li>
-					<li>Test for second list item.</li>
-					<li>Test for second list item.</li>
-					<li>Test for second list item.</li>
-					<li>Test for second list item.</li>
+
 				</ul>
 
 				<div id="lines">

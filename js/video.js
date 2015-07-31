@@ -201,6 +201,11 @@ var VidControl = (function(){
 			VidControl.slideOffscreen();
 		},
 
+		progressLeave: function(){
+			VidControl.slideOffscreen();
+			time.style.display = "none";
+		},
+
 		// ---- SIDEBARS, CONTROLS + NAV TIMEOUT ---- //
 
 		timeout: null,
@@ -459,10 +464,7 @@ var VidControl = (function(){
 	progressContainer.addEventListener("mouseup", VidControl.progressUp);
 
 	// Hide the time tooltip when mouse leave container
-	progressContainer.addEventListener("mouseleave", function(){
-		VidControl.slideOffscreen();
-		time.style.display = "none";
-	});
+	progressContainer.addEventListener("mouseleave", VidControl.progressLeave);
 
 	// ---- TOUCH EVENTS ---- //
 

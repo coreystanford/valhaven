@@ -12,6 +12,28 @@
 		var accept = document.getElementById('next-btn');
 		var instructText = "<p>These are the instructions that tell the viewer that they are to be Layna from this point onward.</p>"
 
+		var mapContainer = document.getElementById('map-container');
+		var press = document.getElementById('press');
+		var hospital = document.getElementById('hospital');
+		var cdc = document.getElementById('cdc');
+		var botanical = document.getElementById('botanical');
+		var apartment = document.getElementById('apartment');
+		var home = document.getElementById('home');
+
+		botanical.setAttribute('class', 'inactive');
+		apartment.setAttribute('class', 'inactive');
+		home.setAttribute('class', 'inactive');
+
+		for(var i = 0; i < mapContainer.children.length - 1; i++){
+
+			if( !Map.hasClass(mapContainer.children[i], "visited") ){
+
+				mapContainer.children[i].setAttribute('class', 'inactive');
+
+			}
+
+		}
+
 		accept.addEventListener('click', function(){
 
 			container.removeChild(accept);
