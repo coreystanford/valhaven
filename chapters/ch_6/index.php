@@ -29,10 +29,10 @@
     // ----------------------------- //
 
     $title = "Chapter 6";
-    $description = "This is a description of the chapter.";
+    $description = "This is a description of chapter.";
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
 
-    $modal = "6-office.php"; // name of the modal window file located in ./modals/
+    $modal = "6-final.php"; // name of the modal window file located in ./modals/
 
     $prev = "ch_5";
     $next = "ch_7";
@@ -51,9 +51,9 @@
         case 'default':
 
             $poster = "valhaven.jpg"; // default video background for this chapter
-            $webm = "_DSC0007_1.webm"; // webm video file for this chapter
-            $mp4 = "_DSC0007_1.mp4"; // mp4 video file for this chapter
-            $ogv = "_DSC0007_1.ogv"; // ogv video file for this chapter
+            $webm = "sample.webm"; // webm video file for this chapter
+            $mp4 = "sample.mp4"; // mp4 video file for this chapter
+            $ogv = "sample.ogv"; // ogv video file for this chapter
 
             include 'ch_6.php';
 

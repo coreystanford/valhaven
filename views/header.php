@@ -16,7 +16,7 @@
 	<script src="<?php echo JS_PATH; ?>jquery-1.11.3.min.js" type="text/javascript"></script>
 	<script src="<?php echo JS_PATH; ?>modernizr.js" type="text/javascript"></script>
 </head><!-- /head -->
-<body>
+<body id="body">
 
 	<header id="header" class="" role="banner">
 		

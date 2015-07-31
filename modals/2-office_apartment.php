@@ -181,13 +181,10 @@
 
 			}
 
-			// Sliders.showMap();
-			// Sliders.hideNotebook();
-
-			if(visited.length === 3){
+			if(visited.length >= 3){
 				apartment.setAttribute('class', '');
 				apartment.addEventListener('click', function(){
-					window.location = "/valhaven/chapters/ch_3/";
+					window.location = "/chapters/ch_2/";
 				});
 			}
 

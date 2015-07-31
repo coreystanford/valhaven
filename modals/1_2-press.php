@@ -37,10 +37,10 @@
 			var visited = []; 
 		}
 
-		if(visited.length === 3){
+		if(visited.length >= 3 && !Map.hasClass(apartment, "visited")){
 			apartment.setAttribute('class', '');
 			apartment.addEventListener('click', function(){
-				window.location = "/valhaven/chapters/ch_3/";
+				window.location = "/chapters/ch_2/";
 			});
 		}
 
@@ -81,8 +81,6 @@
 
 				}
 
-
-
 			}
 
 			Sliders.showMap();
@@ -90,10 +88,10 @@
 
 			Map.removeVideoEvents();
 
-			if(visited.length === 3){
+			if(visited.length >= 3){
 				apartment.setAttribute('class', '');
 				apartment.addEventListener('click', function(){
-					window.location = "/valhaven/chapters/ch_3/";
+					window.location = "/chapters/ch_2/";
 				});
 			}
 

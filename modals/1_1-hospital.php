@@ -8,6 +8,11 @@
 	
 	(function(){
 
+		var body = document.getElementById('body');
+		var modal = document.getElementById('modal');
+
+		body.removeChild(modal);
+
 		var mapContainer = document.getElementById('map-container');
 		var video = document.getElementById("ch_video");
 		var press = document.getElementById('press');
@@ -37,10 +42,10 @@
 			var visited = []; 
 		}
 
-		if(visited.length === 3){
+		if(visited.length >= 3){
 			apartment.setAttribute('class', '');
 			apartment.addEventListener('click', function(){
-				window.location = "/valhaven/chapters/ch_3/";
+				window.location = "/chapters/ch_2/";
 			});
 		}
 
@@ -85,13 +90,13 @@
 
 			Sliders.showMap();
 			Sliders.hideNotebook();
-			
+
 			Map.removeVideoEvents();
 
-			if(visited.length === 3){
+			if(visited.length >= 3){
 				apartment.setAttribute('class', '');
 				apartment.addEventListener('click', function(){
-					window.location = window.location.hostname + "/chapters/ch_3/";
+					window.location = "/chapters/ch_2/";
 				});
 			}
 
