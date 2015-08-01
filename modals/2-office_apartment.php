@@ -184,7 +184,7 @@
 			if(visited.length >= 3){
 				apartment.setAttribute('class', '');
 				apartment.addEventListener('click', function(){
-					window.location = "/chapters/ch_2/";
+					window.location = "/valhaven/chapters/ch_2/";
 				});
 			}
 

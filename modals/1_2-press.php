@@ -1,12 +1,27 @@
 <div class="modal-content red-bg">
 	
-	<h1>Press Conference</h1>
+	<ul id="questions">
+		<li ref="94"><h4>WHEN DID PEOPLE BEGIN TO SHOW SYMPTOMS?</h4></li>
+		<li ref="101.2"><h4>WHAT IS THE CURRENT DEATH TOLL?</h4></li>
+		<li ref="108.2"><h4>HAS THE COUNTRY VER EXPERIENCED ANYTHING LIKE THIS BEFORE?</h4></li>
+		<li ref="137"><h4>WHAT ARE THE PROTOCOLS FOR FRONTLINE WORKERS?</h4></li>
+		<li ref="123"><h4>HAVE ANY OTHER AREAS BEEN AFFECTED?</h4></li>
+	</ul>
+
+	<h1 id="quNum">YOU CAN ASK 2 QUESTIONS</h1>
 
 </div>
 
 <script>
 	
 	(function(){
+
+		var body = document.getElementById('body');
+		var modal = document.getElementById('modal');
+		var playButton = document.getElementById("play-pause");
+		var progressContainer = document.getElementById("progress-container");
+		var questions = document.getElementById('questions');
+		var asked = 0;
 
 		var mapContainer = document.getElementById('map-container');
 		var video = document.getElementById("ch_video");
@@ -20,6 +35,11 @@
 		botanical.setAttribute('class', 'inactive');
 		apartment.setAttribute('class', 'inactive');
 		home.setAttribute('class', 'inactive');
+
+		// progressContainer.removeEventListener("mousedown", VidControl.handleProgressMouseDown);
+		// progressContainer.removeEventListener("touchstart", VidControl.handleProgressTouchDown);
+
+		progressContainer.style.opacity = "0.5";
 
 		for(var i = 0; i < mapContainer.children.length - 1; i++){
 
@@ -40,11 +60,63 @@
 		if(visited.length >= 3 && !Map.hasClass(apartment, "visited")){
 			apartment.setAttribute('class', '');
 			apartment.addEventListener('click', function(){
-				window.location = "/chapters/ch_2/";
+				window.location = "/valhaven/chapters/ch_2/";
 			});
 		}
 
+		video.addEventListener("timeupdate", checkTime);	
+
+		function checkTime(){ // ending @ 160
+			if((video.currentTime > 93 && video.currentTime < 93.9) || 
+				(video.currentTime > 100.6 && video.currentTime < 101) ||
+				(video.currentTime > 107.6 && video.currentTime < 108) ||
+				(video.currentTime > 122.2 && video.currentTime < 122.9 ||
+				(video.currentTime > 136 && video.currentTime < 136.9) ||
+				(video.currentTime > 158 && video.currentTime < 158.9))){
+					video.pause();
+					// playButton.innerHTML = "Play";
+					// VidControl.slideOnscreen();
+
+					modal.style.left = 0;
+					modal.style.right = 0;
+			}
+		}
+
+		// Qu 1: 94
+		// Qu 2: 101.2
+		// Qu 3: 108.2
+		// Qu 4: 137
+		// Qu 5: 123
+
+		// var startTimes = [94,101.2,108.2,137,123];
+		for(var i = 0; i < questions.children.length; i++ ){
+			questions.children[i].addEventListener('click', function(){
+				var start = this.getAttribute('ref');
+				playQuestion(start);
+			});
+		}
+
+		function playQuestion(time){
+			video.currentTime = time;
+			modal.style.left = "-9999px";
+			modal.style.right = "-9999px";
+			video.play();
+			quAsked();
+		}
+
+		function quAsked(){
+			asked++;
+			if(asked > 2){
+
+
+
+			}
+
+		}
+
 		video.addEventListener('ended', function(){
+
+			body.removeChild(modal);
 
 			if(localStorage.getItem( 'notes' )){
 				var storedNotes = JSON.parse( localStorage.getItem( 'notes' ) );
@@ -91,7 +163,7 @@
 			if(visited.length >= 3){
 				apartment.setAttribute('class', '');
 				apartment.addEventListener('click', function(){
-					window.location = "/chapters/ch_2/";
+					window.location = "/valhaven/chapters/ch_2/";
 				});
 			}
 

@@ -223,6 +223,34 @@ nav {
       cursor: pointer;
     }
 
+      /*#press:hover:before {
+        background: #333;
+        background: rgba(0,0,0,.8);
+        border-radius: 5px;
+        bottom: 48px;
+        color: #000;
+        content: attr(title);
+        left: -15%;
+        padding: 0 10px;
+        position: absolute;
+        z-index: 300;
+        min-width: 150px;
+        width: auto;
+        height: auto;
+        line-height: 30px;
+      }
+
+      #press:hover:after {
+        border: solid;
+        border-color: #111 transparent;
+        border-width: 6px 6px 0 6px;
+        bottom: 42px;
+        content: "";
+        left: 40%;
+        position: absolute;
+        z-index: 300;
+      }*/
+
     #hospital {
       position: absolute;
       width: 25%;
@@ -270,15 +298,15 @@ nav {
     }
 
   img.visited {
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    filter: gray;
-    filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='greyscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale");
+    opacity: 0.5;
     cursor: default!important;
   }
 
   img.inactive {
-    opacity: 0.5;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
+    filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='greyscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale");
     cursor: default!important;
   }
 

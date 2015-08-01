@@ -63,9 +63,9 @@
             $modal = "1_1-hospital.php"; // name of the modal window file located in ./modals/
 
             $poster = "valhaven.jpg"; // default video background for this chapter
-            $webm = "sample.webm"; // webm video file for this chapter
-            $mp4 = "sample.mp4"; // mp4 video file for this chapter
-            $ogv = "sample.ogv"; // ogv video file for this chapter
+            $webm = "ch_1-1.webm"; // webm video file for this chapter
+            $mp4 = "ch_1-1.mp4"; // mp4 video file for this chapter
+            $ogv = "ch_1-1.ogv"; // ogv video file for this chapter
 
             $prev = "ch_1";
 
@@ -78,9 +78,9 @@
             $modal = "1_2-press.php"; // name of the modal window file located in ./modals/
 
             $poster = "valhaven.jpg"; // default video background for this chapter
-            $webm = "sample.webm"; // webm video file for this chapter
-            $mp4 = "sample.mp4"; // mp4 video file for this chapter
-            $ogv = "sample.ogv"; // ogv video file for this chapter
+            $webm = "ch_1-2.webm"; // webm video file for this chapter
+            $mp4 = "ch_1-2.mp4"; // mp4 video file for this chapter
+            $ogv = "ch_1-2.ogv"; // ogv video file for this chapter
 
             $prev = "ch_1";
 
