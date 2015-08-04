@@ -103,6 +103,21 @@
 
         break;
 
+        case 'flashback':
+
+            $modal = "1_4-flashback.php"; // name of the modal window file located in ./modals/
+
+            $poster = "valhaven.jpg"; // default video background for this chapter
+            $webm = "sample.webm"; // webm video file for this chapter
+            $mp4 = "sample.mp4"; // mp4 video file for this chapter
+            $ogv = "sample.ogv"; // ogv video file for this chapter
+
+            $prev = "ch_1";
+
+            include 'ch_1.php';
+
+        break;
+
         case 'return':
 
             include HEADER;

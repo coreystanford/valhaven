@@ -1,16 +1,14 @@
-<div class="modal-content red-bg">
 	
-	<ul id="questions">
-		<li ref="94"><h4>WHEN DID PEOPLE BEGIN TO SHOW SYMPTOMS?</h4></li>
-		<li ref="101.2"><h4>WHAT IS THE CURRENT DEATH TOLL?</h4></li>
-		<li ref="108.2"><h4>HAS THE COUNTRY VER EXPERIENCED ANYTHING LIKE THIS BEFORE?</h4></li>
-		<li ref="137"><h4>WHAT ARE THE PROTOCOLS FOR FRONTLINE WORKERS?</h4></li>
-		<li ref="123"><h4>HAVE ANY OTHER AREAS BEEN AFFECTED?</h4></li>
-	</ul>
+<ul id="questions">
+	<li id="qu1"ref="94"><h4>WHEN DID PEOPLE BEGIN TO SHOW SYMPTOMS?</h4></li>
+	<li id="qu2"ref="101.2"><h4>WHAT IS THE CURRENT DEATH TOLL?</h4></li>
+	<li id="qu3"ref="108.2"><h4>HAS THE COUNTRY EVER EXPERIENCED ANYTHING LIKE THIS BEFORE?</h4></li>
+	<li id="qu4"ref="137"><h4>WHAT ARE THE PROTOCOLS FOR FRONTLINE WORKERS?</h4></li>
+	<li id="qu5"ref="123"><h4>HAVE ANY OTHER AREAS BEEN AFFECTED?</h4></li>
+</ul>
 
-	<h1 id="quNum">YOU CAN ASK 2 QUESTIONS</h1>
+<h1 id="quNum">YOU CAN ASK 2 QUESTIONS</h1>
 
-</div>
 
 <script>
 	
@@ -51,19 +49,6 @@
 
 		}
 
-		if(localStorage.getItem( 'visited' )){
-			var visited = JSON.parse( localStorage.getItem( 'visited' ) );
-		} else {
-			var visited = []; 
-		}
-
-		if(visited.length >= 3 && !Map.hasClass(apartment, "visited")){
-			apartment.setAttribute('class', '');
-			apartment.addEventListener('click', function(){
-				window.location = "/valhaven/chapters/ch_2/";
-			});
-		}
-
 		video.addEventListener("timeupdate", checkTime);	
 
 		function checkTime(){ // ending @ 160
@@ -97,26 +82,27 @@
 		}
 
 		function playQuestion(time){
-			video.currentTime = time;
+			asked++;
+			if(asked > 2){
+				video.currentTime = 160;
+			} else {
+				video.currentTime = time;
+			}
 			modal.style.left = "-9999px";
 			modal.style.right = "-9999px";
 			video.play();
-			quAsked();
-		}
-
-		function quAsked(){
-			asked++;
-			if(asked > 2){
-
-
-
-			}
-
 		}
 
 		video.addEventListener('ended', function(){
 
 			body.removeChild(modal);
+
+
+			if(localStorage.getItem( 'visited' )){
+				var visited = JSON.parse( localStorage.getItem( 'visited' ) );
+			} else {
+				var visited = []; 
+			}
 
 			if(localStorage.getItem( 'notes' )){
 				var storedNotes = JSON.parse( localStorage.getItem( 'notes' ) );
@@ -161,10 +147,8 @@
 			Map.removeVideoEvents();
 
 			if(visited.length >= 3){
-				apartment.setAttribute('class', '');
-				apartment.addEventListener('click', function(){
-					window.location = "/valhaven/chapters/ch_2/";
-				});
+				var cleanHREF = window.location.href.split("?");
+				window.location.href = cleanHREF[0] + "?action=flashback";
 			}
 
 		});

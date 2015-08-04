@@ -36,20 +36,13 @@
 
 		}
 
-		if(localStorage.getItem( 'visited' )){
-			var visited = JSON.parse( localStorage.getItem( 'visited' ) );
-		} else {
-			var visited = []; 
-		}
-
-		if(visited.length >= 3){
-			apartment.setAttribute('class', '');
-			apartment.addEventListener('click', function(){
-				window.location = "/valhaven/chapters/ch_2/";
-			});
-		}
-
 		video.addEventListener('ended', function(){
+
+			if(localStorage.getItem( 'visited' )){
+				var visited = JSON.parse( localStorage.getItem( 'visited' ) );
+			} else {
+				var visited = []; 
+			}
 
 			if(localStorage.getItem( 'notes' )){
 				var storedNotes = JSON.parse( localStorage.getItem( 'notes' ) );
@@ -94,10 +87,8 @@
 			Map.removeVideoEvents();
 
 			if(visited.length >= 3){
-				apartment.setAttribute('class', '');
-				apartment.addEventListener('click', function(){
-					window.location = "/valhaven/chapters/ch_2/";
-				});
+				var cleanHREF = window.location.href.split("?");
+				window.location.href = cleanHREF[0] + "?action=flashback";
 			}
 
 		});

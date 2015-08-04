@@ -24,19 +24,19 @@
 				<h1>Fans Fine with Lines</h1>
 			</div>
 			<div class="article" ref="2">
-				<img src="<?php echo IMAGE_PATH; ?>item3_thumb.jpg">
-				<h1>From Alone Home to Alone</h1>
-			</div>
-			<div class="article" ref="3">
 				<img src="<?php echo IMAGE_PATH; ?>item4_thumb.jpg">
 				<h1>Old Spin on a New Album</h1>
 			</div>
-			<div class="article" ref="4">
+			<div class="article" ref="3">
 				<img src="<?php echo IMAGE_PATH; ?>item5_thumb.png">
 			</div>
-			<div class="article" ref="5">
+			<div class="article" ref="4">
 				<img src="<?php echo IMAGE_PATH; ?>item6_thumb.jpg">
 				<h1>Carnival</h1>
+			</div>
+			<div class="article" ref="5">
+				<img src="<?php echo IMAGE_PATH; ?>item7_thumb.jpg">
+				<h1>Dog Saves Man</h1>
 			</div>
 
 		</div>
@@ -44,20 +44,20 @@
 		<div class="page">
 			
 			<div class="article" ref="6">
-				<img src="<?php echo IMAGE_PATH; ?>item7_thumb.jpg">
-				<h1>Dog Saves Man</h1>
-			</div>
-			<div class="article" ref="7">
 				<img src="<?php echo IMAGE_PATH; ?>item8_thumb.jpg">
 				<h1>Mystery Illness</h1>
 			</div>
-			<div class="article" ref="8">
+			<div class="article" ref="7">
 				<img src="<?php echo IMAGE_PATH; ?>item9_thumb.jpg">
 				<h1>Red Crowe FC</h1>
 			</div>
-			<div class="article" ref="9">
+			<div class="article" ref="8">
 				<img src="<?php echo IMAGE_PATH; ?>item10_thumb.jpg">
 				<h1>Val Tea</h1>
+			</div>
+			<div class="article" ref="9">
+				<img src="<?php echo IMAGE_PATH; ?>item10_thumb.jpg">
+				<h1>Item Five</h1>
 			</div>
 			<div class="article" ref="10">
 				<img src="<?php echo IMAGE_PATH; ?>item10_thumb.jpg">
@@ -93,12 +93,6 @@
 		</div>
 		<div class="off article-bg">
 			<div class="inner-article">
-				<img src="<?php echo IMAGE_PATH; ?>item3.jpg">
-			</div>
-			<button type="button" class="close-article">GO BACK</button>
-		</div>
-		<div class="off article-bg">
-			<div class="inner-article">
 				<img src="<?php echo IMAGE_PATH; ?>item4.jpg">
 			</div>
 			<button type="button" class="close-article">GO BACK</button>
@@ -115,6 +109,17 @@
 					<source  src="<?php echo VIDEO_PATH; ?>item6.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ><!-- List MP4 First - Server issue -->	
 					<source  src="<?php echo VIDEO_PATH; ?>item6.webm" type='video/webm; codecs="vp8, vorbis"'>
 					<source src="<?php echo VIDEO_PATH; ?>item6.ogv" type='video/ogg; codecs="theora, vorbis"'>
+					<p class="update_browser">Your browser is too old to support the features of this website.  Please update your browser.</p>
+				</video>
+			</div>
+			<button type="button" class="close-article">GO BACK</button>
+		</div>
+		<div class="off article-bg">
+			<div class="inner-article">
+				<video controls preload="none">
+					<source  src="<?php echo VIDEO_PATH; ?>item7.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ><!-- List MP4 First - Server issue -->	
+					<source  src="<?php echo VIDEO_PATH; ?>item7.webm" type='video/webm; codecs="vp8, vorbis"'>
+					<source src="<?php echo VIDEO_PATH; ?>item7.ogv" type='video/ogg; codecs="theora, vorbis"'>
 					<p class="update_browser">Your browser is too old to support the features of this website.  Please update your browser.</p>
 				</video>
 			</div>
@@ -175,6 +180,12 @@
 <script>
 	
 	(function(){
+
+		var map = document.getElementById('map');
+		var notebook = document.getElementById('notebook');
+
+		map.style.display = 'none';
+		notebook.style.display = 'none';
 
 		var mapContainer = document.getElementById('map-container');
 		var press = document.getElementById('press');

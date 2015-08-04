@@ -8,6 +8,12 @@
 	
 	(function(){
 
+		var map = document.getElementById('map');
+		var notebook = document.getElementById('notebook');
+
+		map.style.display = 'none';
+		notebook.style.display = 'none';
+
 		var modal = document.getElementById('modal');
 		var container = document.getElementById('container-1');
 		var accept = document.getElementById('next-btn');
@@ -35,18 +41,20 @@
 
 		}
 
-		if(localStorage.getItem( 'visited' )){
-			var visited = JSON.parse( localStorage.getItem( 'visited' ) );
-		} else {
-			var visited = []; 
-		}
+		video.addEventListener('ended', function(){
 
-		if(visited.length >= 3){
-			apartment.setAttribute('class', '');
-			apartment.addEventListener('click', function(){
-				window.location = "/valhaven/chapters/ch_2/";
-			});
-		}
+			if(localStorage.getItem( 'visited' )){
+				var visited = JSON.parse( localStorage.getItem( 'visited' ) );
+			} else {
+				var visited = []; 
+			}
+
+			if(visited.length >= 3){
+				var cleanHREF = window.location.href.split("?");
+				window.location.href = cleanHREF[0] + "?action=flashback";
+			}
+
+		});
 
 		accept.addEventListener('click', function(){
 
@@ -69,6 +77,9 @@
 			nextCh.setAttribute("id", "next-btn");
 			nextCh.setAttribute("class", "btn");
 			instruct.appendChild(nextCh);
+
+			map.style.display = 'block';
+			notebook.style.display = 'block';
 
 			nextCh.addEventListener('click', function(){
 

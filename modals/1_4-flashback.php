@@ -1,6 +1,6 @@
 <div class="modal-content red-bg">
 	
-	<h1>CDC</h1>
+	<h1>Flashback</h1>
 
 </div>
 
@@ -36,32 +36,20 @@
 
 		}
 
+		if(localStorage.getItem( 'visited' )){
+			var visited = JSON.parse( localStorage.getItem( 'visited' ) );
+		} else {
+			var visited = []; 
+		}
+
+		if(visited.length >= 3){
+			apartment.setAttribute('class', '');
+			apartment.addEventListener('click', function(){
+				window.location = "/valhaven/chapters/ch_2/";
+			});
+		}
+
 		video.addEventListener('ended', function(){
-
-			if(localStorage.getItem( 'visited' )){
-				var visited = JSON.parse( localStorage.getItem( 'visited' ) );
-			} else {
-				var visited = []; 
-			}
-
-			if(localStorage.getItem( 'notes' )){
-				var storedNotes = JSON.parse( localStorage.getItem( 'notes' ) );
-			} else {
-				var storedNotes = []; 
-			}
-			
-			var isAbsent = true;
-			for(var i = 0; i < visited.length; i++){
-				if(visited[i] === "cdc"){
-					isAbsent = false;
-				}
-			}
-			if(isAbsent){
-				visited.push("cdc");
-				localStorage.setItem( 'visited', JSON.stringify(visited) );
-				storedNotes.push("NOT HELPFUL AT ALL! (I should send in a complaint!)");
-				localStorage.setItem( 'notes', JSON.stringify(storedNotes) );
-			}
 
 			for(var v = 0; v < visited.length; v++){
 
@@ -86,10 +74,10 @@
 
 			Map.removeVideoEvents();
 
-			if(visited.length >= 3){
-				var cleanHREF = window.location.href.split("?");
-				window.location.href = cleanHREF[0] + "?action=flashback";
-			}
+			apartment.setAttribute('class', '');
+			apartment.addEventListener('click', function(){
+				window.location = "/valhaven/chapters/ch_2/";
+			});
 
 		});
 

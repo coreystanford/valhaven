@@ -137,7 +137,7 @@ nav {
   position: absolute;
   top: 5%;
   left: 3%;
-  z-index: 21;
+  z-index: 24;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
   -ms-transition-duration: 0.5s;
@@ -188,14 +188,9 @@ nav {
 
   #map-container {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 80%;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
 
   #mapBackground {
@@ -217,9 +212,9 @@ nav {
 
     #press {
       position: absolute;
-      width: 25%;
-      top: 25%;
-      left: 33%;
+      width: 18%;
+      top: 38%;
+      left: 46%;
       cursor: pointer;
     }
 
@@ -253,33 +248,33 @@ nav {
 
     #hospital {
       position: absolute;
-      width: 25%;
-      top: 10%;
-      left: 60%;
+      width: 18%;
+      top: 30%;
+      left: 14%;
       cursor: pointer;
     }
 
     #cdc {
       position: absolute;
-      width: 25%;
-      top: 8%;
-      left: 25%;
+      width: 16%;
+      top: 15%;
+      left: 34%;
       cursor: pointer;
     }
 
     #apartment {
       position: absolute;
-      width: 30%;
-      top: 65%;
-      left: 60%;
+      width: 16%;
+      top: 58%;
+      left: 62%;
       cursor: pointer;
     }
 
     #botanical {
       position: absolute;
-      width: 25%;
-      top: 40%;
-      left: 65%;
+      width: 17%;
+      top: 31%;
+      left: 64.5%;
       cursor: pointer;
     }
 
@@ -291,9 +286,9 @@ nav {
 
     #home {
       position: absolute;
-      width: 25%;
-      top: 50%;
-      left: 15%;
+      width: 16%;
+      top: 52%;
+      left: 36%;
       cursor: pointer;
     }
 
@@ -406,7 +401,7 @@ nav {
   position: absolute;
   bottom: 5%;
   left: 3%;
-  z-index: 15;
+  z-index: 24;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
   -ms-transition-duration: 0.5s;
@@ -433,7 +428,7 @@ nav {
 
 #home-bg {
   width: 100%;
-  background: url('../images/valhaven.jpg') no-repeat;
+  background: url('../images/valhaven.png') no-repeat;
   background-size: cover;
   background-position: 50%;
   position: fixed;
@@ -989,10 +984,10 @@ nav {
 
     .inner-article {
       position: absolute;
-      top: 5%;
-      right: 3%;
-      bottom: 20%;
-      left: 3%;
+      top: 0;
+      right: 0;
+      bottom: 15%;
+      left: 0;
       color: #000;
       background: #fff;
       overflow-y: auto;
@@ -1099,6 +1094,66 @@ nav {
     padding: 10px;
   }
 
+/* ---- MODAL - PRESS ---- */
+
+#questions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 20%;
+  left: 0;
+}
+
+  #questions li {
+    border-radius: 10px;
+    padding: 10px;
+    background: #505050;
+    color: #fff;
+    width: 25%;
+    min-width: 200px;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  #qu1 {
+    top: 20%;
+    left: 10%;
+  }
+
+  #qu2 {
+    top: 45%;
+    left: 10%;
+  }
+
+  #qu3 {
+    top: 20%;
+    right: 10%;
+  }
+
+  #qu4 {
+    top: 45%;
+    right: 10%;
+  }
+
+  #qu5 {
+    top: 70%;
+    right: 10%;
+  }
+
+#quNum {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: auto;
+  padding: 10px 40px;
+  background: #fff;
+  color: #505050;
+  text-align: center;
+}
 
 /* ---- Animations ---- */
 
