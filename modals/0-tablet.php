@@ -190,6 +190,7 @@
 		var mapContainer = document.getElementById('map-container');
 		var press = document.getElementById('press');
 		var hospital = document.getElementById('hospital');
+		var office = document.getElementById('office');
 		var cdc = document.getElementById('cdc');
 		var botanical = document.getElementById('botanical');
 		var apartment = document.getElementById('apartment');

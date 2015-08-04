@@ -29,7 +29,6 @@
 			<input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1" title="Volume Range">
 			<button type="button" id="volume-icon" title="Volume Control"><img src="<?php echo IMAGE_PATH; ?>icons/volume.png"></button>
 			<button type="button" id="full-screen" title="Full Screen"><img src="<?php echo IMAGE_PATH; ?>icons/fullscreen.png"></button>
-			<button type="button" id="info" title="Information"><img src="<?php echo IMAGE_PATH; ?>icons/info.png"></button>
 		</div>
 
 		<!-- Progress Bar -->

@@ -20,8 +20,10 @@
 		var instructText = "<p>These are the instructions that tell the viewer that they are to be Layna from this point onward.</p>"
 
 		var mapContainer = document.getElementById('map-container');
+		var video = document.getElementById("ch_video");
 		var press = document.getElementById('press');
 		var hospital = document.getElementById('hospital');
+		var office = document.getElementById('office');
 		var cdc = document.getElementById('cdc');
 		var botanical = document.getElementById('botanical');
 		var apartment = document.getElementById('apartment');
@@ -29,6 +31,7 @@
 
 		if( !Map.hasClass(botanical, "visited") ){botanical.setAttribute('class', 'inactive');}
 		if( !Map.hasClass(apartment, "visited") ){apartment.setAttribute('class', 'inactive');}
+		if( !Map.hasClass(home, "visited") ){office.setAttribute('class', 'inactive');}
 		if( !Map.hasClass(home, "visited") ){home.setAttribute('class', 'inactive');}
 
 		for(var i = 0; i < mapContainer.children.length - 1; i++){

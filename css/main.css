@@ -249,8 +249,8 @@ nav {
     #hospital {
       position: absolute;
       width: 18%;
-      top: 30%;
-      left: 14%;
+      top: 5%;
+      left: 55%;
       cursor: pointer;
     }
 
@@ -264,9 +264,9 @@ nav {
 
     #apartment {
       position: absolute;
-      width: 16%;
-      top: 58%;
-      left: 62%;
+      width: 18%;
+      top: 56%;
+      left: 61%;
       cursor: pointer;
     }
 
@@ -280,7 +280,9 @@ nav {
 
     #office {
       position: absolute;
-      width: 25%;
+      width: 18%;
+      top: 30%;
+      left: 14%;
       cursor: pointer;
     }
 
@@ -365,9 +367,14 @@ nav {
       }
 
       .line:first-of-type {
-        width: 60%;
         margin: 20px 0 27px 0;
       }
+
+    #noteTitle {
+      position: absolute;
+      top: 9.5%;
+      left: 5%;
+    }
 
     #note {
       position: absolute;
@@ -375,6 +382,7 @@ nav {
       right: 5%;
       bottom: 10%;
       left: 5%;
+      z-index: 17;
     }
 
       #note li {
@@ -833,7 +841,7 @@ nav {
   -moz-transform: translateX(-50.4%) translateY(-50.9%);
   -ms-transform: translateX(-50.4%) translateY(-50.9%);
   transform: translateX(-50.4%) translateY(-50.9%);
-  background: #464646;
+  background: #202020;
   overflow: hidden;
 }
 
@@ -928,7 +936,7 @@ nav {
   }
 
 .article {
-  width: 31%;
+  width: 32.5%;
   cursor: pointer;
   position: relative;
 }
@@ -956,16 +964,17 @@ nav {
 
   .article h1 {
     padding: 8px;
-    font-size: 22px;
+    font-size: 20px;
+    font-weight: bold;
     margin-top: -5px;
-    background-color: #fff;
-    color: #000;
-    text-align: center;
+    background-color: #323132;
+    color: #fff;
+    text-align: left;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
-    margin-bottom: 12%;
+    margin-bottom: 5%;
   }
 
 #articles {
@@ -989,7 +998,7 @@ nav {
       bottom: 15%;
       left: 0;
       color: #000;
-      background: #fff;
+      background: #000;
       overflow-y: auto;
       display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
       display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
@@ -1057,16 +1066,16 @@ nav {
       outline: none;
       border: none;
       position: absolute;
-      left: 50%;
-      bottom: 2%;
-      height: 10%;
-      -webkit-transform: translateX(-50%);
-      -moz-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      transform: translateX(-50%);
+      left: 0;
+      right: 0;
+      text-align: center;
+      bottom: 0;
+      top: 85%;
+      width: 100%;
       font-size: 20px;
-      background: #fff;
+      background: #636363;
       padding: 0 45px;
+      color: #fff;
     }
 
 #bg-ch_0 {

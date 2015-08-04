@@ -25,6 +25,7 @@
 		var video = document.getElementById("ch_video");
 		var press = document.getElementById('press');
 		var hospital = document.getElementById('hospital');
+		var office = document.getElementById('office');
 		var cdc = document.getElementById('cdc');
 		var botanical = document.getElementById('botanical');
 		var apartment = document.getElementById('apartment');
@@ -32,10 +33,11 @@
 
 		botanical.setAttribute('class', 'inactive');
 		apartment.setAttribute('class', 'inactive');
+		office.setAttribute('class', 'inactive');
 		home.setAttribute('class', 'inactive');
 
-		// progressContainer.removeEventListener("mousedown", VidControl.handleProgressMouseDown);
-		// progressContainer.removeEventListener("touchstart", VidControl.handleProgressTouchDown);
+		progressContainer.removeEventListener("mousedown", VidControl.handleProgressMouseDown);
+		progressContainer.removeEventListener("touchstart", VidControl.handleProgressTouchDown);
 
 		progressContainer.style.opacity = "0.5";
 
@@ -59,44 +61,36 @@
 				(video.currentTime > 136 && video.currentTime < 136.9) ||
 				(video.currentTime > 158 && video.currentTime < 158.9))){
 					video.pause();
-					// playButton.innerHTML = "Play";
-					// VidControl.slideOnscreen();
-
 					modal.style.left = 0;
 					modal.style.right = 0;
+					asked++;
+					console.log(asked);
+					if(asked >= 6){
+						modal.style.left = "-9999px";
+						modal.style.right = "-9999px";
+						video.currentTime = 160;
+						video.play();
+					}
 			}
 		}
 
-		// Qu 1: 94
-		// Qu 2: 101.2
-		// Qu 3: 108.2
-		// Qu 4: 137
-		// Qu 5: 123
-
-		// var startTimes = [94,101.2,108.2,137,123];
 		for(var i = 0; i < questions.children.length; i++ ){
-			questions.children[i].addEventListener('click', function(){
-				var start = this.getAttribute('ref');
-				playQuestion(start);
-			});
+			questions.children[i].addEventListener('click', playQuestion);
 		}
 
-		function playQuestion(time){
-			asked++;
-			if(asked > 2){
-				video.currentTime = 160;
-			} else {
-				video.currentTime = time;
-			}
+		function playQuestion(){
+			this.style.opacity = "0.5";
+			this.style.cursor = "default";
+			this.removeEventListener('click', playQuestion);
 			modal.style.left = "-9999px";
 			modal.style.right = "-9999px";
+			video.currentTime = this.getAttribute('ref');
 			video.play();
 		}
 
 		video.addEventListener('ended', function(){
 
 			body.removeChild(modal);
-
 
 			if(localStorage.getItem( 'visited' )){
 				var visited = JSON.parse( localStorage.getItem( 'visited' ) );

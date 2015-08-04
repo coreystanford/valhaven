@@ -17,6 +17,7 @@
 		var video = document.getElementById("ch_video");
 		var press = document.getElementById('press');
 		var hospital = document.getElementById('hospital');
+		var office = document.getElementById('office');
 		var cdc = document.getElementById('cdc');
 		var botanical = document.getElementById('botanical');
 		var apartment = document.getElementById('apartment');
@@ -24,6 +25,7 @@
 
 		botanical.setAttribute('class', 'inactive');
 		apartment.setAttribute('class', 'inactive');
+		office.setAttribute('class', 'inactive');
 		home.setAttribute('class', 'inactive');
 
 		for(var i = 0; i < mapContainer.children.length - 1; i++){
@@ -36,20 +38,13 @@
 
 		}
 
-		if(localStorage.getItem( 'visited' )){
-			var visited = JSON.parse( localStorage.getItem( 'visited' ) );
-		} else {
-			var visited = []; 
-		}
-
-		if(visited.length >= 3){
-			apartment.setAttribute('class', '');
-			apartment.addEventListener('click', function(){
-				window.location = "/valhaven/chapters/ch_2/";
-			});
-		}
-
 		video.addEventListener('ended', function(){
+
+			if(localStorage.getItem( 'visited' )){
+				var visited = JSON.parse( localStorage.getItem( 'visited' ) );
+			} else {
+				var visited = []; 
+			}
 
 			for(var v = 0; v < visited.length; v++){
 
