@@ -554,7 +554,7 @@ nav {
     background-attachment: fixed;
   }
 
-  #video-container video::-webkit-media-controls, video::-webkit-media-controls-enclosure {
+  #video-container video::-webkit-media-controls, #video-container video::-webkit-media-controls-enclosure {
     display: none !important;
   }
 
@@ -969,8 +969,8 @@ nav {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    position: absolute;
     width: 100%;
+    margin-bottom: 12%;
   }
 
 #articles {
@@ -1011,6 +1011,28 @@ nav {
         position: absolute;
         top: 0;
         width: 100%;
+      }
+
+      .inner-article video {
+        position: absolute;
+        top: 5%;
+        right: 3%;
+        bottom: 20%;
+        left: 3%;
+        top: 50%;
+        left: 50%;
+        min-width: auto;
+        min-height: 100%;
+        width: auto;
+        height: 100%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        /*background: url('../images/valhaven.jpg') no-repeat;*/
+        background: #000;
+        background-size: cover;
+        background-attachment: fixed;
       }
 
       .left-art {
