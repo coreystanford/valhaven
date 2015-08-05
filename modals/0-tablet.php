@@ -68,7 +68,7 @@
 			</div> -->
 			<div class="article" ref="10">
 				<a href="<?php echo CH_PATH; ?>ch_1"><img src="<?php echo IMAGE_PATH; ?>next_img.jpg"></a>
-				<!-- <h1>Item Five</h1> -->
+				<h1>Next Chapter</h1>
 			</div>
 
 		</div>

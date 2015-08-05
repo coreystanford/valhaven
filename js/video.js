@@ -288,11 +288,11 @@ var VidControl = (function(){
 
 		initVideoThrough: function(){
 			video.play();
-			// if(video.readyState !== 4){ // HAVE_ENOUGH_DATA
+			if(video.readyState !== 4){ // HAVE_ENOUGH_DATA
 				video.addEventListener('canplaythrough', VidControl.onCanPlayThrough, false);
 				video.addEventListener('load', VidControl.onCanPlayThrough, false); // add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
 				video.pause();
-			// }
+			}
 		},
 
 		onCanPlayThrough: function(){

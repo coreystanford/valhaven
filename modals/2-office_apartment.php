@@ -2,6 +2,8 @@
 
 <div id="sphere-container"></div>
 
+<script type="text/javascript" src="<?php echo JS_PATH; ?>three.min.js"></script>
+
 <script>
 	var camera, scene, renderer;
 	var isUserInteracting = false, onMouseDownMouseX = 0, onMouseDownMouseY = 0, lon = 0, onMouseDownLon = 0, lat = 0, onMouseDownLat = 0, phi = 0, theta = 0;

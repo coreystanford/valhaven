@@ -35,6 +35,8 @@
     $modal = "1-office.php"; // name of the modal window file located in ./modals/
 
     $next = "ch_2";
+
+    $headScripts = array("jquery-1.11.3.min.js");
     
     // javascript files for this chapter:
     $customScripts = array("app.js", "video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
