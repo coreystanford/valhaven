@@ -1164,6 +1164,11 @@ nav {
   text-align: center;
 }
 
+/* ---- 360 Modal ---- */
+#sphere-container {
+  cursor: grab;
+}
+
 /* ---- Animations ---- */
 
 #preloader-icon,

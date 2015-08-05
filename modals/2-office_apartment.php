@@ -11,6 +11,7 @@
     var area = "door";
     var pos1 = [-0, -0.6, -0.3, 0.03];
     var pos2 = [-0, -1.7, -0.3, -1.8];
+    var onPointerDownLon, onPointerDownPointerX;
 	init();
 
 	function init() {
@@ -66,7 +67,7 @@
 	function onDocumentMouseDown( e ) {
 		e.preventDefault();
 		isUserInteracting = true;
-		onPointerDownPointerX = event.clientX;
+		onPointerDownPointerX = e.clientX;
 		onPointerDownLon = lon;
 	}
 
