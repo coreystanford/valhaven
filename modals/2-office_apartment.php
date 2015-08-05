@@ -5,128 +5,172 @@
 <script type="text/javascript" src="<?php echo JS_PATH; ?>three.min.js"></script>
 
 <script>
-	var camera, scene, renderer;
-	var isUserInteracting = false, onMouseDownMouseX = 0, onMouseDownMouseY = 0, lon = 0, onMouseDownLon = 0, lat = 0, onMouseDownLat = 0, phi = 0, theta = 0;
-    var mouse = new THREE.Vector2(), raycaster, INTERSECTED, hover = false, info;   
-    var area = "door";
-    var pos1 = [-0, -0.6, -0.3, 0.03];
-    var pos2 = [-0, -1.7, -0.3, -1.8];
-    var onPointerDownLon, onPointerDownPointerX;
-	init();
-
-	function init() {
-		var container, mesh;
-		container = document.getElementById( 'sphere-container' );
-		camera = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 1, 1100 );
-		camera.target = new THREE.Vector3( 0, 0, 0 );
-		scene = new THREE.Scene();
-        
-		var geometry = new THREE.SphereGeometry( 500, 60, 40 );
-		geometry.applyMatrix( new THREE.Matrix4().makeScale( -1, .6, 1 ) );
-		var material = new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( '../../images/apt.jpg' ) } );
-		mesh = new THREE.Mesh( geometry, material );
-		scene.add( mesh );
-        
-        //Add area of interest
-        geometry = new THREE.SphereGeometry( 70, 40, 40 );
-        material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
-
-        mesh = new THREE.Mesh( geometry, material );
-        mesh.name = area;
-        mesh.visible=false;
-        scene.add( mesh );
-
-        var phi2 = Math.acos( pos1[0] );
-        var theta2 = Math.sqrt( Math.PI ) * pos2[0];
-
-        mesh.position.x = 530 * Math.cos( theta2 ) * Math.sin( phi2 );
-        mesh.position.y = 530 * Math.sin( theta2 ) * Math.sin( phi2 );
-        mesh.position.z = 530 * Math.cos( phi2 );             
-        
-		renderer = window.WebGLRenderingContext ?  new THREE.WebGLRenderer({ antialias: true }) : new THREE.CanvasRenderer();
-		renderer.setSize( window.innerWidth, window.innerHeight );
-		container.appendChild( renderer.domElement );
-        
-        raycaster = new THREE.Raycaster();
-
-		document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-		document.addEventListener( 'mouseup', onDocumentMouseUp, false );
-		window.addEventListener( 'resize', onWindowResize, false );
-        animate();
-
-	}
-
-	function onWindowResize() {
-		camera.aspect = window.innerWidth / window.innerHeight;
-		camera.updateProjectionMatrix();
-
-		renderer.setSize( window.innerWidth, window.innerHeight );
-	}
-
-	function onDocumentMouseDown( e ) {
-		e.preventDefault();
-		isUserInteracting = true;
-		onPointerDownPointerX = e.clientX;
-		onPointerDownLon = lon;
-	}
-
-	function onDocumentMouseMove( e ) {
-		if ( isUserInteracting === true ) {
-			lon = ( onPointerDownPointerX - e.clientX ) * 0.1 + onPointerDownLon;
-			lat = 0;
-		}
-        mouse.x = ( e.clientX / window.innerWidth ) * 2 - 1;
-		mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
-	}
-
-	function onDocumentMouseUp( e ) {
-		isUserInteracting = false;
-	}
-
-	function animate() {
-		requestAnimationFrame( animate );
-		update();
-	}
-
-	function update() {
-		if (  hover == true || isUserInteracting == true ) {
-			lon = lon;
-		}else{
-            lon += 0.05;
-        }
-
-		lat = Math.max( - 85, Math.min( 85, lat ) );
-		phi = THREE.Math.degToRad( 90 - lat );
-		theta = THREE.Math.degToRad( lon );
-
-		camera.target.x = 500 * Math.sin( phi ) * Math.cos( theta );
-		camera.target.y = 500 * Math.cos( phi );
-		camera.target.z = 500 * Math.sin( phi ) * Math.sin( theta );
-
-		camera.lookAt( camera.target );
-        
-        var vector = new THREE.Vector3( mouse.x, mouse.y, 1 ).unproject( camera );
-		raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
-		var intersects = raycaster.intersectObjects( scene.children );
-
-		if ( intersects.length > 0 ) {
-
-			if ( INTERSECTED != intersects[ 0 ].object ) {
-				INTERSECTED = intersects[ 0 ].object;
-                if (INTERSECTED.name == "ent"){
-                    hover = true;
-                    
-                } else{
-                    hover = false;
-
-                }
-			}
-		} 
-		renderer.render( scene, camera );
-	}
 
 	(function(){
+
+		var camera, scene, renderer, mesh, door;
+		var isUserInteracting = false, onMouseDownMouseX = 0, onMouseDownMouseY = 0, lon = 0, onMouseDownLon = 0, lat = 0, onMouseDownLat = 0, phi = 0, theta = 0;
+	    var mouse = new THREE.Vector2(), raycaster, INTERSECTED, hover = false, info;   
+	    var onPointerDownLon, onPointerDownPointerX, onPointerDownPointerY, onPointerDownLat;
+
+		function loadGUI(){
+			var gui = new dat.GUI({
+				height: 5 * 32 - 1
+			});	
+			gui.add(camera.position, 'x');
+			gui.add(camera.position, 'y');
+			gui.add(camera.position, 'z');
+			gui.add(door.position, 'x', -200, 200);
+			gui.add(door.position, 'y', -200, 200);
+			gui.add(door.position, 'z', -500, 500);
+		}
+
+		function init() {
+			var container;
+			container = document.getElementById( 'sphere-container' );
+			camera = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 1, 1100 );
+			camera.target = new THREE.Vector3( 0, 0, 0 );
+			scene = new THREE.Scene();
+	        
+			var geometry = new THREE.SphereGeometry( 500, 60, 40 );
+			geometry.applyMatrix( new THREE.Matrix4().makeScale( -1, 0.6, 1 ) );
+			var material = new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( '../../images/apt.jpg' ) } );
+			mesh = new THREE.Mesh( geometry, material );
+			scene.add( mesh );
+	        
+	  //       //Add area of interest
+	  //       geometry = new THREE.BoxGeometry( 10, 10, 10);
+	  //       material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0x0033ff, specular: 0x555555, shininess: 30 } );
+
+	  //       mesh = new THREE.Mesh( geometry, material );
+	  //       mesh.name = "door";
+	  //       mesh.position.x = 0;
+			// mesh.position.y = 0;
+			// mesh.position.z = 0;
+			// scene.add( mesh );
+
+			 //Add area of interest
+	        geometry = new THREE.BoxGeometry( 85, .1, 35 );
+	        material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+	        
+	        door = new THREE.Mesh( geometry, material );
+	        door.name = "door";
+	        door.visible=true;
+	        
+
+	        var phi2 = -0.3;
+	        var theta2 = -0.3;
+
+	        door.position.x = 60;
+	        door.position.y = 8.5;
+	        door.position.z = 129;
+
+	        door.rotation.x = 90 * (Math.PI / 180);
+	        door.rotation.y = 90 * (Math.PI / 180);
+	        door.rotation.z = 0;
+
+	        console.log(door.position);
+
+	        scene.add( door );
+
+	        // mesh.visible=true;
+
+	        // var phi2 = Math.acos( 0 );
+	        // var theta2 = Math.sqrt( Math.PI ) * -1;
+
+	        // mesh.position.x = 530 * Math.cos( theta2 ) * Math.sin( phi2 );
+	        // mesh.position.y = 530 * Math.sin( theta2 ) * Math.sin( phi2 );
+	        // mesh.position.z = 530 * Math.cos( phi2 );             
+	        
+	        
+
+			
+
+			renderer = window.WebGLRenderingContext ?  new THREE.WebGLRenderer({ antialias: true }) : new THREE.CanvasRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			container.appendChild( renderer.domElement );
+	        
+	        raycaster = new THREE.Raycaster();
+
+			document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+			document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+			document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+			window.addEventListener( 'resize', onWindowResize, false );
+	        animate();
+
+		}
+
+		function onWindowResize() {
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+
+			renderer.setSize( window.innerWidth, window.innerHeight );
+		}
+
+		function onDocumentMouseDown( e ) {
+			e.preventDefault();
+			isUserInteracting = true;
+			onPointerDownPointerX = e.clientX;
+			// onPointerDownPointerY = e.clientY;
+			onPointerDownLon = lon;
+			// onPointerDownLat = lat;
+		}
+
+		function onDocumentMouseMove( e ) {
+			if ( isUserInteracting === true ) {
+				lon = ( onPointerDownPointerX - e.clientX ) * 0.1 + onPointerDownLon;
+				lat = 0;
+			}
+	        mouse.x = ( e.clientX / window.innerWidth ) * 2 - 1;
+			mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
+		}
+
+		function onDocumentMouseUp( e ) {
+			isUserInteracting = false;
+		}
+
+		function animate() {
+			requestAnimationFrame( animate );
+			update();
+		}
+
+		function update() {
+			if (  hover == true || isUserInteracting == true ) {
+				lon = lon;
+			}else{
+	            lon += 0.05;
+	        }
+
+			lat = Math.max( - 85, Math.min( 85, lat ) );
+			phi = THREE.Math.degToRad( 90 - lat );
+			theta = THREE.Math.degToRad( lon );
+
+			camera.target.x = 500 * Math.sin( phi ) * Math.cos( theta );
+			camera.target.y = 500 * Math.cos( phi );
+			camera.target.z = 500 * Math.sin( phi ) * Math.sin( theta );
+
+			camera.lookAt( camera.target );
+	        
+	        var vector = new THREE.Vector3( mouse.x, mouse.y, 1 ).unproject( camera );
+			raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
+			var intersects = raycaster.intersectObjects( scene.children );
+
+			if ( intersects.length > 0 ) {
+
+				if ( INTERSECTED != intersects[ 0 ].object ) {
+					INTERSECTED = intersects[ 0 ].object;
+	                if (INTERSECTED.name == "ent"){
+	                    hover = true;
+	                    
+	                } else{
+	                    hover = false;
+
+	                }
+				}
+			} 
+			renderer.render( scene, camera );
+		}
+
 
 		var mapContainer = document.getElementById('map-container');
 		var video = document.getElementById("ch_video");
@@ -143,6 +187,9 @@
 		home.setAttribute('class', 'inactive');
 
 		video.addEventListener('ended', function(){
+
+			init();
+			loadGUI();
 
 			if(localStorage.getItem( 'visited' )){
 				var visited = JSON.parse( localStorage.getItem( 'visited' ) );
