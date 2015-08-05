@@ -36,11 +36,6 @@
 
     $prev = "ch_1";
     $next = "ch_3";
-    
-    $headScripts = array("jquery-1.11.3.min.js", "three.min.js", "dat.gui.min.js");
-
-    // javascript files for this chapter:
-    $customScripts = array("app.js", "video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
 
     // ---------------------------- //
     // ------ Perform Switch ------ //
@@ -52,12 +47,28 @@
 
         case 'default':
 
+            $headScripts = array("jquery-1.11.3.min.js", "three.min.js", "dat.gui.min.js");
+
+            // javascript files for this chapter:
+            $customScripts = array("app.js", "video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
+
             $poster = "valhaven.jpg"; // default video background for this chapter
             $webm = "sample.webm"; // webm video file for this chapter
             $mp4 = "sample.mp4"; // mp4 video file for this chapter
             $ogv = "sample.ogv"; // ogv video file for this chapter
 
             include 'ch_2.php';
+
+        break;
+
+         case 'room':
+
+            $headScripts = array("jquery-1.11.3.min.js");
+
+            // javascript files for this chapter:
+            $customScripts = array("app.js", "video.js"); // add the file name in quotations, seperated by commas
+
+            include "room.php";
 
         break;
 

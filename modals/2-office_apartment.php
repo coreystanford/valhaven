@@ -1,12 +1,16 @@
 <?php require '../config.php'; ?>
 
-<div id="sphere-container"></div>
+<div id="sphere-container" ref="<?php echo MODAL_PATH; ?>2_1-room.php"></div>
 
 <script type="text/javascript" src="<?php echo JS_PATH; ?>three.min.js"></script>
 
 <script>
 
 	(function(){
+
+		var modal = document.getElementById('modal');
+		var container = document.getElementById( 'sphere-container' );
+		var ref = container.getAttribute('ref');
 
 		var camera, scene, renderer, mesh, door;
 		var isUserInteracting = false, onMouseDownMouseX = 0, onMouseDownMouseY = 0, lon = 0, onMouseDownLon = 0, lat = 0, onMouseDownLat = 0, phi = 0, theta = 0;
@@ -26,8 +30,6 @@
 		}
 
 		function init() {
-			var container;
-			container = document.getElementById( 'sphere-container' );
 			camera = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 1, 1100 );
 			camera.target = new THREE.Vector3( 0, 0, 0 );
 			scene = new THREE.Scene();
@@ -37,29 +39,15 @@
 			var material = new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( '../../images/apt.jpg' ) } );
 			mesh = new THREE.Mesh( geometry, material );
 			scene.add( mesh );
-	        
-	  //       //Add area of interest
-	  //       geometry = new THREE.BoxGeometry( 10, 10, 10);
-	  //       material = new THREE.MeshPhongMaterial( { ambient: 0x050505, color: 0x0033ff, specular: 0x555555, shininess: 30 } );
-
-	  //       mesh = new THREE.Mesh( geometry, material );
-	  //       mesh.name = "door";
-	  //       mesh.position.x = 0;
-			// mesh.position.y = 0;
-			// mesh.position.z = 0;
-			// scene.add( mesh );
 
 			 //Add area of interest
 	        geometry = new THREE.BoxGeometry( 85, .1, 35 );
-	        material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+	        material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 	        
 	        door = new THREE.Mesh( geometry, material );
 	        door.name = "door";
-	        door.visible=true;
-	        
-
-	        var phi2 = -0.3;
-	        var theta2 = -0.3;
+	        door.material.transparent = true;
+	        door.material.opacity = 0;
 
 	        door.position.x = 60;
 	        door.position.y = 8.5;
@@ -69,22 +57,7 @@
 	        door.rotation.y = 90 * (Math.PI / 180);
 	        door.rotation.z = 0;
 
-	        console.log(door.position);
-
 	        scene.add( door );
-
-	        // mesh.visible=true;
-
-	        // var phi2 = Math.acos( 0 );
-	        // var theta2 = Math.sqrt( Math.PI ) * -1;
-
-	        // mesh.position.x = 530 * Math.cos( theta2 ) * Math.sin( phi2 );
-	        // mesh.position.y = 530 * Math.sin( theta2 ) * Math.sin( phi2 );
-	        // mesh.position.z = 530 * Math.cos( phi2 );             
-	        
-	        
-
-			
 
 			renderer = window.WebGLRenderingContext ?  new THREE.WebGLRenderer({ antialias: true }) : new THREE.CanvasRenderer();
 			renderer.setSize( window.innerWidth, window.innerHeight );
@@ -107,13 +80,42 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 		}
 
+		var doorInt;
+
 		function onDocumentMouseDown( e ) {
 			e.preventDefault();
 			isUserInteracting = true;
 			onPointerDownPointerX = e.clientX;
-			// onPointerDownPointerY = e.clientY;
 			onPointerDownLon = lon;
-			// onPointerDownLat = lat;
+
+			var vector = new THREE.Vector3( mouse.x, mouse.y, 1 ).unproject( camera );
+			raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
+			var intersects = raycaster.intersectObjects( scene.children );
+
+			if ( intersects.length > 1 ) {
+				console.log(door);
+				INTERSECTED = intersects[ 0 ].object;
+                if (INTERSECTED.name == "door"){
+                	window.location = "./?action=room";
+                }
+			} else {
+
+				var op = 0;
+				var goingUp = true;
+				clearInterval(doorInt);
+				doorInt = setInterval(function(){
+					if(op < 1 && goingUp === true){
+						op = op + 0.025;
+					}
+					if(op >= 0.5){
+						goingUp = false;
+					}
+					if(op >= 0 && goingUp === false){
+						op = op - 0.025;
+					}
+					door.material.opacity = op;
+				}, 20);
+			}
 		}
 
 		function onDocumentMouseMove( e ) {
@@ -150,7 +152,7 @@
 			camera.target.z = 500 * Math.sin( phi ) * Math.sin( theta );
 
 			camera.lookAt( camera.target );
-	        
+
 	        var vector = new THREE.Vector3( mouse.x, mouse.y, 1 ).unproject( camera );
 			raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
 			var intersects = raycaster.intersectObjects( scene.children );
@@ -159,15 +161,15 @@
 
 				if ( INTERSECTED != intersects[ 0 ].object ) {
 					INTERSECTED = intersects[ 0 ].object;
-	                if (INTERSECTED.name == "ent"){
+	                if (INTERSECTED.name == "door"){
 	                    hover = true;
-	                    
+	                    container.style.cursor = "pointer";
 	                } else{
 	                    hover = false;
-
+	                    container.style.cursor = "default";
 	                }
 				}
-			} 
+			}
 			renderer.render( scene, camera );
 		}
 

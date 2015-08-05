@@ -9,8 +9,8 @@ var Sliders = (function(){
 		main = document.getElementById('main'),
 		social = document.getElementById('social'),
 		nav = document.getElementById('navigation'),
-		video = document.getElementById('ch_video'),
-		playButton = document.getElementById("play-pause");
+		video = document.getElementById('ch_video');
+		// playButton = document.getElementById("play-pause");
 
 	return {
 

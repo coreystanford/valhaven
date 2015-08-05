@@ -1169,6 +1169,17 @@ nav {
   cursor: grab;
 }
 
+#room-bg {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 100%;
+}
+
 /* ---- Animations ---- */
 
 #preloader-icon,
