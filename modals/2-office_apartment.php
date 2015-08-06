@@ -16,6 +16,7 @@
 		var isUserInteracting = false, onMouseDownMouseX = 0, onMouseDownMouseY = 0, lon = 0, onMouseDownLon = 0, lat = 0, onMouseDownLat = 0, phi = 0, theta = 0;
 	    var mouse = new THREE.Vector2(), raycaster, INTERSECTED, hover = false, info;   
 	    var onPointerDownLon, onPointerDownPointerX, onPointerDownPointerY, onPointerDownLat;
+		var doorInt;
 
 		function loadGUI(){
 			var gui = new dat.GUI({
@@ -41,7 +42,7 @@
 			scene.add( mesh );
 
 			 //Add area of interest
-	        geometry = new THREE.BoxGeometry( 85, .1, 35 );
+	        geometry = new THREE.BoxGeometry( 76, 1.5, 22 );
 	        material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 	        
 	        door = new THREE.Mesh( geometry, material );
@@ -50,12 +51,12 @@
 	        door.material.opacity = 0;
 
 	        door.position.x = 60;
-	        door.position.y = 8.5;
-	        door.position.z = 129;
+	        door.position.y = 9.2;
+	        door.position.z = 133;
 
 	        door.rotation.x = 90 * (Math.PI / 180);
-	        door.rotation.y = 90 * (Math.PI / 180);
-	        door.rotation.z = 0;
+	        door.rotation.y = 93 * (Math.PI / 180);
+	        door.rotation.z = -3 * (Math.PI / 180);
 
 	        scene.add( door );
 
@@ -80,8 +81,6 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 		}
 
-		var doorInt;
-
 		function onDocumentMouseDown( e ) {
 			e.preventDefault();
 			isUserInteracting = true;
@@ -93,25 +92,23 @@
 			var intersects = raycaster.intersectObjects( scene.children );
 
 			if ( intersects.length > 1 ) {
-				console.log(door);
 				INTERSECTED = intersects[ 0 ].object;
                 if (INTERSECTED.name == "door"){
                 	window.location = "./?action=room";
                 }
 			} else {
-
 				var op = 0;
 				var goingUp = true;
 				clearInterval(doorInt);
 				doorInt = setInterval(function(){
 					if(op < 1 && goingUp === true){
-						op = op + 0.025;
+						op += 0.025;
 					}
 					if(op >= 0.5){
 						goingUp = false;
 					}
 					if(op >= 0 && goingUp === false){
-						op = op - 0.025;
+						op -= 0.025;
 					}
 					door.material.opacity = op;
 				}, 20);
@@ -159,16 +156,15 @@
 
 			if ( intersects.length > 0 ) {
 
-				if ( INTERSECTED != intersects[ 0 ].object ) {
-					INTERSECTED = intersects[ 0 ].object;
-	                if (INTERSECTED.name == "door"){
-	                    hover = true;
-	                    container.style.cursor = "pointer";
-	                } else{
-	                    hover = false;
-	                    container.style.cursor = "default";
-	                }
-				}
+				INTERSECTED = intersects[ 0 ].object;
+                if (INTERSECTED.name == "door"){
+                    hover = true;
+                    container.style.cursor = "pointer";
+					door.material.opacity = 0.5;
+                } else{
+                    hover = false;
+                    container.style.cursor = "default";
+                }
 			}
 			renderer.render( scene, camera );
 		}

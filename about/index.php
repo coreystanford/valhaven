@@ -32,6 +32,8 @@
     $description = "This is a description of about.";
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
     
+    $headScripts = array("jquery-1.11.3.min.js");
+    
     // javascript files for this chapter:
     $customScripts = array('app.js', 'about.js'); // add the file name in quotations, seperated by commas
 
