@@ -34,7 +34,7 @@
 
     $next = "ch_2";
 
-    $headScripts = array("jquery-1.11.3.min.js");
+    $headScripts = array("jquery-1.11.3.min.js", "screenfull.js");
     
     // ---------------------------- //
     // ------ Perform Switch ------ //

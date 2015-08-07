@@ -46,7 +46,7 @@
             $title = "Gardiner's Apartment";
             $description = "This is a description of the chapter.";
 
-            $headScripts = array("jquery-1.11.3.min.js", "three.min.js");
+            $headScripts = array("jquery-1.11.3.min.js", "three.min.js", "screenfull.js");
 
             // javascript files for this chapter:
             $customScripts = array("app.js", "video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
@@ -67,7 +67,7 @@
             $title = "Gardiner's Room";
             $description = "This is a description of the chapter.";
 
-            $headScripts = array("jquery-1.11.3.min.js");
+            $headScripts = array("jquery-1.11.3.min.js", "screenfull.js");
 
             // javascript files for this chapter:
             $customScripts = array("app.js", "video.js", "2-room.js"); // add the file name in quotations, seperated by commas

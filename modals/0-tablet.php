@@ -3,12 +3,12 @@
 <div id="newsapp">	
 
 	<div id="tablet-bar">
-		<p>LAYNA'S DEVICE</p>
+		<!-- <p>LAYNA'S DEVICE</p> -->
 		<img src="<?php echo IMAGE_PATH; ?>wifi-power.png">
 	</div>
 
 	<div id="app-header">
-		
+		<img src="<?php echo IMAGE_PATH; ?>logo.png">
 	</div>
 
 	<div id="news-container">
@@ -195,6 +195,8 @@
 			map.style.display = 'none';
 			notebook.style.display = 'none';
 		}
+
+		Local.setInactive( [botanical, apartment, office, home, press, cdc, hospital] );
 
 		app.style.width = tabWidth + "px";
 		app.style.height = articles.style.width = ( ( width / 2 ) * 0.85 ) + "px";

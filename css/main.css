@@ -675,7 +675,7 @@ nav {
     left: 0px;
     bottom: -2px;
     transition-duration: 0.3s;
-    z-index: 9;
+    z-index: 17;
   }
 
     #progress-container:-webkit-full-screen, #progress-container:full-screen {
@@ -871,10 +871,22 @@ nav {
   background: #000;
 }
 
+  #app-header img {
+    height: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+
 #news-container {
   position: absolute;
-  top: 0;
+  top: 15%;
   left: 0;
+  height: 85%;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
   -ms-transition-duration: 0.5s;
@@ -918,7 +930,7 @@ nav {
 
   .page {
     float: left;
-    padding: 6% 3% 0 3%;
+    padding: 2% 3% 0 3%;
     display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */

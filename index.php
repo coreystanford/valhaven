@@ -39,7 +39,7 @@
 
     $next = "ch_1";
 
-    $headScripts = array("jquery-1.11.3.min.js");
+    $headScripts = array("jquery-1.11.3.min.js", "screenfull.js");
 
     // javascript files for just the homepage:
     $customScripts = array("app.js", "video.js", "home-video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas

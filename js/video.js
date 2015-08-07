@@ -86,13 +86,15 @@ var VidControl = (function(){
 		// ---- FULLSCREEN ---- //
 
 		enterFullscreen: function(){
-			if (container.requestFullscreen) {
-				container.requestFullscreen();
-			} else if (container.mozRequestFullScreen) {
-				container.mozRequestFullScreen(); // Firefox
-			} else if (container.webkitRequestFullscreen) {
-				container.webkitRequestFullscreen(); // Chrome and Safari
-			}
+			if (screenfull.enabled) {
+				if(screenfull.isFullscreen){
+					screenfull.exit();
+					localStorage.setItem('fullscreen', 'false');
+				} else {
+					screenfull.request();
+					localStorage.setItem('fullscreen', 'true');
+				}
+		    }
 		},
 
 		// ---- PROGRESS BAR ---- //
@@ -162,6 +164,7 @@ var VidControl = (function(){
 		},
 
 		progressMove: function(pos){
+			width = window.innerWidth;
 			perc = pos / width;
 
 			timeFullSec = video.duration * perc;
@@ -425,11 +428,11 @@ var VidControl = (function(){
 
  	// ---- MOUSE EVENTS ---- //
 
-	fullScreenButton.addEventListener("click", VidControl.enterFullscreen);
+	fullScreenButton.addEventListener('click', VidControl.enterFullscreen);
 
 	// ---- TOUCH EVENTS ---- //
 
-	fullScreenButton.addEventListener("touchstart", VidControl.enterFullscreen);
+	//fullScreenButton.addEventListener("touchstart", VidControl.enterFullscreen);
 
 	// ---------------------- //
  	// ---- PROGRESS BAR ---- //
