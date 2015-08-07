@@ -837,10 +837,10 @@ nav {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translateX(-50.4%) translateY(-50.9%);
-  -moz-transform: translateX(-50.4%) translateY(-50.9%);
-  -ms-transform: translateX(-50.4%) translateY(-50.9%);
-  transform: translateX(-50.4%) translateY(-50.9%);
+  -webkit-transform: translateX(-50.4%) translateY(-45.9%) rotate(357deg);
+  -moz-transform: translateX(-50.4%) translateY(-45.9%) rotate(357deg);
+  -ms-transform: translateX(-50.4%) translateY(-45.9%) rotate(357deg);
+  transform: translateX(-50.4%) translateY(-45.9%) rotate(357deg);
   background: #202020;
   overflow: hidden;
 }
@@ -1165,9 +1165,12 @@ nav {
 }
 
 /* ---- 360 Modal ---- */
+
 #sphere-container {
   cursor: grab;
 }
+
+/* ---- 360 Modal - ROOM ---- */
 
 #room-container {
   position: absolute;
@@ -1178,16 +1181,128 @@ nav {
   background: #000;
 }
 
-#room-bg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -ms-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
+  #room-inner-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    height: auto;
+  }
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#room-bg, #paint1 img, #paint2 img {
   width: 100%;
 }
+
+  #paint1 {
+    position: absolute;
+    top: 14%;
+    left: 48.7%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    cursor: pointer;
+    z-index: 25;
+    width: 10%;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+  }
+
+  #paint2 {
+    position: absolute;
+    top: 24.5%;
+    left: 36.6%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    cursor: pointer;
+    z-index: 24;
+    width: 18%;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+  }
+
+  #gardiner-id {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    cursor: pointer;
+    z-index: 25;
+    width: 5%;
+    height: 8%;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+  }
+
+    #gardiner-id > div {
+      background: #fff;
+      height: 100%;
+      width: 100%;
+      -webkit-transition-duration: 0.5s;
+      -moz-transition-duration: 0.5s;
+      -ms-transition-duration: 0.5s;
+      -o-transition-duration: 0.5s;
+      transition-duration: 0.5s;
+      position: relative;
+    }
+
+    #gardiner-id > div img {
+      height: 100%;
+      display: inline-block;
+    }
+
+    #idText {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      padding-top: 60px;
+      width: 35%;
+      float: right;
+      overflow-y: auto;
+    }
+
+    #idText p {
+      padding: 10px 30px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    #goToBot {
+      text-align: center;
+      display: block;
+      background: #ff0000;
+      color: #fff;
+      margin: 20px auto 10px auto;
+      width: 150px;
+    }
+
+  .flash:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
 
 /* ---- Animations ---- */
 
@@ -1272,6 +1387,35 @@ nav {
     100%{
         opacity: 1;
     }
+}
+
+.flash {
+    -webkit-animation: flash .8s  ease-in;
+    animation: flash .8s  ease-in;
+}
+
+@-webkit-keyframes flash {
+  0%{
+    background: transparent;
+  }
+  50% {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes flash {
+  0%{
+    background: transparent;
+  }
+  50% {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    background: transparent;
+  }
 }
 
 video:-webkit-full-screen {

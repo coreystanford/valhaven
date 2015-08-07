@@ -28,11 +28,7 @@
     // ------ Chapter Globals ------ //
     // ----------------------------- //
 
-    $title = "Chapter 2";
-    $description = "This is a description of the chapter.";
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
-
-    $modal = "2-office_apartment.php"; // name of the modal window file located in ./modals/
 
     $prev = "ch_1";
     $next = "ch_3";
@@ -47,10 +43,15 @@
 
         case 'default':
 
-            $headScripts = array("jquery-1.11.3.min.js", "three.min.js", "dat.gui.min.js");
+            $title = "Gardiner's Apartment";
+            $description = "This is a description of the chapter.";
+
+            $headScripts = array("jquery-1.11.3.min.js", "three.min.js");
 
             // javascript files for this chapter:
             $customScripts = array("app.js", "video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
+
+            $modal = "2-apartment.php"; // name of the modal window file located in ./modals/
 
             $poster = "valhaven.jpg"; // default video background for this chapter
             $webm = "sample.webm"; // webm video file for this chapter
@@ -63,10 +64,13 @@
 
          case 'room':
 
+            $title = "Gardiner's Room";
+            $description = "This is a description of the chapter.";
+
             $headScripts = array("jquery-1.11.3.min.js");
 
             // javascript files for this chapter:
-            $customScripts = array("app.js", "video.js"); // add the file name in quotations, seperated by commas
+            $customScripts = array("app.js", "video.js", "2-room.js"); // add the file name in quotations, seperated by commas
 
             include "room.php";
 

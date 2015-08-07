@@ -2,33 +2,29 @@
 
 	<div id="room-container">
 	
-		<img id="room-bg" src="<?php echo IMAGE_PATH; ?>room.jpg">
+		<div id="room-inner-container">
+			
+			<div id="paint1" class="flash"><img class="hidden" src="<?php echo IMAGE_PATH; ?>paint_1.png"></div>
+			<div id="paint2" class="flash"><img class="hidden" src="<?php echo IMAGE_PATH; ?>paint_2.png"></div>
+			
+			<div id="gardiner-id" class="flash">
+				
+				<div class="hidden">
+					<img src="<?php echo IMAGE_PATH; ?>id.jpg">
+					<div id="idText">
+						<p>Great Work!</p>
+						<p>You found the ID card.</p>
+						<p>Now you can go visit the Botanical Research Facility to continue the story.</p>
+						<button type="button" class="btn" id="goToBot">Continue</button>
+					</div>
+				</div>
+
+			</div>
+
+			<img id="room-bg" src="<?php echo IMAGE_PATH; ?>room.jpg">
+
+		</div>
 
 	</div>
 
 <?php require FOOTER; ?>
-
-<script>
-	(function(){
-		var body = document.getElementById('body');
-		var modal = document.getElementById('modal');
-		body.removeChild(modal);
-
-		var mapContainer = document.getElementById('map-container');
-		var video = document.getElementById("ch_video");
-		var press = document.getElementById('press');
-		var hospital = document.getElementById('hospital');
-		var office = document.getElementById('office');
-		var cdc = document.getElementById('cdc');
-		var botanical = document.getElementById('botanical');
-		var apartment = document.getElementById('apartment');
-		var home = document.getElementById('home');
-
-		botanical.setAttribute('class', 'inactive');
-		office.setAttribute('class', 'inactive');
-		home.setAttribute('class', 'inactive');
-
-		
-
-	})();
-</script>

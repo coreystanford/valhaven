@@ -18,17 +18,17 @@
 	    var onPointerDownLon, onPointerDownPointerX, onPointerDownPointerY, onPointerDownLat;
 		var doorInt;
 
-		function loadGUI(){
-			var gui = new dat.GUI({
-				height: 5 * 32 - 1
-			});	
-			gui.add(camera.position, 'x');
-			gui.add(camera.position, 'y');
-			gui.add(camera.position, 'z');
-			gui.add(door.position, 'x', -200, 200);
-			gui.add(door.position, 'y', -200, 200);
-			gui.add(door.position, 'z', -500, 500);
-		}
+		// function loadGUI(){
+		// 	var gui = new dat.GUI({
+		// 		height: 5 * 32 - 1
+		// 	});	
+		// 	gui.add(camera.position, 'x');
+		// 	gui.add(camera.position, 'y');
+		// 	gui.add(camera.position, 'z');
+		// 	gui.add(door.position, 'x', -200, 200);
+		// 	gui.add(door.position, 'y', -200, 200);
+		// 	gui.add(door.position, 'z', -500, 500);
+		// }
 
 		function init() {
 			camera = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 1, 1100 );
@@ -112,6 +112,7 @@
 					}
 					door.material.opacity = op;
 				}, 20);
+				console.log(doorInt);
 			}
 		}
 
@@ -169,74 +170,13 @@
 			renderer.render( scene, camera );
 		}
 
-
-		var mapContainer = document.getElementById('map-container');
 		var video = document.getElementById("ch_video");
-		var press = document.getElementById('press');
-		var hospital = document.getElementById('hospital');
-		var office = document.getElementById('office');
-		var cdc = document.getElementById('cdc');
-		var botanical = document.getElementById('botanical');
-		var apartment = document.getElementById('apartment');
-		var home = document.getElementById('home');
 
-		botanical.setAttribute('class', 'inactive');
-		office.setAttribute('class', 'inactive');
-		home.setAttribute('class', 'inactive');
+		Local.setInactive( [botanical, office, home] );
 
 		video.addEventListener('ended', function(){
 
 			init();
-			loadGUI();
-
-			if(localStorage.getItem( 'visited' )){
-				var visited = JSON.parse( localStorage.getItem( 'visited' ) );
-			} else {
-				var visited = []; 
-			}
-
-			if(localStorage.getItem( 'notes' )){
-				var storedNotes = JSON.parse( localStorage.getItem( 'notes' ) );
-			} else {
-				var storedNotes = []; 
-			}
-			
-			var isAbsent = true;
-			for(var i = 0; i < visited.length; i++){
-				if(visited[i] === "apartment"){
-					isAbsent = false;
-				}
-			}
-			if(isAbsent){
-				visited.push("apartment");
-				localStorage.setItem( 'visited', JSON.stringify(visited) );
-				storedNotes.push("Hiren of the Valley? It’s been extinct since I was a kid.");
-				localStorage.setItem( 'notes', JSON.stringify(storedNotes) );
-			}
-
-			for(var v = 0; v < visited.length; v++){
-
-				for(var i = 0; i < mapContainer.children.length - 1; i++){
-
-					var iconId = mapContainer.children[i].getAttribute('id');
-
-					if( visited[v] == iconId ){
-
-						var thisIcon = document.getElementById(iconId);
-						thisIcon.setAttribute('class', 'visited');
-
-					}
-
-				}
-
-			}
-
-			if(visited.length >= 3){
-				apartment.setAttribute('class', '');
-				apartment.addEventListener('click', function(){
-					window.location = "/valhaven/chapters/ch_2/";
-				});
-			}
 
 		});
 

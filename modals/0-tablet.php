@@ -175,7 +175,7 @@
 
 </div>
 
-<img id="bg-ch_0" src="<?php echo IMAGE_PATH; ?>ch_0-end.jpg">
+<!-- <img id="bg-ch_0" src="<?php // echo IMAGE_PATH; ?>ch_0-end.jpg"> -->
 
 <script>
 	
@@ -183,39 +183,21 @@
 
 		var map = document.getElementById('map');
 		var notebook = document.getElementById('notebook');
-
-		map.style.display = 'none';
-		notebook.style.display = 'none';
-
-		var mapContainer = document.getElementById('map-container');
-		var press = document.getElementById('press');
-		var hospital = document.getElementById('hospital');
-		var office = document.getElementById('office');
-		var cdc = document.getElementById('cdc');
-		var botanical = document.getElementById('botanical');
-		var apartment = document.getElementById('apartment');
-		var home = document.getElementById('home');
-
-		for(var i = 0; i < mapContainer.children.length - 1; i++){
-
-			if( !Map.hasClass(mapContainer.children[i], "visited") ){
-
-				mapContainer.children[i].setAttribute('class', 'inactive');
-
-			}
-
-		}
-
 		var app = document.getElementById("newsapp");
 		var articles = document.getElementById('news-container');
 		var contents = document.getElementById('articles');
 		var tabNext = document.getElementById("tabNext");
 		var tabPrev = document.getElementById("tabPrev");
 		var width = window.innerWidth;
-		var tabWidth = ( width * 0.824 );
+		var tabWidth = ( width * 0.755 );
+
+		if(Local.visited.length <= 0){
+			map.style.display = 'none';
+			notebook.style.display = 'none';
+		}
 
 		app.style.width = tabWidth + "px";
-		app.style.height = articles.style.width = ( ( width / 2 ) * 0.92 ) + "px";
+		app.style.height = articles.style.width = ( ( width / 2 ) * 0.85 ) + "px";
 
 		articles.style.width = ( tabWidth * 2 ) + "px";
 
@@ -261,9 +243,9 @@
 
 		window.addEventListener('resize', function(){
 			width = window.innerWidth;
-			tabWidth = ( width * 0.824 );
+			tabWidth = ( width * 0.775 );
 			app.style.width = tabWidth + "px";
-			app.style.height = articles.style.width = ( ( width / 2 ) * 0.92 ) + "px";
+			app.style.height = articles.style.width = ( ( width / 2 ) * 0.85 ) + "px";
 			articles.style.width = ( tabWidth * 2 ) + "px";
 		});
 

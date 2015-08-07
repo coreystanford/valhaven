@@ -19,37 +19,15 @@
 		var playButton = document.getElementById("play-pause");
 		var progressContainer = document.getElementById("progress-container");
 		var questions = document.getElementById('questions');
+		var quNum = document.getElementById('quNum');
 		var asked = 0;
 
-		var mapContainer = document.getElementById('map-container');
 		var video = document.getElementById("ch_video");
-		var press = document.getElementById('press');
-		var hospital = document.getElementById('hospital');
-		var office = document.getElementById('office');
-		var cdc = document.getElementById('cdc');
-		var botanical = document.getElementById('botanical');
-		var apartment = document.getElementById('apartment');
-		var home = document.getElementById('home');
 
-		botanical.setAttribute('class', 'inactive');
-		apartment.setAttribute('class', 'inactive');
-		office.setAttribute('class', 'inactive');
-		home.setAttribute('class', 'inactive');
-
-		progressContainer.removeEventListener("mousedown", VidControl.handleProgressMouseDown);
-		progressContainer.removeEventListener("touchstart", VidControl.handleProgressTouchDown);
+		// progressContainer.removeEventListener("mousedown", VidControl.handleProgressMouseDown);
+		// progressContainer.removeEventListener("touchstart", VidControl.handleProgressTouchDown);
 
 		progressContainer.style.opacity = "0.5";
-
-		for(var i = 0; i < mapContainer.children.length - 1; i++){
-
-			if( !Map.hasClass(mapContainer.children[i], "inactive") && !Map.hasClass(mapContainer.children[i], "visited") ){
-
-				mapContainer.children[i].addEventListener('click', Map.reroute);
-
-			}
-
-		}
 
 		video.addEventListener("timeupdate", checkTime);	
 
@@ -60,16 +38,21 @@
 				(video.currentTime > 122.2 && video.currentTime < 122.9 ||
 				(video.currentTime > 136 && video.currentTime < 136.9) ||
 				(video.currentTime > 158 && video.currentTime < 158.9))){
-					video.pause();
-					modal.style.left = 0;
-					modal.style.right = 0;
 					asked++;
-					console.log(asked);
-					if(asked >= 6){
+					if(asked >= 5){
 						modal.style.left = "-9999px";
 						modal.style.right = "-9999px";
 						video.currentTime = 160;
 						video.play();
+					} else if(asked >= 3 && asked <= 4) {
+						video.pause();
+						modal.style.left = 0;
+						modal.style.right = 0;
+						quNum.innerHTML = "YOU CAN ASK 1 MORE QUESTION";
+					} else {
+						video.pause();
+						modal.style.left = 0;
+						modal.style.right = 0;
 					}
 			}
 		}
@@ -88,61 +71,34 @@
 			video.play();
 		}
 
+		Local.setInactive( [botanical, apartment, office, home] );
+
 		video.addEventListener('ended', function(){
 
 			body.removeChild(modal);
-
-			if(localStorage.getItem( 'visited' )){
-				var visited = JSON.parse( localStorage.getItem( 'visited' ) );
-			} else {
-				var visited = []; 
-			}
-
-			if(localStorage.getItem( 'notes' )){
-				var storedNotes = JSON.parse( localStorage.getItem( 'notes' ) );
-			} else {
-				var storedNotes = []; 
-			}
 			
 			var isAbsent = true;
-			for(var i = 0; i < visited.length; i++){
-				if(visited[i] === "press"){
+			for(var i = 0; i < Local.visited.length; i++){
+				if(Local.visited[i] === "press"){
 					isAbsent = false;
 				}
 			}
 			if(isAbsent){
-				visited.push("press");
-				localStorage.setItem( 'visited', JSON.stringify(visited) );
-				storedNotes.push("Gov’t seems to be doing everything it can.");
-				localStorage.setItem( 'notes', JSON.stringify(storedNotes) );
+				Local.visited.push("press");
+				localStorage.setItem( 'visited', JSON.stringify(Local.visited) );
+				Local.visit(press);
+				Local.storedNotes.push("Gov’t seems to be doing everything it can.");
+				localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
 			}
-
-			for(var v = 0; v < visited.length; v++){
-
-				for(var i = 0; i < mapContainer.children.length - 1; i++){
-
-					var iconId = mapContainer.children[i].getAttribute('id');
-
-					if( visited[v] == iconId ){
-
-						var thisIcon = document.getElementById(iconId);
-						thisIcon.setAttribute('class', 'visited');
-						mapContainer.children[i].removeEventListener('click', Map.reroute);
-
-					}
-
-				}
-
-			}
-
-			Sliders.showMap();
-			Sliders.hideNotebook();
 
 			Map.removeVideoEvents();
 
-			if(visited.length >= 3){
+			if(Local.visited.length >= 3){
 				var cleanHREF = window.location.href.split("?");
 				window.location.href = cleanHREF[0] + "?action=flashback";
+			} else {
+				Sliders.showMap();
+				Sliders.hideNotebook();
 			}
 
 		});
@@ -150,3 +106,4 @@
 	})();
 
 </script>
+

@@ -8,51 +8,25 @@
 	
 	(function(){
 
-		var map = document.getElementById('map');
-		var notebook = document.getElementById('notebook');
-
-		map.style.display = 'none';
-		notebook.style.display = 'none';
-
 		var modal = document.getElementById('modal');
 		var container = document.getElementById('container-1');
 		var accept = document.getElementById('next-btn');
 		var instructText = "<p>These are the instructions that tell the viewer that they are to be Layna from this point onward.</p>"
 
-		var mapContainer = document.getElementById('map-container');
+		var map = document.getElementById('map');
+		var notebook = document.getElementById('notebook');
 		var video = document.getElementById("ch_video");
-		var press = document.getElementById('press');
-		var hospital = document.getElementById('hospital');
-		var office = document.getElementById('office');
-		var cdc = document.getElementById('cdc');
-		var botanical = document.getElementById('botanical');
-		var apartment = document.getElementById('apartment');
-		var home = document.getElementById('home');
 
-		if( !Map.hasClass(botanical, "visited") ){botanical.setAttribute('class', 'inactive');}
-		if( !Map.hasClass(apartment, "visited") ){apartment.setAttribute('class', 'inactive');}
-		if( !Map.hasClass(home, "visited") ){office.setAttribute('class', 'inactive');}
-		if( !Map.hasClass(home, "visited") ){home.setAttribute('class', 'inactive');}
-
-		for(var i = 0; i < mapContainer.children.length - 1; i++){
-
-			if( !Map.hasClass(mapContainer.children[i], "inactive") && !Map.hasClass(mapContainer.children[i], "visited") ){
-
-				mapContainer.children[i].addEventListener('click', Map.reroute);
-
-			}
-
+		if(Local.visited.length <= 0){
+			map.style.display = 'none';
+			notebook.style.display = 'none';
 		}
+
+		Local.setInactive( [botanical, apartment, office, home] );
 
 		video.addEventListener('ended', function(){
 
-			if(localStorage.getItem( 'visited' )){
-				var visited = JSON.parse( localStorage.getItem( 'visited' ) );
-			} else {
-				var visited = []; 
-			}
-
-			if(visited.length >= 3){
+			if(Local.visited.length >= 3){
 				var cleanHREF = window.location.href.split("?");
 				window.location.href = cleanHREF[0] + "?action=flashback";
 			}
@@ -113,8 +87,6 @@
 			});
 
 		});
-
-	
 
 	})();
 

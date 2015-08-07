@@ -72,10 +72,31 @@ var Map = (function(){
 		    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 		},
 
-		reroute: function(){
+		route: function(){
 			var action = this.getAttribute('id');
-			var cleanHREF = window.location.href.split("?");
-			window.location.href = cleanHREF[0] + "?action=" + action;
+			switch(action){
+				case 'press':
+					window.location.href = "/txm2015/valhaven/chapters/ch_1?action=press";
+				break;
+				case 'cdc':
+					window.location.href = "/txm2015/valhaven/chapters/ch_1?action=cdc";
+				break;
+				case 'hospital':
+					window.location.href = "/txm2015/valhaven/chapters/ch_1?action=hospital";
+				break;
+				case 'apartment':
+					window.location.href = "/txm2015/valhaven/chapters/ch_2";
+				break;
+				case 'botanical':
+					window.location.href = "/txm2015/valhaven/chapters/ch_3";
+				break;
+				case 'office':
+					window.location.href = "/txm2015/valhaven/chapters/ch_5";
+				break;
+				case 'home':
+					window.location.href = "/txm2015/valhaven/chapters/ch_5";
+				break;
+			}
 		},
 		
 		customRoute: function(route){
@@ -105,6 +126,100 @@ var Map = (function(){
 			notebook.removeEventListener('mouseenter', Sliders.showNotebook, false);
 			notebook.removeEventListener('mouseleave', Sliders.hideNotebook, false);
 		}
+
+	}
+
+})();
+
+var Local = (function(){
+
+	var mapContainer = document.getElementById('map-container');
+	var video = document.getElementById("ch_video");
+	var press = document.getElementById('press');
+	var hospital = document.getElementById('hospital');
+	var office = document.getElementById('office');
+	var cdc = document.getElementById('cdc');
+	var botanical = document.getElementById('botanical');
+	var apartment = document.getElementById('apartment');
+	var home = document.getElementById('home');
+
+	return {
+
+		visited: [],
+
+		storedNotes: [],
+
+		visits: function(){
+
+			if(localStorage.getItem( 'visited' )){
+				Local.visited = JSON.parse( localStorage.getItem( 'visited' ) );
+			} else {
+				Local.visited = [];
+			}
+
+			for(var v = 0; v < Local.visited.length; v++){
+
+				for(var i = 0; i < mapContainer.children.length - 1; i++){
+
+					var iconId = mapContainer.children[i].getAttribute('id');
+
+					if( Local.visited[v] == iconId ){
+
+						var thisIcon = document.getElementById(iconId);
+						thisIcon.setAttribute('class', 'visited');
+
+					}
+
+				}
+
+			}
+
+		},
+
+		notes: function(){
+
+			if(localStorage.getItem( 'notes' )){
+				Local.storedNotes = JSON.parse( localStorage.getItem( 'notes' ) );
+			} else {
+				Local.storedNotes = [];
+			}
+			
+			for(var i = 0; i < Local.storedNotes.length; i++){
+				var listedNote = document.createElement("LI");
+				listedNote.innerHTML = Local.storedNotes[i];
+				note.appendChild(listedNote);
+			}
+
+		},
+
+		setInactive: function(array){
+
+			for (var i = 0; i < array.length; i++) {
+				if( !Map.hasClass(array[i], "visited") ){ 
+					array[i].setAttribute('class', 'inactive');
+				}
+			};
+
+			for(var i = 0; i < mapContainer.children.length - 1; i++){
+
+				if( !Map.hasClass(mapContainer.children[i], "inactive") && !Map.hasClass(mapContainer.children[i], "visited") ){
+
+					mapContainer.children[i].addEventListener('click', Map.route);
+
+				}
+
+			}
+
+		},
+
+		visit: function(location){
+
+			location.setAttribute('class', 'visited');
+			location.removeEventListener('click', Map.route);
+
+		}
+
+
 
 	}
 
@@ -177,50 +292,7 @@ var Map = (function(){
 	// ---- LOCAL STORAGE ---- //
 	// ----------------------- //
 
-	var mapContainer = document.getElementById('map-container');
-	var note = document.getElementById('note');
-	var press = document.getElementById('press');
-	var hospital = document.getElementById('hospital');
-	var cdc = document.getElementById('cdc');
-	var botanical = document.getElementById('botanical');
-	var apartment = document.getElementById('apartment');
-	var home = document.getElementById('home');
-
-	if(localStorage.getItem( 'visited' )){
-		var visited = JSON.parse( localStorage.getItem( 'visited' ) );
-	} else {
-		var visited = [];
-	}
-
-	for(var v = 0; v < visited.length; v++){
-
-		for(var i = 0; i < mapContainer.children.length - 1; i++){
-
-			var iconId = mapContainer.children[i].getAttribute('id');
-
-			if( visited[v] == iconId ){
-
-				var thisIcon = document.getElementById(iconId);
-				thisIcon.setAttribute('class', 'visited');
-
-			}
-
-		}
-
-	}
-
-	if(localStorage.getItem( 'notes' )){
-		var storedNotes = JSON.parse( localStorage.getItem( 'notes' ) );
-	} else {
-		var storedNotes = [];
-	}
-
-	for(var i = 0; i < storedNotes.length; i++){
-
-		var listedNote = document.createElement("LI");
-		listedNote.innerHTML = storedNotes[i];
-		note.appendChild(listedNote);
-
-	}
+	Local.visits();
+	Local.notes();
 
 })();

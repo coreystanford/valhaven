@@ -8,12 +8,6 @@
 		homeBg = document.getElementById('home-bg')
 		playButton = document.getElementById("play-pause");
 
-	var map = document.getElementById('map');
-	var notebook = document.getElementById('notebook');
-
-	map.style.display = 'none';
-	notebook.style.display = 'none';
-
 	function playVideo(){
 		main.removeChild(homeBg);
 		video.play();

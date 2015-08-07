@@ -32,15 +32,10 @@
     $description = "This is a description of chapter one.";
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
 
-    $modal = "1-office.php"; // name of the modal window file located in ./modals/
-
     $next = "ch_2";
 
     $headScripts = array("jquery-1.11.3.min.js");
     
-    // javascript files for this chapter:
-    $customScripts = array("app.js", "video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
-
     // ---------------------------- //
     // ------ Perform Switch ------ //
     // ---------------------------- //
@@ -50,6 +45,11 @@
         // ------ Show Default ------ //
 
         case 'default':
+
+            // javascript files for this chapter:
+            $customScripts = array("app.js", "video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
+
+            $modal = "1-office.php"; // name of the modal window file located in ./modals/
 
             $poster = "valhaven.jpg"; // default video background for this chapter
             $webm = "sample.webm"; // webm video file for this chapter
@@ -62,7 +62,10 @@
 
         case 'hospital':
 
-            $modal = "1_1-hospital.php"; // name of the modal window file located in ./modals/
+            // javascript files for this chapter:
+            $customScripts = array("app.js", "video.js", "video-init.js", "1_1-hospital.js"); // add the file name in quotations, seperated by commas
+
+            $modal = ""; // name of the modal window file located in ./modals/
 
             $poster = "valhaven.jpg"; // default video background for this chapter
             $webm = "ch_1-1.webm"; // webm video file for this chapter
@@ -76,6 +79,9 @@
         break;
 
         case 'press':
+
+            // javascript files for this chapter:
+            $customScripts = array("app.js", "video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
 
             $modal = "1_2-press.php"; // name of the modal window file located in ./modals/
 
@@ -92,7 +98,10 @@
 
         case 'cdc':
 
-            $modal = "1_3-cdc.php"; // name of the modal window file located in ./modals/
+            // javascript files for this chapter:
+            $customScripts = array("app.js", "video.js", "video-init.js", "1_3-cdc.js"); // add the file name in quotations, seperated by commas
+
+            $modal = ""; // name of the modal window file located in ./modals/
 
             $poster = "valhaven.jpg"; // default video background for this chapter
             $webm = "sample.webm"; // webm video file for this chapter
@@ -107,7 +116,10 @@
 
         case 'flashback':
 
-            $modal = "1_4-flashback.php"; // name of the modal window file located in ./modals/
+            // javascript files for this chapter:
+            $customScripts = array("app.js", "video.js", "video-init.js", "1_4-flashback.js"); // add the file name in quotations, seperated by commas
+
+            $modal = ""; // name of the modal window file located in ./modals/
 
             $poster = "valhaven.jpg"; // default video background for this chapter
             $webm = "sample.webm"; // webm video file for this chapter
