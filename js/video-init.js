@@ -24,7 +24,7 @@
 			e.preventDefault();
 			video.play(); 
 			video.pause(); 
-			initVideo(); 
+			VidControl.initVideo();
 			preloader.removeChild(proceedBtn);
 			preIcon.style.visibility = "visible";
 		}

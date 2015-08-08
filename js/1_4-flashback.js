@@ -16,9 +16,24 @@
 
 		Map.removeVideoEvents();
 
+		var isAbsent = true;
+		for(var i = 0; i < Local.visited.length; i++){
+			if(Local.visited[i] === "flashback"){
+				isAbsent = false;
+			}
+		}
+		if(isAbsent){
+			Local.visited.push("flashback");
+			localStorage.setItem( 'visited', JSON.stringify(Local.visited) );
+			Local.storedNotes.push("Hiren of the Valley? It’s been extinct since I was a kid.");
+			localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
+		}
+
 		apartment.setAttribute('class', '');
 		apartment.addEventListener('click', Map.route);
 
 	});
 
 })();
+
+//

@@ -53,8 +53,8 @@
 		proceedBtn.ontouchstart = function(e){
 			e.preventDefault();
 			video.play(); 
-			video.pause(); 
-			initVideo(); 
+			video.pause();
+			VidControl.initVideo(); 
 			preloader.removeChild(proceedBtn);
 			preIcon.style.visibility = "visible";
 		}

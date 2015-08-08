@@ -64,11 +64,11 @@
 			Local.visited.push("apartment");
 			localStorage.setItem( 'visited', JSON.stringify(Local.visited) );
 			Local.visit(apartment);
-			Local.storedNotes.push("Hiren of the Valley? It’s been extinct since I was a kid.");
+			Local.storedNotes.push("He worked at Botanical Research Facility.");
 			localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
 		}
 
-		if(visited.length >= 3){
+		if(Local.visited.length >= 3){
 			apartment.setAttribute('class', '');
 			apartment.addEventListener('click', Map.route);
 		}

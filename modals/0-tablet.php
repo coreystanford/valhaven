@@ -56,19 +56,21 @@
 				<h1>Val Tea</h1>
 			</div>
 			<div class="article" ref="9">
-				<img src="<?php echo IMAGE_PATH; ?>item10_thumb.jpg">
+				<img src="<?php echo IMAGE_PATH; ?>item11_thumb.jpg">
 				<h1>Item Five</h1>
 			</div>
 			<div class="article" ref="10">
-				<img src="<?php echo IMAGE_PATH; ?>item10_thumb.jpg">
+				<img src="<?php echo IMAGE_PATH; ?>item12_thumb.jpg">
 				<h1>Item Five</h1>
 			</div>
 			<!-- <div class="article-next" ref="11" id="next-ch">
 				<a id="next-btn" class="btn" href="<?php // echo CH_PATH; ?>ch_1" type="button">NEXT CHAPTER</a>
 			</div> -->
 			<div class="article" ref="10">
-				<a href="<?php echo CH_PATH; ?>ch_1"><img src="<?php echo IMAGE_PATH; ?>next_img.jpg"></a>
-				<h1>Next Chapter</h1>
+				<a href="<?php echo CH_PATH; ?>ch_1">
+					<img src="<?php echo IMAGE_PATH; ?>next_img.jpg">
+					<h1>Next Chapter</h1>
+				</a>
 			</div>
 
 		</div>
@@ -105,7 +107,7 @@
 		</div>
 		<div class="off article-bg">
 			<div class="inner-article">
-				<video controls preload="none">
+				<video controls preload="auto">
 					<source  src="<?php echo VIDEO_PATH; ?>item6.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ><!-- List MP4 First - Server issue -->	
 					<source  src="<?php echo VIDEO_PATH; ?>item6.webm" type='video/webm; codecs="vp8, vorbis"'>
 					<source src="<?php echo VIDEO_PATH; ?>item6.ogv" type='video/ogg; codecs="theora, vorbis"'>
@@ -116,7 +118,7 @@
 		</div>
 		<div class="off article-bg">
 			<div class="inner-article">
-				<video controls preload="none">
+				<video controls preload="auto">
 					<source  src="<?php echo VIDEO_PATH; ?>item7.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ><!-- List MP4 First - Server issue -->	
 					<source  src="<?php echo VIDEO_PATH; ?>item7.webm" type='video/webm; codecs="vp8, vorbis"'>
 					<source src="<?php echo VIDEO_PATH; ?>item7.ogv" type='video/ogg; codecs="theora, vorbis"'>
@@ -130,10 +132,10 @@
 
 		<div class="off article-bg">
 			<div class="inner-article">
-				<video controls preload="none">
-					<source  src="<?php echo VIDEO_PATH; ?>item7.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ><!-- List MP4 First - Server issue -->	
-					<source  src="<?php echo VIDEO_PATH; ?>item7.webm" type='video/webm; codecs="vp8, vorbis"'>
-					<source src="<?php echo VIDEO_PATH; ?>item7.ogv" type='video/ogg; codecs="theora, vorbis"'>
+				<video controls preload="auto">
+					<source  src="<?php echo VIDEO_PATH; ?>item8.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ><!-- List MP4 First - Server issue -->	
+					<source  src="<?php echo VIDEO_PATH; ?>item8.webm" type='video/webm; codecs="vp8, vorbis"'>
+					<source src="<?php echo VIDEO_PATH; ?>item8.ogv" type='video/ogg; codecs="theora, vorbis"'>
 					<p class="update_browser">Your browser is too old to support the features of this website.  Please update your browser.</p>
 				</video>
 			</div>
@@ -141,25 +143,43 @@
 		</div>
 		<div class="off article-bg">
 			<div class="inner-article">
-				<img src="<?php echo IMAGE_PATH; ?>item2.jpg">
+				<video controls preload="auto">
+					<source  src="<?php echo VIDEO_PATH; ?>item9.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ><!-- List MP4 First - Server issue -->	
+					<source  src="<?php echo VIDEO_PATH; ?>item9.webm" type='video/webm; codecs="vp8, vorbis"'>
+					<source src="<?php echo VIDEO_PATH; ?>item9.ogv" type='video/ogg; codecs="theora, vorbis"'>
+					<p class="update_browser">Your browser is too old to support the features of this website.  Please update your browser.</p>
+				</video>
 			</div>
 			<button type="button" class="close-article">GO BACK</button>
 		</div>
 		<div class="off article-bg">
 			<div class="inner-article">
-				<img src="<?php echo IMAGE_PATH; ?>item3.jpg">
+				<video controls preload="auto">
+					<source  src="<?php echo VIDEO_PATH; ?>item10.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ><!-- List MP4 First - Server issue -->	
+					<source  src="<?php echo VIDEO_PATH; ?>item10.webm" type='video/webm; codecs="vp8, vorbis"'>
+					<source src="<?php echo VIDEO_PATH; ?>item10.ogv" type='video/ogg; codecs="theora, vorbis"'>
+					<p class="update_browser">Your browser is too old to support the features of this website.  Please update your browser.</p>
+				</video>
 			</div>
 			<button type="button" class="close-article">GO BACK</button>
 		</div>
 		<div class="off article-bg">
 			<div class="inner-article">
-				<img src="<?php echo IMAGE_PATH; ?>item4.jpg">
+				<audio controls>
+					<source src="<?php echo AUDIO_PATH; ?>item11.mp3" type="audio/mpeg">
+					<source src="<?php echo AUDIO_PATH; ?>item11.wav" type="audio/wav">
+					Your browser does not support the audio element.
+				</audio>
 			</div>
 			<button type="button" class="close-article">GO BACK</button>
 		</div>
 		<div class="off article-bg">
 			<div class="inner-article">
-				<img src="<?php echo IMAGE_PATH; ?>item5.png">
+				<audio controls>
+					<source src="<?php echo AUDIO_PATH; ?>item12.mp3" type="audio/mpeg">
+					<source src="<?php echo AUDIO_PATH; ?>item12.wav" type="audio/wav">
+					Your browser does not support the audio element.
+				</audio>
 			</div>
 			<button type="button" class="close-article">GO BACK</button>
 		</div>
@@ -219,6 +239,10 @@
 						close[ref].addEventListener("click", function(e){
 							e.preventDefault();
 							this.parentNode.setAttribute('class', 'off article-bg');
+							var vidaud = this.parentNode.children[0].children[0];
+							if(vidaud.nodeName == "VIDEO" || vidaud.nodeName == "AUDIO"){
+								vidaud.pause();
+							}
 						});
 
 					});
@@ -233,6 +257,10 @@
 						close[ref].addEventListener("touchstart", function(e){
 							e.preventDefault();
 							this.parentNode.setAttribute('class', 'off article-bg');
+							var vidaud = this.parentNode.children[0].children[0];
+							if(vidaud.nodeName == "VIDEO" || vidaud.nodeName == "AUDIO"){
+								vidaud.pause();
+							}
 						});
 						
 					});

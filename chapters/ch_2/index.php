@@ -54,9 +54,9 @@
             $modal = "2-apartment.php"; // name of the modal window file located in ./modals/
 
             $poster = "valhaven.jpg"; // default video background for this chapter
-            $webm = "sample.webm"; // webm video file for this chapter
-            $mp4 = "sample.mp4"; // mp4 video file for this chapter
-            $ogv = "sample.ogv"; // ogv video file for this chapter
+            $webm = "ch_2.webm"; // webm video file for this chapter
+            $mp4 = "ch_2.mp4"; // mp4 video file for this chapter
+            $ogv = "ch_2.ogv"; // ogv video file for this chapter
 
             include 'ch_2.php';
 

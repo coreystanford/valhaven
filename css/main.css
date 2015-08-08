@@ -1051,6 +1051,16 @@ nav {
         background-attachment: fixed;
       }
 
+      .inner-article audio {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
+
       .left-art {
         width: 30%;
         padding: 2%;
@@ -1113,6 +1123,14 @@ nav {
 
   #instructions-1 p {
     padding: 10px;
+  }
+
+  #container-1 {
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
   }
 
 /* ---- MODAL - PRESS ---- */
@@ -1312,9 +1330,71 @@ nav {
       width: 150px;
     }
 
-  .flash:hover {
-    background: rgba(255, 255, 255, 0.5);
+/* ---- LIBRARY MODAL ---- */
+
+#library-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #000;
+}
+
+  #library-inner-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    height: auto;
   }
+
+#library-bg, #book1 img,  #book2 img,  #book3 img,  #book4 img,  #book5 img {
+  width: 100%;
+}
+
+#book1,  #book2,  #book3,  #book4,  #book5 {
+  position: absolute;
+}
+
+#book1 {
+  top: 8%;
+  left: 39%;
+  width: 1.6%;
+  height: 24.5%;
+}
+
+#book2 {
+  top: 5%;
+  left: 49%;
+  width: 2%;
+  height: 31%;
+}
+
+#book3 {
+  top: 44%;
+  left: 41%;
+  width: 2%;
+  height: 24%;
+}
+
+#book4 {
+  top: 52%;
+  left: 45.5%;
+  width: 2.5%;
+  height: 21%;
+}
+
+#book5 {
+  top: 51%;
+  left: 48.5%;
+  width: 1%;
+  height: 27%;
+}
 
 /* ---- Animations ---- */
 
@@ -1405,6 +1485,11 @@ nav {
     -webkit-animation: flash .8s  ease-in;
     animation: flash .8s  ease-in;
 }
+
+.flash:hover {
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+  }
 
 @-webkit-keyframes flash {
   0%{

@@ -45,12 +45,12 @@
 			container.appendChild(instruct);
 
 			var instructText = document.createElement("P");
-			instructText.innerHTML = "These are the instructions that tell the viewer that they are to be Layna from this point onward.";
+			instructText.innerHTML = "With no one else concerned about the mysterious illness in Red Crowe, it looks like Layna needs some help. Step into her investigative journalist shoes and uncover the secrets of Valhaven Island before it’s too late.";
 			instructText.setAttribute("id", "instructText");
 			instruct.appendChild(instructText);
 
 			var nextCh = document.createElement('A');
-			nextCh.innerHTML = "OKAY";
+			nextCh.innerHTML = "CONTINUE";
 			nextCh.setAttribute("id", "next-btn");
 			nextCh.setAttribute("class", "btn");
 			instruct.appendChild(nextCh);
@@ -65,6 +65,7 @@
 				nextCh.innerHTML = "GOT IT";
 
 				Sliders.showMap();
+				container.style.left= "60%";
 				nextCh.addEventListener('click', firstClick);
 
 				function firstClick(){
@@ -76,6 +77,7 @@
 
 					Sliders.hideMap();
 					Sliders.showNotebook();
+					container.style.left= "40%";
 				}
 
 				function secondClick(){

@@ -219,22 +219,6 @@ var Local = (function(){
 
 		}
 
-		// fullscreen: function(){
-		// 	if(localStorage.getItem( 'fullscreen' )){
-		// 		if(localStorage.getItem( 'fullscreen' ) === "true"){
-		// 			if (screenfull.enabled) {
-		// 				if(!screenfull.isFullscreen){
-		// 					screenfull.request();
-		// 				}
-		// 		    }
-		// 		} else {
-		// 			localStorage.setItem('fullscreen', 'true');
-		// 		}
-		// 	} else {
-		// 		localStorage.setItem('fullscreen', 'false');
-		// 	}
-		// }
-
 	}
 
 })();
@@ -308,6 +292,5 @@ var Local = (function(){
 
 	Local.visits();
 	Local.notes();
-	// Local.fullscreen();
 
 })();
