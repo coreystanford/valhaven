@@ -23,6 +23,11 @@
 	gardinerId.children[0].style.opacity = 0;
 	goToBot.addEventListener('click', hideIdWindow);
 
+	if(Local.visited.length >= 3){
+		apartment.setAttribute('class', '');
+		apartment.addEventListener('click', Map.route);
+	}
+
 	function showPainting(){
 		this.setAttribute('class', '');
 		this.children[0].setAttribute('class', '');
@@ -40,7 +45,6 @@
 		this.style.top = "50%";
 		this.style.width = "80%";
 		this.style.height = "80%";
-
 	}
 
 	function hideIdWindow(){
@@ -67,12 +71,6 @@
 			Local.storedNotes.push("He worked at Botanical Research Facility.");
 			localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
 		}
-
-		if(Local.visited.length >= 3){
-			apartment.setAttribute('class', '');
-			apartment.addEventListener('click', Map.route);
-		}
-
 	}
 
 	bg.addEventListener('click', function(){

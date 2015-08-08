@@ -51,6 +51,7 @@
 		var container = document.getElementById('library-container');
 		var inner = document.getElementById('modal');
 		var bg = document.getElementById('library-bg');
+		var read = 0;
 
 		modal.style.zIndex = "15";
 
@@ -86,12 +87,64 @@
 
 		});
 
-		video.addEventListener('ended', function(){
+		book1.addEventListener('click', openBook);
+		book2.addEventListener('click', openBook);
+		book3.addEventListener('click', openBook);
+		book4.addEventListener('click', openBook);
+		book5.addEventListener('click', openBook);
 
-			
+		function openBook(){
+			this.setAttribute('class', '');
+			this.children[0].setAttribute('class', '');
+			this.removeEventListener('click', openBook);
+			this.style.cursor = "default";
 
-		});
-// “Dominus Genii Majalis” = Hiren of the Valley.
+			this.style.top = "50%";
+			this.style.left = "50%";
+			this.style.width = "70%";
+			this.style.height = "88%";
+			this.style.zIndex = "25";
+
+			this.children[0].children[1].addEventListener('click', closeBook);
+		}
+
+		function closeBook(){
+			this.parentNode.parentNode.style.display = "none";
+			checkReads();
+		}
+
+		function checkReads(){
+			read++;
+			if(read >= 2){
+
+				Sliders.showMap();
+				modal.style["-webkit-transition-duration"] = "0.5s";
+				modal.style["-moz-transition-duration"] = "0.5s";
+				modal.style["-o-transition-duration"] = "0.5s";
+				modal.style["transition-duration"] = "0.5s";
+				modal.style.left = "30%";
+				Sliders.hideNotebook();
+
+				Map.removeVideoEvents();
+
+				var isAbsent = true;
+				for(var i = 0; i < Local.visited.length; i++){
+					if(Local.visited[i] === "library"){
+						isAbsent = false;
+					}
+				}
+				if(isAbsent){
+					Local.visited.push("library");
+					localStorage.setItem( 'visited', JSON.stringify(Local.visited) );
+					Local.storedNotes.push("“Dominus Genii Majalis” = Hiren of the Valley.");
+					localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
+				}
+
+				office.setAttribute('class', '');
+				office.addEventListener('click', Map.route);
+			}
+		}
+
 	})();
 
 </script>

@@ -37,7 +37,7 @@
     $prev = "ch_4";
     $next = "ch_6";
 
-    $headScripts = array("jquery-1.11.3.min.js", "jquery-ui.min.js");
+    $headScripts = array("jquery-1.11.3.min.js", "jquery-ui.min.js", "screenfull.js");
     
     // javascript files for this chapter:
     $customScripts = array("app.js", "video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
@@ -53,9 +53,9 @@
         case 'default':
 
             $poster = "valhaven.jpg"; // default video background for this chapter
-            $webm = "sample.webm"; // webm video file for this chapter
-            $mp4 = "sample.mp4"; // mp4 video file for this chapter
-            $ogv = "sample.ogv"; // ogv video file for this chapter
+            $webm = "ch_5.webm"; // webm video file for this chapter
+            $mp4 = "ch_5.mp4"; // mp4 video file for this chapter
+            $ogv = "ch_5.ogv"; // ogv video file for this chapter
 
             include 'ch_5.php';
 
