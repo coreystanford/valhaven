@@ -87,6 +87,9 @@
 			onPointerDownPointerX = e.clientX;
 			onPointerDownLon = lon;
 
+			container.style.cursor = "-webkit-grabbing"; 
+            container.style.cursor = "-moz-grabbing";
+
 			var vector = new THREE.Vector3( mouse.x, mouse.y, 1 ).unproject( camera );
 			raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
 			var intersects = raycaster.intersectObjects( scene.children );
@@ -120,6 +123,11 @@
 			if ( isUserInteracting === true ) {
 				lon = ( onPointerDownPointerX - e.clientX ) * 0.1 + onPointerDownLon;
 				lat = 0;
+				container.style.cursor = "-webkit-grabbing"; 
+            	container.style.cursor = "-moz-grabbing";
+			} else {
+				container.style.cursor = "-webkit-grab"; 
+                container.style.cursor = "-moz-grab";
 			}
 	        mouse.x = ( e.clientX / window.innerWidth ) * 2 - 1;
 			mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
@@ -164,7 +172,6 @@
 					door.material.opacity = 0.5;
                 } else{
                     hover = false;
-                    container.style.cursor = "default";
                 }
 			}
 			renderer.render( scene, camera );

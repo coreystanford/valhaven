@@ -66,6 +66,11 @@ var Map = (function(){
 	var map = document.getElementById('map');
 	var notebook = document.getElementById('notebook');
 
+	var controls = document.getElementById('controls');
+	var fullScreenButton = document.getElementById("full-screen");
+	var volumeButton = document.getElementById("volume-icon");
+ 	var volumeBar = document.getElementById("volume-bar");
+
 	return {
 
 		hasClass: function (element, cls) {
@@ -110,6 +115,15 @@ var Map = (function(){
 			playButton.removeEventListener("touchstart", VidControl.playPause);
 			document.removeEventListener('keydown', VidControl.spaceDown, false);
 
+			controls.removeEventListener("mouseenter",	VidControl.slideOnscreen);
+			controls.removeEventListener("mouseleave",	VidControl.slideOffscreen);
+			volumeButton.removeEventListener("click", VidControl.muteUnmute);
+			volumeBar.removeEventListener("mouseenter", VidControl.volumeEnter);
+			volumeBar.removeEventListener("mouseleave", VidControl.volumeLeave);
+			volumeButton.removeEventListener("touchstart", VidControl.muteUnmute);
+			volumeButton.removeEventListener("mouseenter", VidControl.volumeShow);
+			volumeButton.removeEventListener("mouseleave", VidControl.volumeHide);
+
 			progressContainer.removeEventListener("mousedown", VidControl.handleProgressMouseDown);
 			progressContainer.removeEventListener("mousemove", VidControl.handleProgressMouseMove);
 			progressContainer.removeEventListener("mouseup", VidControl.progressUp);
@@ -123,8 +137,8 @@ var Map = (function(){
 
 			map.removeEventListener('mouseenter', Sliders.showMap, false);
 			map.removeEventListener('mouseleave', Sliders.hideMap, false);
-			notebook.removeEventListener('mouseenter', Sliders.showNotebook, false);
-			notebook.removeEventListener('mouseleave', Sliders.hideNotebook, false);
+			// notebook.removeEventListener('mouseenter', Sliders.showNotebook, false);
+			// notebook.removeEventListener('mouseleave', Sliders.hideNotebook, false);
 		}
 
 	}

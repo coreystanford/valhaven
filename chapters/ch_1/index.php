@@ -122,9 +122,9 @@
             $modal = ""; // name of the modal window file located in ./modals/
 
             $poster = "valhaven.jpg"; // default video background for this chapter
-            $webm = "sample.webm"; // webm video file for this chapter
-            $mp4 = "sample.mp4"; // mp4 video file for this chapter
-            $ogv = "sample.ogv"; // ogv video file for this chapter
+            $webm = "ch_1-4.webm"; // webm video file for this chapter
+            $mp4 = "ch_1-4.mp4"; // mp4 video file for this chapter
+            $ogv = "ch_1-4.ogv"; // ogv video file for this chapter
 
             $prev = "ch_1";
 

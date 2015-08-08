@@ -55,7 +55,7 @@
 		notebook.removeEventListener('mouseleave', Sliders.hideNotebook, false);
 		botanical.setAttribute('class', '');
 		botanical.addEventListener('click', Map.route);
-		Sliders.showMap();
+		Local.visit(apartment);
 
 		var isAbsent = true;
 		for(var i = 0; i < Local.visited.length; i++){
@@ -67,10 +67,10 @@
 		if(isAbsent){
 			Local.visited.push("apartment");
 			localStorage.setItem( 'visited', JSON.stringify(Local.visited) );
-			Local.visit(apartment);
 			Local.storedNotes.push("He worked at Botanical Research Facility.");
 			localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
 		}
+		Sliders.showMap();
 	}
 
 	bg.addEventListener('click', function(){

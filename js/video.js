@@ -83,6 +83,51 @@ var VidControl = (function(){
 		    }
 		},
 
+		// ---- VOLUME ---- //
+
+		prevVol: volumeBar.value,
+
+		muteUnmute: function() {
+			VidControl.slideOnscreen();
+			if (volumeBar.value != 0) {
+				video.muted = true;
+				VidControl.prevVol = video.volume;
+				volumeBar.value = 0;
+				//volumeButton.innerHTML = "Muted";
+			} else {
+				video.muted = false;
+				video.volume = volumeBar.value = VidControl.prevVol;
+				// volumeButton.innerHTML = "";
+			}
+		},
+
+		volume: function() {
+			video.volume = volumeBar.value;
+			if(video.volume === 0){
+				video.muted = true;
+			} else {
+				video.muted = false;
+			}
+		},
+
+		volumeEnter: function() {
+			volumeBar.style.display = "block";
+			VidControl.slideOnscreen();
+		},
+
+		volumeLeave: function() {
+			volumeBar.style.display = "none";
+			VidControl.slideOffscreen();
+		},
+
+		volumeShow: function() {
+			volumeBar.style.display = "block";
+		},
+
+		volumeHide: function() {
+			volumeBar.style.display = "none";
+		},
+
 		// ---- FULLSCREEN ---- //
 
 		enterFullscreen: function(){
@@ -205,7 +250,9 @@ var VidControl = (function(){
 		},
 
 		progressLeave: function(){
-			VidControl.slideOffscreen();
+			if(video.paused != true){
+				VidControl.slideOffscreen();
+			}
 			time.style.display = "none";
 		},
 
@@ -323,7 +370,10 @@ var VidControl = (function(){
 
 	// Play/Pause + Controls
 	var playButton = document.getElementById("play-pause"),
-		fullScreenButton = document.getElementById("full-screen");
+		controls = document.getElementById('controls'),
+		fullScreenButton = document.getElementById("full-screen"),
+		volumeButton = document.getElementById("volume-icon"),
+ 		volumeBar = document.getElementById("volume-bar");
 
 	// Progress Bar
 	var progressContainer = document.getElementById("progress-container"),
@@ -332,12 +382,9 @@ var VidControl = (function(){
 		time = document.getElementById('time'),
 		buffer = document.getElementById('buffered-amount');
 
-	// Volume
-	var volumeButton = document.getElementById("volume-icon"),
- 		volumeBar = document.getElementById("volume-bar");
-
  	// Nav
- 	var prev = document.getElementById("prev");
+ 	var prev = document.getElementById("prev"),
+ 		social = document.getElementById('social');
 	
 	// ---------------------- //
  	// ---- PLAY + PAUSE ---- //
@@ -359,6 +406,13 @@ var VidControl = (function(){
 
 	document.addEventListener('keydown', VidControl.spaceDown, false);
 
+	// ------------------ //
+	// ---- CONTROLS ---- //
+	// ------------------ //
+
+	controls.addEventListener("mouseenter",	VidControl.slideOnscreen);
+	controls.addEventListener("mouseleave",	VidControl.slideOffscreen);
+
 	// ----------------------- //
  	// ---- MUTE + VOLUME ---- //
  	// ----------------------- //
@@ -368,59 +422,20 @@ var VidControl = (function(){
 	volumeBar.style.display = "none";
 
 	// Event listener for the mute button
-	volumeButton.addEventListener("click", function() {
-		if (video.muted == false) {
-			video.muted = true;
-			volumeBar.value = 0;
-			//volumeButton.innerHTML = "Muted";
-		} else {
-			video.muted = false;
-			video.volume = volumeBar.value;
-			// volumeButton.innerHTML = "";
-		}
-	});
-
-	volumeButton.addEventListener("mouseenter", function() {
-		volumeBar.style.display = "block";
-	});
-
-	volumeButton.addEventListener("mouseleave", function() {
-		volumeBar.style.display = "none";
-	});
-
-	volumeBar.addEventListener("mouseenter", function() {
-		volumeBar.style.display = "block";
-	});
-
-	volumeBar.addEventListener("mouseleave", function() {
-		volumeBar.style.display = "none";
-	});
+	volumeButton.addEventListener("click", VidControl.muteUnmute);
+	volumeButton.addEventListener("mouseenter", VidControl.volumeShow);
+	volumeButton.addEventListener("mouseleave", VidControl.volumeHide);
+	volumeBar.addEventListener("mouseenter", VidControl.volumeEnter);
+	volumeBar.addEventListener("mouseleave", VidControl.volumeLeave);
 
 	// ---- TOUCH EVENTS ---- //
 
-	// Event listener for the mute button
-	volumeButton.addEventListener("touchstart", function() {
-		if (video.muted == false) {
-			video.muted = true;
-			volumeBar.value = 0;
-			//volumeButton.innerHTML = "Muted";
-		} else {
-			video.muted = false;
-			video.volume = volumeBar.value;
-			// volumeButton.innerHTML = "";
-		}
-	});
+	// Event listener for a click on the volume button (to mute/unmute)
+	volumeButton.addEventListener("touchstart", VidControl.muteUnmute);
 
 	// ---- AUDIO EVENTS ---- //
 
-	volumeBar.addEventListener("change", function() {
-		video.volume = volumeBar.value;
-		// if(video.volume === 0){
-		// 	video.muted = true;
-		// } else {
-		// 	video.muted = false;
-		// }
-	});
+	volumeBar.addEventListener("change", VidControl.volume);
 
 	// -------------------- //
  	// ---- FULLSCREEN ---- //
