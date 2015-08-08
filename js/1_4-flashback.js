@@ -2,6 +2,7 @@
 
 	var body = document.getElementById('body');
 	var modal = document.getElementById('modal');
+	var newNote = document.getElementById('newNote');
 
 	body.removeChild(modal);
 
@@ -28,6 +29,11 @@
 			Local.storedNotes.push("Hiren of the Valley? It’s been extinct since I was a kid.");
 			localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
 		}
+
+		Local.visits();
+		Local.notes();
+		newNote.volume = 0.7;
+		newNote.play();
 
 		apartment.setAttribute('class', '');
 		apartment.addEventListener('click', Map.route);

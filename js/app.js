@@ -79,6 +79,9 @@ var Map = (function(){
 
 		route: function(){
 			var action = this.getAttribute('id');
+			if(action === "main-btn") {
+				var action = this.getAttribute('ref');
+			}
 			switch(action){
 				case 'press':
 					window.location.href = "/txm2015/valhaven/chapters/ch_1?action=press";
@@ -89,17 +92,23 @@ var Map = (function(){
 				case 'hospital':
 					window.location.href = "/txm2015/valhaven/chapters/ch_1?action=hospital";
 				break;
+				case 'flashback':
+					window.location.href = "/txm2015/valhaven/chapters/ch_1?action=flashback";
+				break;
 				case 'apartment':
 					window.location.href = "/txm2015/valhaven/chapters/ch_2";
 				break;
 				case 'botanical':
 					window.location.href = "/txm2015/valhaven/chapters/ch_3";
 				break;
+				case 'library':
+					window.location.href = "/txm2015/valhaven/chapters/ch_4";
+				break;
 				case 'office':
 					window.location.href = "/txm2015/valhaven/chapters/ch_5";
 				break;
 				case 'home':
-					window.location.href = "/txm2015/valhaven/chapters/ch_5";
+					window.location.href = "/txm2015/valhaven/chapters/ch_6";
 				break;
 			}
 		},
@@ -197,7 +206,9 @@ var Local = (function(){
 			} else {
 				Local.storedNotes = [];
 			}
-			
+			while (note.firstChild) {
+			    note.removeChild(note.firstChild);
+			}
 			for(var i = 0; i < Local.storedNotes.length; i++){
 				var listedNote = document.createElement("LI");
 				listedNote.innerHTML = Local.storedNotes[i];

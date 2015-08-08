@@ -9,7 +9,6 @@
 
 <h1 id="quNum">YOU CAN ASK 2 QUESTIONS</h1>
 
-
 <script>
 	
 	(function(){
@@ -23,6 +22,7 @@
 		var asked = 0;
 
 		var video = document.getElementById("ch_video");
+		var newNote = document.getElementById("newNote");
 
 		// progressContainer.removeEventListener("mousedown", VidControl.handleProgressMouseDown);
 		// progressContainer.removeEventListener("touchstart", VidControl.handleProgressTouchDown);
@@ -99,6 +99,10 @@
 			} else {
 				Sliders.showMap();
 				Sliders.hideNotebook();
+				Local.visits();
+				Local.notes();
+				newNote.volume = 0.7;
+				newNote.play();
 			}
 
 		});

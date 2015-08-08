@@ -2,6 +2,7 @@
 
 	var body = document.getElementById('body');
 	var modal = document.getElementById('modal');
+	var newNote = document.getElementById('newNote');
 
 	body.removeChild(modal);
 
@@ -33,6 +34,10 @@
 		} else {
 			Sliders.showMap();
 			Sliders.hideNotebook();
+			Local.visits();
+			Local.notes();
+			newNote.volume = 0.7;
+			newNote.play();
 		}
 
 	});

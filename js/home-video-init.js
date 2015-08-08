@@ -6,7 +6,8 @@
 		video = document.getElementById('ch_video')
 		homeBtn = document.getElementById('main-btn'),
 		homeBg = document.getElementById('home-bg')
-		playButton = document.getElementById("play-pause");
+		playButton = document.getElementById("play-pause"),
+		titleBtn = document.getElementById('title-btn');
 
 	function playVideo(){
 		main.removeChild(homeBg);
@@ -20,8 +21,33 @@
 
 	VidControl.initVideo();
 
-	homeBtn.addEventListener("click", playVideo);
-	homeBtn.addEventListener("touchstart", playVideo);
+	if(Local.visited.length <= 0){
+		map.style.display = 'none';
+		notebook.style.display = 'none';
+		homeBtn.addEventListener("click", playVideo);
+		homeBtn.addEventListener("touchstart", playVideo);
+	} else {
+
+		var visited = Local.visited;
+		homeBtn.setAttribute('ref', visited[visited.length - 1]);
+		homeBtn.addEventListener("click", Map.route);
+		homeBtn.addEventListener("touchstart", Map.route);
+		homeBtn.innerHTML = "CONTINUE PLAYING";
+
+		var restart = document.createElement("BUTTON");
+		restart.innerHTML = "RESTART";
+		restart.setAttribute("class", "btn");
+		titleBtn.appendChild(restart);
+
+		restart.onclick = function(e){
+			e.preventDefault();
+			localStorage.clear();
+			playVideo();
+			map.style.display = 'none';
+			notebook.style.display = 'none';
+		}
+
+	}
 
 	// ----------------------------- //
 	// ---- Homepage Background ---- //

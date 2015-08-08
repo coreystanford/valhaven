@@ -27,4 +27,10 @@
 
 	</div>
 
+	<audio controls class="hide" id="newNote">
+		<source src="<?php echo AUDIO_PATH; ?>newNote1.mp3" type="audio/mpeg">
+		<source src="<?php echo AUDIO_PATH; ?>newNote1.wav" type="audio/wav">
+		Your browser does not support the audio element.
+	</audio>
+
 <?php require FOOTER; ?>

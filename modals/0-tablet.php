@@ -201,8 +201,6 @@
 	
 	(function(){
 
-		var map = document.getElementById('map');
-		var notebook = document.getElementById('notebook');
 		var app = document.getElementById("newsapp");
 		var articles = document.getElementById('news-container');
 		var contents = document.getElementById('articles');
@@ -210,11 +208,6 @@
 		var tabPrev = document.getElementById("tabPrev");
 		var width = window.innerWidth;
 		var tabWidth = ( width * 0.755 );
-
-		if(Local.visited.length <= 0){
-			map.style.display = 'none';
-			notebook.style.display = 'none';
-		}
 
 		Local.setInactive( [botanical, apartment, office, home, press, cdc, hospital] );
 

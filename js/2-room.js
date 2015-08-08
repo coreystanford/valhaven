@@ -2,6 +2,7 @@
 
 	var body = document.getElementById('body');
 	var modal = document.getElementById('modal');
+	var newNote = document.getElementById('newNote');
 
 	body.removeChild(modal);
 
@@ -51,8 +52,8 @@
 		innerContainer.removeChild(gardinerId);
 		map.removeEventListener('mouseenter', Sliders.showMap, false);
 		map.removeEventListener('mouseleave', Sliders.hideMap, false);
-		notebook.removeEventListener('mouseenter', Sliders.showNotebook, false);
-		notebook.removeEventListener('mouseleave', Sliders.hideNotebook, false);
+		// notebook.removeEventListener('mouseenter', Sliders.showNotebook, false);
+		// notebook.removeEventListener('mouseleave', Sliders.hideNotebook, false);
 		botanical.setAttribute('class', '');
 		botanical.addEventListener('click', Map.route);
 		Local.visit(apartment);
@@ -70,6 +71,10 @@
 			Local.storedNotes.push("He worked at Botanical Research Facility.");
 			localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
 		}
+		Local.visits();
+		Local.notes();
+		newNote.volume = 0.7;
+		newNote.play();
 		Sliders.showMap();
 	}
 
