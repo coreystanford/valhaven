@@ -192,6 +192,9 @@ var VidControl = (function(){
 		progressDown: function(posX){
 			width = window.innerWidth;
 
+			progressContainer.style.cursor = "-webkit-grabbing";
+			progressContainer.style.cursor = "-moz-grabbing";
+
 			video.pause();
 			playButton.innerHTML = "Play";
 			VidControl.slideOnscreen();
@@ -226,6 +229,9 @@ var VidControl = (function(){
 
 			if(down){
 				moving = true;
+
+				progressContainer.style.cursor = "-webkit-grabbing";
+				progressContainer.style.cursor = "-moz-grabbing";
 				
 				perc = pos / width;
 				progressBar.value = (100 / video.duration) * (video.duration * perc);
@@ -243,6 +249,9 @@ var VidControl = (function(){
 			}
 			
 			down = false;
+
+			progressContainer.style.cursor = "default";
+			progressContainer.style.cursor = "default";
 
 			video.play();
 			playButton.innerHTML = "Pause";
