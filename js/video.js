@@ -145,10 +145,11 @@ var VidControl = (function(){
 		// ---- PROGRESS BAR ---- //
 
 		trackProgress: function(){
-			var bufferedEnd = video.buffered.end(video.buffered.length - 1);
-			var duration =  video.duration;
-			var bufferPerc = ((bufferedEnd / duration) * 100);
-		  	
+			if(video.buffered.length - 1 === 0){
+				var bufferedEnd = video.buffered.end(video.buffered.length - 1);
+				var duration =  video.duration;
+				var bufferPerc = ((bufferedEnd / duration) * 100);
+		  	}
 		  	buffer.style.width = bufferPerc + "%";
 		},
 
@@ -332,11 +333,11 @@ var VidControl = (function(){
 
 		initVideo: function(){
 			video.play();
-			if(video.readyState !== 4){ // HAVE_ENOUGH_DATA
+			// if(video.readyState !== 4){ // HAVE_ENOUGH_DATA
 				video.addEventListener('canplay', VidControl.onCanPlay, false);
 				video.addEventListener('load', VidControl.onCanPlay, false); // add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
 				video.pause();
-			}
+			// }
 		},
 
 		onCanPlay: function(){
@@ -347,11 +348,11 @@ var VidControl = (function(){
 
 		initVideoThrough: function(){
 			video.play();
-			if(video.readyState !== 4){ // HAVE_ENOUGH_DATA
+			// if(video.readyState !== 4){ // HAVE_ENOUGH_DATA
 				video.addEventListener('canplaythrough', VidControl.onCanPlayThrough, false);
 				video.addEventListener('load', VidControl.onCanPlayThrough, false); // add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
 				video.pause();
-			}
+			// }
 		},
 
 		onCanPlayThrough: function(){

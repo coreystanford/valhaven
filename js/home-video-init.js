@@ -32,7 +32,7 @@
 		homeBtn.setAttribute('ref', visited[visited.length - 1]);
 		homeBtn.addEventListener("click", Map.route);
 		homeBtn.addEventListener("touchstart", Map.route);
-		homeBtn.innerHTML = "CONTINUE PLAYING";
+		homeBtn.innerHTML = "CONTINUE STORY";
 
 		var restart = document.createElement("BUTTON");
 		restart.innerHTML = "RESTART";

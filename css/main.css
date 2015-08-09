@@ -1448,6 +1448,16 @@ nav {
   height: 27%;
 }
 
+.close-book {
+  position: absolute;
+  top: -17px;
+  right: -16px;
+  background: #fff;
+  padding: 10px 16px;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
 /* ---- Animations ---- */
 
 #preloader-icon,
