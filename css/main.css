@@ -870,7 +870,7 @@ nav {
   -moz-transform: translateX(-50.4%) translateY(-45.9%) rotate(357deg);
   -ms-transform: translateX(-50.4%) translateY(-45.9%) rotate(357deg);
   transform: translateX(-50.4%) translateY(-45.9%) rotate(357deg);
-  background: #202020;
+  background: #001117;
   overflow: hidden;
 }
 
@@ -897,7 +897,7 @@ nav {
   position: relative;
   height: 10%;
   width: 100%;
-  background: #000;
+  background: #00afed;
 }
 
   #app-header img {
@@ -1008,7 +1008,7 @@ nav {
     font-size: 20px;
     font-weight: bold;
     margin-top: -5px;
-    background-color: #323132;
+    background-color: #00afed;
     color: #fff;
     text-align: left;
     white-space: nowrap;
@@ -1016,6 +1016,10 @@ nav {
     text-overflow: ellipsis;
     width: 100%;
     margin-bottom: 5%;
+  }
+
+  .center {
+    text-align: center!important;
   }
 
 #articles {
