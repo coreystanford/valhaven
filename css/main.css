@@ -1,4 +1,11 @@
 @charset "utf-8";
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('./fonts/fontawesome-webfont.eot?v=4.4.0');
+  src: url('./fonts/fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'), url('./fonts/fontawesome-webfont.woff2?v=4.4.0') format('woff2'), url('./fonts/fontawesome-webfont.woff?v=4.4.0') format('woff'), url('./fonts/fontawesome-webfont.ttf?v=4.4.0') format('truetype'), url('./fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /*  ---------------------------  */
 /*  ---------- RESET ----------  */
@@ -77,6 +84,60 @@ button {
   background: none;
   cursor: pointer;
   outline: none;
+}
+
+/*  -----FONT AWESOME-----  */
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 45px;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+
+.fax2 {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+
+.fa-play:before {
+  content: "\f04b";
+  padding: 10px 10px 10px 12px;
+  border: 2px solid #fff;
+}
+
+.fa-pause:before {
+  content: "\f04c";
+  padding: 10px;
+  border: 2px solid #fff;
+}
+
+.fa-open-fullscreen:before {
+  content: "\f0b2";
+}
+
+.fa-close-fullscreen:before {
+  content: "\f066";
+}
+
+.fa-volume:before {
+  content: "\f028";
+}
+
+.fa-facebook:before {
+  content: "\f09a";
+}
+
+.fa-twitter:before {
+  content: "\f099";
 }
 
 /*  ---------------------------  */
@@ -207,10 +268,6 @@ nav {
     background: #eb1c3c;
   }
 
-    #map-btn img {
-      /*background: #eb1c3c;*/
-    }
-
     #press {
       position: absolute;
       width: 18%;
@@ -218,34 +275,6 @@ nav {
       left: 46%;
       cursor: pointer;
     }
-
-      /*#press:hover:before {
-        background: #333;
-        background: rgba(0,0,0,.8);
-        border-radius: 5px;
-        bottom: 48px;
-        color: #000;
-        content: attr(title);
-        left: -15%;
-        padding: 0 10px;
-        position: absolute;
-        z-index: 300;
-        min-width: 150px;
-        width: auto;
-        height: auto;
-        line-height: 30px;
-      }
-
-      #press:hover:after {
-        border: solid;
-        border-color: #111 transparent;
-        border-width: 6px 6px 0 6px;
-        bottom: 42px;
-        content: "";
-        left: 40%;
-        position: absolute;
-        z-index: 300;
-      }*/
 
     #hospital {
       position: absolute;

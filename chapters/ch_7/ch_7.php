@@ -21,7 +21,7 @@
 
 		<!-- Play/Pause Button -->
 		<div id="play-pause-container">
-			<button type="button" id="play-pause">Play</button>
+			<button type="button" id="play-pause"><i class="fa fa-play"></i></button>
 		</div>
 
 		<!-- Video Controls -->

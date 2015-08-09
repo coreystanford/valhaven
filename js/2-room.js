@@ -1,12 +1,10 @@
 (function(){
 
 	var body = document.getElementById('body');
+	var video = document.getElementById("ch_video");
 	var modal = document.getElementById('modal');
-	var newNote = document.getElementById('newNote');
 
 	body.removeChild(modal);
-
-	var video = document.getElementById("ch_video");
 
 	Local.setInactive( [botanical, office, home] );
 
@@ -50,31 +48,17 @@
 
 	function hideIdWindow(){
 		innerContainer.removeChild(gardinerId);
+		
 		map.removeEventListener('mouseenter', Sliders.showMap, false);
 		map.removeEventListener('mouseleave', Sliders.hideMap, false);
-		// notebook.removeEventListener('mouseenter', Sliders.showNotebook, false);
-		// notebook.removeEventListener('mouseleave', Sliders.hideNotebook, false);
+
 		botanical.setAttribute('class', '');
 		botanical.addEventListener('click', Map.route);
+		
 		Local.visit(apartment);
 
-		var isAbsent = true;
-		for(var i = 0; i < Local.visited.length; i++){
-			if(Local.visited[i] === "apartment"){
-				isAbsent = false;
-			}
-		}
-		
-		if(isAbsent){
-			Local.visited.push("apartment");
-			localStorage.setItem( 'visited', JSON.stringify(Local.visited) );
-			Local.storedNotes.push("He worked at Botanical Research Facility.");
-			localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
-		}
-		Local.visits();
-		Local.notes();
-		newNote.volume = 0.7;
-		newNote.play();
+		Local.addNoteIfAbsent("apartment", "He worked at Botanical Research Facility.", false);
+
 		Sliders.showMap();
 	}
 
@@ -98,4 +82,4 @@
 
 	});
 
-	})();
+})();

@@ -41,20 +41,12 @@
 
 </div>
 
-<audio controls class="hide" id="newNote">
-	<source src="<?php echo AUDIO_PATH; ?>newNote1.mp3" type="audio/mpeg">
-	<source src="<?php echo AUDIO_PATH; ?>newNote1.wav" type="audio/wav">
-	Your browser does not support the audio element.
-</audio>
-
 <script>
 	
 	(function(){
 
 		var video = document.getElementById("ch_video");
 		var modal = document.getElementById('modal');
-		var newNote = document.getElementById('newNote');
-
 		var container = document.getElementById('library-container');
 		var inner = document.getElementById('modal');
 		var bg = document.getElementById('library-bg');
@@ -123,7 +115,7 @@
 		function checkReads(){
 			read++;
 			if(read >= 2){
-
+				// show map and slide modal window over, while forcing the notebook closed
 				Sliders.showMap();
 				modal.style["-webkit-transition-duration"] = "0.5s";
 				modal.style["-moz-transition-duration"] = "0.5s";
@@ -131,27 +123,11 @@
 				modal.style["transition-duration"] = "0.5s";
 				modal.style.left = "30%";
 				Sliders.hideNotebook();
-
+				// remove the events that control video and sliders
 				Map.removeVideoEvents();
-
-				var isAbsent = true;
-				for(var i = 0; i < Local.visited.length; i++){
-					if(Local.visited[i] === "library"){
-						isAbsent = false;
-					}
-				}
-				if(isAbsent){
-					Local.visited.push("library");
-					localStorage.setItem( 'visited', JSON.stringify(Local.visited) );
-					Local.storedNotes.push("“Dominus Genii Majalis” = Hiren of the Valley.");
-					localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
-				}
-
-				Local.visits();
-				Local.notes();
-				newNote.volume = 0.7;
-				newNote.play();
-
+				// add a note and play audio if the note is absent
+				Local.addNoteIfAbsent("library", "“Dominus Genii Majalis” = Hiren of the Valley.", false);
+				// show office locaition on map and open route
 				office.setAttribute('class', '');
 				office.addEventListener('click', Map.route);
 			}

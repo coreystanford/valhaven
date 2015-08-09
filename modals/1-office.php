@@ -73,7 +73,6 @@
 					nextCh.addEventListener("click", secondClick);
 
 					instructText.innerHTML = "Instructions for the notebook.";
-					// total.innerHTML = "2/2";
 
 					Sliders.hideMap();
 					Sliders.showNotebook();

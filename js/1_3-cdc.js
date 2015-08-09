@@ -1,30 +1,16 @@
 (function(){
 
 	var body = document.getElementById('body');
+	var video = document.getElementById("ch_video");
 	var modal = document.getElementById('modal');
-	var newNote = document.getElementById('newNote');
 
 	body.removeChild(modal);
-
-	var video = document.getElementById("ch_video");
 
 	Local.setInactive( [botanical, apartment, office, home] );
 
 	video.addEventListener('ended', function(){
 		
-		var isAbsent = true;
-		for(var i = 0; i < Local.visited.length; i++){
-			if(Local.visited[i] === "cdc"){
-				isAbsent = false;
-			}
-		}
-		if(isAbsent){
-			Local.visited.push("cdc");
-			localStorage.setItem( 'visited', JSON.stringify(Local.visited) );
-			Local.visit(cdc);
-			Local.storedNotes.push("NOT HELPFUL AT ALL! (I should send in a complaint!)");
-			localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
-		}
+		Local.addNoteIfAbsent("cdc", "NOT HELPFUL AT ALL! (I should send in a complaint!)", true, cdc);
 
 		Map.removeVideoEvents();
 
@@ -34,10 +20,6 @@
 		} else {
 			Sliders.showMap();
 			Sliders.hideNotebook();
-			Local.visits();
-			Local.notes();
-			newNote.volume = 0.7;
-			newNote.play();
 		}
 
 	});

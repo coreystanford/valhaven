@@ -10,7 +10,6 @@ var Sliders = (function(){
 		social = document.getElementById('social'),
 		nav = document.getElementById('navigation'),
 		video = document.getElementById('ch_video');
-		// playButton = document.getElementById("play-pause");
 
 	return {
 
@@ -21,8 +20,6 @@ var Sliders = (function(){
 			social.style.left = "33%";
 			nav.style.left = "33%";
 			clearTimeout(VidControl.timeout);
-			// video.pause();
-			// playButton.innerHTML = "Play";
 		},
 
 		hideMap: function(){
@@ -31,8 +28,6 @@ var Sliders = (function(){
 			main.style.marginLeft = 0;
 			social.style.left = "3%";
 			nav.style.left = "3%";
-			// video.play();
-			// playButton.innerHTML = "Pause";
 			if(video.paused === false){VidControl.slideOffscreen();}
 		},
 
@@ -41,16 +36,12 @@ var Sliders = (function(){
 			notebook.style.right = 0;
 			main.style.marginRight = "30%";
 			clearTimeout(VidControl.timeout);
-			// video.pause();
-			// playButton.innerHTML = "Play";
 		},
 
 		hideNotebook: function(){
 			notebook.style.opacity = .8;
 			notebook.style.right = "calc(-30% + 10px)";
 			main.style.marginRight = 0;
-			// video.play();
-			// playButton.innerHTML = "Pause";
 			if(video.paused === false){VidControl.slideOffscreen();}
 		}
 
@@ -65,7 +56,6 @@ var Map = (function(){
 	var progressContainer = document.getElementById("progress-container");
 	var map = document.getElementById('map');
 	var notebook = document.getElementById('notebook');
-
 	var controls = document.getElementById('controls');
 	var fullScreenButton = document.getElementById("full-screen");
 	var volumeButton = document.getElementById("volume-icon");
@@ -146,8 +136,6 @@ var Map = (function(){
 
 			map.removeEventListener('mouseenter', Sliders.showMap, false);
 			map.removeEventListener('mouseleave', Sliders.hideMap, false);
-			// notebook.removeEventListener('mouseenter', Sliders.showNotebook, false);
-			// notebook.removeEventListener('mouseleave', Sliders.hideNotebook, false);
 		}
 
 	}
@@ -165,6 +153,7 @@ var Local = (function(){
 	var botanical = document.getElementById('botanical');
 	var apartment = document.getElementById('apartment');
 	var home = document.getElementById('home');
+	var newNote = document.getElementById('newNote');
 
 	return {
 
@@ -181,20 +170,13 @@ var Local = (function(){
 			}
 
 			for(var v = 0; v < Local.visited.length; v++){
-
 				for(var i = 0; i < mapContainer.children.length - 1; i++){
-
 					var iconId = mapContainer.children[i].getAttribute('id');
-
 					if( Local.visited[v] == iconId ){
-
 						var thisIcon = document.getElementById(iconId);
 						thisIcon.setAttribute('class', 'visited');
-
 					}
-
 				}
-
 			}
 
 		},
@@ -206,9 +188,11 @@ var Local = (function(){
 			} else {
 				Local.storedNotes = [];
 			}
+			
 			while (note.firstChild) {
 			    note.removeChild(note.firstChild);
 			}
+
 			for(var i = 0; i < Local.storedNotes.length; i++){
 				var listedNote = document.createElement("LI");
 				listedNote.innerHTML = Local.storedNotes[i];
@@ -226,13 +210,9 @@ var Local = (function(){
 			};
 
 			for(var i = 0; i < mapContainer.children.length - 1; i++){
-
 				if( !Map.hasClass(mapContainer.children[i], "inactive") && !Map.hasClass(mapContainer.children[i], "visited") ){
-
 					mapContainer.children[i].addEventListener('click', Map.route);
-
 				}
-
 			}
 
 		},
@@ -241,6 +221,30 @@ var Local = (function(){
 
 			location.setAttribute('class', 'visited');
 			location.removeEventListener('click', Map.route);
+
+		},
+
+		addNoteIfAbsent: function(place, thisNote, setVisited, obj){
+
+			var isAbsent = true;
+
+			for(var i = 0; i < Local.visited.length; i++){
+				if(Local.visited[i] === place){
+					isAbsent = false;
+				}
+			}
+
+			if(isAbsent){
+				Local.visited.push(place);
+				localStorage.setItem( 'visited', JSON.stringify(Local.visited) );
+				if(setVisited){ Local.visit(obj); }
+				Local.storedNotes.push(thisNote);
+				localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
+				Local.visits();
+				Local.notes();
+				newNote.volume = 0.7;
+				newNote.play();
+			}
 
 		}
 

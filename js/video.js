@@ -56,11 +56,11 @@ var VidControl = (function(){
  			evt.preventDefault();
 	 		if (video.paused == true) {
 				video.play();
-				playButton.innerHTML = "Pause";
+				playButton.children[0].setAttribute("class", "fa fa-pause");
 				VidControl.slideOffscreen();
 			} else {
 				video.pause();
-				playButton.innerHTML = "Play";
+				playButton.children[0].setAttribute("class", "fa fa-play");
 				VidControl.slideOnscreen();
 			}
 	 	},
@@ -70,14 +70,14 @@ var VidControl = (function(){
 		    	evt.preventDefault();
 		    	if(video.paused == true && video.ended == false) {
 		    		video.play();
-		    		playButton.innerHTML = "Pause";
+		    		playButton.children[0].setAttribute("class", "fa fa-pause");
 		    		VidControl.slideOffscreen();
 		    	} 
 		    	else if(video.paused == true && video.ended == true){
-		    		playButton.innerHTML = "";
+		    		playButton.children[0].setAttribute("class", "");
 		    	} else {
 		    		video.pause();
-		    		playButton.innerHTML = "Play";
+		    		playButton.children[0].setAttribute("class", "fa fa-play");
 		    		VidControl.slideOnscreen();
 		    	}
 		    }
@@ -197,7 +197,7 @@ var VidControl = (function(){
 			progressContainer.style.cursor = "-moz-grabbing";
 
 			video.pause();
-			playButton.innerHTML = "Play";
+			playButton.children[0].setAttribute("class", "fa fa-play");
 			VidControl.slideOnscreen();
 
 			down = true;
@@ -255,7 +255,7 @@ var VidControl = (function(){
 			progressContainer.style.cursor = "default";
 
 			video.play();
-			playButton.innerHTML = "Pause";
+			playButton.children[0].setAttribute("class", "fa fa-pause");
 			VidControl.slideOffscreen();
 		},
 
@@ -361,7 +361,7 @@ var VidControl = (function(){
 			main.removeChild(preloader);
 			VidControl.slideOffscreen();
 			video.play();
-			playButton.innerHTML = "Pause";
+			playButton.children[0].setAttribute("class", "fa fa-pause");
 		}
 
 	}
@@ -521,7 +521,7 @@ var VidControl = (function(){
 
 	video.addEventListener('ended', function(){
 		VidControl.slideOnscreen();
-		playButton.innerHTML = "";
+		playButton.children[0].setAttribute("class", "");
 		if(prev) {prev.style.left = "3%";}
 	});
 

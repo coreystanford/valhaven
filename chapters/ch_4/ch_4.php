@@ -21,7 +21,7 @@
 
 		<!-- Play/Pause Button -->
 		<div id="play-pause-container">
-			<button type="button" id="play-pause">Play</button>
+			<button type="button" id="play-pause"><i class="fa fa-play"></i></button>
 		</div>
 
 		<!-- Video Controls -->
@@ -43,5 +43,11 @@
 		<a href="<?php echo CH_PATH . $prev; ?>" id="prev"><img src="<?php echo IMAGE_PATH; ?>icons/prev.png"></a>
 
 	</div>
+
+	<audio controls class="hide" id="newNote">
+		<source src="<?php echo AUDIO_PATH; ?>newNote1.mp3" type="audio/mpeg">
+		<source src="<?php echo AUDIO_PATH; ?>newNote1.wav" type="audio/wav">
+		Your browser does not support the audio element.
+	</audio>
 
 <?php require FOOTER; ?>

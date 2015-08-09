@@ -12,7 +12,7 @@
 	function playVideo(){
 		main.removeChild(homeBg);
 		video.play();
-		playButton.innerHTML = "Pause";
+		playButton.children[0].setAttribute("class", "fa fa-pause");
 	}
 
 	// -------------------------- //
@@ -21,11 +21,17 @@
 
 	VidControl.initVideo();
 
+	// ----------------------------------------------------- //
+	// ---- Show Buttons if Viewer is New vs. Returning ---- //
+	// ----------------------------------------------------- //
+
 	if(Local.visited.length <= 0){
+
 		map.style.display = 'none';
 		notebook.style.display = 'none';
 		homeBtn.addEventListener("click", playVideo);
 		homeBtn.addEventListener("touchstart", playVideo);
+
 	} else {
 
 		var visited = Local.visited;
@@ -86,6 +92,7 @@
 		}
 
 		homeBtn.removeEventListener("click", playVideo);
+	
 	}
 
 })();

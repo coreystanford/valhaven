@@ -14,15 +14,13 @@
 	(function(){
 
 		var body = document.getElementById('body');
+		var video = document.getElementById("ch_video");
 		var modal = document.getElementById('modal');
 		var playButton = document.getElementById("play-pause");
 		var progressContainer = document.getElementById("progress-container");
 		var questions = document.getElementById('questions');
 		var quNum = document.getElementById('quNum');
 		var asked = 0;
-
-		var video = document.getElementById("ch_video");
-		var newNote = document.getElementById("newNote");
 
 		// progressContainer.removeEventListener("mousedown", VidControl.handleProgressMouseDown);
 		// progressContainer.removeEventListener("touchstart", VidControl.handleProgressTouchDown);
@@ -77,19 +75,7 @@
 
 			body.removeChild(modal);
 			
-			var isAbsent = true;
-			for(var i = 0; i < Local.visited.length; i++){
-				if(Local.visited[i] === "press"){
-					isAbsent = false;
-				}
-			}
-			if(isAbsent){
-				Local.visited.push("press");
-				localStorage.setItem( 'visited', JSON.stringify(Local.visited) );
-				Local.visit(press);
-				Local.storedNotes.push("Gov’t seems to be doing everything it can.");
-				localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
-			}
+			Local.addNoteIfAbsent("press", "Gov’t seems to be doing everything it can.", true, press);
 
 			Map.removeVideoEvents();
 
@@ -99,10 +85,6 @@
 			} else {
 				Sliders.showMap();
 				Sliders.hideNotebook();
-				Local.visits();
-				Local.notes();
-				newNote.volume = 0.7;
-				newNote.play();
 			}
 
 		});
@@ -110,4 +92,3 @@
 	})();
 
 </script>
-
