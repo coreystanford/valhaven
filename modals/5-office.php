@@ -118,6 +118,22 @@
 (function puzzleScript(){
 	$(initPuzzle);
 
+	var video = document.getElementById('ch_video');
+	var modal = document.getElementById('modal');
+	var office  = document.getElementById('office');
+	var home = document.getElementById('home');
+
+	modal.style.zIndex = "15";
+
+	Local.setInactive( [home] );
+
+	video.addEventListener('ended', function(){
+
+		// remove the events that control video and sliders
+		Map.removeVideoEvents();
+
+	});
+
 	//"FLIP" THE PUZZLE IMAGE TO THE OPPOSITE SIDE
 	function flipPiece(){		
 		var getSrc = this.src;
@@ -151,6 +167,22 @@
 		
 		//MAKE DESTINATION BOXES DROPPABLE
 		$('.puzl_dropbox').droppable();
-	}	
+	}
+
+	function finished(){
+		Sliders.showMap();
+		modal.style["-webkit-transition-duration"] = "0.5s";
+		modal.style["-moz-transition-duration"] = "0.5s";
+		modal.style["-o-transition-duration"] = "0.5s";
+		modal.style["transition-duration"] = "0.5s";
+		modal.style.left = "30%";
+		Sliders.hideNotebook();
+		// add a note and play audio if the note is absent
+		Local.addNoteIfAbsent("office", "Jones also worked at Botanical Research Facility. Poisoned his family, but with what??", true, office);
+		// show office locaition on map and open route
+		home.setAttribute('class', '');
+		home.addEventListener('click', Map.route);
+	}
+
 }());
 </script>

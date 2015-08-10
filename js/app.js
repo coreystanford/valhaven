@@ -153,7 +153,6 @@ var Local = (function(){
 	var botanical = document.getElementById('botanical');
 	var apartment = document.getElementById('apartment');
 	var home = document.getElementById('home');
-	var newNote = document.getElementById('newNote');
 
 	return {
 
@@ -220,7 +219,7 @@ var Local = (function(){
 		visit: function(location){
 
 			location.setAttribute('class', 'visited');
-			location.removeEventListener('click', Map.route);
+			location.removeEventListener('click', Map.v);
 
 		},
 
@@ -242,8 +241,6 @@ var Local = (function(){
 				localStorage.setItem( 'notes', JSON.stringify(Local.storedNotes) );
 				Local.visits();
 				Local.notes();
-				newNote.volume = 0.7;
-				newNote.play();
 			}
 
 		}

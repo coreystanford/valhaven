@@ -57,11 +57,11 @@
 			</div>
 			<div class="article" ref="9">
 				<img src="<?php echo IMAGE_PATH; ?>item11_thumb.jpg">
-				<h1>Item Five</h1>
+				<h1>Youth Depression</h1>
 			</div>
 			<div class="article" ref="10">
 				<img src="<?php echo IMAGE_PATH; ?>item12_thumb.jpg">
-				<h1>Item Five</h1>
+				<h1>Rise in Unemployment</h1>
 			</div>
 			<!-- <div class="article-next" ref="11" id="next-ch">
 				<a id="next-btn" class="btn" href="<?php // echo CH_PATH; ?>ch_1" type="button">NEXT CHAPTER</a>
@@ -170,6 +170,7 @@
 					<source src="<?php echo AUDIO_PATH; ?>item11.wav" type="audio/wav">
 					Your browser does not support the audio element.
 				</audio>
+				<img src="<?php echo IMAGE_PATH; ?>item11-bg.jpg">
 			</div>
 			<button type="button" class="close-article">GO BACK</button>
 		</div>
@@ -180,6 +181,7 @@
 					<source src="<?php echo AUDIO_PATH; ?>item12.wav" type="audio/wav">
 					Your browser does not support the audio element.
 				</audio>
+				<img src="<?php echo IMAGE_PATH; ?>item12-bg.jpg">
 			</div>
 			<button type="button" class="close-article">GO BACK</button>
 		</div>
@@ -194,8 +196,6 @@
 	</div>
 
 </div>
-
-<!-- <img id="bg-ch_0" src="<?php // echo IMAGE_PATH; ?>ch_0-end.jpg"> -->
 
 <script>
 	

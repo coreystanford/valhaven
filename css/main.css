@@ -497,6 +497,12 @@ nav {
       background: #f9eC23;
       color: #58595b;
       letter-spacing: 2px;
+      box-shadow: 0px 5px 0px #E8DC20;
+    }
+
+    #title-btn button:active { /* AKA #main-btn */
+      top: 5px;
+      box-shadow: 0px 0px 0px #E8DC20;
     }
 
 #next-btn {
@@ -1092,6 +1098,7 @@ nav {
         position: absolute;
         top: 0;
         width: 100%;
+        z-index: 1;
       }
 
       .inner-article video {
@@ -1124,6 +1131,7 @@ nav {
         -moz-transform: translateX(-50%) translateY(-50%);
         -ms-transform: translateX(-50%) translateY(-50%);
         transform: translateX(-50%) translateY(-50%);
+        z-index: 2;
       }
 
       .left-art {

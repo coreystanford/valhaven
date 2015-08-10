@@ -20,6 +20,7 @@
 		var questions = document.getElementById('questions');
 		var quNum = document.getElementById('quNum');
 		var asked = 0;
+		var newNote = document.getElementById('newNote');
 
 		// progressContainer.removeEventListener("mousedown", VidControl.handleProgressMouseDown);
 		// progressContainer.removeEventListener("touchstart", VidControl.handleProgressTouchDown);
@@ -82,6 +83,11 @@
 			Local.addNoteIfAbsent("press", "Gov’t seems to be doing everything it can.", true, press);
 
 			Map.removeVideoEvents();
+
+			if(Local.visited.length === 1){
+				newNote.volume = "0.7";
+				newNote.play();
+			}
 
 			if(Local.visited.length >= 3){
 				var cleanHREF = window.location.href.split("?");
