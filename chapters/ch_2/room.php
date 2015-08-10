@@ -12,9 +12,11 @@
 				<div class="hidden">
 					<img src="<?php echo IMAGE_PATH; ?>id.jpg">
 					<div id="idText">
-						<p>Great Work!</p>
-						<p>You found the ID card.</p>
-						<p>Now you can go visit the Botanical Research Facility to continue the story.</p>
+						<div>
+							<p>Great Work!</p>
+							<p>You found the ID card.</p>
+							<p>Now you can go visit the Botanical Research Facility to continue the story.</p>
+						</div>
 						<button type="button" class="btn" id="goToBot">Continue</button>
 					</div>
 				</div>
