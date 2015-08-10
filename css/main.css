@@ -1199,61 +1199,72 @@ nav {
 
 #questions {
   position: absolute;
-  top: 0;
+  top: 20%;
   right: 0;
   bottom: 20%;
   left: 0;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  -webkit-align-content: space-around;
+  align-content: space-around;
 }
 
   #questions li {
-    border-radius: 10px;
-    padding: 10px;
-    background: #505050;
-    color: #fff;
-    width: 25%;
-    min-width: 200px;
-    position: absolute;
-    cursor: pointer;
+    width: 50%;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+    text-align: center;
   }
 
-  #qu1 {
-    top: 20%;
-    left: 10%;
-  }
+    #questions li h3 {
+      border-radius: 10px;
+      padding: 10px;
+      background: #eb1c3c;
+      color: #fff;
+      cursor: pointer;
+      width: 50%;
+      position: relative;
+    }
 
-  #qu2 {
-    top: 45%;
-    left: 10%;
-  }
-
-  #qu3 {
-    top: 20%;
-    right: 10%;
-  }
-
-  #qu4 {
-    top: 45%;
-    right: 10%;
-  }
-
-  #qu5 {
-    top: 70%;
-    right: 10%;
-  }
+      #questions li h3:after {
+        border: solid;
+        border-color: #eb1c3c transparent;
+        border-width: 15px 15px 0 15px;
+        bottom: -12px;
+        content: "";
+        left: 7%;
+        position: absolute;
+      }
 
 #quNum {
   position: absolute;
-  top: 85%;
+  top: 10%;
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%);
   -moz-transform: translateX(-50%) translateY(-50%);
   -ms-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   width: auto;
-  padding: 10px 40px;
+  border-radius: 10px;
+  padding: 10px 70px;
   background: #fff;
-  color: #505050;
+  color: #eb1c3c;
   text-align: center;
+  font-weight: 700;
 }
 
 /* ---- 360 Modal ---- */
