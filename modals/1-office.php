@@ -1,6 +1,20 @@
+<?php include '../config.php'; ?>
+
 <div class="modal-content clearfix" id="container-1">
 	
-	<button type="button" id="next-btn" class="btn">ACCEPT STORY</button>
+	<div id="instructions-1" class="red-bg">
+		
+		<p id="instructText">With no one else concerned about the mysterious illness in Red Crowe, it looks like Layna needs some help. Step into her investigative journalist shoes and uncover the secrets of Valhaven Island before it’s too late.</p>
+
+		<button type="button" id="next-btn" class="btn">CONTINUE</button>
+
+	</div>
+
+	<audio controls class="hide" id="toGo">
+		<source src="<?php echo AUDIO_PATH; ?>wheretogofirst.mp3" type="audio/mpeg">
+		<source src="<?php echo AUDIO_PATH; ?>wheretogofirst.wav" type="audio/wav">
+		Your browser does not support the audio element.
+	</audio>
 
 </div>
 
@@ -10,12 +24,13 @@
 
 		var modal = document.getElementById('modal');
 		var container = document.getElementById('container-1');
-		var accept = document.getElementById('next-btn');
-		var instructText = "<p>These are the instructions that tell the viewer that they are to be Layna from this point onward.</p>"
+		var cont = document.getElementById('next-btn');
+		var instructText = document.getElementById('instructText');
 
 		var map = document.getElementById('map');
 		var notebook = document.getElementById('notebook');
 		var video = document.getElementById("ch_video");
+		var toGo = document.getElementById('toGo');
 
 		if(Local.visited.length <= 0){
 			map.style.display = 'none';
@@ -31,61 +46,40 @@
 				window.location.href = cleanHREF[0] + "?action=flashback";
 			}
 
-		});
-
-		accept.addEventListener('click', function(){
-
 			Map.removeVideoEvents();
-
-			container.removeChild(accept);
-
-			var instruct = document.createElement("DIV");
-			instruct.setAttribute("id", "instructions-1");
-			instruct.setAttribute("class", "red-bg");
-			container.appendChild(instruct);
-
-			var instructText = document.createElement("P");
-			instructText.innerHTML = "With no one else concerned about the mysterious illness in Red Crowe, it looks like Layna needs some help. Step into her investigative journalist shoes and uncover the secrets of Valhaven Island before it’s too late.";
-			instructText.setAttribute("id", "instructText");
-			instruct.appendChild(instructText);
-
-			var nextCh = document.createElement('A');
-			nextCh.innerHTML = "CONTINUE";
-			nextCh.setAttribute("id", "next-btn");
-			nextCh.setAttribute("class", "btn");
-			instruct.appendChild(nextCh);
 
 			map.style.display = 'block';
 			notebook.style.display = 'block';
 
-			nextCh.addEventListener('click', function(){
+		});	
 
-				instructText.innerHTML = "Instructions for the map.";
+		cont.addEventListener('click', function(){
 
-				nextCh.innerHTML = "GOT IT";
+			instructText.innerHTML = "Instructions for the map.";
 
+			cont.innerHTML = "GOT IT";
+
+			Sliders.showMap();
+			container.style.left= "60%";
+			cont.addEventListener('click', firstClick);
+
+			function firstClick(){
+				cont.removeEventListener("click", firstClick);
+				cont.addEventListener("click", secondClick);
+
+				instructText.innerHTML = "Instructions for the notebook.";
+
+				Sliders.hideMap();
+				Sliders.showNotebook();
+				container.style.left= "40%";
+			}
+
+			function secondClick(){
+				modal.setAttribute("class", "off");
 				Sliders.showMap();
-				container.style.left= "60%";
-				nextCh.addEventListener('click', firstClick);
-
-				function firstClick(){
-					nextCh.removeEventListener("click", firstClick);
-					nextCh.addEventListener("click", secondClick);
-
-					instructText.innerHTML = "Instructions for the notebook.";
-
-					Sliders.hideMap();
-					Sliders.showNotebook();
-					container.style.left= "40%";
-				}
-
-				function secondClick(){
-					modal.setAttribute("class", "off");
-					Sliders.showMap();
-					Sliders.hideNotebook();
-				}
-
-			});
+				Sliders.hideNotebook();
+				toGo.play();
+			}
 
 		});
 

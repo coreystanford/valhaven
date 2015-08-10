@@ -14,11 +14,14 @@
 	var paint1 = document.getElementById('paint1');
 	var paint2 = document.getElementById('paint2');
 	var gardinerId = document.getElementById('gardiner-id');
+	var radio = document.getElementById('radio');
+	var playRadio = document.getElementById('playRadio');
 	var goToBot = document.getElementById('goToBot');
 
 	paint1.addEventListener('click', showPainting);
 	paint2.addEventListener('click', showPainting);
 	gardinerId.addEventListener('click', showId);
+	radio.addEventListener('click', runRadio);
 	gardinerId.children[0].style.opacity = 0;
 	goToBot.addEventListener('click', hideIdWindow);
 
@@ -62,6 +65,12 @@
 		Sliders.showMap();
 	}
 
+	function runRadio(){
+		radio.setAttribute('class','');
+		radio.style.cursor = "default";
+		playRadio.play();
+	}
+
 	bg.addEventListener('click', function(){
 
 		if(Map.hasClass(paint1.children[0], "hidden")){
@@ -78,6 +87,11 @@
 			gardinerId.setAttribute('class', '');
 			gardinerId.offsetWidth = gardinerId.offsetWidth;
 			gardinerId.setAttribute('class', 'flash');
+		}
+		if(playRadio.paused){
+			radio.setAttribute('class', '');
+			radio.offsetWidth = radio.offsetWidth;
+			radio.setAttribute('class', 'flash');
 		}
 
 	});

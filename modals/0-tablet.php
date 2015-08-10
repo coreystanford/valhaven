@@ -228,6 +228,11 @@
 						var ref = this.getAttribute('ref');
 						contents.children[ref].setAttribute('class', 'article-bg');
 
+						var vidaudio = contents.children[ref].children[0].children[0];
+						if(vidaudio.nodeName == "VIDEO" || vidaudio.nodeName == "AUDIO"){
+							vidaudio.play();
+						}
+
 						var close = document.getElementsByClassName('close-article');
 						close[ref].addEventListener("click", function(e){
 							e.preventDefault();

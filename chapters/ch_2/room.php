@@ -23,6 +23,14 @@
 
 			</div>
 
+			<div id="radio" class="flash">
+				<audio controls class="hide" id="playRadio">
+					<source src="<?php echo AUDIO_PATH; ?>radio.mp3" type="audio/mpeg">
+					<source src="<?php echo AUDIO_PATH; ?>radio.wav" type="audio/wav">
+					Your browser does not support the audio element.
+				</audio>
+			</div>
+
 			<img id="room-bg" src="<?php echo IMAGE_PATH; ?>room.jpg">
 
 		</div>
