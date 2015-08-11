@@ -14,59 +14,56 @@
 	<div id="news-container">
 		
 		<div class="page">
-			
-			<div class="article" ref="0">
-				<img src="<?php echo IMAGE_PATH; ?>item1_thumb.jpg">
-				<h1>Sand is the Man</h1>
-			</div>
+
 			<div class="article" ref="1">
 				<img src="<?php echo IMAGE_PATH; ?>item2_thumb.jpg">
 				<h1>Fans Fine with Lines</h1>
-			</div>
-			<div class="article" ref="2">
-				<img src="<?php echo IMAGE_PATH; ?>item4_thumb.jpg">
-				<h1>Old Spin on a New Album</h1>
-			</div>
-			<div class="article" ref="3">
-				<img src="<?php echo IMAGE_PATH; ?>item5_thumb.png">
-			</div>
-			<div class="article" ref="4">
-				<img src="<?php echo IMAGE_PATH; ?>item6_thumb.jpg">
-				<h1>Carnival</h1>
-			</div>
-			<div class="article" ref="5">
-				<img src="<?php echo IMAGE_PATH; ?>item7_thumb.jpg">
-				<h1>Dog Saves Man</h1>
-			</div>
-
-		</div>
-
-		<div class="page">
-			
-			<div class="article" ref="6">
-				<img src="<?php echo IMAGE_PATH; ?>item8_thumb.jpg">
-				<h1>Mystery Illness</h1>
 			</div>
 			<div class="article" ref="7">
 				<img src="<?php echo IMAGE_PATH; ?>item9_thumb.jpg">
 				<h1>Red Crowe FC</h1>
 			</div>
-			<div class="article" ref="8">
-				<img src="<?php echo IMAGE_PATH; ?>item10_thumb.jpg">
-				<h1>Val Tea</h1>
+			<div class="article" ref="3">
+				<img src="<?php echo IMAGE_PATH; ?>item5_thumb.png">
 			</div>
-			<div class="article" ref="9">
-				<img src="<?php echo IMAGE_PATH; ?>item11_thumb.jpg">
-				<h1>Youth Depression</h1>
+			<div class="article" ref="0">
+				<img src="<?php echo IMAGE_PATH; ?>item1_thumb.jpg">
+				<h1>Sand is the Man</h1>
+			</div>
+			<div class="article" ref="5">
+				<img src="<?php echo IMAGE_PATH; ?>item7_thumb.jpg">
+				<h1>Dog Saves Man</h1>
 			</div>
 			<div class="article" ref="10">
 				<img src="<?php echo IMAGE_PATH; ?>item12_thumb.jpg">
 				<h1>Rise in Unemployment</h1>
 			</div>
-			<!-- <div class="article-next" ref="11" id="next-ch">
-				<a id="next-btn" class="btn" href="<?php // echo CH_PATH; ?>ch_1" type="button">NEXT CHAPTER</a>
-			</div> -->
-			<div class="article" ref="10">
+
+		</div>
+
+		<div class="page">
+
+			<div class="article" ref="2">
+				<img src="<?php echo IMAGE_PATH; ?>item4_thumb.jpg">
+				<h1>Old Spin on a New Album</h1>
+			</div>
+			<div class="article" ref="8">
+				<img src="<?php echo IMAGE_PATH; ?>item10_thumb.jpg">
+				<h1>Val Tea</h1>
+			</div>
+			<div class="article" ref="4">
+				<img src="<?php echo IMAGE_PATH; ?>item6_thumb.jpg">
+				<h1>Carnival</h1>
+			</div>
+			<div class="article" ref="6">
+				<img src="<?php echo IMAGE_PATH; ?>item8_thumb.jpg">
+				<h1>Mystery Illness</h1>
+			</div>
+			<div class="article" ref="9">
+				<img src="<?php echo IMAGE_PATH; ?>item11_thumb.jpg">
+				<h1>Youth Depression</h1>
+			</div>
+			<div class="article">
 				<a href="<?php echo CH_PATH; ?>ch_1">
 					<img src="<?php echo IMAGE_PATH; ?>next_img.jpg">
 					<h1 class="center">Go To Office</h1>

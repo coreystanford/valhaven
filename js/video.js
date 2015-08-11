@@ -145,6 +145,7 @@ var VidControl = (function(){
 		// ---- PROGRESS BAR ---- //
 
 		trackProgress: function(){
+			// console.log(video);
 			if(video.buffered.length - 1 === 0){
 				var bufferedEnd = video.buffered.end(video.buffered.length - 1);
 				var duration =  video.duration;

@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>main.css">
 	<?php foreach ($headScripts as $script): ?>
 
-		<script src="<?php echo JS_PATH . $script; ?>" type="text/javascript" charset="utf-8"></script>
+		<script src="<?php echo RSC_PATH . $script; ?>" type="text/javascript" charset="utf-8"></script>
 
 	<?php endforeach ?>
 </head><!-- /head -->
@@ -92,8 +92,8 @@
 		<div id="social">
 
 			<ul>
-				<li><a id="facebook" href="#"><img src="<?php echo IMAGE_PATH; ?>icons/facebook.png"></a></li>
-				<li><a id="twitter" href="#"><img src="<?php echo IMAGE_PATH; ?>icons/twitter.png"></a></li>
+				<li><a id="facebook" href="https://www.facebook.com/pages/Humber-Transmedia/1453305884995961" target="_blank"><img src="<?php echo IMAGE_PATH; ?>icons/facebook.png"></a></li>
+				<li><a id="twitter" href="https://twitter.com/hctransmedia" target="_blank"><img src="<?php echo IMAGE_PATH; ?>icons/twitter.png"></a></li>
 			</ul>
 
 		</div><!-- /social -->

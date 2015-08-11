@@ -1,5 +1,13 @@
 <?php require '../config.php'; ?>
 
+<div id="popup" class="modal-content clearfix">
+	<div id="instructions-1" class="red-bg">
+		<h2>Research the Mysterious Plant</h2>
+		<p>It’s time for some old-fashioned research. See if you can unearth more about the mysterious plant from the Botanical Research Facility by reading through some books at the Library.</p>
+		<button type="button" id="next-btn" class="btn">OKAY</button>
+	</div>
+</div>
+
 <div id="library-container">
 	
 	<div id="library-inner-container">
@@ -50,6 +58,8 @@
 		var container = document.getElementById('library-container');
 		var inner = document.getElementById('modal');
 		var bg = document.getElementById('library-bg');
+		var popup = document.getElementById('popup');
+		var close = document.getElementById('next-btn');
 		var read = 0;
 
 		modal.style.zIndex = "15";
@@ -92,6 +102,15 @@
 		book4.addEventListener('click', openBook);
 		book5.addEventListener('click', openBook);
 
+		close.addEventListener('click', function(){
+			modal.removeChild(popup);
+		});
+
+		video.addEventListener('ended', function(){
+			// remove the events that control video and sliders
+			Map.removeVideoEvents();
+		});
+
 		function openBook(){
 			this.setAttribute('class', '');
 			this.children[0].setAttribute('class', '');
@@ -123,8 +142,6 @@
 				modal.style["transition-duration"] = "0.5s";
 				modal.style.left = "30%";
 				Sliders.hideNotebook();
-				// remove the events that control video and sliders
-				Map.removeVideoEvents();
 				// add a note and play audio if the note is absent
 				Local.addNoteIfAbsent("library", "“Dominus Genii Majalis” = Hiren of the Valley.", false);
 				// show office locaition on map and open route

@@ -20,5 +20,7 @@ define('MODAL_PATH', $root_href . 'modals/');
 define('VIDEO_PATH', $root_href . 'videos/' );
 define('AUDIO_PATH', $root_href . 'audio/' );
 define('IMAGE_PATH', $root_href . 'images/');
+
 define('CSS_PATH', $root_href . 'css/');
 define('JS_PATH', $root_href . 'js/');
+define('RSC_PATH', $root_href . 'js/resources/');

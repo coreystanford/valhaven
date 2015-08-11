@@ -1,8 +1,14 @@
 <?php require '../config.php'; ?>
 
-<div id="sphere-container" ref="<?php echo MODAL_PATH; ?>2_1-room.php"></div>
+<div id="popup" class="modal-content clearfix">
+	<div id="instructions-1" class="red-bg">
+		<h1>Explore the Apartment</h1>
+		<p>Something’s not right here. Explore the apartment by clicking on objects to find out more about the secretive person who brought you here.</p>
+		<button type="button" id="next-btn" class="btn">OKAY</button>
+	</div>
+</div>
 
-<script type="text/javascript" src="<?php echo JS_PATH; ?>three.min.js"></script>
+<div id="sphere-container" ref="<?php echo MODAL_PATH; ?>2_1-room.php"></div>
 
 <script>
 
@@ -177,13 +183,26 @@
 			renderer.render( scene, camera );
 		}
 
+		// -------------------- //
+	 	// ---- Set Events ---- //
+	 	// -------------------- //
+
+	 	var modal = document.getElementById("modal");
 		var video = document.getElementById("ch_video");
+		var popup = document.getElementById("popup");
+		var close = document.getElementById('next-btn');
 
 		Local.setInactive( [botanical, office, home] );
 
 		video.addEventListener('ended', function(){
 
 			init();
+
+		});
+
+		close.addEventListener('click', function(){
+
+			modal.removeChild(popup);
 
 		});
 

@@ -543,8 +543,8 @@ nav {
 #disclaimer {
   color: #fff;
   position: absolute;
-  width: 60%;
-  max-width: 600px;
+  width: 70%;
+  max-width: 1000px;
   bottom: 5%;
   left: 50%;
   text-align: center;
@@ -553,6 +553,7 @@ nav {
   -ms-transform: translate(-50%, 0);
   -o-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
+  font-size: 13px;
 }
 
 /*  ----- CREDIT -----  */
@@ -877,11 +878,13 @@ nav {
     -ms-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     color: #fff;
+    z-index: 1;
   }
 
     .red-bg {
       background: #eb1c3c;
       padding: 5%;
+      box-shadow: 0px 0px 10px #252525;
     }
 
     .modal-close {
@@ -1190,9 +1193,13 @@ nav {
 
 #instructions-1 {
   width: auto;
-  max-width: 85%;
+  max-width: 88%;
   margin: 0 auto;
 }
+
+  #instructions-1 h2 {
+    padding-bottom: 12px;
+  }
 
   #instructions-1 p {
     padding: 10px;
@@ -1279,6 +1286,19 @@ nav {
 }
 
 /* ---- 360 Modal ---- */
+
+#pop-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#popup div {
+  position: relative;
+}
 
 #sphere-container {
   cursor: -webkit-grab; 

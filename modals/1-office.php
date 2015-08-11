@@ -4,6 +4,8 @@
 	
 	<div id="instructions-1" class="red-bg">
 		
+		<h2 id="instructHeading">Uncover the Secrets of Valhaven</h2>
+
 		<p id="instructText">With no one else concerned about the mysterious illness in Red Crowe, it looks like Layna needs some help. Step into her investigative journalist shoes and uncover the secrets of Valhaven Island before it’s too late.</p>
 
 		<button type="button" id="next-btn" class="btn">CONTINUE</button>
@@ -26,6 +28,7 @@
 		var container = document.getElementById('container-1');
 		var cont = document.getElementById('next-btn');
 		var instructText = document.getElementById('instructText');
+		var heading = document.getElementById('instructHeading');
 
 		var map = document.getElementById('map');
 		var notebook = document.getElementById('notebook');
@@ -55,7 +58,8 @@
 
 		cont.addEventListener('click', function(){
 
-			instructText.innerHTML = "Instructions for the map.";
+			heading.innerHTML = "The Map is Your Guide";
+			instructText.innerHTML = "Use the map to help guide you on your journey through Red Crowe City. Available locations are in yellow with more becoming accessible as you progress. You can only visit each location once, so pay close attention!";
 
 			cont.innerHTML = "GOT IT";
 
@@ -67,7 +71,8 @@
 				cont.removeEventListener("click", firstClick);
 				cont.addEventListener("click", secondClick);
 
-				instructText.innerHTML = "Instructions for the notebook.";
+				heading.innerHTML = "Take Note";
+				instructText.innerHTML = "This is your investigative-journalist notebook. After you visit a location, check your notebook to find important notes and reminders that will help you uncover what is happening in Red Crowe City.";
 
 				Sliders.hideMap();
 				Sliders.showNotebook();
