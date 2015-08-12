@@ -1,5 +1,13 @@
 <?php require '../config.php'; ?>
 
+<div id="popup" class="modal-content clearfix">
+	<div id="instructions-1" class="red-bg">
+		<h2>Look through Layna's Phone</h2>
+		<p>Take a look through Layna's phone to see what is going on in Red Crowe City and continue to the office.</p>
+		<button type="button" id="next-btn" class="btn">OKAY</button>
+	</div>
+</div>
+
 <div id="newsapp">	
 
 	<div id="tablet-bar">
@@ -205,6 +213,12 @@
 		var tabPrev = document.getElementById("tabPrev");
 		var width = window.innerWidth;
 		var tabWidth = ( width * 0.755 );
+		var popup = document.getElementById('popup');
+		var close = document.getElementById('next-btn');
+
+		close.addEventListener('click', function(){
+			modal.removeChild(popup);
+		});
 
 		Local.setInactive( [botanical, apartment, office, home, press, cdc, hospital] );
 
