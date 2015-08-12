@@ -30,14 +30,14 @@
 		map.style.display = 'none';
 		notebook.style.display = 'none';
 		homeBtn.addEventListener("click", playVideo);
-		homeBtn.addEventListener("touchstart", playVideo);
+		homeBtn.addEventListener("touchend", playVideo);
 
 	} else {
 
 		var visited = Local.visited;
 		homeBtn.setAttribute('ref', visited[visited.length - 1]);
 		homeBtn.addEventListener("click", Map.route);
-		homeBtn.addEventListener("touchstart", Map.route);
+		homeBtn.addEventListener("touchend", Map.route);
 		homeBtn.innerHTML = "CONTINUE STORY";
 
 		var restart = document.createElement("BUTTON");
@@ -45,14 +45,17 @@
 		restart.setAttribute("class", "btn");
 		titleBtn.appendChild(restart);
 
-		restart.onclick = function(e){
-			e.preventDefault();
-			localStorage.clear();
-			playVideo();
-			map.style.display = 'none';
-			notebook.style.display = 'none';
-		}
+		restart.addEventListener('click', restartStory);
+		restart.addEventListener('touchend', restartStory);
 
+	}
+
+	function restartStory (e){
+		e.preventDefault();
+		localStorage.clear();
+		playVideo();
+		map.style.display = 'none';
+		notebook.style.display = 'none';
 	}
 
 	// ----------------------------- //

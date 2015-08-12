@@ -269,7 +269,7 @@ var VidControl = (function(){
 
 		// ---- SIDEBARS, CONTROLS + NAV TIMEOUT ---- //
 
-		timeout: null,
+		timeout: 0,
 
 		slideOffscreen: function(){
 			clearTimeout(VidControl.timeout);

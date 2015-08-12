@@ -22,19 +22,7 @@
 		var isUserInteracting = false, onMouseDownMouseX = 0, onMouseDownMouseY = 0, lon = 0, onMouseDownLon = 0, lat = 0, onMouseDownLat = 0, phi = 0, theta = 0;
 	    var mouse = new THREE.Vector2(), raycaster, INTERSECTED, hover = false, info;   
 	    var onPointerDownLon, onPointerDownPointerX, onPointerDownPointerY, onPointerDownLat;
-		var doorInt;
-
-		// function loadGUI(){
-		// 	var gui = new dat.GUI({
-		// 		height: 5 * 32 - 1
-		// 	});	
-		// 	gui.add(camera.position, 'x');
-		// 	gui.add(camera.position, 'y');
-		// 	gui.add(camera.position, 'z');
-		// 	gui.add(door.position, 'x', -200, 200);
-		// 	gui.add(door.position, 'y', -200, 200);
-		// 	gui.add(door.position, 'z', -500, 500);
-		// }
+		var doorInt, vector;
 
 		function init() {
 			camera = new THREE.PerspectiveCamera( 65, window.innerWidth / window.innerHeight, 1, 1100 );
@@ -72,9 +60,11 @@
 	        
 	        raycaster = new THREE.Raycaster();
 
-			document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-			document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-			document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+			document.addEventListener( 'mousedown', handleMouseDown, false );
+			document.addEventListener( 'mousemove', handleMouseMove, false );
+			document.addEventListener( 'touchstart', handleTouchStart, false );
+			document.addEventListener( 'touchmove', handleTouchMove, false );
+			document.addEventListener( 'mouseup', onDocumentUp, false );
 			window.addEventListener( 'resize', onWindowResize, false );
 	        animate();
 
@@ -87,16 +77,33 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 		}
 
-		function onDocumentMouseDown( e ) {
+		function handleMouseDown(e){
 			e.preventDefault();
-			isUserInteracting = true;
 			onPointerDownPointerX = e.clientX;
 			onPointerDownLon = lon;
+			vector = new THREE.Vector3( mouse.x, mouse.y, 1 ).unproject( camera );
+			onDocumentDown();
+		}
+
+		function handleTouchStart(e){
+			e.preventDefault();
+			onPointerDownPointerX = e.touches[0].clientX;
+			onPointerDownLon = lon;
+			var vectorX = ( e.touches[0].clientX / window.innerWidth ) * 2 - 1;
+			var vectorY = - ( e.touches[0].clientY / window.innerHeight ) * 2 + 1;
+			vector = new THREE.Vector3(vectorX , vectorY, 1 ).unproject( camera );
+			onDocumentDown();
+		}
+
+		function onDocumentDown() {
+
+			isUserInteracting = true;
 
 			container.style.cursor = "-webkit-grabbing"; 
             container.style.cursor = "-moz-grabbing";
 
-			var vector = new THREE.Vector3( mouse.x, mouse.y, 1 ).unproject( camera );
+            console.log(mouse);
+			
 			raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
 			var intersects = raycaster.intersectObjects( scene.children );
 
@@ -121,13 +128,20 @@
 					}
 					door.material.opacity = op;
 				}, 20);
-				console.log(doorInt);
 			}
 		}
 
-		function onDocumentMouseMove( e ) {
+		function handleMouseMove(e){
+			onDocumentMove( e.clientX, e.clientY );
+		}
+
+		function handleTouchMove(e){
+			onDocumentMove( e.touches[0].clientX, e.touches[0].clientY );
+		}
+
+		function onDocumentMove( x, y ) {
 			if ( isUserInteracting === true ) {
-				lon = ( onPointerDownPointerX - e.clientX ) * 0.1 + onPointerDownLon;
+				lon = ( onPointerDownPointerX - x ) * 0.1 + onPointerDownLon;
 				lat = 0;
 				container.style.cursor = "-webkit-grabbing"; 
             	container.style.cursor = "-moz-grabbing";
@@ -135,11 +149,11 @@
 				container.style.cursor = "-webkit-grab"; 
                 container.style.cursor = "-moz-grab";
 			}
-	        mouse.x = ( e.clientX / window.innerWidth ) * 2 - 1;
-			mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
+	        mouse.x = ( x / window.innerWidth ) * 2 - 1;
+			mouse.y = - ( y / window.innerHeight ) * 2 + 1;
 		}
 
-		function onDocumentMouseUp( e ) {
+		function onDocumentUp( e ) {
 			isUserInteracting = false;
 		}
 
@@ -201,9 +215,10 @@
 		});
 
 		close.addEventListener('click', function(){
-
 			modal.removeChild(popup);
-
+		});
+		close.addEventListener('touchend', function(){
+			modal.removeChild(popup);
 		});
 
 	})();

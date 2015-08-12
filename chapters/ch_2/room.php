@@ -1,5 +1,33 @@
 <?php require HEADER; ?>
 
+	<div class="hide">
+		<div id="video-container" class="clearfix">
+
+			<!-- Video Source/Data -->
+			<video id="ch_video"></video>
+
+			<!-- Play/Pause Button -->
+			<div id="play-pause-container">
+				<button type="button" id="play-pause"><i class="fa fa-play"></i></button>
+			</div>
+
+			<!-- Video Controls -->
+			<div id="controls">
+				<input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1" title="Volume Range">
+				<button type="button" id="volume-icon" title="Volume Control"><img src="<?php echo IMAGE_PATH; ?>icons/volume.png"></button>
+				<button type="button" id="full-screen" title="Full Screen"><img src="<?php echo IMAGE_PATH; ?>icons/fullscreen.png"></button>
+			</div>
+
+			<!-- Progress Bar -->
+			<div id="progress-container">
+				<span id="time"></span>
+				<span id="indicator"></span>
+				<progress id="progress-bar" value="0" max="100"></progress>
+				<span id="buffered-amount"></span>
+			</div>
+		</div>
+	</div>
+
 	<div id="room-container">
 	
 		<div id="room-inner-container">
@@ -34,6 +62,9 @@
 			<img id="room-bg" src="<?php echo IMAGE_PATH; ?>room.jpg">
 
 		</div>
+
+		<!-- Navigation Arrows -->
+		<a href="<?php echo ROOT_HREF; ?>" id="prev"><img src="<?php echo IMAGE_PATH; ?>icons/prev.png"></a>
 
 	</div>
 

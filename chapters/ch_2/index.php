@@ -30,9 +30,6 @@
 
     $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
 
-    $prev = "ch_1";
-    $next = "ch_3";
-
     // ---------------------------- //
     // ------ Perform Switch ------ //
     // ---------------------------- //
@@ -45,6 +42,9 @@
 
             $title = "Gardiner's Apartment";
             $description = "This is a description of the chapter.";
+
+            $prev = "ch_1";
+            $next = "ch_3";
 
             $headScripts = array("jquery-1.11.3.min.js", "three.min.js", "screenfull.js");
 
@@ -66,6 +66,9 @@
 
             $title = "Gardiner's Room";
             $description = "This is a description of the chapter.";
+
+            $prev = "ch_2";
+            $next = "ch_3";
 
             $headScripts = array("jquery-1.11.3.min.js", "screenfull.js");
 
