@@ -228,7 +228,7 @@
 						var vidaudio = contents.children[ref].children[0].children[0];
 						if(vidaudio.nodeName == "VIDEO" || vidaudio.nodeName == "AUDIO"){
 							if(vidaudio.nodeName == "AUDIO"){
-								vidaudio.volume = 0.7;
+								vidaudio.volume = 0.5;
 							}
 							vidaudio.play();
 						}

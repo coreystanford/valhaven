@@ -6,7 +6,7 @@ $root_href = "//localhost/valhaven/";
 
 // Server
 // $root = $_SERVER['DOCUMENT_ROOT'] . '\txm2015\valhaven';
-// $root_href = "//www.seanwaynedoyle.com/txm2015/valhaven/";
+// $root_href = "http://www.seanwaynedoyle.com/txm2015/valhaven/";
 
 define('ROOT_PATH', $root);
 define('ROOT_HREF', $root_href);

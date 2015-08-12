@@ -5,10 +5,16 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="<?php echo $keywords; ?>">
-	<meta name="description" content="<?php echo $title; ?>">
-	<meta property="og:title" content="Valhaven Island: <?php echo $title; ?>"/>
+	<meta name="description" content="<?php echo $description; ?>">
+	<meta property="og:title" content="Mysterious Illness Claims 13 Lives in Valhaven"/>
 	<meta property="og:site_name" content="Valhaven Island"/>
-	<meta property="og:description" content="<?php echo $description; ?>">
+	<meta property="og:description" content="An interactive transmedia project.">
+	<meta property="og:url" content="http://www.seanwaynedoyle.com/txm2015/valhaven/"/>
+	<meta property="og:image" content="<?php echo IMAGE_PATH; ?>valhaven.jpg" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Mysterious Illness Claims 13 Lives in Valhaven" />
+	<meta name="twitter:description" content="An interactive transmedia project." />
+	<meta name="twitter:image" content="<?php echo IMAGE_PATH; ?>valhaven.jpg" />
 	<!-- <link rel="icon" type="image/png" href="favicon.ico"> -->
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Loved+by+the+King' rel='stylesheet' type='text/css'>
@@ -92,7 +98,8 @@
 		<div id="social">
 
 			<ul>
-				<li><a id="facebook" href="https://www.facebook.com/pages/Humber-Transmedia/1453305884995961" target="_blank"><img src="<?php echo IMAGE_PATH; ?>icons/facebook.png"></a></li>
+				<!-- <div class="fb-share-button" data-href="http://www.seanwaynedoyle.com/txm2015/valhaven/" data-layout="button_count"><img src="<?php echo IMAGE_PATH; ?>icons/facebook.png"></div> -->
+				<li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.seanwaynedoyle.com%2Ftxm2015%2Fvalhaven%2F" target="_blank"><img src="<?php echo IMAGE_PATH; ?>icons/facebook.png"></a></li>
 				<li><a id="twitter" href="https://twitter.com/hctransmedia" target="_blank"><img src="<?php echo IMAGE_PATH; ?>icons/twitter.png"></a></li>
 			</ul>
 

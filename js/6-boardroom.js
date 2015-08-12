@@ -6,19 +6,9 @@
 
 	body.removeChild(modal);
 
-	// Local.setInactive( [botanical, apartment, office, home] );
-
 	video.addEventListener('ended', function(){
 
 		window.location.href = "/txm2015/valhaven/chapters/ch_7";
-
-		// Sliders.showMap();
-		// Sliders.hideNotebook();
-
-		// Map.removeVideoEvents();
-
-		// apartment.setAttribute('class', '');
-		// apartment.addEventListener('click', Map.route);
 
 	});
 
