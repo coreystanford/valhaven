@@ -12,35 +12,45 @@
 	
 	<div id="library-inner-container">
 		
-		<div id="book1" class="flash">
+		<div id="book1">
+			<div class="flash"></div>
 			<div class="hidden">
 				<img src="<?php echo IMAGE_PATH; ?>book1.jpg">
 				<button type="button" class="close-book" title="close">X</button>
 			</div>
+			<img src="<?php echo IMAGE_PATH; ?>book1.png">
 		</div>
-		<div id="book2" class="flash">
+		<div id="book2">
+			<div class="flash"></div>
 			<div class="hidden">
 				<img src="<?php echo IMAGE_PATH; ?>book2.jpg">
 				<button type="button" class="close-book" title="close">X</button>
 			</div>
+			<img src="<?php echo IMAGE_PATH; ?>book2.png">
 		</div>
-		<div id="book3" class="flash">
+		<div id="book3">
+			<div class="flash"></div>
 			<div class="hidden">
 				<img src="<?php echo IMAGE_PATH; ?>book3.jpg">
 				<button type="button" class="close-book" title="close">X</button>
 			</div>
+			<img src="<?php echo IMAGE_PATH; ?>book3.png">
 		</div>
-		<div id="book4" class="flash">
+		<div id="book4">
+			<div class="flash"></div>
 			<div class="hidden">
 				<img src="<?php echo IMAGE_PATH; ?>book4.jpg">
 				<button type="button" class="close-book" title="close">X</button>
 			</div>
+			<img src="<?php echo IMAGE_PATH; ?>book4.png">
 		</div>
-		<div id="book5" class="flash">
+		<div id="book5">
+			<div class="flash"></div>
 			<div class="hidden">
 				<img src="<?php echo IMAGE_PATH; ?>book5.jpg">
 				<button type="button" class="close-book" title="close">X</button>
 			</div>
+			<img src="<?php echo IMAGE_PATH; ?>book5.png">
 		</div>
 
 		<img id="library-bg" src="<?php echo IMAGE_PATH; ?>library.jpg">
@@ -68,30 +78,30 @@
 
 		bg.addEventListener('click', function(){
 
-			if(Map.hasClass(book1.children[0], "hidden")){
-				book1.setAttribute('class', '');
-				book1.offsetWidth = book1.offsetWidth;
-				book1.setAttribute('class', 'flash');
+			if(Map.hasClass(book1.children[1], "hidden")){
+				book1.children[0].setAttribute('class', '');
+				book1.children[0].offsetWidth = book1.offsetWidth;
+				book1.children[0].setAttribute('class', 'flash');
 			}
-			if(Map.hasClass(book2.children[0], "hidden")){
-				book2.setAttribute('class', '');
-				book2.offsetWidth = book2.offsetWidth;
-				book2.setAttribute('class', 'flash'); 
+			if(Map.hasClass(book2.children[1], "hidden")){
+				book2.children[0].setAttribute('class', '');
+				book2.children[0].offsetWidth = book2.offsetWidth;
+				book2.children[0].setAttribute('class', 'flash'); 
 			}
-			if(Map.hasClass(book3.children[0], "hidden")){
-				book3.setAttribute('class', '');
-				book3.offsetWidth = book3.offsetWidth;
-				book3.setAttribute('class', 'flash');
+			if(Map.hasClass(book3.children[1], "hidden")){
+				book3.children[0].setAttribute('class', '');
+				book3.children[0].offsetWidth = book3.offsetWidth;
+				book3.children[0].setAttribute('class', 'flash');
 			}
-			if(Map.hasClass(book4.children[0], "hidden")){
-				book4.setAttribute('class', '');
-				book4.offsetWidth = book4.offsetWidth;
-				book4.setAttribute('class', 'flash');
+			if(Map.hasClass(book4.children[1], "hidden")){
+				book4.children[0].setAttribute('class', '');
+				book4.children[0].offsetWidth = book4.offsetWidth;
+				book4.children[0].setAttribute('class', 'flash');
 			}
-			if(Map.hasClass(book5.children[0], "hidden")){
-				book5.setAttribute('class', '');
-				book5.offsetWidth = book5.offsetWidth;
-				book5.setAttribute('class', 'flash');
+			if(Map.hasClass(book5.children[1], "hidden")){
+				book5.children[0].setAttribute('class', '');
+				book5.children[0].offsetWidth = book5.offsetWidth;
+				book5.children[0].setAttribute('class', 'flash');
 			}
 
 		});
@@ -112,8 +122,9 @@
 		});
 
 		function openBook(){
-			this.setAttribute('class', '');
+			this.removeChild(this.children[2]);
 			this.children[0].setAttribute('class', '');
+			this.children[1].setAttribute('class', '');
 			this.removeEventListener('click', openBook);
 			this.style.cursor = "default";
 
@@ -123,7 +134,7 @@
 			this.style.height = "88%";
 			this.style.zIndex = "25";
 
-			this.children[0].children[1].addEventListener('click', closeBook);
+			this.children[1].children[1].addEventListener('click', closeBook);
 		}
 
 		function closeBook(){
@@ -133,7 +144,7 @@
 
 		function checkReads(){
 			read++;
-			if(read >= 2){
+			if(read >= 5){
 				// show map and slide modal window over, while forcing the notebook closed
 				Sliders.showMap();
 				modal.style["-webkit-transition-duration"] = "0.5s";
