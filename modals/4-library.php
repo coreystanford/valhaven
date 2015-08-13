@@ -68,6 +68,12 @@
 	</div>
 </div>
 
+<audio loop class="hide" id="library">
+	<source src="<?php echo AUDIO_PATH; ?>library.mp3" type="audio/mpeg">
+	<source src="<?php echo AUDIO_PATH; ?>library.wav" type="audio/wav">
+	Your browser does not support the audio element.
+</audio>
+
 <script>
 	
 	(function(){
@@ -83,6 +89,7 @@
 		var confirmation = document.getElementById('confirmation');
 		var continueResearch = document.getElementById('next-btn-research');
 		var okayShowMap = document.getElementById('next-btn-map');
+		var library = document.getElementById('library');
 		var read = 0;
 
 		modal.style.zIndex = "15";
@@ -132,6 +139,8 @@
 		video.addEventListener('ended', function(){
 			// remove the events that control video and sliders
 			Map.removeVideoEvents();
+			library.volume = 0.4;
+			library.play();
 		});
 
 		showInfo.addEventListener('click', function(){
