@@ -135,6 +135,13 @@
 		<!--Button to end chapter-->
 		<button type="button" id="btn_endPuzl" class="btn">You have solved the puzzle!  Click to get out of here</button>
 	</div>
+
+	<audio loop class="hide" id="archive">
+		<source src="<?php echo AUDIO_PATH; ?>archive.mp3" type="audio/mpeg">
+		<source src="<?php echo AUDIO_PATH; ?>archive.wav" type="audio/wav">
+		Your browser does not support the audio element.
+	</audio>
+
 <script>
 (function puzzleScript(){
 	$(initPuzzle);
@@ -148,6 +155,7 @@
 
 	var popup = document.getElementById('popup');
 	var close = document.getElementById('next-btn');
+	var archive = document.getElementById('archive');
 
 	close.addEventListener('click', function(){
 		modal.removeChild(popup);
@@ -160,10 +168,10 @@
 	Local.setInactive( [home] );
 
 	video.addEventListener('ended', function(){
-
 		// remove the events that control video and sliders
 		Map.removeVideoEvents();
-
+		archive.volume = 0.4;
+		archive.play();
 	});
 
 	//======== PUZZLE CODE ========

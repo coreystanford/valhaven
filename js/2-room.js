@@ -4,12 +4,6 @@
 	var video = document.getElementById("ch_video");
 	var modal = document.getElementById('modal');
 
-	body.removeChild(modal);
-
-	Local.setInactive( [botanical, office, home] );
-
-	Map.removeVideoEvents();
-
 	var container = document.getElementById('room-container');
 	var innerContainer = document.getElementById('room-inner-container');
 	var bg = document.getElementById('room-bg');
@@ -17,10 +11,24 @@
 	var paint2 = document.getElementById('paint2');
 	var gardinerId = document.getElementById('gardiner-id');
 	var radio = document.getElementById('radio');
+	var laynaGasp = document.getElementById('laynaGasp');
+	var aptBg = document.getElementById('apt-bg');
 	var playRadio = document.getElementById('playRadio');
 	var goToBot = document.getElementById('goToBot');
 
-	gardinerId.children[0].style.opacity = 0;
+	// ---- REMOVE MODAL ---- //
+
+	body.removeChild(modal);
+
+	// ---- SET INACTIVE MAP ICONS ---- //
+
+	Local.setInactive( [botanical, office, home] );
+
+	// ---- REMOVE VIDEO EVENTS ---- //
+
+	Map.removeVideoEvents();
+
+	// ---- EVENTS ---- //
 
 	paint1.addEventListener('click', showPainting);
 	paint2.addEventListener('click', showPainting);
@@ -37,20 +45,38 @@
 	bg.addEventListener('click', showFlash);
 	bg.addEventListener('touchend', showFlash);
 
+	gardinerId.children[0].style.opacity = 0;
+
+	// --- AUDIO ---- //
+
+	aptBg.volume = 0.3;
+	playRadio.volume = 0.4;
+	laynaGasp.volume = 0.7;
+	setTimeout(function(){
+		laynaGasp.play();
+	}, 100);
+
+	// ---- SET APARTMENT ICON IF 3 ---- //
+
 	if(Local.visited.length >= 3){
 		apartment.setAttribute('class', '');
 		apartment.addEventListener('click', Map.route);
 		apartment.addEventListener('touchend', Map.route);
 	}
 
+	// ---- FUNCTIONS ---- //
+
 	function runRadio(){
 		radio.setAttribute('class', '');
 		radio.offsetWidth = radio.offsetWidth;
 		radio.setAttribute('class', 'flash');
+
 		if(playRadio.paused === true){
 			playRadio.play();
+			aptBg.volume = 0.1;
 		} else {
 			playRadio.pause();
+			aptBg.volume = 0.3;
 		}
 	}
 

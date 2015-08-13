@@ -59,6 +59,12 @@
 
 </div>
 
+<audio loop class="hide" id="library">
+	<source src="<?php echo AUDIO_PATH; ?>library.mp3" type="audio/mpeg">
+	<source src="<?php echo AUDIO_PATH; ?>library.wav" type="audio/wav">
+	Your browser does not support the audio element.
+</audio>
+
 <script>
 	
 	(function(){
@@ -70,6 +76,7 @@
 		var bg = document.getElementById('library-bg');
 		var popup = document.getElementById('popup');
 		var close = document.getElementById('next-btn');
+		var library = document.getElementById('library');
 		var read = 0;
 
 		modal.style.zIndex = "15";
@@ -119,6 +126,8 @@
 		video.addEventListener('ended', function(){
 			// remove the events that control video and sliders
 			Map.removeVideoEvents();
+			library.volume = 0.4;
+			library.play();
 		});
 
 		function openBook(){

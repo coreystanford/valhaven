@@ -10,6 +10,12 @@
 
 <div id="sphere-container" ref="<?php echo MODAL_PATH; ?>2_1-room.php"></div>
 
+<audio loop controls class="hide" id="apt-bg">
+	<source src="<?php echo AUDIO_PATH; ?>apt.mp3" type="audio/mpeg">
+	<source src="<?php echo AUDIO_PATH; ?>apt.wav" type="audio/wav">
+	Your browser does not support the audio element.
+</audio>
+
 <script>
 
 	(function(){
@@ -205,13 +211,14 @@
 		var video = document.getElementById("ch_video");
 		var popup = document.getElementById("popup");
 		var close = document.getElementById('next-btn');
+		var aptBg = document.getElementById('apt-bg');
 
 		Local.setInactive( [botanical, office, home] );
 
 		video.addEventListener('ended', function(){
-
 			init();
-
+			aptBg.volume = 0.4;
+			aptBg.play();
 		});
 
 		close.addEventListener('click', function(){

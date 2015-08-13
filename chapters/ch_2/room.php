@@ -52,7 +52,7 @@
 			</div>
 
 			<div id="radio" class="flash">
-				<audio controls class="hide" id="playRadio">
+				<audio class="hide" id="playRadio">
 					<source src="<?php echo AUDIO_PATH; ?>radio.mp3" type="audio/mpeg">
 					<source src="<?php echo AUDIO_PATH; ?>radio.wav" type="audio/wav">
 					Your browser does not support the audio element.
@@ -64,13 +64,19 @@
 		</div>
 
 		<!-- Navigation Arrows -->
-		<a href="<?php echo ROOT_HREF; ?>" id="prev"><img src="<?php echo IMAGE_PATH; ?>icons/prev.png"></a>
+		<a href="<?php echo CH_PATH. $prev; ?>" id="prev"><img src="<?php echo IMAGE_PATH; ?>icons/prev.png"></a>
 
 	</div>
 
-	<audio controls class="hide" id="newNote">
-		<source src="<?php echo AUDIO_PATH; ?>newNote1.mp3" type="audio/mpeg">
-		<source src="<?php echo AUDIO_PATH; ?>newNote1.wav" type="audio/wav">
+	<audio class="hide" id="laynaGasp">
+		<source src="<?php echo AUDIO_PATH; ?>LaynaGasp.mp3" type="audio/mpeg">
+		<source src="<?php echo AUDIO_PATH; ?>LaynaGasp.wav" type="audio/wav">
+		Your browser does not support the audio element.
+	</audio>
+
+	<audio autoplay loop class="hide" id="apt-bg">
+		<source src="<?php echo AUDIO_PATH; ?>apt.mp3" type="audio/mpeg">
+		<source src="<?php echo AUDIO_PATH; ?>apt.wav" type="audio/wav">
 		Your browser does not support the audio element.
 	</audio>
 

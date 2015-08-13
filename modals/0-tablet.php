@@ -2,7 +2,7 @@
 
 <div id="popup" class="modal-content clearfix">
 	<div id="instructions-1" class="red-bg">
-		<h2>Look through Layna's Phone</h2>
+		<h2>Look Through Layna's Phone</h2>
 		<p>Take a look through Layna's phone to see what is going on in Red Crowe City and continue to the office.</p>
 		<button type="button" id="next-btn" class="btn">OKAY</button>
 	</div>
@@ -202,6 +202,12 @@
 
 </div>
 
+<audio loop class="hide" id="subway">
+	<source src="<?php echo AUDIO_PATH; ?>subway.mp3" type="audio/mpeg">
+	<source src="<?php echo AUDIO_PATH; ?>subway.wav" type="audio/wav">
+	Your browser does not support the audio element.
+</audio>
+
 <script>
 	
 	(function(){
@@ -215,6 +221,7 @@
 		var tabWidth = ( width * 0.755 );
 		var popup = document.getElementById('popup');
 		var close = document.getElementById('next-btn');
+		var subway = document.getElementById('subway');
 
 		close.addEventListener('click', function(){
 			modal.removeChild(popup);
@@ -282,6 +289,11 @@
 			}
 
 		}
+
+		video.addEventListener('ended', function(){
+			subway.volume = 0.4;
+			subway.play();
+		});
 
 		window.addEventListener('resize', function(){
 			width = window.innerWidth;
