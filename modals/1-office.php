@@ -59,7 +59,7 @@
 		cont.addEventListener('click', function(){
 
 			heading.innerHTML = "The Map is Your Guide";
-			instructText.innerHTML = "Use the map to help guide you on your journey through Red Crowe City. Available locations are in yellow with more becoming accessible as you progress. You can only visit each location once, so pay close attention!";
+			instructText.innerHTML = "Use the map to help guide you on your journey through Red Crowe City. Available locations are in yellow with more becoming accessible as you progress. You can visit each location only once, so pay close attention!";
 
 			cont.innerHTML = "GOT IT";
 
