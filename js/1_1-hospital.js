@@ -11,7 +11,7 @@
 
 	video.addEventListener('ended', function(){
 		
-		Local.addNoteIfAbsent("hospital", "If not MERS, then what? Hospital has no clue.", true, hospital);
+		Local.addNoteIfAbsent("hospital", "Hospital - If not MERS, then what? Hospital has no clue.", true, hospital);
 
 		Map.removeVideoEvents();
 

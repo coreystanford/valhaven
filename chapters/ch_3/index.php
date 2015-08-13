@@ -37,7 +37,7 @@
     $prev = "ch_2";
     $next = "ch_4";
 
-    $headScripts = array("jquery-1.11.3.min.js", "screenfull.js");
+    $headScripts = array("jquery-1.11.3.min.js", "screenfull.js", "maze/lib/underscore-min-1.4.3.js", "maze/lib/toolbox.js", );
     
     // javascript files for this chapter:
     $customScripts = array("app.js", "video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
@@ -53,9 +53,9 @@
         case 'default':
 
             $poster = "valhaven.jpg"; // default video background for this chapter
-            $webm = "sample.webm"; // webm video file for this chapter
-            $mp4 = "sample.mp4"; // mp4 video file for this chapter
-            $ogv = "sample.ogv"; // ogv video file for this chapter
+            $webm = "ch_3.webm"; // webm video file for this chapter
+            $mp4 = "ch_3.mp4"; // mp4 video file for this chapter
+            $ogv = "ch_3.ogv"; // ogv video file for this chapter
 
             include 'ch_3.php';
 

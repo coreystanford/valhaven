@@ -86,7 +86,7 @@
 		
 		Local.visit(apartment);
 
-		Local.addNoteIfAbsent("apartment", "He worked at Botanical Research Facility.", false);
+		Local.addNoteIfAbsent("apartment", "Apartment - He worked at Botanical Research Facility.", false);
 
 		Sliders.showMap();
 	}

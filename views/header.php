@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="<?php echo $keywords; ?>">
 	<meta name="description" content="<?php echo $description; ?>">
+	<link rel="icon" type="image/png" href="favicon.ico">
 	<meta property="og:title" content="Mysterious Illness Claims 13 Lives in Valhaven"/>
 	<meta property="og:site_name" content="Valhaven Island"/>
 	<meta property="og:description" content="An interactive transmedia project.">
@@ -15,7 +16,6 @@
 	<meta name="twitter:title" content="Mysterious Illness Claims 13 Lives in Valhaven" />
 	<meta name="twitter:description" content="An interactive transmedia project." />
 	<meta name="twitter:image" content="<?php echo IMAGE_PATH; ?>valhaven.jpg" />
-	<!-- <link rel="icon" type="image/png" href="favicon.ico"> -->
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Loved+by+the+King' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>main.css">
@@ -67,7 +67,7 @@
 				<h2 id="noteTitle">Notes</h2>	
 
 				<ul id="note">
-
+					
 				</ul>
 
 				<div id="lines">

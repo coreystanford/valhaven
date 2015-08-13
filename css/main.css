@@ -505,7 +505,7 @@ nav {
       box-shadow: 0px 0px 0px #E8DC20;
     }
 
-#next-btn {
+#next-btn, #next-btn-research, #next-btn-map {
   text-align: center;
   display: block;
   background: yellow;
@@ -881,9 +881,27 @@ nav {
     z-index: 1;
   }
 
+    .modal-content-lower {
+      position: absolute;
+      bottom: 5%;
+      right: 0;
+      width: 100%;
+      max-width: 640px;
+      min-width: 200px;
+      height: auto;
+      color: #fff;
+      z-index: 1;
+    }
+
     .red-bg {
       background: #eb1c3c;
       padding: 5%;
+      box-shadow: 0px 0px 10px #252525;
+    }
+
+    .red-bg-lower {
+      background: #eb1c3c;
+      padding: 2%;
       box-shadow: 0px 0px 10px #252525;
     }
 
@@ -1199,6 +1217,8 @@ nav {
 
   #instructions-1 h2 {
     padding-bottom: 12px;
+    font-weight: 700;
+    padding: 0 0 0 10px;
   }
 
   #instructions-1 p {
@@ -1515,6 +1535,7 @@ nav {
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 30;
 }
 
 #book1 {
@@ -1681,6 +1702,52 @@ nav {
   }
 }
 
-video:-webkit-full-screen {
-  
+canvas {
+  display: block;
+}
+.gamecanvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.canvas0 {
+  background: url('../images/maze-game.jpg') no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
+.canvas1 {
+  background: url('../images/maze-overlay.png') no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
+.gamecanvas { z-index: 1; }
+.container canvas {
+  z-index: 2;
+}
+
+#popup, #restart, #finished {
+  z-index: 10;
+}
+
+#ssBtn, #rBtn, #fBtn {
+  border: none;
+  cursor: pointer;
+  padding: 15px 30px;
+  display: inline-block;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  font-size: 1rem;
+  font-size: 16px;
+  outline: none;
+  position: relative;
+  border-radius: 8px;
+  margin: 20px auto 10px auto;
+  background: #f9eC23;
+  color: #58595b;
+  text-align: center;
+  display: block;
 }

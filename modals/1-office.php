@@ -6,7 +6,7 @@
 		
 		<h2 id="instructHeading">Uncover the Secrets of Valhaven</h2>
 
-		<p id="instructText">With no one else concerned about the mysterious illness in Red Crowe, it looks like Layna needs some help. Step into her investigative journalist shoes and uncover the secrets of Valhaven Island before it’s too late.</p>
+		<p id="instructText">With no one else concerned about the mysterious illness in Red Crowe, it looks like Layna needs some help. Step into her shoes and uncover the secrets of Valhaven Island before it’s too late.</p>
 
 		<button type="button" id="next-btn" class="btn">CONTINUE</button>
 

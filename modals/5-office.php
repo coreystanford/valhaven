@@ -178,7 +178,7 @@
 		modal.style.left = "30%";
 		Sliders.hideNotebook();
 		// add a note and play audio if the note is absent
-		Local.addNoteIfAbsent("office", "Jones also worked at Botanical Research Facility. Poisoned his family, but with what??", true, office);
+		Local.addNoteIfAbsent("office", "Archive - Jones also worked at Botanical Research Facility. Poisoned his family, but with what??", true, office);
 		// show office locaition on map and open route
 		home.setAttribute('class', '');
 		home.addEventListener('click', Map.route);

@@ -15,7 +15,7 @@
 
 		Map.removeVideoEvents();
 
-		Local.addNoteIfAbsent("flashback", "Hiren of the Valley? It’s been extinct since I was a kid.", false);
+		Local.addNoteIfAbsent("flashback", "Office - Hiren of the Valley? It’s been extinct since I was a kid.", false);
 
 		apartment.setAttribute('class', '');
 		apartment.addEventListener('click', Map.route);

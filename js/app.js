@@ -134,8 +134,8 @@ var Map = (function(){
 			video.removeEventListener('mousemove', VidControl.handleMouseMove);
 			video.removeEventListener('touchstart', VidControl.handleMouseMove);
 
-			map.removeEventListener('mouseenter', Sliders.showMap, false);
-			map.removeEventListener('mouseleave', Sliders.hideMap, false);
+			// map.removeEventListener('mouseenter', Sliders.showMap, false);
+			// map.removeEventListener('mouseleave', Sliders.hideMap, false);
 		}
 
 	}
@@ -219,7 +219,7 @@ var Local = (function(){
 		visit: function(location){
 
 			location.setAttribute('class', 'visited');
-			location.removeEventListener('click', Map.v);
+			location.removeEventListener('click', Map.route);
 
 		},
 

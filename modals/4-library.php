@@ -16,7 +16,7 @@
 			<div class="flash"></div>
 			<div class="hidden">
 				<img src="<?php echo IMAGE_PATH; ?>book1.jpg">
-				<button type="button" class="close-book" title="close">X</button>
+				<button type="button" id="showInfo" class="close-book" title="close">X</button>
 			</div>
 			<img src="<?php echo IMAGE_PATH; ?>book1.png">
 		</div>
@@ -59,6 +59,15 @@
 
 </div>
 
+<div id="confirmation" class="modal-content-lower clearfix hide">
+	<div id="instructions-1" class="red-bg-lower">
+		<h2>Great Work!</h2>
+		<p>You've found that “Dominus Genii Majalis” = Hiren of the Valley! Continue researching Hiren of the Valley or bring out the map to proceed.</p>
+		<button type="button" id="next-btn-research" class="btn">CONTINUE RESEARCH</button>
+		<button type="button" id="next-btn-map" class="btn">OPEN MAP</button>
+	</div>
+</div>
+
 <script>
 	
 	(function(){
@@ -70,6 +79,10 @@
 		var bg = document.getElementById('library-bg');
 		var popup = document.getElementById('popup');
 		var close = document.getElementById('next-btn');
+		var showInfo = document.getElementById('showInfo');
+		var confirmation = document.getElementById('confirmation');
+		var continueResearch = document.getElementById('next-btn-research');
+		var okayShowMap = document.getElementById('next-btn-map');
 		var read = 0;
 
 		modal.style.zIndex = "15";
@@ -121,6 +134,15 @@
 			Map.removeVideoEvents();
 		});
 
+		showInfo.addEventListener('click', function(){
+			confirmation.setAttribute('class', 'modal-content-lower clearfix');
+		});
+
+		okayShowMap.addEventListener('click', showEnd);
+		continueResearch.addEventListener('click', function(){
+			map
+		});
+
 		function openBook(){
 			this.removeChild(this.children[2]);
 			this.children[0].setAttribute('class', '');
@@ -139,26 +161,24 @@
 
 		function closeBook(){
 			this.parentNode.parentNode.style.display = "none";
-			checkReads();
+			// checkReads();
 		}
 
-		function checkReads(){
-			read++;
-			if(read >= 5){
-				// show map and slide modal window over, while forcing the notebook closed
-				Sliders.showMap();
-				modal.style["-webkit-transition-duration"] = "0.5s";
-				modal.style["-moz-transition-duration"] = "0.5s";
-				modal.style["-o-transition-duration"] = "0.5s";
-				modal.style["transition-duration"] = "0.5s";
-				modal.style.left = "30%";
-				Sliders.hideNotebook();
-				// add a note and play audio if the note is absent
-				Local.addNoteIfAbsent("library", "“Dominus Genii Majalis” = Hiren of the Valley.", false);
-				// show office locaition on map and open route
-				office.setAttribute('class', '');
-				office.addEventListener('click', Map.route);
-			}
+		function showEnd(){
+			// show map and slide modal window over, while forcing the notebook closed
+			Sliders.showMap();
+			modal.style["-webkit-transition-duration"] = "0.5s";
+			modal.style["-moz-transition-duration"] = "0.5s";
+			modal.style["-o-transition-duration"] = "0.5s";
+			modal.style["transition-duration"] = "0.5s";
+			modal.style.left = "30%";
+			Sliders.hideNotebook();
+			// add a note and play audio if the note is absent
+			Local.addNoteIfAbsent("library", "Library - “Dominus Genii Majalis” = Hiren of the Valley.", false);
+			// show office locaition on map and open route
+			office.setAttribute('class', '');
+			office.addEventListener('click', Map.route);
+			modal.removeChild(confirmation);
 		}
 
 	})();

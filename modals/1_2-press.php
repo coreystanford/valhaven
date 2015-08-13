@@ -64,7 +64,7 @@
 		}
 
 		function playQuestion(){
-			this.style.opacity = "0.7";
+			this.style.opacity = "0.3";
 			this.children[0].style.cursor = "default";
 			this.removeEventListener('click', playQuestion);
 			modal.style.left = "-9999px";
@@ -80,7 +80,7 @@
 
 			body.removeChild(modal);
 			
-			Local.addNoteIfAbsent("press", "Gov’t seems to be doing everything it can.", true, press);
+			Local.addNoteIfAbsent("press", "Press Conference - Gov’t seems to be doing everything it can.", true, press);
 
 			Map.removeVideoEvents();
 

@@ -2,8 +2,8 @@
 
 <div id="popup" class="modal-content clearfix">
 	<div id="instructions-1" class="red-bg">
-		<h2>Look through Layna's Phone</h2>
-		<p>Take a look through Layna's phone to see what is going on in Red Crowe City and continue to the office.</p>
+		<h2>Layna's Phone</h2>
+		<p>Take a look through Layna's phone to see what is going on in Red Crowe City, and when you're ready, continue to the office.</p>
 		<button type="button" id="next-btn" class="btn">OKAY</button>
 	</div>
 </div>

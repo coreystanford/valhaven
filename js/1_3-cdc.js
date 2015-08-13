@@ -11,7 +11,7 @@
 
 	video.addEventListener('ended', function(){
 		
-		Local.addNoteIfAbsent("cdc", "NOT HELPFUL AT ALL! (I should send in a complaint!)", true, cdc);
+		Local.addNoteIfAbsent("cdc", "DCD - NOT HELPFUL AT ALL! (I should send in a complaint!)", true, cdc);
 
 		Map.removeVideoEvents();
 
