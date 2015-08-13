@@ -59,12 +59,14 @@
 
 </div>
 
-<div id="confirmation" class="modal-content-lower clearfix hide">
-	<div id="instructions-1" class="red-bg-lower">
+<div id="confirmation" class="modal-content clearfix hide">
+	<div id="instructions-1" class="red-bg">
 		<h2>Great Work!</h2>
 		<p>You've found that “Dominus Genii Majalis” = Hiren of the Valley! Continue researching Hiren of the Valley or bring out the map to proceed.</p>
-		<button type="button" id="next-btn-research" class="btn">CONTINUE RESEARCH</button>
-		<button type="button" id="next-btn-map" class="btn">OPEN MAP</button>
+		<div id="next-btn-cont">
+			<button type="button" id="next-btn-research" class="btn">RESEARCH</button>
+			<button type="button" id="next-btn-map" class="btn">OPEN MAP</button>
+		</div>
 	</div>
 </div>
 
@@ -149,7 +151,12 @@
 
 		okayShowMap.addEventListener('click', showEnd);
 		continueResearch.addEventListener('click', function(){
-			map
+			modal.removeChild(confirmation);
+			// add a note and play audio if the note is absent
+			Local.addNoteIfAbsent("library", "Library - “Dominus Genii Majalis” = Hiren of the Valley.", false);
+			// show office locaition on map and open route
+			office.setAttribute('class', '');
+			office.addEventListener('click', Map.route);
 		});
 
 		function openBook(){
@@ -188,6 +195,8 @@
 			office.setAttribute('class', '');
 			office.addEventListener('click', Map.route);
 			modal.removeChild(confirmation);
+			map.removeEventListener('mouseenter', Sliders.showMap, false);
+			map.removeEventListener('mouseleave', Sliders.hideMap, false);
 		}
 
 	})();

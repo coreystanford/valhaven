@@ -505,9 +505,25 @@ nav {
       box-shadow: 0px 0px 0px #E8DC20;
     }
 
-#next-btn, #next-btn-research, #next-btn-map {
+#next-btn {
   text-align: center;
   display: block;
+  background: yellow;
+  margin: 20px auto 10px auto;
+  width: 200px;
+  min-width: 200px;
+  background: #f9eC23;
+  color: #58595b;
+}
+
+#next-btn-cont {
+  text-align: center;
+  width: 100%;
+}
+
+#next-btn-research, #next-btn-map {
+  text-align: center;
+  display: inline-block;
   background: yellow;
   margin: 20px auto 10px auto;
   width: 200px;
@@ -865,7 +881,7 @@ nav {
     background: rgba(55,55,55,0.6);
   }
 
-  .modal-content {
+  .modal-content, .modal-content-lower {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -881,27 +897,9 @@ nav {
     z-index: 1;
   }
 
-    .modal-content-lower {
-      position: absolute;
-      bottom: 5%;
-      right: 0;
-      width: 100%;
-      max-width: 640px;
-      min-width: 200px;
-      height: auto;
-      color: #fff;
-      z-index: 1;
-    }
-
-    .red-bg {
+    .red-bg, .red-bg-lower {
       background: #eb1c3c;
       padding: 5%;
-      box-shadow: 0px 0px 10px #252525;
-    }
-
-    .red-bg-lower {
-      background: #eb1c3c;
-      padding: 2%;
       box-shadow: 0px 0px 10px #252525;
     }
 

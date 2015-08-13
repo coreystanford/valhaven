@@ -135,13 +135,6 @@
 		<!--Button to end chapter-->
 		<button type="button" id="btn_endPuzl" class="btn">You have solved the puzzle!  Click to get out of here</button>
 	</div>
-
-	<audio loop class="hide" id="archive">
-		<source src="<?php echo AUDIO_PATH; ?>archive.mp3" type="audio/mpeg">
-		<source src="<?php echo AUDIO_PATH; ?>archive.wav" type="audio/wav">
-		Your browser does not support the audio element.
-	</audio>
-
 <script>
 (function puzzleScript(){
 	$(initPuzzle);
@@ -155,7 +148,6 @@
 
 	var popup = document.getElementById('popup');
 	var close = document.getElementById('next-btn');
-	var archive = document.getElementById('archive');
 
 	close.addEventListener('click', function(){
 		modal.removeChild(popup);
@@ -168,10 +160,10 @@
 	Local.setInactive( [home] );
 
 	video.addEventListener('ended', function(){
+
 		// remove the events that control video and sliders
 		Map.removeVideoEvents();
-		archive.volume = 0.4;
-		archive.play();
+
 	});
 
 	//======== PUZZLE CODE ========
@@ -227,14 +219,14 @@
 		//CYCLE THROUGH ALL DROPBOXES
 		for(var i = 0; i < dropboxes.length; i++){			
 			var checkrrr = "getb" + (i+1);			
-			console.log(checkrrr + " holding:" + dropboxes[i].getAttribute("data-holding"));
+			//console.log(checkrrr + " holding:" + dropboxes[i].getAttribute("data-holding"));
 						
 			//CHECK ALL DROP AREAS FOR CORRECT IMAGE
 			if((dropboxes[i].getAttribute("data-holds") == dropboxes[i].getAttribute("data-holding")) && (dropboxes[i].getAttribute("data-holds") == dropboxes[i].getAttribute("data-holding"))){
 			correctCounter++;
 			}			
 		}		
-		console.log("counter: " + correctCounter);		
+		//console.log("counter: " + correctCounter);		
 		//IF BOTH THINGS ARE TRUE, CALL VICTORY FUNCTION
 		if(correctCounter == 1 && rightSideUp==true){			
 			puzzleSolved();//VICTORY CONDITION MET
@@ -276,7 +268,7 @@
 */	
 //function finished(){alert("map goes here");}
 	function puzlEnd(){
-		finished();		
+		finished();
 	}
 	
 	
@@ -316,7 +308,24 @@
 		//STRAIGHTEN PIECE ONCE IT IS CLICKED ON
 		$(".puzl_Piece").on("mousedown", function(){
 			$(this).css("transform", "rotate(0deg)");
-		});	
+		});			
+		
+	}//END initPuzzle	
+	
+	function finished(){
+		Sliders.showMap();
+		modal.style["-webkit-transition-duration"] = "0.5s";
+		modal.style["-moz-transition-duration"] = "0.5s";
+		modal.style["-o-transition-duration"] = "0.5s";
+		modal.style["transition-duration"] = "0.5s";
+		modal.style.left = "30%";
+		Sliders.hideNotebook();
+		// add a note and play audio if the note is absent
+		Local.addNoteIfAbsent("office", "Archive - Jones also worked at Botanical Research Facility. Poisoned his family, but with what??", true, office);
+		// show office locaition on map and open route
+		home.setAttribute('class', '');
+		home.addEventListener('click', Map.route);
+	}
 
 }());
 </script>

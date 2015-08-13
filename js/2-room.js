@@ -73,7 +73,7 @@
 
 		if(playRadio.paused === true){
 			playRadio.play();
-			aptBg.volume = 0.1;
+			aptBg.volume = 0;
 		} else {
 			playRadio.pause();
 			aptBg.volume = 0.3;
