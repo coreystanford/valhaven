@@ -176,7 +176,7 @@
 		puzlFnl.style.display = "block";
 		puzlFnl.style.opacity = 1;
 		puzlFnlImg.style.width = "100%";
-		puzlFnl.zIndex = "30";
+		puzlFnl.style.zIndex = "21";
 		btnClose.style.display = "block";		
 	}//END puzzleSolved
 		
@@ -223,7 +223,7 @@
 		}		
 		//console.log("counter: " + correctCounter);		
 		//IF BOTH THINGS ARE TRUE, CALL VICTORY FUNCTION
-		if(correctCounter == 1 && rightSideUp==true){			
+		if(correctCounter == 9 && rightSideUp==true){			
 			puzzleSolved();//VICTORY CONDITION MET
 		}		
 	}//END checkForSolve

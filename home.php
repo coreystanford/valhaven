@@ -14,8 +14,6 @@
 		</div>
 		<div id="disclaimer">
 			<p>The characters and events depicted in this transmedia project are fictitious. Any similarity to actual persons, living or dead, is purely coincidental.</p> 
-			<p>(Union and other supplier acknowledgements)</p>
-			<p>Humber Logo</p>
 			<p>© 2015 Humber College</p>
 		</div>
 	</div>
