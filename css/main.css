@@ -1717,9 +1717,9 @@ canvas {
   top: 50%;
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }
 .canvas0 {
   background: url('../images/maze-game.jpg') no-repeat;
@@ -1840,3 +1840,48 @@ canvas {
   padding-left:20px;
   margin-bottom:10px;
 }
+
+#postLinks {
+  position: absolute;
+  top: 40%;
+  right: 10%;
+  bottom: 30%;
+  left: 10%;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-content: space-around;
+  align-content: space-around;
+}
+
+.boxLink {
+  width: 50%;
+}
+
+  .boxLink span {
+    text-align: center;
+    position: relative;
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    background: #fff;
+    color: #eb1c3c;
+    padding: 20px;
+    font-weight: 700;
+  }
+
+    .boxLink span img {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      height: 27px;
+      width: auto;
+    }

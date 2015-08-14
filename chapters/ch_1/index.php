@@ -117,9 +117,9 @@
         case 'flashback':
 
             // javascript files for this chapter:
-            $customScripts = array("app.js", "video.js", "video-init.js", "1_4-flashback.js"); // add the file name in quotations, seperated by commas
+            $customScripts = array("app.js", "video.js", "video-init.js", "video-modal-init.js"); // add the file name in quotations, seperated by commas
 
-            $modal = ""; // name of the modal window file located in ./modals/
+            $modal = "1_4-flashback.php"; // name of the modal window file located in ./modals/
 
             $poster = "valhaven.jpg"; // default video background for this chapter
             $webm = "ch_1-4.webm"; // webm video file for this chapter
