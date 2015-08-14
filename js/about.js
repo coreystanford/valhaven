@@ -5,6 +5,6 @@
 
 	map.style.display = 'none';
 	notebook.style.display = 'none';
-	document.getElementById('main').style.background = '#58595b';
+	document.getElementById('main').style.background = '#f3f2f2';
 
 })();

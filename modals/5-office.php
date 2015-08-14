@@ -1,11 +1,7 @@
 <?php require '../config.php'; ?>
 	
 <style>
-#puzl_Container *{
-	border: none;
-	padding: 0;
-	margin: 0;
-}
+
 #helper{
 	position: absolute;
 	top: 10px;
@@ -37,7 +33,7 @@
 	display: block;
 } 
 #puz1_full{
-	z-index: 1000;
+	z-index: -1;
 	position: absolute;
 	top: 189px;
 	left: 0;
@@ -133,7 +129,7 @@
 		</div>
 		
 		<!--Button to end chapter-->
-		<button type="button" id="btn_endPuzl" class="btn">You have solved the puzzle!  Click to get out of here</button>
+		<button type="button" id="btn_endPuzl" class="btn">CONTINUE</button>
 	</div>
 <script>
 (function puzzleScript(){
@@ -143,8 +139,6 @@
 	var modal = document.getElementById('modal');
 	var office  = document.getElementById('office');
 	var home = document.getElementById('home');
-	
-	// -------  NEW CODE START
 
 	var popup = document.getElementById('popup');
 	var close = document.getElementById('next-btn');
@@ -153,9 +147,7 @@
 		modal.removeChild(popup);
 	});
 
-	// -------  NEW CODE END
-
-	modal.style.zIndex = "1500";
+	modal.style.zIndex = "15";
 
 	Local.setInactive( [home] );
 
@@ -173,15 +165,18 @@
 /**
 *WHEN PUZZLE IS SOLVED
 */
-	function puzzleSolved(){	
-		var puzlFnl = document.getElementById("puz1_full");
-		var puzlFnlImg = document.getElementById("puzl_full_img");
-		var btnClose = document.getElementById("btn_endPuzl");		
+	var puzlContainer = document.getElementById("puzl_Container");
+	var puzlFnl = document.getElementById("puz1_full");
+	var puzlFnlImg = document.getElementById("puzl_full_img");
+	var btnClose = document.getElementById("btn_endPuzl");
+
+	function puzzleSolved(){		
 		puzlFnl.style.left = 0;
 		puzlFnl.style.top = 0;
 		puzlFnl.style.display = "block";
 		puzlFnl.style.opacity = 1;
 		puzlFnlImg.style.width = "100%";
+		puzlFnl.zIndex = "30";
 		btnClose.style.display = "block";		
 	}//END puzzleSolved
 		
@@ -325,6 +320,11 @@
 		// show office locaition on map and open route
 		home.setAttribute('class', '');
 		home.addEventListener('click', Map.route);
+
+		puzlContainer.removeChild(btnClose);
+
+		map.removeEventListener('mouseenter', Sliders.showMap, false);
+		map.removeEventListener('mouseleave', Sliders.hideMap, false);
 	}
 
 }());

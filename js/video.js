@@ -145,7 +145,6 @@ var VidControl = (function(){
 		// ---- PROGRESS BAR ---- //
 
 		trackProgress: function(){
-			// console.log(video);
 			if(video.buffered.length - 1 === 0){
 				var bufferedEnd = video.buffered.end(video.buffered.length - 1);
 				var duration =  video.duration;
@@ -220,7 +219,6 @@ var VidControl = (function(){
 			timeFullSec = video.duration * perc;
 			timeMin = Math.floor(timeFullSec / 60);
 			timeSec = Math.round(timeFullSec % 60);
-
 			if(timeSec < 10){ timeSec = "0" + timeSec; }
 
 			time.innerHTML = timeMin + ":" + timeSec;
