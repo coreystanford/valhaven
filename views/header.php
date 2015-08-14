@@ -11,12 +11,13 @@
 	<meta property="og:site_name" content="Valhaven Island"/>
 	<meta property="og:description" content="An interactive transmedia project.">
 	<meta property="og:url" content="http://www.seanwaynedoyle.com/txm2015/valhaven/"/>
-	<meta property="og:image" content="<?php echo IMAGE_PATH; ?>valhaven.jpg" />
-	<meta name="twitter:card" content="summary" />
+	<meta property="og:image" content="<?php echo IMAGE_PATH; ?>valhaven-sharable.jpg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@hctransmedia">
 	<meta name="twitter:title" content="Mysterious Illness Claims 13 Lives in Valhaven" />
 	<meta name="twitter:description" content="An interactive transmedia project." />
 	<meta name="twitter:url" content="http://www.seanwaynedoyle.com/txm2015/valhaven/"/>
-	<meta name="twitter:image" content="<?php echo IMAGE_PATH; ?>valhaven.jpg" />
+	<meta name="twitter:image" content="<?php echo IMAGE_PATH; ?>valhaven-sharable.jpg" />
 	<link href='http://fonts.googleapis.com/css?family=Roboto:300,300italic,400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Loved+by+the+King' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH; ?>main.css">
