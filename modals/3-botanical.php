@@ -5,24 +5,24 @@
 <div id="popup" class="modal-content clearfix">
   <div id="instructions-1" class="red-bg">
     <h2>Get to the Library</h2>
-    <p>Quickly, evade the guards and reach the library!</p>
-    <button type="button" id="ssBtn" class="btn">GO!</button>
+    <p>If you want to get to the library to do some research, you have to get past the guards.  Use your keyboard arrow keys to navigate the maze.  If you get caught, you’ll have to start all over again.</p>
+    <button type="button" id="ssBtn" class="btn">GO</button>
   </div>
 </div>
 
 <div id="restart" class="modal-content clearfix hide">
   <div id="instructions-1" class="red-bg">
-    <h2>Restart</h2>
-    <p>When you're ready, restart the game!</p>
-    <button type="button" id="rBtn" class="btn">GO!</button>
+    <h2>You’ve been caught!</h2>
+    <p>You have another chance to avoid the guards and make it to the safety of the library.  Good luck.</p>
+    <button type="button" id="rBtn" class="btn">GO</button>
   </div>
 </div>
 
 <div id="finished" class="modal-content clearfix hide">
   <div id="instructions-1" class="red-bg">
-    <h2>Finished</h2>
-    <p>When you're ready, restart the game!</p>
-    <button type="button" id="fBtn" class="btn" class="btn">GO!</button>
+    <h2>Success!</h2>
+    <p>You outsmarted the guards and have made it to the library.</p>
+    <button type="button" id="fBtn" class="btn" class="btn">ENTER LIBRARY</button>
   </div>
 </div>
 
