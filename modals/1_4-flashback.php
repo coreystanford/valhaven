@@ -22,7 +22,7 @@
 
 			nextBtn.addEventListener('click', function(){
 
-				modal.removeChild(popup);
+				body.removeChild(modal);
 
 				Sliders.showMap();
 				Sliders.hideNotebook();
