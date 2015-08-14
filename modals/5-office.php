@@ -131,6 +131,13 @@
 		<!--Button to end chapter-->
 		<button type="button" id="btn_endPuzl" class="btn">CONTINUE</button>
 	</div>
+
+	<audio loop class="hide" id="archive">
+		<source src="<?php echo AUDIO_PATH; ?>archive.mp3" type="audio/mpeg">
+		<source src="<?php echo AUDIO_PATH; ?>archive.wav" type="audio/wav">
+		Your browser does not support the audio element.
+	</audio>
+
 <script>
 (function puzzleScript(){
 	$(initPuzzle);
@@ -155,6 +162,9 @@
 
 		// remove the events that control video and sliders
 		Map.removeVideoEvents();
+
+		archive.volume = 0.4;
+		archive.play();
 
 	});
 

@@ -254,6 +254,10 @@
 							vidaudio.play();
 						}
 
+						vidaudio.addEventListener('ended', function(){
+							contents.children[ref].setAttribute('class', 'off article-bg');
+						});
+
 						var close = document.getElementsByClassName('close-article');
 						close[ref].addEventListener("click", function(e){
 							e.preventDefault();

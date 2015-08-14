@@ -13,7 +13,7 @@
 	<div id="library-inner-container">
 		
 		<div id="book1">
-			<div class="flash"></div>
+			<div class="flash flashDiv"></div>
 			<div class="hidden">
 				<img src="<?php echo IMAGE_PATH; ?>book1.jpg">
 				<button type="button" id="showInfo" class="close-book" title="close">X</button>
@@ -21,7 +21,7 @@
 			<img src="<?php echo IMAGE_PATH; ?>book1.png">
 		</div>
 		<div id="book2">
-			<div class="flash"></div>
+			<div class="flash flashDiv"></div>
 			<div class="hidden">
 				<img src="<?php echo IMAGE_PATH; ?>book2.jpg">
 				<button type="button" class="close-book" title="close">X</button>
@@ -29,7 +29,7 @@
 			<img src="<?php echo IMAGE_PATH; ?>book2.png">
 		</div>
 		<div id="book3">
-			<div class="flash"></div>
+			<div class="flash flashDiv"></div>
 			<div class="hidden">
 				<img src="<?php echo IMAGE_PATH; ?>book3.jpg">
 				<button type="button" class="close-book" title="close">X</button>
@@ -37,7 +37,7 @@
 			<img src="<?php echo IMAGE_PATH; ?>book3.png">
 		</div>
 		<div id="book4">
-			<div class="flash"></div>
+			<div class="flash flashDiv"></div>
 			<div class="hidden">
 				<img src="<?php echo IMAGE_PATH; ?>book4.jpg">
 				<button type="button" class="close-book" title="close">X</button>
@@ -45,7 +45,7 @@
 			<img src="<?php echo IMAGE_PATH; ?>book4.png">
 		</div>
 		<div id="book5">
-			<div class="flash"></div>
+			<div class="flash flashDiv"></div>
 			<div class="hidden">
 				<img src="<?php echo IMAGE_PATH; ?>book5.jpg">
 				<button type="button" class="close-book" title="close">X</button>
@@ -103,27 +103,27 @@
 			if(Map.hasClass(book1.children[1], "hidden")){
 				book1.children[0].setAttribute('class', '');
 				book1.children[0].offsetWidth = book1.offsetWidth;
-				book1.children[0].setAttribute('class', 'flash');
+				book1.children[0].setAttribute('class', 'flash flashDiv');
 			}
 			if(Map.hasClass(book2.children[1], "hidden")){
 				book2.children[0].setAttribute('class', '');
 				book2.children[0].offsetWidth = book2.offsetWidth;
-				book2.children[0].setAttribute('class', 'flash'); 
+				book2.children[0].setAttribute('class', 'flash flashDiv'); 
 			}
 			if(Map.hasClass(book3.children[1], "hidden")){
 				book3.children[0].setAttribute('class', '');
 				book3.children[0].offsetWidth = book3.offsetWidth;
-				book3.children[0].setAttribute('class', 'flash');
+				book3.children[0].setAttribute('class', 'flash flashDiv');
 			}
 			if(Map.hasClass(book4.children[1], "hidden")){
 				book4.children[0].setAttribute('class', '');
 				book4.children[0].offsetWidth = book4.offsetWidth;
-				book4.children[0].setAttribute('class', 'flash');
+				book4.children[0].setAttribute('class', 'flash flashDiv');
 			}
 			if(Map.hasClass(book5.children[1], "hidden")){
 				book5.children[0].setAttribute('class', '');
 				book5.children[0].offsetWidth = book5.offsetWidth;
-				book5.children[0].setAttribute('class', 'flash');
+				book5.children[0].setAttribute('class', 'flash flashDiv');
 			}
 
 		});

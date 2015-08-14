@@ -49,7 +49,7 @@
 
 	// --- AUDIO ---- //
 
-	aptBg.volume = 0.3;
+	aptBg.volume = 0.4;
 	playRadio.volume = 0.4;
 	laynaGasp.volume = 0.7;
 	setTimeout(function(){
@@ -76,7 +76,7 @@
 			aptBg.volume = 0;
 		} else {
 			playRadio.pause();
-			aptBg.volume = 0.3;
+			aptBg.volume = 0.4;
 		}
 	}
 
