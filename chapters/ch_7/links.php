@@ -11,42 +11,42 @@
       	<p>1</p>
     </div>
     <div class="answer">
-       	<p>Search the article topic in a search engine</p>
+       	<p>Search the article topic in a search engine, and choose what you click with a critical eye.</p>
     </div>
     
     <div class="number">
       	<p>2</p>
     </div>
     <div class="answer">
-       	<p>Read about the topic from different news outlets. Each outlet has a different.</p>
+       	<p>Read about the topic from different news outlets. Each source has a different way of telling the same story.</p>
     </div>
     
     <div class="number">
       	<p>3</p>
     </div>
     <div class="answer">
-       	<p>Look at other stories the journalist has covered.</p>
+       	<p>Look at other stories a particular journalist has covered.</p>
     </div>
     
     <div class="number">
       	<p>4</p>
     </div>
     <div class="answer">
-       	<p>Look outside of your own country for different perspectives</p>
+       	<p>Look outside of your own country for different perspectives.</p>
     </div>
     
     <div class="number">
       	<p>5</p>
     </div>
     <div class="answer">
-       	<p>Get to know some highly reputable sources</p>
+       	<p>Get to know what are regarded to be highly reputable sources.</p>
     </div>
     
     <div class="number">
       	<p>6</p>
     </div>
     <div class="answer">
-       	<p>There is no such thing as a purely objective fact. Learn to be critical of your sources</p>
+       	<p>Remember, there is no such thing as a purely objective story. Learn to be critical of your sources.</p>
     </div>
     
     <div class="section1">

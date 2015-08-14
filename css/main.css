@@ -1820,13 +1820,15 @@ canvas {
 /* ---- TIPS AND LINKS ---- */
 
 #wrapper {
-  width: 90%;
+  width: 80%;
   max-width: 960px;
   margin: 0px auto;
   margin-top: 50px;
   margin-bottom:50px;
-  border:solid 2px red;
+  margin-left: 12%;
+  /*border:solid 2px red;*/ 
   color: #636363;
+  overflow: auto;
 }
 
   #wrapper a {
@@ -1841,18 +1843,33 @@ canvas {
   margin-bottom:30px;
   margin-top:50px;
 }
-  .section1 h4
+
+.section1 h4
   {
     padding:20px;
+    font-weight: bold;
+    position:relative;
   }
+
+.section1 h4:after {
+        border: solid;
+        border-color: #fff transparent;
+        border-width: 15px 15px 0 15px;
+        bottom: -12px;
+        content: "";
+        left: 7%;
+        position: absolute;
+      }
+  
 
 .number {
   float:left;
-  width:30px;
-  height:30px;
+  width:35px;
+  height:35px;
   background:#fff;
   margin-right: 10px;
   margin-bottom:10px;
+  padding: 7px;
 }
 
  .number p {
@@ -1862,12 +1879,12 @@ canvas {
  
  .answer {
    background:#fff;
-   margin-left:40px;
-   margin-bottom:10px;
+   margin-left:45px;
+   margin-bottom:15px;
  }
  
  .answer p {
-   padding-left:10px;
+   padding:7px 20px;
  }
   
 .section1 img {
@@ -1876,7 +1893,7 @@ canvas {
   
   #footer_content {
   margin-left: 14.5%;
-  margin-top: 10px;
+  margin-top: 15px;
   }
   
 .link {
@@ -1887,7 +1904,7 @@ canvas {
   background:#fff;
   float:left;
   width:47%;
-  padding-left:20px;
+  padding:7px 20px;
   margin-bottom:10px;
 }
 
@@ -1895,7 +1912,7 @@ canvas {
   background:#fff;
   float:right;
   width:47%;
-  padding-left:20px;
+  padding:7px 20px;
   margin-bottom:10px;
 }
 
