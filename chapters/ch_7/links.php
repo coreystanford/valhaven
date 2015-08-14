@@ -4,7 +4,6 @@
         
     <div class="section1">
     	<h4>Tips on Discerning a Reliable Source.</h4>
-        <img src="image/SpeachArrow.png" alt="">
     </div>
 
     <div class="number">
@@ -51,7 +50,6 @@
     
     <div class="section1">
     	<h4>Links to articles that discuss how people get their news.</h4>
-        <img src="image/SpeachArrow.png" alt="">
     </div> 
     <div class="link"> 
         <p class="optionl"><a href="http://www.americanpressinstitute.org/publications/reports/survey-

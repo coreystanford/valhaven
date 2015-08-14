@@ -1873,8 +1873,9 @@ canvas {
 }
 
  .number p {
-  color: #EB1C3C;
+  color: #636363;
   text-align: center;
+  font-weight: 700;
  }
  
  .answer {
