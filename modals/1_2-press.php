@@ -22,8 +22,8 @@
 		var asked = 0;
 		var newNote = document.getElementById('newNote');
 
-		// progressContainer.removeEventListener("mousedown", VidControl.handleProgressMouseDown);
-		// progressContainer.removeEventListener("touchstart", VidControl.handleProgressTouchDown);
+		progressContainer.removeEventListener("mousedown", VidControl.handleProgressMouseDown);
+		progressContainer.removeEventListener("touchstart", VidControl.handleProgressTouchDown);
 
 		progressContainer.style.opacity = "0.5";
 		modal.style.background = "rgba(0,0,0,0.5)";
