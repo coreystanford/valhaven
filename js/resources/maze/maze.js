@@ -101,6 +101,7 @@ function(DependencyLoader, CharacterRenderer, CollisionMap, Agent, Mob, Tileset,
 		var finished = document.getElementById('finished');
 		var rBtn = document.getElementById('rBtn');
 		var fBtn = document.getElementById('fBtn');
+		var botanical = document.getElementById('botanical');
 
 		// build layers
 		_(2).times(function(i){
@@ -133,6 +134,8 @@ function(DependencyLoader, CharacterRenderer, CollisionMap, Agent, Mob, Tileset,
 
 				finished.setAttribute('class', 'modal-content clearfix');
 
+				Local.addNoteIfAbsent("botanical", "Botanical Research Facility - Look up “Dominus Genii Majalis” asap", true, botanical);
+
 				return;
 			}
 			if(!guard1.caught && !guard2.caught){
@@ -159,8 +162,6 @@ function(DependencyLoader, CharacterRenderer, CollisionMap, Agent, Mob, Tileset,
 
 		fBtn.addEventListener('click', function(){
 
-			Local.visited.push("botanical");
-			localStorage.setItem( 'visited', JSON.stringify(Local.visited) );
 			window.location.href = "/txm2015/valhaven/chapters/ch_4";
 
 		});

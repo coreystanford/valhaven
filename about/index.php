@@ -29,8 +29,8 @@
     // ----------------------------- //
 
     $title = "About";
-    $description = "This is a description of about.";
-    $keywords = "Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
+    $description = "Credits and information about this Humber Transmedia project.";
+    $keywords = "About, About Us, Valhaven, Valhaven Island, Humber, Humber Transmedia Project, Transmedia";
     
     $headScripts = array("jquery-1.11.3.min.js");
     
