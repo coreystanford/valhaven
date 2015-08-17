@@ -8,7 +8,7 @@
 	line-height: normal;
 	color: rgba(43,43,43,1.00);
 	font-size: 16px;
-	padding-bottom: 100px;
+	padding-bottom: 75px;
 }
 
 .abouth1
@@ -54,6 +54,17 @@
 	text-transform:uppercase;
 	font-size:14px;
 	padding-bottom:5px;
+}
+
+#aboutatt h4
+{
+	text-align:left;
+	padding-left:10px;
+}
+
+#margintop
+{
+	margin-top:15px;
 }
 
 /*Tagline School*/
@@ -217,6 +228,34 @@ aboutnav ul li
 	margin-left:30px;
 	margin-right:30px;
 }
+
+
+	
+	
+/* Cannot figure out the CSS 
+#team ul li
+			{
+				float: left;
+				padding-right:10px;
+			}
+			
+				#team-images ul li a
+				{
+					width:140%;
+					color: #636363;
+					text-decoration: none;
+					text-transform: uppercase;
+					font-size: 14px;
+				}
+				
+				#team-images ul li a:hover,
+				#team-images ul li a.current
+				{
+					background-color: #f00423;
+					color:#f00423;
+				}
+				
+/* Cannot figure out the css end */
 				
 .aboutdeveloper
 {
@@ -298,7 +337,7 @@ aboutnav ul li
 
 .aboutatthead
 {
-	margin-top:33px;
+	margin-top:20px;
 	float:left;
 	width:100%;
 	height:30px;
@@ -340,10 +379,9 @@ aboutnav ul li
                 <h2 class="abouth2">Brian Lee</h2>
                 <h3 class="abouth3">Creator</h3>
                 <p class="aboutp">Following his passion for storytelling, Brian studied in the Film Studies Program at Concordia University and York University before enrolling in the Bachelor of Journalism Program at Humber College. Brian gives media projects a forward momentum by utilizing his experience in a variety of production processes. His production knowledge ranges from film, news, podcasts, written articles, and graphic design. Brian’s awareness of current issues and his understanding of the power of narratives give a purpose and direction to every project he is part of. He is excited to see what kind of stories he will be telling in the form of transmedia.</p>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>web.png" alt=""></a>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>FB2.png" alt=""></a>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>LI.png" alt=""></a>
-                
+                <h4 class="abouth4" id="margintop">Program: Bachelor of Journalism</h4>
+                <a href="https://ca.linkedin.com/pub/brian-k-lee/47/385/8a" target="_blank"><img src="<?php echo IMAGE_PATH; ?>LI.png" alt=""></a>
+               
             </div>
             
             <div class="aboutprofile aboutteamblank">
@@ -351,10 +389,11 @@ aboutnav ul li
                 <h2 class="abouth2">Hiren Sindhvad</h2>
                 <h3 class="abouth3">Creator</h3>
                 <p class="aboutp">Hiren has a Commerce Degree from Mumbai University in India. However, it was his love of design, and the fact that Hiren is a self-described “technology freak” that drove him to pursue a diploma in 3D Animation and Graphics from Maya Academy of Advanced Cinematics in India, and has worked as a graphic designer for two years. Hiren then headed to Humber College to study Multimedia Design and Development.  The idea of transmedia excites Hiren, because it provides an opportunity to use his creative thinking and vast technical skills on a single platform.</p>
+                <h4 class="abouth4" id="margintop">Program: Multimedia Design and Development</h4>
                 <a href="http://hirensindhvad.com/" target="_blank"><img src="<?php echo IMAGE_PATH; ?>web.png" alt=""></a>
-                <a href="https://www.facebook.com/sindhvadhiren" target="_blank"><img src="<?php echo IMAGE_PATH; ?>FB.png" alt=""></a>
-                <a href="https://www.linkedin.com/pub/hiren-sindhvad/51/281/423" target="_blank"><img src="<?php echo IMAGE_PATH; ?>LI.png" alt=""></a>
                 <a href="https://www.behance.net/hirensindhvad" target="_blank"><img src="<?php echo IMAGE_PATH; ?>b.png" alt=""></a>
+                <a href="https://www.linkedin.com/pub/hiren-sindhvad/51/281/423" target="_blank"><img src="<?php echo IMAGE_PATH; ?>LI.png" alt=""></a>
+                <a href="https://www.facebook.com/sindhvadhiren" target="_blank"><img src="<?php echo IMAGE_PATH; ?>FB.png" alt=""></a>
             </div>
             
             
@@ -364,9 +403,13 @@ aboutnav ul li
                 <h2 class="abouth2">Miles Mungo</h2>
                 <h3 class="abouth3">Creator</h3>
                 <p class="aboutp">A renaissance man, Miles uses his knowledge of a number of media to enhance every project he's involved in. With an advanced diploma in Animation Arts from Seneca College and a degree in Film and Media Production from Humber College (graduating 2016), Miles has an understanding of communication and storytelling on multiple platforms. He has worked as a web designer, web developer, writer, animator, graphic designer, video game artist, photographer and illustrator. Miles is also a member of Global Leadership Interlink: a network of professionals and university students committed to transformation in society through the development of values-based leaders. He has directed seven short films and looks forward to what his future holds in the realm of transmedia.</p>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>web.png" alt=""></a>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>FB.png" alt=""></a>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>LI.png" alt=""></a>
+                <h4 class="abouth4" id="margintop">Program: Film and Media Production</h4>
+                <a href="https://milesmungo.com"><img src="<?php echo IMAGE_PATH; ?>web.png" alt=""></a>
+                <a href="https://ca.linkedin.com/pub/miles-d-mungo/14/558/704"><img src="<?php echo IMAGE_PATH; ?>LI.png" alt=""></a>
+                <a href="www.imdb.com/name/nm6473940/"><img src="<?php echo IMAGE_PATH; ?>imdb.png" alt=""></a>
+                <a href="https://instagram.com/milesmungo/"><img src="<?php echo IMAGE_PATH; ?>i.png" alt=""></a>
+                <a href="https://www.tumblr.com/blog/milesmungo"><img src="<?php echo IMAGE_PATH; ?>tumblr.png" alt=""></a>
+                <a href="https://www.youtube.com/user/milesmungo/videos"><img src="<?php echo IMAGE_PATH; ?>yt.png" alt=""></a>
             </div>
             
             <div class="aboutprofile">
@@ -374,9 +417,11 @@ aboutnav ul li
                 <h2 class="abouth2">Laura Mulrine</h2>
                 <h3 class="abouth3">Creator</h3>
                 <p class="aboutp">Laura earned an honours Bachelor of Arts in History and English from St. Francis Xavier University before heading to the University of Glasgow for her Bachelor of Education in Secondary Teaching. Her experience as a copywriter led her to take Media Communications at Humber College. She is excited about this project because it has given Laura an opportunity to write and to tell a great story.</p>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>web.png" alt=""></a>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>FB.png" alt=""></a>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>LI.png" alt=""></a>
+                <h4 class="abouth4" id="margintop">Program: Media Communications</h4>
+                <a href="https://lauramulrineonline.com"><img src="<?php echo IMAGE_PATH; ?>web.png" alt=""></a>
+                <a href="https://ca.linkedin.com/in/lauramulrine"><img src="<?php echo IMAGE_PATH; ?>LI.png" alt=""></a>
+                <a href="https://www.facebook.com/laura.mulrine"><img src="<?php echo IMAGE_PATH; ?>FB.png" alt=""></a>
+                <a href="https://twitter.com/LauraMulrine"><img src="<?php echo IMAGE_PATH; ?>t.png" alt=""></a>
             </div>
             
             <div class="aboutprofile aboutteamblank">
@@ -384,9 +429,8 @@ aboutnav ul li
                 <h2 class="abouth2">Rich Dowsett</h2>
                 <h3 class="abouth3">Creator</h3>
                 <p class="aboutp">Hailing from New Zealand, Rich has a Bachelor of Arts in Film Production from the University College of Creative Arts in the United Kingdom, and has just completed a Postgraduate Certificate in Radio Broadcasting at Humber College. He has a background in writing and performing comedy. Rich likes the idea of cross-platform storytelling and has enjoyed the challenge of putting together a transmedia project.</p>
+                <h4 class="abouth4" id="margintop">Program: Postgraduate Radio Broadcasting</h4>
                 <a href="https://soundcloud.com/rychie-d" target="_blank"><img src="<?php echo IMAGE_PATH; ?>SC.png" alt=""></a>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>FB.png" alt=""></a>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>LI.png" alt=""></a>
             </div>
             
             <div class="aboutprofile">
@@ -394,9 +438,10 @@ aboutnav ul li
                 <h2 class="abouth2">Rachel Shnier</h2>
                 <h3 class="abouth3">Creator</h3>
                 <p class="aboutp">Rachel studied at the University of Guelph for a Bachelor of Arts, before switching to Humber College for Media Communications. With a background in theatre production, Rachel has found a new stage to tell stories on through transmedia. Her passion for marketing and social media will help teach more people about transmedia, and how they can tell their own stories through transmedia.</p>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>web.png" alt=""></a>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>FB.png" alt=""></a>
-                <a href="#"><img src="<?php echo IMAGE_PATH; ?>LI.png" alt=""></a>
+                <h4 class="abouth4" id="margintop">Program: Media Communications</h4>
+                <a href="https://ca.linkedin.com/in/rachelshnier"><img src="<?php echo IMAGE_PATH; ?>LI.png" alt=""></a>
+                <a href="https://twitter.com/rachelshnier"><img src="<?php echo IMAGE_PATH; ?>t.png" alt=""></a>
+                <a href="https://instagram.com/rachelshnier/"><img src="<?php echo IMAGE_PATH; ?>i.png" alt=""></a>
             </div>
             
         </div>
@@ -407,16 +452,16 @@ aboutnav ul li
         	<h1 class="abouth1">For Humber College</h1>
             <div class="forhumber"><h2 class="abouth2">Guillermo Acosta<a class="abouth3"> - Dean</a></h2></div>
             <div class="humberblank"></div>
-            <div class="forhumber"><h2 class="abouth2">Basil Guinane<a class="abouth3"> - Associate Dean</a></h2></div>
             <div class="forhumber"><h2 class="abouth2">jeffrey berman<a class="abouth3"> - Project Manager</a></h2></div>
+            <div class="forhumber"><h2 class="abouth2">Basil Guinane<a class="abouth3"> - Associate Dean</a></h2></div>
             <div class="humberblank"></div>
-            <div class="forhumber"><h2 class="abouth2">Bernie Monette<a class="abouth3"> - Project Advisor</a></h2></div>
             <div class="forhumber"><h2 class="abouth2">Sean Doyle<a class="abouth3"> - Project Manager</a></h2></div>
+            <div class="forhumber"><h2 class="abouth2">Bernie Monette<a class="abouth3"> - Project Advisor</a></h2></div>
         </div>
         
         <div id="webdeveloper">
         	<h1 class="abouth1">Web Developer</h1>
-            <div class="aboutdeveloper"><img src="<?php echo IMAGE_PATH; ?>DevImg-30.png"><h2 class="abouth2">Corey Stanford<a class="abouth3"> - Lead</a></h2></div>
+            <div class="aboutdeveloper"><img src="<?php echo IMAGE_PATH; ?>DevImg-30.png"><h2 class="abouth2">Corey Stanford<a href="http://www.coreystanford.com" target="_blank" class="abouth3"> - Lead</a></h2></div>
             <div class="aboutblank"></div>
             <div class="aboutdeveloper"><img src="<?php echo IMAGE_PATH; ?>DevImg-30.png"><h2 class="abouth2">Tavo Asenjo</h2></div>
             <div class="aboutdeveloper"><img src="<?php echo IMAGE_PATH; ?>DevImg-30.png"><h2 class="abouth2">Sean Doyle</h2></div>
@@ -526,11 +571,11 @@ aboutnav ul li
         
         <div class="aboutatthead"><h2 class="abouth2"><a class="abouta" href="https://creativecommons.org/licenses/by-sa/2.0/legalcode">CREATIVE COMMONS ATTRIBUTION SHARE ALIKE 2.0 GENERIC </a></h2></div>
         
-        <div class="aboutgen"><h4 class="abouth4">Dombrowski, Lynn - <a class="abouta" href="https://www.flickr.com/photos/lynndombrowski/8207541759/in/photolist-dvgNdF-6ksTNq-dvni8v-bof11T-bof3TD-rhNCrL-6ccnyA-jh7RnP-4nwKXp-cN69a9-dNp6U-73PuxQ-oUkru4-q2oqwT-pmQvtJ-51CA51-7ZV6RT-5cSi9p-vHcasF-aDc8QP-aDfZLq-6QLueH-6K56TK-7Xw94z-cbxh8W-aDbz8z-5Lhktf-6pzXbu-aDc5ie-5UQ6Cu-5pu9uL-aDc5F4-vYoMzi-bo5Ptj-nkDugi-8VdWk9-8EXbBE-nttfGH-3KEaEM-b3zvoX-avZVuR-bo5PDW-c1HNt9-qhnP7d-856Brt-859JfS-3kRXwV-7EMYZX-oZmPK-91mVWo">Strawberry rhubarb pie (image cropped)</a>‎</h4></div>
+        <div class="aboutgen"><h4 class="abouth4">Dombrowski, Lynn - <a class="abouta" href="https://www.flickr.com/photos/lynndombrowski/8207541759/in/photolist-dvgNdF-6ksTNq-dvni8v-bof11T-bof3TD-rhNCrL-6ccnyA-jh7RnP-4nwKXp-cN69a9-dNp6U-73PuxQ-oUkru4-q2oqwT-pmQvtJ-51CA51-7ZV6RT-5cSi9p-vHcasF-aDc8QP-aDfZLq-6QLueH-6K56TK-7Xw94z-cbxh8W-aDbz8z-5Lhktf-6pzXbu-aDc5ie-5UQ6Cu-5pu9uL-aDc5F4-vYoMzi-bo5Ptj-nkDugi-8VdWk9-8EXbBE-nttfGH-3KEaEM-b3zvoX-avZVuR-bo5PDW-c1HNt9-qhnP7d-856Brt-859JfS-3kRXwV-7EMYZX-oZmPK-91mVWo">Strawberry rhubarb pie (cropped)</a>‎</h4></div>
         <div class="aboutgenblank"></div>
-        <div class="aboutgen"><h4 class="abouth4">Georgette, Bess - <a class="abouta" href="https://www.flickr.com/photos/46724642@N07/8637993927/in/photolist-eaiYDM-r1dEPq-se52JT-7VYazh-asZqyM-oNF1wL-fJA2eE-sdVrYE-pHr6x9-dWpTCQ-sbSMqC-fE86PC-jHLNh7-5YYFPS-6WQdA2-jHJVGm-r1dER9-vj642f-fGvtDZ-kPBsTR-54Awet-8iDBo9-88sNVC-88sPk9-88sNxA-88sPzL-88pzX4-fGvtAz-pgCKJ8-fGvtwX-88pyUD-88pzFt-kMMWXZ-r9dqs3-9GarAR-9JXzgR-rJBaBX-9nHgEw-88sP49-88sPHA-9GCXZ5-iRZT8w-ac4Hd4-ac3Set-o3CzYe-9xcfe2-iS4QG1-9ZY1DT-njXApa-aBJ7sw">Floral patchwork dress (image croppped)</a></h4></div>
+        <div class="aboutgen"><h4 class="abouth4">Georgette, Bess - <a class="abouta" href="https://www.flickr.com/photos/46724642@N07/8637993927/in/photolist-eaiYDM-r1dEPq-se52JT-7VYazh-asZqyM-oNF1wL-fJA2eE-sdVrYE-pHr6x9-dWpTCQ-sbSMqC-fE86PC-jHLNh7-5YYFPS-6WQdA2-jHJVGm-r1dER9-vj642f-fGvtDZ-kPBsTR-54Awet-8iDBo9-88sNVC-88sPk9-88sNxA-88sPzL-88pzX4-fGvtAz-pgCKJ8-fGvtwX-88pyUD-88pzFt-kMMWXZ-r9dqs3-9GarAR-9JXzgR-rJBaBX-9nHgEw-88sP49-88sPHA-9GCXZ5-iRZT8w-ac4Hd4-ac3Set-o3CzYe-9xcfe2-iS4QG1-9ZY1DT-njXApa-aBJ7sw">Floral patchwork dress (croppped)</a></h4></div>
         
-        <div class="aboutgen"><h4 class="abouth4">Georgette, Bess - <a class="abouta" href="https://www.flickr.com/photos/46724642@N07/8660920433/in/photolist-ecktUn-eaiYDM-r1dEPq-se52JT-7VYazh-asZqyM-oNF1wL-fJA2eE-sdVrYE-pHr6x9-dWpTCQ-sbSMqC-fE86PC-jHLNh7-5YYFPS-6WQdA2-jHJVGm-r1dER9-vj642f-fGvtDZ-kPBsTR-54Awet-8iDBo9-88sNVC-88sPk9-88sNxA-88sPzL-88pzX4-fGvtAz-pgCKJ8-fGvtwX-88pyUD-88pzFt-kMMWXZ-r9dqs3-9GarAR-9JXzgR-rJBaBX-9nHgEw-88sP49-88sPHA-9GCXZ5-iRZT8w-ac4Hd4-ac3Set-o3CzYe-9xcfe2-iS4QG1-9ZY1DT-njXApa">Dress with original tags (image croppped)</a>‎</h4></div>
+        <div class="aboutgen"><h4 class="abouth4">Georgette, Bess - <a class="abouta" href="https://www.flickr.com/photos/46724642@N07/8660920433/in/photolist-ecktUn-eaiYDM-r1dEPq-se52JT-7VYazh-asZqyM-oNF1wL-fJA2eE-sdVrYE-pHr6x9-dWpTCQ-sbSMqC-fE86PC-jHLNh7-5YYFPS-6WQdA2-jHJVGm-r1dER9-vj642f-fGvtDZ-kPBsTR-54Awet-8iDBo9-88sNVC-88sPk9-88sNxA-88sPzL-88pzX4-fGvtAz-pgCKJ8-fGvtwX-88pyUD-88pzFt-kMMWXZ-r9dqs3-9GarAR-9JXzgR-rJBaBX-9nHgEw-88sP49-88sPHA-9GCXZ5-iRZT8w-ac4Hd4-ac3Set-o3CzYe-9xcfe2-iS4QG1-9ZY1DT-njXApa">Dress with original tags (croppped)</a>‎</h4></div>
         <div class="aboutgenblank"></div>
         <div class="aboutgen"><h4 class="abouth4">Georgette, Bess - <a class="abouta" href="https://www.flickr.com/photos/46724642@N07/10701077104/in/photolist-hiBPpo-8bjnVY-7iMmVE-7iMmQY-7iHsui-7iHszi-7yC3KX-6fDWRB-kGsg7U-qXnhJ4-8NqGeL-ecktUv-7yC3Se-9JYw4L-7LKRr3-6HybDz-7Gtd2u-7LFUy2-8WY73P-eFFL7V-7iMmCW-bPFgyp-nkUjP7-bdZs8H-bBJQ4R-bBJQ6D-5TMHiT-g7Ujkk-8yTDv1-qLd3UR-93NQH5-6NMWbc-6tVV6Z-6TvBhH-fzL3Ag-8yTDx7-br3pbF-7V8o1Y-6TvTGP-7iMmGh-dxd9hy-6HCfm7-8bjnPh-6JKq9p-8bg634-8bjnXo-8X27Us-bhNSJD-8kthYL-gTDJs8">Dress by Carol Brent (image croppped)</a></h4></div>
         
@@ -563,11 +608,11 @@ aboutnav ul li
         
         <div class="aboutatthead"><h2 class="abouth2">USED WITH PERMISSION</h2></div>
         
-        <div class="aboutgen"><h4 class="abouth4">Lee, Brian - <a class="abouta" href="https://www.pixelscrapper.com/sheila-reid/designs/at-the-beach-hibiscus-paper-asset-ocean-sand-summer-vacation-coastal-tan-green">Hiren of the Valley</a></h4></div>
+        <div class="aboutgen"><h4 class="abouth4">Lee, Brian - Hiren of the Valley</h4></div>
         
-        <div class="aboutatthead"><h2 class="abouth2"><a class="abouta" href="http://www.iamfree.bandcamp.com">Featuring music Composed and Performed by IAMFREE</a></h2></div>
+        <div class="aboutatthead"><h2 class="abouth2"><a class="abouta" href="www.iamfree.bandcamp.com">Featuring music Composed and Performed by IAMFREE</a></h2></div>
         
-        <div class="aboutatthead"><h2 class="abouth2">from the album “Through Manes”: Used by permission.</h2></div>
+        <div class="aboutatthead"><h2 class="abouth2">from the album “Through Manes”</h2></div>
         
         <div class="aboutgen"><h4 class="abouth4">"Ceyx"</h4></div>
         <div class="aboutgenblank"></div>
@@ -595,9 +640,11 @@ aboutnav ul li
         
         <div class="aboutgen"><h4 class="abouth4">"Communication in Chaos"</h4></div>
         
-        <div class="aboutatthead"><h2 class="abouth2"><a class="abouta" target="_blank" href="http://www.ethanmyers.net">Featuring music Composed and Performed by Ethan Myers</a></h2></div>
+        <div class="aboutatthead"><h2 class="abouth2">Used by permission</h2></div>
         
-        <div class="aboutatthead"><h2 class="abouth2">from the album “Thematic Compositions for Visual Media”: Used by permission.</h2></div>
+        <div class="aboutatthead"><h2 class="abouth2"><a class="abouta" href="www.ethanmyers.net">Featuring music Composed and Performed by Ethan Myers</a></h2></div>
+        
+        <div class="aboutatthead"><h2 class="abouth2">from the album “Thematic Compositions for Visual Media”</h2></div>
         
         <div class="aboutgen"><h4 class="abouth4">"Into the Fray"</h4></div>
         <div class="aboutgenblank"></div>
@@ -605,14 +652,16 @@ aboutnav ul li
         
         <div class="aboutgen"><h4 class="abouth4">"The Fallen Will Rise Again"</h4></div>
         
+        <div class="aboutatthead"><h2 class="abouth2">Used by permission</h2></div>
+        
         <div class="aboutatthead"><h2 class="abouth2">PSA Music</h2></div>
         
-        <div class="aboutgen"><h4 class="abouth4">Boddy, Tom "Thoughtful Reflections" - <a class="abouta" target="_blank" href="www.audionetwork.com">Audio One Work</a></h4></div>
+        <div class="aboutgen"><h4 class="abouth4">Boddy, Tom "Thoughtful Reflections" - <a class="abouta" href="www.audionetwork.com">Audio One Work</a></h4></div>
         
-        <div class="aboutatthead"><h2 class="abouth2">Newscast Graphics <a class="abouta" target="_blank" href="http://www.editingcorp.com/motion-graphics-stock-elements-after-effects/">Motion Graphics Stock Elements 1.0 Copyright (c) 2014 Editing Corp.</a></h2></div>
+        <div class="aboutatthead"><h2 class="abouth2">Newscast Graphics <a class="abouta" href="http://www.editingcorp.com/motion-graphics-stock-elements-after-effects/">Motion Graphics Stock Elements 1.0 Copyright (c) 2014 Editing Corp.</a></h2></div>
         
         <div class="aboutatthead"><h2 class="abouth2">Videos</h2></div>
-        <div class="aboutgen"><h4 class="abouth4"><a class="abouta" target="_blank" href="http://www.Videoblocks.com">PSA videos provided by Videoblocks.com</a></h4></div>
+        <div class="aboutgen"><h4 class="abouth4"><a class="abouta" href="www.Videoblocks.com">PSA videos provided by Videoblocks.com</a></h4></div>
         
         </div>
     </div>

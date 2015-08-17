@@ -39,9 +39,6 @@
 			<span id="buffered-amount"></span>
 		</div>
 
-		<!-- Navigation Arrows -->
-		<a href="<?php echo ROOT_HREF; ?>" id="prev"><img src="<?php echo IMAGE_PATH; ?>icons/prev.png"></a>
-
 	</div>
 
 	<audio class="hide" id="newNote">
