@@ -1732,8 +1732,8 @@ nav {
 }
 
 .flash {
-    -webkit-animation: flash .8s  ease-in;
-    animation: flash .8s  ease-in;
+    -webkit-animation: flash 1.2s  ease-in;
+    animation: flash 1.2s  ease-in;
 }
 
 .flash:hover {
