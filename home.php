@@ -9,6 +9,10 @@
 
 	<div id="home-bg">
 		<div id="title-btn">
+
+			<!-- Lato (medium) = Valhaven
+			sign printer house script = Welcome ... Island  -->
+
 			<img src="<?php echo IMAGE_PATH; ?>title.png">
 			<button type="button" id="main-btn" class="btn">VISIT VALHAVEN</button>
 		</div>
