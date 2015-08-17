@@ -38,3 +38,6 @@
   Your browser does not support the audio element.
 </audio>
 
+<script type="text/javascript">
+  Local.setInactive( [office, home] );
+</script>

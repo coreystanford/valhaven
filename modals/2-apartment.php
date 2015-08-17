@@ -3,7 +3,7 @@
 <div id="popup" class="modal-content clearfix">
 	<div id="instructions-1" class="red-bg">
 		<h1>Explore the Apartment</h1>
-		<p>Something’s not right here. Explore the apartment by clicking on objects to find out more about the secretive person who sent you the flower.</p>
+		<p>Something’s not right here. Click and drag to explore the apartment, clicking on objects to find out more about the secretive person who sent you the flower.</p>
 		<button type="button" id="next-btn" class="btn">OKAY</button>
 	</div>
 </div>
@@ -25,7 +25,7 @@
 		var ref = container.getAttribute('ref');
 
 		var camera, scene, renderer, mesh, door;
-		var isUserInteracting = false, onMouseDownMouseX = 0, onMouseDownMouseY = 0, lon = 0, onMouseDownLon = 0, lat = 0, onMouseDownLat = 0, phi = 0, theta = 0;
+		var isUserInteracting = false, onMouseDownMouseX = 0, onMouseDownMouseY = 0, lon = 110, onMouseDownLon = 0, lat = 0, onMouseDownLat = 0, phi = 0, theta = 0;
 	    var mouse = new THREE.Vector2(), raycaster, INTERSECTED, hover = false, info;   
 	    var onPointerDownLon, onPointerDownPointerX, onPointerDownPointerY, onPointerDownLat;
 		var doorInt, vector;

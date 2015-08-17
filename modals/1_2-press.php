@@ -85,7 +85,7 @@
 			Map.removeVideoEvents();
 
 			if(Local.visited.length === 1){
-				newNote.volume = "0.7";
+				newNote.volume = "0.4";
 				newNote.play();
 			}
 
