@@ -1917,9 +1917,9 @@ canvas {
 
 #postLinks {
   position: absolute;
-  top: 40%;
+  top: 30%;
   right: 10%;
-  bottom: 30%;
+  bottom: 40%;
   left: 10%;
   display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
@@ -1931,6 +1931,29 @@ canvas {
   -webkit-align-content: space-around;
   align-content: space-around;
 }
+
+#title {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  left: 10%;
+}
+
+  #title h1 {
+    text-align: center;
+    padding-bottom: 30px;
+  }
+
+    #team {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      width: 50%;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
 
 .boxLink {
   width: 50%;
