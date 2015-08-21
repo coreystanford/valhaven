@@ -1820,11 +1820,7 @@ canvas {
 #wrapper {
   width: 80%;
   max-width: 960px;
-  margin: 0px auto;
-  margin-top: 50px;
-  margin-bottom:50px;
-  margin-left: 12%;
-  /*border:solid 2px red;*/ 
+  margin: 50px auto;
   color: #636363;
   overflow: auto;
 }

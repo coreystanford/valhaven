@@ -355,9 +355,9 @@ var VidControl = (function(){
 		},
 
 		onCanPlayThrough: function(){
+			video.removeEventListener('canplay', VidControl.onCanPlayThrough, false);
+			video.removeEventListener('load', VidControl.onCanPlayThrough, false);
 			setTimeout(function(){
-				video.removeEventListener('canplay', VidControl.onCanPlayThrough, false);
-				video.removeEventListener('load', VidControl.onCanPlayThrough, false);
 				main.removeChild(preloader);
 				VidControl.slideOffscreen();
 				video.play();

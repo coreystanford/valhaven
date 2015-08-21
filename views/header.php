@@ -99,8 +99,8 @@
 
 			<ul>
 				<!-- <div class="fb-share-button" data-href="http://www.seanwaynedoyle.com/txm2015/valhaven/" data-layout="button_count"><img src="<?php echo IMAGE_PATH; ?>icons/facebook.png"></div> -->
-				<li><a id="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.seanwaynedoyle.com%2Ftxm2015%2Fvalhaven%2F" target="_blank"><img src="<?php echo IMAGE_PATH; ?>icons/facebook.png"></a></li>
-				<li><a id="twitter" href="https://twitter.com/intent/tweet?url=http:%2F%2Fwww.seanwaynedoyle.com%2Ftxm2015%2Fvalhaven%2F" target="_blank"><img src="<?php echo IMAGE_PATH; ?>icons/twitter.png"></a></li>
+				<li><a id="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmediastudies.humber.ca%2Ftransmedia%2F2015%2F" target="_blank"><img src="<?php echo IMAGE_PATH; ?>icons/facebook.png"></a></li>
+				<li><a id="twitter" href="https://twitter.com/intent/tweet?url=http:%2F%2Fmediastudies.humber.ca%2Ftransmedia%2F2015%2F" target="_blank"><img src="<?php echo IMAGE_PATH; ?>icons/twitter.png"></a></li>
 			</ul>
 
 		</div><!-- /social -->
