@@ -218,7 +218,7 @@ var VidControl = (function(){
 
 			timeFullSec = video.duration * perc;
 			timeMin = Math.floor(timeFullSec / 60);
-			timeSec = Math.round(timeFullSec % 60);
+			timeSec = Math.round(timeFullSec % 59);
 			if(timeSec < 10){ timeSec = "0" + timeSec; }
 
 			time.innerHTML = timeMin + ":" + timeSec;
